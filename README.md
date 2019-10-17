@@ -1,6 +1,3 @@
-# donut [![Build Status][travis-image]][travis-url]
-The repository for Donut. Written using Python/Flask and powered by MariaDB.
-
 # Setting up your environment
 - Gain SSH access to the server:
 
