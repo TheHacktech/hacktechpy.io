@@ -34,6 +34,10 @@ This (see `Makefile`)
   
    To deactivate the virtualenv (which you shouldn't need to do), simply type `deactivate`
 
+You may need to run this everytime you log in
+
+`source ~/virtualenvs/hacktech-py3/bin/activate`
+
 
 - You will also need a separate config file that we will give you in order to access the database.
 
