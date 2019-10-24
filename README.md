@@ -21,7 +21,7 @@
 
 - Clone the repository:
 ```
-git clone git@github.com:TheHacktech/hacktechpy.io.git
+git clone https://github.com/TheHacktech/hacktechpy.io.git
 ```
 - Set up your virtualenv and install requirements in that virtualenv
 ```
