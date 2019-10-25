@@ -21,7 +21,7 @@
 
 - Clone the repository:
 ```
-git clone git@github.com:TheHacktech/hacktechpy.io.git
+git clone https://github.com/TheHacktech/hacktechpy.io.git
 ```
 - Set up your virtualenv and install requirements in that virtualenv
 ```
@@ -33,6 +33,10 @@ This (see `Makefile`)
 3. Adds a line to your `~/.profile` to automatically activate the virtualenv when you login. 
   
    To deactivate the virtualenv (which you shouldn't need to do), simply type `deactivate`
+
+You may need to run this everytime you log in
+
+`source ~/virtualenvs/hacktech-py3/bin/activate`
 
 
 - You will also need a separate config file that we will give you in order to access the database.
