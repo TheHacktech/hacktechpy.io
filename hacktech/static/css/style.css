@@ -415,10 +415,9 @@ input[type=checkbox], input[type=radio] {
  */
 #footer {
   width: 100%;
-  text-align: right;
   z-index: 9999;
   bottom: 0;
-  position: absolute;
+  padding: 40px;
 }
 
 /* The copyright should be small and pretty much invisible. We don't want it
