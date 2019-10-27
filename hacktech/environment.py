@@ -12,14 +12,15 @@ class Environment(object):
   """
 
     def __init__(self, db_hostname, db_name, db_user, db_password, debug,
-                 testing, secret_key):
+                 testing, secret_key, em, email):
         self.db_hostname = db_hostname
         self.db_name = db_name
         self.db_user = db_user
         self.db_password = db_password
         self.debug = debug
         self.secret_key = secret_key
-
+        self.em = em
+        self.email = email
     @property
     def db_uri(self):
         return "mysql+pymysql://{0}:{1}@{2}/{3}".format(

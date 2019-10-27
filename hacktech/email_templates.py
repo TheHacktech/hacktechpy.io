@@ -46,10 +46,11 @@ hacktech Devteam
 
 CreateAccountSuccessfulEmail = \
 """Hi {0},\n
-Your hacktech account with the username "{1}" has been created. If this
+Your hacktech account has been created. If this
 was not you, please let us know immediately.\n
+Please confirm your email by going to this link {1}
 Thanks!
-hacktech Devteam
+Hacktech team
 """
 
 MembersAddedEmail = \

@@ -8,7 +8,7 @@ from hacktech import email_utils
 from hacktech import validation_utils
 
 
-def authenticate(username, password):
+def authenticate(email, password):
     """
   Takes a username and password and checks if this corresponds to an actual
   user. Returns user_id if successful, else None. If a legacy algorithm is
@@ -22,9 +22,9 @@ def authenticate(username, password):
         return None
 
     # Get the correct password hash and user_id from the database.
-    s = "SELECT user_id, password_hash FROM users WHERE username=%s"
+    s = "SELECT user_id, password_hash FROM users WHERE email=%s"
     with flask.g.pymysql_db.cursor() as cursor:
-        cursor.execute(s, [username])
+        cursor.execute(s, [email])
         result = cursor.fetchone()
 
     if result is None:
@@ -46,7 +46,7 @@ def authenticate(username, password):
     return None
 
 
-def handle_forgotten_password(username, email):
+def handle_forgotten_password(email):
     """
   Handles a forgotten password request. Takes a submitted (username, email)
   pair and checks that the email is associated with that username in the
@@ -55,10 +55,10 @@ def handle_forgotten_password(username, email):
   """
     # Check username, email pair.
     query = """SELECT user_id, first_name, email
-    FROM members NATURAL JOIN users WHERE username = %s"""
+    FROM members NATURAL JOIN users WHERE email = %s"""
 
     with flask.g.pymysql_db.cursor() as cursor:
-        cursor.execute(query, [username])
+        cursor.execute(query, [email])
         result = cursor.fetchone()
 
     if result is not None and email == result['email']:
@@ -70,10 +70,10 @@ def handle_forgotten_password(username, email):
             UPDATE users
             SET password_reset_key = %s,
             password_reset_expiration = NOW() + INTERVAL %s MINUTE
-            WHERE username = %s
+            WHERE email = %s
             """
         with flask.g.pymysql_db.cursor() as cursor:
-            values = [reset_key, constants.PWD_RESET_KEY_EXPIRATION, username]
+            values = [reset_key, constants.PWD_RESET_KEY_EXPIRATION, email]
             cursor.execute(query, values)
         # Determine if we want to say "your link expires in _ minutes" or
         # "your link expires in _ hours".

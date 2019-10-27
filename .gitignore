@@ -1,2 +1,7 @@
 # Ignore default config file
 default_config.py
+config.py
+
+# Pycache
+*.pyc
+__pycache__/

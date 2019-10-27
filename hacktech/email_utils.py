@@ -1,6 +1,6 @@
 import smtplib
 from email.mime.text import MIMEText
-
+from hacktech import config
 
 def send_email(to, msg, subject, use_prefix=True):
     """
@@ -13,9 +13,14 @@ def send_email(to, msg, subject, use_prefix=True):
         subject = '[ASCIT hacktech] ' + subject
 
     msg['Subject'] = subject
-    msg['From'] = 'auto@hacktech.caltech.edu'
+    msg['From'] = 'auto@hacktech.io'
     msg['To'] = to
 
-    s = smtplib.SMTP('localhost')
-    s.sendmail('auto@hacktech.caltech.edu', [to], msg.as_string())
-    s.quit()
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+
+    server.starttls()
+    server.ehlo()
+    environment = config.DEV
+    server.login(environment.email, environment.em)
+    server.sendmail('auto@hacktech.io', [to], msg.as_string())
+    server.quit()

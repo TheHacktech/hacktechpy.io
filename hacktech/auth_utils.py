@@ -192,7 +192,7 @@ def hash_password(password, salt, rounds, algorithm):
     return None
 
 
-def set_password(username, password):
+def set_password(email, password):
     """Sets the user's password. Automatically generates a new salt."""
     algorithm = constants.PWD_HASH_ALGORITHM
     rounds = constants.HASH_ROUNDS
@@ -210,10 +210,10 @@ def set_password(username, password):
     query = """
     UPDATE users
     SET password_hash=%s
-    WHERE username=%s
+    WHERE email=%s
     """
     with flask.g.pymysql_db.cursor() as cursor:
-        cursor.execute(query, (full_hash, username))
+        cursor.execute(query, (full_hash, email))
 
 
 def generate_salt():
@@ -248,27 +248,27 @@ def check_reset_key(reset_key):
         return None
 
 
-def get_user_id(username):
+def get_user_id(email):
     """Takes a username and returns the user's ID."""
-    query = 'SELECT user_id FROM users WHERE username = %s'
+    query = 'SELECT user_id FROM users WHERE email = %s'
     with flask.g.pymysql_db.cursor() as cursor:
-        cursor.execute(query, [username])
+        cursor.execute(query, [email])
         user = cursor.fetchone()
     return user and user['user_id']
 
 
-def update_last_login(username):
+def update_last_login(email):
     """Updates the last login time for the user."""
     query = """
     UPDATE users
     SET last_login=NOW()
-    WHERE username=%s
+    WHERE email=%s
     """
     with flask.g.pymysql_db.cursor() as cursor:
-        cursor.execute(query, username)
+        cursor.execute(query, email)
 
 
-def generate_create_account_key():
+def generate_confirm_account_key():
     """
   Generates a random account creation key. Implementation is very similar to
   generate_reset_key().
@@ -278,21 +278,27 @@ def generate_create_account_key():
         constants.CREATE_ACCOUNT_KEY_LENGTH, chars=chars)
 
 
-def check_create_account_key(key):
+def check_confirm_account_key(key):
     """
-  Returns the user_id if the reset key is valid (matches a user_id and that
-  user does not already have an account). Otherwise returns None.
-  """
+    Returns the user_id if the reset key is valid (matches a user_id and that
+    user does not already have an account). Otherwise returns None.
+    """
     query = """
     SELECT user_id
-    FROM members
-    WHERE create_account_key = %s
-      AND user_id NOT IN (SELECT user_id FROM users)
+    FROM users
+    WHERE confirm_account_key = %s
     """
     with flask.g.pymysql_db.cursor() as cursor:
         cursor.execute(query, key)
         result = cursor.fetchone()
     if result is not None:
+        query = """
+        UPDATE users
+        SET activated=True
+        WHERE user_id = %s
+        """
+        with flask.g.pymysql_db.cursor() as cursor:
+            cursor.execute(query, result["user_id"])
         return result['user_id']
     else:
         return None
@@ -316,16 +322,19 @@ def login_redirect():
     return flask.redirect(flask.url_for('auth.login'))
 
 
-def get_permissions(username):
+def get_permissions(email):
     """
     Returns a set with all of the permissions available to the user.
     """
-    user_id = get_user_id(username)
+    query = "SELECT admin FROM users WHERE email = %s"
+    with flask.g.pymysql_db.cursor() as cursor:
+        cursor.execute(query, email)
+        result = cursor.fetchone()
+    print(result)
     return True
 
 def check_permission(username, permission_id):
     """
     Returns True if the user has this permission, otherwise False
     """
-    permissions = get_permissions(username)
-    return permission_id in permissions or Permissions.ADMIN in permissions
+    return True

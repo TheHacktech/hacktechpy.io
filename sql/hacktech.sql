@@ -1,32 +1,34 @@
 DROP TABLE IF EXISTS race;
+DROP VIEW IF EXISTS members_full_name;
 DROP TABLE IF EXISTS status;
 DROP TABLE IF EXISTS applications;
 DROP TABLE IF EXISTS members;
 DROP TABLE IF EXISTS users;
 
+-- Users Table
+CREATE TABLE users (
+    user_id                   INT          NOT NULL AUTO_INCREMENT,
+    email                     VARCHAR(255) NOT NULL,
+    last_login                DATETIME     DEFAULT NULL,
+    password_hash             VARCHAR(255) NOT NULL,
+    password_reset_key        CHAR(32)     DEFAULT NULL,
+    password_reset_expiration DATETIME     DEFAULT NULL,
+    activated                 BOOLEAN      DEFAULT FALSE,
+    confirm_account_key       CHAR(32)     DEFAULT NULL,
+    admin                     BOOLEAN      DEFAULT FALSE,
+    PRIMARY KEY (user_id),
+    UNIQUE (email)
+);
+
 -- Members Table
 CREATE TABLE members (
     user_id            INT          NOT NULL,
-    last_name          VARCHAR(255) NOT NULL,
     first_name         VARCHAR(255) NOT NULL,
     preferred_name     VARCHAR(255) DEFAULT NULL,
     middle_name        VARCHAR(255) DEFAULT NULL,
-    email              VARCHAR(255) NOT NULL,
-    phone              VARCHAR(64)  DEFAULT NULL,
+    last_name          VARCHAR(255) NOT NULL,
     PRIMARY KEY (user_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id)
-);
-
--- Review Table
-CREATE TABLE status (
-    user_id            INT          NOT NULL,
-    application_id     INT          NOT NULL,
-    status             VARCHAR(50)  NOT NULL,
-    decider_user_id    INT          NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES users(user_id),
-    FOREIGN KEY (application_id) REFERENCES applications(application_id),
-
-    PRIMARY KEY (user_id, application_id)
 );
 
 -- Member Full Name View
@@ -39,7 +41,8 @@ CREATE VIEW members_full_name AS (
 CREATE TABLE applications(
     application_id    INT          NOT NULL AUTO_INCREMENT,
     user_id           INT          NOT NULL,
-    application_year  DATETIME     DEFAULT YEAR(CURDATE()),
+    application_year  DATETIME     NOT NULL,
+    phone             VARCHAR(64)  DEFAULT NULL,
     school            VARCHAR(255) NOT NULL,
     major             VARCHAR(255) NOT NULL,
     degree_type       VARCHAR(50)  NOT NULL,
@@ -66,6 +69,17 @@ CREATE TABLE applications(
     UNIQUE (user_id, application_year) -- One application per year.
 );
 
+-- Review Table
+CREATE TABLE status (
+    user_id            INT          NOT NULL,
+    application_id     INT          NOT NULL,
+    status             VARCHAR(50)  NOT NULL,
+    decider_user_id    INT          NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (application_id) REFERENCES applications(application_id),
+    PRIMARY KEY (user_id, application_id)
+);
+
 
 CREATE TABLE race(
     user_id           INT,
@@ -73,19 +87,5 @@ CREATE TABLE race(
     race_type         VARCHAR(50),
     PRIMARY KEY (race_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id)
-)
-
--- Users Table
-CREATE TABLE users (
-    user_id                   INT          NOT NULL AUTO_INCREMENT,
-    username                  VARCHAR(32)  NOT NULL,
-    last_login                DATETIME     DEFAULT NULL,
-    password_hash             VARCHAR(255) NOT NULL,
-    password_reset_key        CHAR(32)     DEFAULT NULL,
-    password_reset_expiration DATETIME     DEFAULT NULL,
-    admin                     BOOLEAN      DEFAULT FALSE,
-    PRIMARY KEY (user_id),
-    UNIQUE (username)
 );
-
 
