@@ -9,8 +9,8 @@ def send_email(to, msg, subject, use_prefix=True):
   """
     msg = MIMEText(msg)
 
-    if use_prefix and '[ASCIT hacktech]' not in subject:
-        subject = '[ASCIT hacktech] ' + subject
+    if use_prefix:
+        subject = '[Hacktech]' + subject
 
     msg['Subject'] = subject
     msg['From'] = 'auto@hacktech.io'

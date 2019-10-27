@@ -13,7 +13,7 @@ try:
 except ImportError:
     from hacktech import default_config as config
 from hacktech import constants
-from hacktech.modules import account, auth
+from hacktech.modules import account, applications, auth
 
 app = flask.Flask(__name__)
 Bootstrap(app)  # enable Bootstrap in Flask
@@ -21,6 +21,7 @@ Bootstrap(app)  # enable Bootstrap in Flask
 # Load blueprint modules
 app.register_blueprint(account.blueprint)
 app.register_blueprint(auth.blueprint)
+app.register_blueprint(applications.blueprint)
 
 def init(environment_name):
     """Initializes the application with configuration variables and routes.
