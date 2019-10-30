@@ -9,46 +9,27 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand sliding" href=" {{ url_for('home') }} ">hacktech</a>
+                <a class="navbar-brand sliding" href=" {{ url_for('home') }} ">Hacktech</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="active"><a class = "sliding" href=" {{ url_for('home') }} ">Home</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">ASCIT <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Clubs</a></li>
-                            <li><a href="#">Suggestions</a></li>
-                        </ul>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">User Services <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">ARC Feedback</a></li>
-                            <li><a href="#">Calendar</a></li>
-                            <li><a href="#">Course Reviews</a></li>
-                        </ul>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Publications <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">The Tech</a></li>
-                            <li><a href="#">little T</a></li>
-                            <li><a href="#">Big T</a></li>
-                            <li><a href="#">Totem</a></li>
-                        </ul>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle sliding" data-toggle="dropdown" role="button" aria-expanded="false">Account Management <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{ url_for('account.create_account') }}">New Account</a></li>
-                            <li><a href="{{ url_for('auth.forgot_password') }}">Recover Password</a></li>
-                        </ul>
-                    </li>
                     {% if 'username' not in session %}
                     <li>
                         <form action="{{ url_for('auth.login') }}">
-                            <button class="btn no-border pull-right navbar-btn">Log In</button>
+                            <button id="logInButton" class="btn no-border pull-right navbar-btn sliding">Log In</button>
                         </form>
                     </li>
                     {% else %}
+
+		    {% if 'admin' in session%}
+			<li><a class = "sliding" href=" {{ url_for('judging.judge') }} ">Judge Applications</a></li>
+                        <li><a class = "sliding" href=" {{ url_for('applications.applications') }} ">Current Stats</a></li>
+                        <li><a class = "sliding" href=" {{ url_for('applications.applications') }} ">Search</a></li>
+
+		    {% else %}
+		    <li><a class = "sliding" href=" {{ url_for('applications.applications') }} ">Application</a></li>
+		    {% endif %}
                     <li>
                         <a href="#" class="sliding">
                             Greetings, {{ session['username'] }}
@@ -56,7 +37,7 @@
                     </li>
                     <li>
                         <form action="{{ url_for('auth.logout') }}">
-                            <button class="btn no-border pull-right navbar-btn">Logout</button>
+                            <button id="logInButton" class="btn no-border pull-right navbar-btn sliding">Logout</button>
                         </form>
                     </li>
                     {% endif %}

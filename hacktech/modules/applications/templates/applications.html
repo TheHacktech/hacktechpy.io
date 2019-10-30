@@ -3,8 +3,9 @@
 {% block styles %}
   {{super()}}
 {% endblock %}
-{% block page %} 
-    <div id="application_form" class="jumbotron col-md-8 col-md-offset-2">
+{% block page %}
+<div class = "jumbotron">
+    <div id="application_form" class="col-md-8 col-md-offset-2">
     <h2 class="text-center">Hacktech Application</h2>
     <form action="{{url_for('applications.update_applications')}}" method="post"}>
       <div class="form-group">
@@ -166,4 +167,5 @@
  
     </form>
     </div>
+</div>
  {% endblock %}

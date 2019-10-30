@@ -225,11 +225,13 @@ body {
 
 #footer {
   background-color: #00a8ff;
+  padding: 20px;
   color: #fff; }
   #footer .contents {
     padding: 50px 13%; }
   #footer #social {
-    margin-bottom: 15px; }
+    margin-bottom: 15px; 
+    margin-top: 15px;}
   #footer .socialicon {
     max-height: 30px;
     margin: 0px 10px; }

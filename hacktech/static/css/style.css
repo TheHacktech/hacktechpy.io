@@ -36,7 +36,6 @@ html {
  * height.
  */
 body {
-  padding-bottom: 3%;
   padding-top: 3%;
   font-family: "Roboto Condensed", sans-serif;
   font-weight: 400;
@@ -86,34 +85,34 @@ button {
 input {
   padding: 0.5%;
   margin-top: 1%;
-  border: 1px orange solid;
+  border: 1px #00a8ff solid;
   border-radius: 5px;
   padding: 5px;
 }
 
 /* Removes blue coloring when focusing. */
 input:focus {
-  border: 1px orange solid;
+  border: 1px #00a8ff solid;
 }
 
 /* All textareas should have an orange border. */
 textarea {
-  border: 1px orange solid;
+  border: 1px #00a8ff solid;
 }
 
 /* Removes blue coloring when focusing. */
 textarea:focus {
-  border: 1px orange solid;
+  border: 1px #00a8ff solid;
 }
 
 /* All dropdowns should have an orange border. */
 select {
-  border: 1px orange solid;
+  border: 1px #00a8ff solid;
 }
 
 /* Removes blue coloring when focusing. */
 select:focus {
-  border: 1px orange solid;
+  border: 1px #00a8ff solid;
 }
 
 /* Anything that has a required tag should have a red star next to it to
@@ -135,7 +134,9 @@ table {
  * divs, unless otherwise specified in the commentary.                       */
 /*****************************************************************************/
 
-
+.dropdown-menu {
+  background: #00a8ff;
+}
 /* This is the primary button class. Gives the button a white background
  * with an orange border and a slight bottom margin for spacing
  */
@@ -147,7 +148,7 @@ table {
 
   background-color: #FFF;
   color: #333;
-  border-color: orange;
+  border-color: #00a8ff;
   margin-bottom: 5%;
 }
 
@@ -158,9 +159,9 @@ table {
   -o-transition: all 0.5s;
   transition: all 0.5s;
 
-  background-color: orange;
+  background-color: #00a8ff;
   color: #FFF;
-  border-color: orange;
+  border-color: #00a8ff;
   margin-bottom: 5%;
 }
 
@@ -362,6 +363,10 @@ input[type=checkbox], input[type=radio] {
   color: #fff;
 }
 
+.navbar-nav {
+  float: right;
+}
+
 #navbar li a:active {
   background-color: #00a8ff;
 }
@@ -398,7 +403,14 @@ input[type=checkbox], input[type=radio] {
  * should not be used for general styling or anything of the like. Odds are, *
  * you won't need them for anything!                                         */
 /*****************************************************************************/
-
+#application_form {
+  background:white;
+  color: #00a8ff;
+}
+#logInButton {
+  background:#00a8ff;
+  color:white;
+}
 
 /* Content needs to span the width of its parent. */
 #content {
@@ -414,11 +426,19 @@ input[type=checkbox], input[type=radio] {
  * copyright notice.
  */
 #footer {
-  width: 100%;
-  z-index: 9999;
-  bottom: 0;
-  padding: 40px;
+  background-color: #00a8ff;
+  color: #fff; 
+  padding: 20px;
+  margin-top: 20px;
 }
+#footer .contents {
+    padding: 50px 13%; }
+#footer #social {
+    margin-top: 15px;
+    margin-bottom: 15px; }
+#footer .socialicon {
+    max-height: 30px;
+    margin: 0px 10px; }
 
 /* The copyright should be small and pretty much invisible. We don't want it
  * to distract the user.
@@ -486,7 +506,7 @@ input[type=checkbox], input[type=radio] {
   .jumbotron form input {
     padding: 1%;
     margin-top: 5%;
-    border: 1px orange solid;
+    border: 1px #00a8ff solid;
     border-radius: 5px;
   }
 
