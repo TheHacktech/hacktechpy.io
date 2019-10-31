@@ -31,4 +31,4 @@ def get_application(user_id):
     race_info = [x['race_type'] for x in race_info_dict]
     result['race'] = race_info
     print(result)
-    return 
+    return result 

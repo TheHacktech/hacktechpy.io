@@ -16,5 +16,5 @@ def view_application(user_id):
     if not auth_utils.check_admin():
         return flask.redirect(flask.url_for("home"))
     info = helpers.get_application(user_id)
-    print(user_id)
+    print(info)
     return flask.render_template("view_application.html", info=info)

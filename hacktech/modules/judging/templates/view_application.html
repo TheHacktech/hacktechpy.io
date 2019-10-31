@@ -4,5 +4,47 @@
   {{super()}}
 {% endblock %}
 {% block page %} 
+  <div class = "jumbotron col-md-8 col-md-offset-2">
+    <h2 class="text-center">Judging</h2>
+    {% if info != None %}
+      <label>Name: </label>
+      {{info.first_name}} {{info.middle_name}} {{info.last_name}}
+      <hr/>
+      
+      <label>Preferred Name: </label>
+      {{info.preferred_name}}
 
+      <hr>
+      <label>Phone Number: </label>
+      {{info.phone}}
+
+      <hr/>
+      <label>School: </label>
+      {{info.school}}
+
+      <hr/>
+      <label>Major: </label>
+      {{info.major}}
+
+      <hr/>
+      <label>Degree Type: </label>
+      {{info.degree_type}}
+
+      <hr/>
+      <label>Graduation Year: </label>
+      {{info.graduation_year}}
+
+      <hr/>
+      <label>GitHub Link: </label>
+      <a href={{info.github}}>{{info.github}}</a>
+
+      <hr/>
+      <label>Linkedin Link: </label>
+      <a href={{info.linkedin}}>{{info.linkedin}}</a>
+
+    {% else %}
+      <p> User has not submitted their applications. </p>
+
+    {% endif %}
+ </div>
 {% endblock %}
