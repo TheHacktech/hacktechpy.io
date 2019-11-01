@@ -4,9 +4,48 @@
   {{super()}}
 {% endblock %}
 {% block page %} 
-
+<div class="jumbotron">
 <div class="row">
-  <div class="col-12 col-md-4">.col-12 .col-md-4</div>
-  <div class="col-12 col-md-8">.col-12 .col-md-8</div>
+  <div class="col-12 col-md-4">
+    Status types:
+
+    </br>
+    <label class="checkbox-inline">Accepted</label>
+    <input type="checkbox" name="display_tag" value="accepted"/>
+    </br>
+
+    <label class="checkbox-inline">In-progress</label>
+    <input type="checkbox" name="display_tag" value="in_progress"/>
+
+    </br>
+    <label class="checkbox-inline">Submitted</label>
+    <input type="checkbox" name="display_tag" value="submitted"/>
+
+    </br>
+    <label class="checkbox-inline">Declined</label>
+    <input type="checkbox" name="display_tag" value="declined"/>
+
+    </br>
+    <label class="checkbox-inline">Rejected</label>
+    <input type="checkbox" name="display_tag" value="rejected"/>
+  </div>
+  <div class="col-12 col-md-8">
+    <table style="width:100%">
+  <tr>
+    <th>Name</th>
+    <th>Status</th>
+    <th>Link</th>
+  </tr>
+  {% for i in info %}
+  <tr>
+	  <td> {{i.first_name}} {{i.last_name}} </td>
+	  <td> {{i.status}} </td>
+	  <td> <a href={{i.link}} >Go</a></td>
+  </tr>
+  {% endfor %}
+</table>
+
+  </div>
+</div>
 </div>
 {% endblock %}

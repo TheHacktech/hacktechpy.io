@@ -9,10 +9,10 @@ def get_application(user_id):
     phone, school, major, degree_type, graduation_year, 
     github, linkedin, resume, latino, gender, shirtSize, 
     transportation, in_state, bus_from, airport, 
-    diet_rest, diet_rest_choice, diet_rest_detail, 
-    q1, q2, q3, q4, codeOfConduct 
+    diet_rest, diet_rest_detail, 
+    q1, q2, q3, q4, code_of_conduct 
     FROM users NATURAL JOIN members NATURAL JOIN 
-    applications NATURAL JOIN status WHERE user_id = %s
+    applications NATURAL JOIN status JOIN WHERE user_id = %s
     """
     with flask.g.pymysql_db.cursor() as cursor:
         cursor.execute(query, [user_id])
@@ -30,5 +30,19 @@ def get_application(user_id):
         race_info_dict = cursor.fetchall()
     race_info = [x['race_type'] for x in race_info_dict]
     result['race'] = race_info
-    print(result)
-    return result 
+    return result
+
+def get_all_application_links():
+    result = []
+    query = """
+    SELECT user_id, first_name, last_name, status 
+    FROM members NATURAL JOIN status
+    """
+    with flask.g.pymysql_db.cursor() as cursor:
+        cursor.execute(query, [])
+        result = cursor.fetchall()
+    for i in result:
+        i['link'] = flask.url_for("judging.view_application",
+            user_id = i['user_id'],
+            _external=True)
+    return result
