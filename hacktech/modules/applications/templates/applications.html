@@ -10,22 +10,22 @@
     <form action="{{url_for('applications.update_applications')}}" method="post"}>
       <div class="form-group">
         <label for="phoneNumber">Phone Number</label>
-        <input type="text" class="form-control" id="phoneNumber" formControlName="phoneNumber" required>
+        <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" required>
       </div>
  
       <div class="form-group">
         <label for="school">School</label>
-        <input type="text" class="form-control" id="school" formControlName="school">
+        <input type="text" class="form-control" id="school" name="school">
       </div>
 
       <div class="form-group">
         <label for="major">Major</label>
-        <input type="text" class="form-control" id="major" formControlName="major">
+        <input type="text" class="form-control" id="major" name="major">
       </div>
 
       <div class="form-group">
         <label for="undergrad">What is your year of study?</label>
-      <select name="undergrad" formControlName="undergrad">
+      <select name="undergrad">
         <option value="High School">High School</option>
         <option value="Undergraduate">Undergraduate</option>
         <option value="Graduate">Graduate</option>
@@ -35,7 +35,7 @@
 
       <div class="form-group">
         <label for="graduationYear">What is your expected graduation date?</label>
-      <select name="graduationYear" formControlName="graduationYear">
+      <select name="graduationYear">
         <option value="2020">2020</option>
         <option value="2021">2021</option>
         <option value="2022">2022</option>
@@ -46,35 +46,42 @@
 
       <div class="form-group">
         <label for="github">What is your GitHub?</label>
-        <input type="text" class="form-control" id="github" formControlName="github">
+        <input type="text" class="form-control" id="github" name="github">
       </div>
 
       <div class="form-group">
         <label for="linkedin">What is your LinkedIn?</label>
-        <input type="text" class="form-control" id="linkedin" formControlName="linkedin">
+        <input type="text" class="form-control" id="linkedin" name="linkedin">
       </div>
 
       <div class="form-group">
         <label for="resume">Upload your resume! (less than 500 KB please) </label>
-        <input type="file" class="form-control" id="resume" formControlName="resume">
+        <input type="file" class="form-control" id="resume" name="resume">
       </div>
  
       <div class="form-group">
         <label for="latino">Are you Hispanic or Latino?</label>
-          <select name="latino" formControlName="latino">
+          <select name="latino">
             <option value="True">Yes</option>
             <option value="False">No</option>
          </select>
       </div>
   
       <div class="form-group">
-        <label for="race">What is your race?</label>
-        <p>
+        <label for="race">What is your race or ethnicity?</label> 
+          <input type="checkbox" name="race" value="Asian">  Asian
+	  <input type="checkbox" name="race"  value="Black">  Black/African
+	  <input type="checkbox" name="race" value="Caucasian">  Caucasian 
+	  <input type="checkbox" name="race" value="Latino">  Hispanic/Latinx 
+	  <input type="checkbox" name="race" value="Native American">  Native American  
+	  <input type="checkbox" name="race" value="Pacific Islander">  Pacific Islander  
+	  <input type="checkbox" name="race" value="No Answer">  Prefer Not to Answer  
+	  <input type="checkbox" name="race" value="Other">  Other <br> 
       </div>
 
       <div class="form-group">
         <label for="gender">What is your gender?</label>
-          <select name="gender" formControlName="gender">
+          <select name="gender">
             <option value="M">Male</option>
             <option value="F">Female</option>
             <option value="O">Other</option>
@@ -83,7 +90,7 @@
       </div>
       <div class="form-group">
         <label for="shirtSize">What is your shirt size?</label>
-          <select name="shirtSize" formControlName="shirtSize">
+          <select name="shirtSize">
             <option value="Small">Small</option>
             <option value="Medium">Medium</option>
             <option value="Large">Large</option>
@@ -93,16 +100,17 @@
 
       <div class="form-group">
         <label for="needTransportation">Will you be needed transportation to Hacktech 2019?</label>
-          <select name="needTransportation" formControlName="needTransportation">
+          <select name="needTransportation">
+            <option value="no">No, I've got it handled!</option>         
             <option value="insideCA">Yes, I will be traveling from CA.</option>
             <option value="outsideCA">Yes, I will be traveling from outside of CA.</option>
-            <option value="no">No, I've got it handled!</option>         
         </select>
       </div>
 
       <div class="form-group">
         <label for="busFrom">Which of the following schools would you prefer to bus from?</label>
-          <select name="busFrom" formControlName="busFrom">
+          <select name="busFrom">
+            <option value="None">Not Applicable</option>
             <option value="UCLA">UCLA</option>
             <option value="UC Berkeley">UC Berkeley</option>
             <option value="Stanford">Stanford</option>
@@ -113,50 +121,55 @@
 
      <div class="form-group">
         <label for="airport">We will be able to provide travel reimbursement on a case-by-case basis. Which airport will you be traveling from?</label>
-        <input type="text" class="form-control" id="airport" formControlName="airport">
+        <input type="text" class="form-control" id="airport" name="airport">
       </div>
 
       <div class="form-group">
         <label for="dietaryRestrictions">Do you have any dietary restrictions?</label>
-          <select name="" formControlName="dietaryRestrictions">
+          <select name="dietaryRestrictions">
             <option value="True">Yes</option>
             <option value="False">No</option>
          </select>
      </div>
 
       <div class="form-group">
-        <label for="dietaryRestrictionsChoices">What restrictions?</label>
-        <p>
+	      <label for="dietaryRestrictionsChoices">What restrictions?</label>
+          <input type="checkbox" name="dietaryRestrictionsChoices" value="Vegetarian">  Vegetarian
+	  <input type="checkbox" name="dietaryRestrictionsChoices"  value="Vegan">  Vegan
+	  <input type="checkbox" name="dietaryRestrictionsChoices" value="Gluten-free">  Gluten-free 
+	  <input type="checkbox" name="dietaryRestrictionsChoices" value="Kosher">  Kosher 
+	  <input type="checkbox" name="dietaryRestrictionsChoices" value="Halal">  Halal  
+	  <input type="checkbox" name="dietaryRestrictionsChoices" value="Allergy">  Food Allergy (please specify below) <br> 
      </div>
 
      <div class="form-group">
         <label for="dietaryRestrictionsDetail">Please specify your dietary restrictions:</label>
-        <input type="text" class="form-control" id="dietaryRestrictionsDetail" formControlName="dietaryRestrictionsDetail">
+        <input type="text" class="form-control" id="dietaryRestrictionsDetail" name="dietaryRestrictionsDetail">
      </div>
 
      <div class="form-group">
         <label for="Q1">Q1</label>
-        <input type="text" class="form-control" id="Q1" formControlName="Q1">
+        <input type="text" class="form-control" id="Q1" name="Q1">
      </div>
 
      <div class="form-group">
         <label for="Q2">Q2</label>
-        <input type="text" class="form-control" id="Q2" formControlName="Q2">
+        <input type="text" class="form-control" id="Q2" name="Q2">
      </div>
 
      <div class="form-group">
         <label for="Q3">Q3</label>
-        <input type="text" class="form-control" id="Q3" formControlName="Q3">
+        <input type="text" class="form-control" id="Q3" name="Q3">
      </div>
 
      <div class="form-group">
         <label for="Q4">Q4</label>
-        <input type="text" class="form-control" id="Q4" formControlName="Q4">
+        <input type="text" class="form-control" id="Q4" name="Q4">
      </div>
 
      <div class="form-group">
         <label for="codeOfConduct">I've read and understood the MLH code of conduct and the MLH data sharing provision.</label>
-          <select name="codeOfConduct" formControlName="codeOfConduct">
+          <select name="codeOfConduct">
             <option value="True">Yes</option>
             <option value="False">No</option>
          </select>
