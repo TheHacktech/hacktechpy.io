@@ -7,14 +7,15 @@
 <div class = "jumbotron">
     <div id="application_form" class="col-md-8 col-md-offset-2">
     <h2 class="text-center">Hacktech Application</h2>
+    <p class"text-center"> Get pumped for Hacktech 2020 and apply today! Please note that all fields with asterisks (*) are required. </p>
     <form action="{{url_for('applications.update_applications')}}" method="post"}>
       <div class="form-group">
-        <label for="phoneNumber">Phone Number</label>
-        <input type="text" class="form-control" id="phoneNumber" name="phoneNumber">
+        <label for="phoneNumber">Phone Number *</label>
+	<input type="text" class="form-control" id="phoneNumber" name="phoneNumber">
       </div>
  
       <div class="form-group">
-        <label for="school">School</label>
+        <label for="school">School *</label>
         <input type="text" class="form-control" id="school" name="school">
       </div>
 
@@ -24,8 +25,9 @@
       </div>
 
       <div class="form-group">
-        <label for="degreeType">What is your year of study?</label>
+        <label for="degreeType">What is your year of study? *</label>
       <select name="degreeType">
+        <option value="Choose">Choose...</option>
         <option value="High School">High School</option>
         <option value="Undergraduate">Undergraduate</option>
         <option value="Graduate">Graduate</option>
@@ -34,7 +36,7 @@
       </div>
 
       <div class="form-group">
-        <label for="graduationYear">What is your expected graduation date?</label>
+        <label for="graduationYear">What is your expected graduation date? *</label>
       <select name="graduationYear">
         <option value="2020">2020</option>
         <option value="2021">2021</option>
@@ -43,6 +45,94 @@
         <option value="2024+">2024+</option>
       </select>
       </div>
+
+      <div class="form-group">
+        <label for="over18">We can only accept hackers over the age of 18. Will you be 18 or older by March 6, 2020? *</label>
+      	<select name="over18e">
+        <option value="Choose">Choose...</option>
+        <option value="True">Yes</option>
+        <option value="False">No</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="shirtSize">What is your shirt size? *</label>
+          <select name="shirtSize">
+            <option value="XS">Extra Small</option>
+            <option value="S">Small</option>
+            <option value="M">Medium</option>
+            <option value="L">Large</option>
+            <option value="XL">Extra Large</option>
+         </select>
+      </div>
+
+      <div class="form-group">
+        <label for="needTransportation">Will you be needed transportation to Hacktech 2020? *</label>
+          <select name="needTransportation">
+            <option value="no">No, I've got it handled!</option>         
+            <option value="insideCA">Yes, I will be traveling from CA.</option>
+            <option value="outsideCA">Yes, I will be traveling from outside of CA.</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="busFrom">If you are traveling from CA, which of the following schools would you prefer to bus from? Please choose the closest school. </label>
+          <select name="busFrom">
+            <option value="None">Not Applicable</option>
+            <option value="UCLA">UCLA</option>
+            <option value="UC Berkeley">UC Berkeley</option>
+            <option value="Stanford">Stanford</option>
+            <option value="UCSD">UCSD</option>
+            <option value="USC">USC</option>
+         </select>
+      </div>
+
+     <div class="form-group">
+        <label for="airport">We will be able to provide travel reimbursement on a case-by-case basis only. If you plan on flying, which airport will you be traveling from?</label>
+        <input type="text" class="form-control" id="airport" name="airport">
+      </div>
+
+      <div class="form-group">
+        <label for="dietaryRestrictions">Do you have any dietary restrictions? *</label>
+          <select name="dietaryRestrictions">
+            <option value="True">Yes</option>
+            <option value="False">No</option>
+         </select>
+     </div>
+
+      <div class="form-group">
+	      <label for="dietaryRestrictionsChoices">What restrictions?</label>
+          <input type="checkbox" name="dietaryRestrictionsChoices" value="Vegetarian">  Vegetarian
+	  <input type="checkbox" name="dietaryRestrictionsChoices"  value="Vegan">  Vegan
+	  <input type="checkbox" name="dietaryRestrictionsChoices" value="Gluten-free">  Gluten-free 
+	  <input type="checkbox" name="dietaryRestrictionsChoices" value="Kosher">  Kosher 
+	  <input type="checkbox" name="dietaryRestrictionsChoices" value="Halal">  Halal  
+	  <input type="checkbox" name="dietaryRestrictionsChoices" value="Allergy">  Food Allergy (please specify below) <br> 
+     </div>
+
+     <div class="form-group">
+        <label for="dietaryRestrictionsDetail">Please specify any details about your dietary restrictions: </label>
+        <input type="text" class="form-control" id="dietaryRestrictionsDetail" name="dietaryRestrictionsDetail">
+     </div>
+
+     <div class="form-group">
+        <label for="Q1">TODO: insert Q1 here *</label>
+        <input type="text" class="form-control" id="Q1" name="Q1">
+     </div>
+
+     <div class="form-group">
+        <label for="Q2">TODO: insert Q2 here *</label>
+        <input type="text" class="form-control" id="Q2" name="Q2">
+     </div>
+
+     <div class="form-group">
+        <label for="Q3">TODO: insert Q3 here *</label>
+        <input type="text" class="form-control" id="Q3" name="Q3">
+     </div>
+
+     <div class="form-group">
+        <label for="Q4">TODO: insert Q4 here *</label>
+        <input type="text" class="form-control" id="Q4" name="Q4">
+     </div>
 
       <div class="form-group">
         <label for="github">What is your GitHub?</label>
@@ -55,13 +145,15 @@
       </div>
 
       <div class="form-group">
-        <label for="resume">Upload your resume! (less than 500 KB please) </label>
+        <label for="resume">Please upload your resume here (less than 500 KB only) *</label>
         <input type="file" class="form-control" id="resume" name="resume">
       </div>
  
+      <p class"text-center">  We want Hacktech to be an inclusive space for all participants.  The following questions are optional: </p>
       <div class="form-group">
         <label for="latino">Are you Hispanic or Latino?</label>
           <select name="latino">
+            <option value="False">Prefer not to answer</option>
             <option value="True">Yes</option>
             <option value="False">No</option>
          </select>
@@ -82,94 +174,14 @@
       <div class="form-group">
         <label for="gender">What is your gender?</label>
           <select name="gender">
+            <option value="P">Prefer not to answer</option>
             <option value="M">Male</option>
             <option value="F">Female</option>
             <option value="O">Other</option>
-            <option value="P">Prefer not to answer</option>
          </select>
       </div>
-      <div class="form-group">
-        <label for="shirtSize">What is your shirt size?</label>
-          <select name="shirtSize">
-            <option value="XS">Extra Small</option>
-            <option value="S">Small</option>
-            <option value="M">Medium</option>
-            <option value="L">Large</option>
-            <option value="XL">Extra Large</option>
-         </select>
-      </div>
-
-      <div class="form-group">
-        <label for="needTransportation">Will you be needed transportation to Hacktech 2019?</label>
-          <select name="needTransportation">
-            <option value="no">No, I've got it handled!</option>         
-            <option value="insideCA">Yes, I will be traveling from CA.</option>
-            <option value="outsideCA">Yes, I will be traveling from outside of CA.</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="busFrom">Which of the following schools would you prefer to bus from?</label>
-          <select name="busFrom">
-            <option value="None">Not Applicable</option>
-            <option value="UCLA">UCLA</option>
-            <option value="UC Berkeley">UC Berkeley</option>
-            <option value="Stanford">Stanford</option>
-            <option value="UCSD">UCSD</option>
-            <option value="USC">USC</option>
-         </select>
-      </div>
-
      <div class="form-group">
-        <label for="airport">We will be able to provide travel reimbursement on a case-by-case basis. Which airport will you be traveling from?</label>
-        <input type="text" class="form-control" id="airport" name="airport">
-      </div>
-
-      <div class="form-group">
-        <label for="dietaryRestrictions">Do you have any dietary restrictions?</label>
-          <select name="dietaryRestrictions">
-            <option value="True">Yes</option>
-            <option value="False">No</option>
-         </select>
-     </div>
-
-      <div class="form-group">
-	      <label for="dietaryRestrictionsChoices">What restrictions?</label>
-          <input type="checkbox" name="dietaryRestrictionsChoices" value="Vegetarian">  Vegetarian
-	  <input type="checkbox" name="dietaryRestrictionsChoices"  value="Vegan">  Vegan
-	  <input type="checkbox" name="dietaryRestrictionsChoices" value="Gluten-free">  Gluten-free 
-	  <input type="checkbox" name="dietaryRestrictionsChoices" value="Kosher">  Kosher 
-	  <input type="checkbox" name="dietaryRestrictionsChoices" value="Halal">  Halal  
-	  <input type="checkbox" name="dietaryRestrictionsChoices" value="Allergy">  Food Allergy (please specify below) <br> 
-     </div>
-
-     <div class="form-group">
-        <label for="dietaryRestrictionsDetail">Please specify your dietary restrictions:</label>
-        <input type="text" class="form-control" id="dietaryRestrictionsDetail" name="dietaryRestrictionsDetail">
-     </div>
-
-     <div class="form-group">
-        <label for="Q1">Q1</label>
-        <input type="text" class="form-control" id="Q1" name="Q1">
-     </div>
-
-     <div class="form-group">
-        <label for="Q2">Q2</label>
-        <input type="text" class="form-control" id="Q2" name="Q2">
-     </div>
-
-     <div class="form-group">
-        <label for="Q3">Q3</label>
-        <input type="text" class="form-control" id="Q3" name="Q3">
-     </div>
-
-     <div class="form-group">
-        <label for="Q4">Q4</label>
-        <input type="text" class="form-control" id="Q4" name="Q4">
-     </div>
-
-     <div class="form-group">
-        <label for="codeOfConduct">I've read and understood the MLH code of conduct and the MLH data sharing provision.</label>
+        <label for="codeOfConduct">I've read and understood the MLH code of conduct and the MLH data sharing provision. *</label>
           <select name="codeOfConduct">
             <option value="True">Yes</option>
             <option value="False">No</option>

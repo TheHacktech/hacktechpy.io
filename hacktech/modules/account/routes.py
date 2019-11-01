@@ -32,6 +32,7 @@ def create_account_submit():
             "An email has been sent! Please confirm your account.")
     else:
         flask.flash(error_msg)
+        return flask.redirect(flask.url_for("account.create_account"))
     return flask.redirect(flask.url_for("home"))
 
 @blueprint.route("/confirm/<confirm_account_key>")
