@@ -65,6 +65,12 @@ def handle_create_account(email,
         with flask.g.pymysql_db.cursor() as cursor:
             cursor.execute(query, [user_id, first_name, preferred_name, middle_name, 
                 last_name])
+  
+        query = """
+        
+        """
+
+
         flask.g.pymysql_db.commit()
         subject = "Thanks for creating an account!"
         link = flask.url_for("account.confirm_account",
