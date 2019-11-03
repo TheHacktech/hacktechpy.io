@@ -1,11 +1,11 @@
 import flask
 
 
-def handle_update_applications(email, phone_number, school, major, degree_type, 
-        graduation_year, github, linkedin, resume, latino, race, gender, 
-        shirt_size, need_transportation, bus_from, airport, 
-        dietary_restrictions, diet_choices, diet_details, q1, q2, q3, q4, 
-        code_of_conduct):
+def handle_update_applications(
+        email, phone_number, school, major, degree_type, graduation_year,
+        github, linkedin, resume, latino, race, gender, shirt_size,
+        need_transportation, bus_from, airport, dietary_restrictions,
+        diet_choices, diet_details, q1, q2, q3, q4, code_of_conduct):
     """Handles application updates by updating the applications table in 
     the database with application form info."""
     query = "SELECT user_id FROM users WHERE email = %s"
@@ -33,11 +33,12 @@ def handle_update_applications(email, phone_number, school, major, degree_type,
         diet_rest = (dietary_restrictions != "True")
         code_of_conduct = (code_of_conduct != "False")
         with flask.g.pymysql_db.cursor() as cursor:
-            cursor.execute(query, [user_id, "2020", phone_number, school, 
-                major, degree_type, graduation_year, github, linkedin,  resume,
-                latino, gender, shirt_size, transportation, in_state,
-                bus_from, airport, diet_rest, diet_details, q1, 
-                q2, q3, q4, code_of_conduct])
+            cursor.execute(query, [
+                user_id, "2020", phone_number, school, major, degree_type,
+                graduation_year, github, linkedin, resume, latino, gender,
+                shirt_size, transportation, in_state, bus_from, airport,
+                diet_rest, diet_details, q1, q2, q3, q4, code_of_conduct
+            ])
         # Insert new row into diet table for each dietary restriction choice.
         query = """
         INSERT INTO diet (user_id, diet_restrictions)
@@ -56,8 +57,8 @@ def handle_update_applications(email, phone_number, school, major, degree_type,
                 cursor.execute(query, [user_id, race_type])
         flask.g.pymysql_db.commit()
     except Exception as e:
-         print(e)
-         flask.g.pymysql_db.rollback()
-         return (False,
-                 "An unexpected error occurred. Please contact the organizers.")
+        print(e)
+        flask.g.pymysql_db.rollback()
+        return (False,
+                "An unexpected error occurred. Please contact the organizers.")
     return (True, "")

@@ -24,6 +24,7 @@ app.register_blueprint(auth.blueprint)
 app.register_blueprint(applications.blueprint)
 app.register_blueprint(judging.blueprint)
 
+
 def init(environment_name):
     """Initializes the application with configuration variables and routes.
 

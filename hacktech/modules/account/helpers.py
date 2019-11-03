@@ -19,9 +19,8 @@ def get_user_data(user_id):
         return cursor.fetchone()
 
 
-def handle_create_account(email,
-            password, password2, first_name, middle_name, preferred_name,
-            last_name):
+def handle_create_account(email, password, password2, first_name, middle_name,
+                          preferred_name, last_name):
     query = """
     SELECT email
     FROM users
@@ -63,24 +62,46 @@ def handle_create_account(email,
         VALUES(%s, %s, %s, %s, %s)
         """
         with flask.g.pymysql_db.cursor() as cursor:
-            cursor.execute(query, [user_id, first_name, preferred_name, middle_name, 
-                last_name])
-  
+            cursor.execute(query, [
+                user_id, first_name, preferred_name, middle_name, last_name
+            ])
         query = """
-        
+        INSERT INTO application (user_id) 
+        VALUES(%s)
         """
+        ## TODO: Make sure to select it only from the current application year
+        with flask.g.pymysql_db.cursor() as cursor:
+            cursor.execute(query, [user_id])
+        query = """ 
+        SELECT application_id FROM application 
+        WHERE user_id = %s
+        """
+        with flask.g.pymysql_db.cursor() as cursor:
+            cursor.execute(query, [user_id])
+            application_id = cursor.fetchone()
+            application_id = application_id['application_id']
 
+        query = """
+        INSERT INTO status (user_id, application_id, status) 
+        VALUES(%s, %s, %s)
+        """
+        with flask.g.pymysql_db.cursor() as cursor:
+            cursor.execute(query, [user_id, application_id, 'Not Started'])
 
         flask.g.pymysql_db.commit()
         subject = "Thanks for creating an account!"
-        link = flask.url_for("account.confirm_account",
-            confirm_account_key = confirm_account_key,
+        link = flask.url_for(
+            "account.confirm_account",
+            confirm_account_key=confirm_account_key,
             _external=True)
-        msg = email_templates.CreateAccountSuccessfulEmail.format(first_name, link)
+        msg = email_templates.CreateAccountSuccessfulEmail.format(
+            first_name, link)
         email_utils.send_email(email, msg, subject)
     except Exception as e:
         print(e)
         flask.g.pymysql_db.rollback()
-        return (False, 
-                "An unexpected error occurred. Please contact the hacktech organizers")
+        return (
+            False,
+            "An unexpected error occurred. Please contact the hacktech organizers"
+        )
     return (True, "")

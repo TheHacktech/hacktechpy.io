@@ -11,23 +11,23 @@
 
     </br>
     <label class="checkbox-inline">Accepted</label>
-    <input type="checkbox" name="display_tag" value="accepted"/>
+    <input type="checkbox" name="display_tag" value="Accepted"/>
     </br>
 
     <label class="checkbox-inline">In-progress</label>
-    <input type="checkbox" name="display_tag" value="in_progress"/>
+    <input type="checkbox" name="display_tag" value="In-Progress"/>
 
     </br>
     <label class="checkbox-inline">Submitted</label>
-    <input type="checkbox" name="display_tag" value="submitted"/>
+    <input type="checkbox" name="display_tag" value="Submitted"/>
 
     </br>
     <label class="checkbox-inline">Declined</label>
-    <input type="checkbox" name="display_tag" value="declined"/>
+    <input type="checkbox" name="display_tag" value="Declined"/>
 
     </br>
     <label class="checkbox-inline">Rejected</label>
-    <input type="checkbox" name="display_tag" value="rejected"/>
+    <input type="checkbox" name="display_tag" value="Rejected"/>
   </div>
   <div class="col-12 col-md-8">
     <table style="width:100%">
@@ -37,7 +37,7 @@
     <th>Link</th>
   </tr>
   {% for i in info %}
-  <tr>
+  <tr class={{i.status}}>
 	  <td> {{i.first_name}} {{i.last_name}} </td>
 	  <td> {{i.status}} </td>
 	  <td> <a href={{i.link}} >Go</a></td>
@@ -48,4 +48,22 @@
   </div>
 </div>
 </div>
+{% block scripts %}
+  {{ super() }}
+  <script>
+    $(':checkbox').prop('checked', true);
+    // Bind visible checkboxes.
+    $(':checkbox').change(function() {
+      toggle($(this).val(), this.checked);
+    });  
+    function toggle(tag, visibility){
+      $("tr").each( function (){
+        if ($(this).hasClass(tag))
+        {
+            $(this).toggle(visibility);
+        }
+      });
+    }
+  </script>
+{% endblock %}
 {% endblock %}

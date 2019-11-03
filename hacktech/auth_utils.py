@@ -333,6 +333,7 @@ def check_admin():
     with flask.g.pymysql_db.cursor() as cursor:
         cursor.execute(query, email)
         result = cursor.fetchone()
+    print(result['admin'])
     return result['admin']
 
 

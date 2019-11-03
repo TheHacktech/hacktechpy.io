@@ -9,12 +9,12 @@
     {% if info != None %}
       <label>Name: </label>
       {{info.first_name}} {{info.middle_name}} {{info.last_name}}
-      <hr/>
-      
+     
+      <br>
       <label>Preferred Name: </label>
       {{info.preferred_name}}
 
-      <hr>
+      <br>
       <label>Phone Number: </label>
       {{info.phone}}
 
@@ -22,15 +22,15 @@
       <label>School: </label>
       {{info.school}}
 
-      <hr/>
+      <br/>
       <label>Major: </label>
       {{info.major}}
 
-      <hr/>
+      <br/>
       <label>Degree Type: </label>
       {{info.degree_type}}
 
-      <hr/>
+      <br/>
       <label>Graduation Year: </label>
       {{info.graduation_year}}
 
@@ -38,10 +38,62 @@
       <label>GitHub Link: </label>
       <a href={{info.github}}>{{info.github}}</a>
 
-      <hr/>
+      <br/>
       <label>Linkedin Link: </label>
       <a href={{info.linkedin}}>{{info.linkedin}}</a>
 
+      <hr/>
+      <label>Latino: </label>
+      {{info.latino}}
+
+      <br/>
+      <label>Gender: </label>
+      {{info.gender}}
+
+      <br/>
+      <label>Shirt Size: </label>
+      {{info.shirt_size}}
+            
+      <hr/>
+      <label>Transportation: </label>
+      {{info.transportation}}
+      
+      <br/>
+      <label>In state: </label>
+      {{info.in_state}}
+      
+      <br/>
+      <label>Bus From: </label>
+      {{info.bus_from}}
+
+      
+      <br/>
+      <label>Airport: </label>
+      {{info.airport}}
+      
+      <hr/>
+      <label>TODO: Q1: </label>
+      {{info.q1}}
+
+      <hr/>
+      <label>TODO: Q2: </label>
+      {{info.q2}}
+
+      <hr/>
+      <label>TODO: Q3: </label>
+      {{info.q3}}
+
+      <hr/>
+      <label>TODO: Q4: </label>
+      {{info.q4}}
+   
+      <form action="{{ url_for('judging.update_status', user_id=info.user_id) }}" method="post">
+      <select class="form-control" name='new_status'>
+        <option value="Accepted">Accept</option>
+        <option value="Rejected">Reject</option>
+      </select>
+      <button type="submit" class="btn btn-default">Go</button>
+      </form>
     {% else %}
       <p> User has not submitted their applications. </p>
 

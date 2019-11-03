@@ -96,4 +96,5 @@ def reset_password_submit(reset_key):
 @blueprint.route('/logout')
 def logout():
     flask.session.pop('username', None)
+    flask.session.pop('admin', None)
     return flask.redirect(flask.url_for('home'))

@@ -21,6 +21,7 @@ class Environment(object):
         self.secret_key = secret_key
         self.em = em
         self.email = email
+
     @property
     def db_uri(self):
         return "mysql+pymysql://{0}:{1}@{2}/{3}".format(

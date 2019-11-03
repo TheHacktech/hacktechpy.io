@@ -1,8 +1,8 @@
-  
 import flask
 
 from hacktech.modules.judging import blueprint, helpers
 from hacktech import auth_utils
+
 
 @blueprint.route("/judge")
 def judge():
@@ -18,3 +18,10 @@ def view_application(user_id):
         return flask.redirect(flask.url_for("home"))
     info = helpers.get_application(user_id)
     return flask.render_template("view_application.html", info=info)
+
+
+@blueprint.route('/judge/update/<int:user_id>', methods=['POST'])
+def update_status(user_id):
+    helpers.update_status(user_id, flask.request.form.get('new_status'))
+    flask.flash('Status has been updated')
+    return flask.redirect(flask.url_for('judging.judge'))
