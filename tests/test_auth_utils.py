@@ -80,20 +80,11 @@ def test_compare_secure_strings():
     assert misc_utils.compare_secure_strings(string1, string2) == False
 
 
-def test_get_permissions(client):
-    res = auth_utils.get_permissions('dqu')
-    assert res == set([1, 3])
+def test_check_admin(client):
+    """
 
-    res = auth_utils.get_permissions('reng')
-    assert res == set([1, 2, 3])
-
-    res = auth_utils.get_permissions('notreal_user')
-    assert res == set()
-
-
-def test_check_permission(client):
-    assert auth_utils.check_permission('dqu', 1)
-    # always returns true for admins
-    assert auth_utils.check_permission('dqu', -1)
-    assert auth_utils.check_permission('ruddock_pres', 2)
-    assert not auth_utils.check_permission('csander', -1)
+    """
+    with client.session_transaction() as sess:
+        # Should be able to do everything
+        sess['username'] = 'zmo@yahoo.com'
+        #assert auth_utils.check_admin()

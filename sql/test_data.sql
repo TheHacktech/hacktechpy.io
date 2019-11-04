@@ -1,51 +1,18 @@
 /* Test data / initial data */
 
-INSERT INTO members(uid, last_name, first_name, email, phone) VALUES
-    ('1957540', 'Qu', 'David', 'davidqu12345@gmail.com', NULL),
-    ('1984853', 'Eng', 'Robert', 'reng@caltech.edu', '+11234567890');
+INSERT INTO users(user_id, email, password_hash, admin) VALUES
+    (1, "zmo@yahoo.com", 111, True),
+    (2, "jmu@caltech.edu", 111, False),
+    (3, "zo@caltech.edu", 111, False),
+    (4, "hwu@caltech.edu", 111, False), 
+    (5, "ugne@caltech.edu", 111, False), 
+    (6, "jaga@caltech.edu", 111, False);
 
-INSERT INTO members(
-    user_id,
-    uid,
-    last_name,
-    first_name,
-    preferred_name,
-    middle_name,
-    email,
-    phone,
-    gender,
-    gender_custom,
-    birthday,
-    entry_year,
-    graduation_year,
-    msc,
-    city,
-    state,
-    building_id,
-    room
-) VALUES (
-    3,
-    '2078141',
-    'Sander',
-    'Caleb',
-    'Cleb',
-    'Caldwell',
-    'csander@caltech.edu',
-    '6178003347',
-    0,
-    'Male',
-    '1999-05-08',
-    2017,
-    2021,
-    707,
-    'Lincoln',
-    'MA',
-    1,
-    '203'
-);
+INSERT INTO members(user_id, last_name, first_name, preferred_name) VALUES
+    (1, "Mo", "Ziyan", "Momo"), 
+    (2, "Hu", "Juliette", "Julietto-sama"),
+    (3, "Mo", "Ziyan", ""),
+    (4, "Wu", "Helena", "Head of Heads"),
+    (5, "Shao", "Eugene", "Ugne"),
+    (6, "V", "Jagath", "JV");
 
-INSERT INTO users(user_id, username) VALUES
-    (1, "dqu"),
-    (2, "reng"),
-    (3, "csander"),
-    (4, "ruddock_pres");

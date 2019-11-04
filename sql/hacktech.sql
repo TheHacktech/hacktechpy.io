@@ -69,7 +69,7 @@ CREATE TABLE applications(
 );
 
 -- Review Table
-CREATE TABLE (
+CREATE TABLE status(
     user_id            INT          NOT NULL,
     application_id     INT          NOT NULL,
     status             VARCHAR(50)  NOT NULL,

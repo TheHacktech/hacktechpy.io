@@ -1,0 +1,3 @@
+"""
+Tests hacktech/modules/applications/
+"""

@@ -71,6 +71,7 @@ def before_request():
         engine = sqlalchemy.create_engine(
             app.config['DB_URI'], convert_unicode=True)
         flask.g.db = engine.connect()
+        flask.g.tx = flask.g.db.begin()
     """Logic executed before request is processed."""
     if ('DB_NAME' in app.config and 'DB_USER' in app.config
             and 'DB_PASSWORD' in app.config):

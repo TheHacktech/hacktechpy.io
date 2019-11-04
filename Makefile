@@ -21,4 +21,4 @@ test: init-test-db
 	python -m pytest .
 
 init-test-db:
-	mysql -u hacktech_test --password=public < sql/reset.sql
+	mysql -u hacktech_test --password= < sql/reset.sql
