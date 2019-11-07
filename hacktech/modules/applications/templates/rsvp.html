@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block styles %}
+  {{super()}}
+{% endblock %}
+{% block page %}
+<div class = "jumbotron">
+{% if accepted %}
+
+<h2 class="text-center">Hacktech</h2>
+
+<form action="{{url_for('applications.update_applications')}}" method="post"}>
+
+  <p class="text-center">
+    Woohoo! Congrats on being accepted to hacktech! Please let us know if you plan on coming!
+  </p>
+   <button type="submit" class="btn btn-success" value="RSVPed" name="RSVPed">I'm going!</button>
+   <button type="submit" class="btn btn-success" value="Declined" name="Declined">Maybe next time...</button>
+</form>
+{% else %}
+
+Woops! We're not sure how you wondered onto this page....
+
+{% endif %}
+</div>
+{% endblock %}

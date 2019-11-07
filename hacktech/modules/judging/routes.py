@@ -19,6 +19,11 @@ def view_application(user_id):
     info = helpers.get_application(user_id)
     return flask.render_template("view_application.html", info=info)
 
+@blueprint.route("/stats")
+def show_stats():
+    if not auth_utils.check_admin():
+        return flask.redirect(flask.url_for("home"))
+    return flask.render_template("stats.html")
 
 @blueprint.route('/judge/update/<int:user_id>', methods=['POST'])
 def update_status(user_id):

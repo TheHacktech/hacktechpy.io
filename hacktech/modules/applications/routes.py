@@ -10,6 +10,10 @@ def applications():
     # TODO: pre-fill with already existing information!
     return flask.render_template("applications.html")
 
+@blueprint.route("/applications/rsvp")
+def rsvp():
+    accepted = helpers.check_accepted()
+    return flask.render_template("rsvp.html", accepted=accepted)
 
 @blueprint.route("/applications/update", methods=["POST"])
 def update_applications():

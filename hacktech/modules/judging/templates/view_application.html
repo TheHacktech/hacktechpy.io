@@ -86,7 +86,8 @@
       <hr/>
       <label>TODO: Q4: </label>
       {{info.q4}}
-   
+
+      <hr/>
       <form action="{{ url_for('judging.update_status', user_id=info.user_id) }}" method="post">
       <select class="form-control" name='new_status'>
         <option value="Accepted">Accept</option>

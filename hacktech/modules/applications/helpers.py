@@ -1,5 +1,15 @@
 import flask
 
+def check_accepted():
+    return "Accepted" == check_status()
+
+### TODO!
+def check_status():
+    """
+    Using the user's email, check the user's status for the
+    current year and return it.
+    """
+    pass
 
 def handle_update_applications(
         email, phone_number, school, major, degree_type, graduation_year,

@@ -24,8 +24,7 @@
 
 		    {% if 'admin' in session%}
 			<li><a class = "sliding" href=" {{ url_for('judging.judge') }} ">Judge Applications</a></li>
-                        <li><a class = "sliding" href=" {{ url_for('applications.applications') }} ">Current Stats</a></li>
-                        <li><a class = "sliding" href=" {{ url_for('applications.applications') }} ">Search</a></li>
+                        <li><a class = "sliding" href=" {{ url_for('judging.show_stats') }} ">Current Stats</a></li>
 
 		    {% else %}
 		    <li><a class = "sliding" href=" {{ url_for('applications.applications') }} ">Application</a></li>
