@@ -1,7 +1,8 @@
 import flask
+import os
 from hacktech import auth_utils
 from hacktech.modules.applications import blueprint, helpers
-
+from werkzeug.utils import secure_filename
 
 @blueprint.route("/applications")
 def applications():
@@ -28,6 +29,22 @@ def update_applications():
     graduation_year = flask.request.form.get("graduationYear", None)
     github = flask.request.form.get("github", None)
     linkedin = flask.request.form.get("linkedin", None)
+    # Check if the request has a resume attached
+    # todo: finish error-handling for submit flow (redirect)
+    # if 'resume' not in flask.request.files:
+    #    flask.flash('Please attach a resume.')
+    resume = None
+    if 'resume' in flask.request.files:
+        resume = flask.request.files['resume']
+         # Make sure user selected file
+        if resume.filename == '':
+            flash('No selected file')
+            # todo: redirect
+    if resume and helpers.allowed_file(resume.filename):
+        filename = secure_filename(resume.filename)
+        resumes = os.path.join(flask.current_app.root_path,
+                           flask.current_app.config['RESUMES'])
+        resume.save(os.path.join(resumes, filename))
     resume = flask.request.form.get("resume", None)
     latino = flask.request.form.get("latino", None)
     race = flask.request.form.getlist("race", None)

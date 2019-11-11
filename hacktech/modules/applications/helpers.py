@@ -1,5 +1,17 @@
 import flask
 
+ALLOWED_EXTENSIONS = set(['txt','docx', 'doc', 'pdf'])
+
+# 10 MB
+MAX_FILE_SIZE = 10 * 1024 * 1024
+
+def allowed_file(filename):
+    '''
+    Checks for allowed file extensions.
+    '''
+    splits = filename.rsplit('.', 1)
+    return len(splits) >= 2 and splits[1].lower() in ALLOWED_EXTENSIONS
+
 def check_accepted():
     return "Accepted" == check_status()
 
