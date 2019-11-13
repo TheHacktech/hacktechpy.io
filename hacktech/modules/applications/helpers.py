@@ -5,8 +5,21 @@ from hacktech import auth_utils
 def check_accepted(self_email, other_email):
     return "Accepted" == check_status(self_email, other_email)
 
+ALLOWED_EXTENSIONS = set(['txt','docx', 'doc', 'pdf'])
 
-### TODO!
+# 10 MB
+MAX_FILE_SIZE = 10 * 1024 * 1024
+
+def allowed_file(filename):
+    '''
+    Checks for allowed file extensions.
+    '''
+    splits = filename.rsplit('.', 1)
+    return len(splits) >= 2 and splits[1].lower() in ALLOWED_EXTENSIONS
+
+def check_accepted():
+    return "Accepted" == check_status()
+
 def check_status(self_email, other_email):
     """
     Using the user's email, check the user's status for the

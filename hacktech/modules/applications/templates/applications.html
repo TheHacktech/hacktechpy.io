@@ -8,7 +8,7 @@
     <div id="application_form" class="col-md-8 col-md-offset-2">
     <h2 class="text-center">Hacktech Application</h2>
     <p class"text-center"> Get pumped for Hacktech 2020 and apply today! Please note that all fields with asterisks (*) are required. </p>
-    <form action="{{url_for('applications.update_applications')}}" method="post"}>
+    <form action="{{url_for('applications.update_applications')}}" method="post"} enctype="multipart/form-data">
       <div class="form-group">
         <label for="phoneNumber">Phone Number *</label>
 	<input type="text" class="form-control" id="phoneNumber" name="phoneNumber">
