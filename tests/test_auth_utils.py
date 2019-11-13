@@ -84,7 +84,5 @@ def test_check_admin(client):
     """
 
     """
-    with client.session_transaction() as sess:
-        # Should be able to do everything
-        sess['username'] = 'zmo@yahoo.com'
-        #assert auth_utils.check_admin()
+    assert not auth_utils.check_admin("jhu@caltech.edu")
+    assert auth_utils.check_admin('zmo@yahoo.com')

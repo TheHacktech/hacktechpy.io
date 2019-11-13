@@ -322,17 +322,18 @@ def login_redirect():
     return flask.redirect(flask.url_for('auth.login'))
 
 
-def check_admin():
+def check_admin(email):
     """
     Returns a set with all of the permissions available to the user.
     """
-    if 'username' not in flask.session:
-        return False
-    email = flask.session['username']
     query = "SELECT admin FROM users WHERE email = %s"
     with flask.g.pymysql_db.cursor() as cursor:
         cursor.execute(query, email)
         result = cursor.fetchone()
+    if result == None:
+        ## TODO: This should never happen! If it does, we need
+        # log it at some point
+        return False
     return result['admin']
 
 

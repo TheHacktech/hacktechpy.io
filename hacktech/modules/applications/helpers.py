@@ -1,15 +1,31 @@
 import flask
+from hacktech import auth_utils
 
-def check_accepted():
-    return "Accepted" == check_status()
+
+def check_accepted(self_email, other_email):
+    return "Accepted" == check_status(self_email, other_email)
+
 
 ### TODO!
-def check_status():
+def check_status(self_email, other_email):
     """
     Using the user's email, check the user's status for the
     current year and return it.
     """
-    pass
+    # If they aren't an admin or thye aren't themselves,
+    # then they shouldn't see status
+    if not auth_utils.check_admin(self_email) and self_email != other_email:
+        return ""
+    query = """
+    SELECT status FROM users NATURAL JOIN status WHERE
+    email = %s
+    """
+
+    with flask.g.pymysql_db.cursor() as cursor:
+        cursor.execute(query, [other_email])
+        result = cursor.fetchone()
+    return result['status']
+
 
 def handle_update_applications(
         email, phone_number, school, major, degree_type, graduation_year,

@@ -3,6 +3,12 @@ import pymysql.cursors
 
 
 def get_application(user_id):
+    """
+    Returns the application information for a given user_id
+    as a dictionary
+    Also returns the diet and demographics portion as a list 
+    within the dict
+    """
     result = []
     query = """
     SELECT user_id, first_name, preferred_name, middle_name, last_name,
@@ -30,10 +36,16 @@ def get_application(user_id):
         race_info_dict = cursor.fetchall()
     race_info = [x['race_type'] for x in race_info_dict]
     result['race'] = race_info
+    print(result['resume'])
     return result
 
 
 def get_all_application_links():
+    """
+    Returns a list which contains a dictionary. 
+    This dictionary contains the name, user_id, status, and link
+    to their view applications page. 
+    """
     result = []
     query = """
     SELECT user_id, first_name, last_name, status 
@@ -42,6 +54,7 @@ def get_all_application_links():
     with flask.g.pymysql_db.cursor() as cursor:
         cursor.execute(query, [])
         result = cursor.fetchall()
+    print(result)
     for i in result:
         i['link'] = flask.url_for(
             "judging.view_application", user_id=i['user_id'], _external=True)
@@ -49,6 +62,10 @@ def get_all_application_links():
 
 
 def update_status(user_id, new_status):
+    """
+    Given a user_id and a status, update the status in the status
+    table. 
+    """
     query = """
     UPDATE status SET status = %s WHERE user_id = %s
     """

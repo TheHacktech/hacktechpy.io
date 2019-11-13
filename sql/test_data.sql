@@ -16,3 +16,16 @@ INSERT INTO members(user_id, last_name, first_name, preferred_name) VALUES
     (5, "Shao", "Eugene", "Ugne"),
     (6, "V", "Jagath", "JV");
 
+INSERT INTO applications(user_id, application_year, school, major, gender) VALUES
+    (2, 2019, "Caltech", "CS", "W"),
+    (3, 2019, "MIT", "CS", "O"),
+    (4, 2019, "Stanford", "CS", "W"), 
+    (5, 2019, "Caltech", "CS", "M"),
+    (6, 2019, "Caltech", "CS", "M");
+
+INSERT INTO status(user_id, application_id, status) VALUES
+    (2, 1, "Submitted"), 
+    (3, 2, "Submitted"),
+    (4, 3, "Accepted"),
+    (5, 4, "RSVPed"),
+    (6, 5, "Declined");
