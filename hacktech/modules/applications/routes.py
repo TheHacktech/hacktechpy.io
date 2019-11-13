@@ -17,9 +17,28 @@ def rsvp():
     if not auth_utils.check_login():
         return auth_utils.login_redirect()
 
-    accepted = helpers.check_accepted(flask.session['username'])
+    accepted = helpers.check_accepted(flask.session['username'], flask.session['username'])
     return flask.render_template("rsvp.html", accepted=accepted)
 
+
+@blueprint.route("/applications/status")
+def status():
+    print("/applications/status")
+    if not auth_utils.check_login():
+        return auth_utils.login_redirect()
+
+    status = helpers.check_status(flask.session['username'], flask.session['username'])
+    return flask.render_template("dashboard.html", status=status)
+
+@blueprint.route("/applications/update_status", methods=["POST"])
+def update_status():
+    if not auth_utils.check_login():
+        return auth_utils.login_redirect()
+    email = flask.session['username']
+    helpers.update_status(email, flask.request.form.get("RSVPed") or flask.request.form.get("Declined"))
+    print(flask.request.form.get("RSVPed"))
+    print(flask.request.form.get("Declined"))
+    return flask.redirect(flask.url_for(".status"))
 
 @blueprint.route("/applications/update", methods=["POST"])
 def update_applications():

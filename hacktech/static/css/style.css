@@ -137,6 +137,7 @@ table {
 .dropdown-menu {
   background: #00a8ff;
 }
+
 /* This is the primary button class. Gives the button a white background
  * with an orange border and a slight bottom margin for spacing
  */
@@ -145,11 +146,15 @@ table {
   -moz-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s;
-
+  width: 20%;
   background-color: #FFF;
   color: #333;
   border-color: #00a8ff;
+  outline: 0;
+  border: 2px  #00a8ff solid;
   margin-bottom: 5%;
+  font-size: 20px;
+  border-radius: 4px;
 }
 
 /* When the primary button class is hovered, give it an orange background. */

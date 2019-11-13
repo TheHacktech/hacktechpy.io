@@ -1,9 +1,10 @@
 import flask
 from hacktech import auth_utils
-
+import hacktech.modules.judging.helpers as judging_helpers
 
 def check_accepted(self_email, other_email):
-    return "Accepted" == check_status(self_email, other_email)
+    status = check_status(self_email, other_email)
+    return "Accepted" == status or "Declined" == status or "RSVPed" == status
 
 ALLOWED_EXTENSIONS = set(['txt','docx', 'doc', 'pdf'])
 
@@ -16,9 +17,6 @@ def allowed_file(filename):
     '''
     splits = filename.rsplit('.', 1)
     return len(splits) >= 2 and splits[1].lower() in ALLOWED_EXTENSIONS
-
-def check_accepted():
-    return "Accepted" == check_status()
 
 def check_status(self_email, other_email):
     """
@@ -39,6 +37,22 @@ def check_status(self_email, other_email):
         result = cursor.fetchone()
     return result['status']
 
+### TODO: Move these into a utils/helpers/core file. 
+def update_status(email, status):
+    user_id = get_user_id(email)
+    judging_helpers.update_status(user_id, status)
+
+def get_user_id(email):
+    query = """
+    SELECT user_id FROM users WHERE
+    email = %s
+    """
+    with flask.g.pymysql_db.cursor() as cursor:
+        cursor.execute(query, [email])
+        result = cursor.fetchone()
+    if 'user_id' not in result:
+        return None
+    return result['user_id']
 
 def handle_update_applications(
         email, phone_number, school, major, degree_type, graduation_year,

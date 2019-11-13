@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+  
+{% block styles %}
+  {{super()}}
+{% endblock %}
+{% block page %}
+<div class = "jumbotron">
+
+<h2 class="text-center">Hacktech</h2>
+
+<p class="text-center"> Your status is...</p>
+
+<h3 class="text-center"> {{status}} </h3>
+{% if status == "Accepted" %}
+<p class="text-center"> Woooh! You got accepted into Hacktech!!!  </p>
+
+<p class="text-center"> Please go to <a href = {{url_for('applications.rsvp')}} >this page to rsvp</a></p>
+{% elif status == "In-progress" %}
+<p class="text-center"> Looks like you still need to fill in your application!</p>
+{% elif status == "Declined" %}
+<p class="text-center"> We are sad that we will be missing you! If you change your mind, you can always  <a href = {{url_for('applications.rsvp')}} > go here </a> to update your response </p>
+
+{% elif status == "RSVPed" %}
+<p class="text-center"> YAY!!!!! We are so excited that you are coming. If you change your mind, you can always  <a href = {{url_for('applications.rsvp')}} > go here </a> to update your response </p>
+{% else %}
+<p class="text-center"> We've received your application and it is under review!</p>
+{% endif %}
+</div>
+{% endblock %}

@@ -20,7 +20,7 @@ def login_submit():
         user_id = helpers.authenticate(username, password)
         if user_id is not None:
             flask.session['username'] = username
-            if auth_utils.check_admin():
+            if auth_utils.check_admin(username):
                 flask.session['admin'] = True
             # Update last login time
             auth_utils.update_last_login(username)

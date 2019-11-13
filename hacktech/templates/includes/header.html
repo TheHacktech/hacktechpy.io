@@ -30,7 +30,7 @@
 		    <li><a class = "sliding" href=" {{ url_for('applications.applications') }} ">Application</a></li>
 		    {% endif %}
                     <li>
-                        <a href="#" class="sliding">
+                        <a href="{{ url_for('applications.status') }}" class="sliding">
                             Greetings, {{ session['username'] }}
                         </a>
                     </li>

@@ -4,18 +4,18 @@
   {{super()}}
 {% endblock %}
 {% block page %}
-<div class = "jumbotron">
+<div class = "jumbotron" style="text-align:center;">
 {% if accepted %}
 
 <h2 class="text-center">Hacktech</h2>
 
-<form action="{{url_for('applications.update_applications')}}" method="post"}>
+<form action="{{url_for('applications.update_status')}}" method="post"}>
 
   <p class="text-center">
     Woohoo! Congrats on being accepted to hacktech! Please let us know if you plan on coming!
   </p>
-   <button type="submit" class="btn btn-success" value="RSVPed" name="RSVPed">I'm going!</button>
-   <button type="submit" class="btn btn-success" value="Declined" name="Declined">Maybe next time...</button>
+   <button type="submit" class="btn btn-default" value="RSVPed" name="RSVPed">I'll be there!!!</button>
+   <button type="submit" class="btn btn-default" value="Declined" name="Declined">Maybe next time...</button>
 </form>
 {% else %}
 
