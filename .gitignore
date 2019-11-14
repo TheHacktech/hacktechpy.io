@@ -5,3 +5,5 @@ config.py
 # Pycache
 *.pyc
 __pycache__/
+
+hacktech/modules/applications/resumes/*.pdf

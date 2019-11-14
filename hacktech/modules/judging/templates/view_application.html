@@ -88,6 +88,16 @@
       {{info.q4}}
 
       <hr/>
+
+
+      <div style="position: relative; text-align: center; height: 0; padding-bottom: 100%; overflow: hidden">
+		<iframe
+			src={{info.resume_url}}
+			frameBorder="0"
+			seamless="seamless"
+			style="margin: auto; position: absolute; top: 0; left: 0; width: 82%; height: 100%"
+		></iframe>
+      </div>
       <form action="{{ url_for('judging.update_status', user_id=info.user_id) }}" method="post">
       <select class="form-control" name='new_status'>
         <option value="Accepted">Accept</option>

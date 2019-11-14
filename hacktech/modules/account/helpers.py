@@ -66,14 +66,14 @@ def handle_create_account(email, password, password2, first_name, middle_name,
                 user_id, first_name, preferred_name, middle_name, last_name
             ])
         query = """
-        INSERT INTO application (user_id) 
+        INSERT INTO applications (user_id) 
         VALUES(%s)
         """
         ## TODO: Make sure to select it only from the current application year
         with flask.g.pymysql_db.cursor() as cursor:
             cursor.execute(query, [user_id])
         query = """ 
-        SELECT application_id FROM application 
+        SELECT application_id FROM applications 
         WHERE user_id = %s
         """
         with flask.g.pymysql_db.cursor() as cursor:
