@@ -55,12 +55,14 @@ def get_user_id(email):
     return result['user_id']
 
 def handle_update_applications(
-        email, phone_number, school, major, degree_type, graduation_year,
-        github, linkedin, resume, latino, race, gender, shirt_size,
-        need_transportation, bus_from, airport, dietary_restrictions,
-        diet_choices, diet_details, q1, q2, q3, q4, code_of_conduct):
+        action, email, phone_number, school, major, degree_type, 
+        graduation_year, github, linkedin, resume, latino, race, gender, 
+        shirt_size, need_transportation, bus_from, airport, 
+        dietary_restrictions, diet_choices, diet_details, q1, q2, q3, q4, 
+        code_of_conduct):
     """Handles application updates by updating the applications table in 
-    the database with application form info."""
+    the database with application form info, updating status table if 
+    application is submitted."""
     query = "SELECT user_id FROM users WHERE email = %s"
     with flask.g.pymysql_db.cursor() as cursor:
         cursor.execute(query, email)
