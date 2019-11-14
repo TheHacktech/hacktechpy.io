@@ -30,6 +30,15 @@ def show_stats():
     return flask.render_template("stats.html")
 
 
+@blueprint.route('/resume/<filename>', methods=['GET'])
+def uploaded_file(filename):
+    '''
+    Serves the actual uploaded file.
+    '''
+    uploads = os.path.join(flask.current_app.root_path,
+                           flask.current_app.config['UPLOAD_FOLDER'])
+    return flask.send_from_directory(uploads, filename, as_attachment=False)
+
 @blueprint.route('/judge/update/<int:user_id>', methods=['POST'])
 def update_status(user_id):
     if not auth_utils.check_login() or not auth_utils.check_admin(

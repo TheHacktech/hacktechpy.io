@@ -37,8 +37,11 @@ def get_application(user_id):
     race_info = [x['race_type'] for x in race_info_dict]
     result['race'] = race_info
     print(result['resume'])
+    result['resume_url'] = generate_resume_url(result['resume'])
     return result
 
+def generate_resume_url(resume_name):
+    return flask.url_for("judging.uploaded_file", filename = resume_name) 
 
 def get_all_application_links():
     """
