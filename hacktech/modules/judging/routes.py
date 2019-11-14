@@ -2,7 +2,7 @@ import flask
 
 from hacktech.modules.judging import blueprint, helpers
 from hacktech import auth_utils
-
+import os
 
 @blueprint.route("/judge")
 def judge():
@@ -36,7 +36,7 @@ def uploaded_file(filename):
     Serves the actual uploaded file.
     '''
     uploads = os.path.join(flask.current_app.root_path,
-                           flask.current_app.config['UPLOAD_FOLDER'])
+                           flask.current_app.config['RESUMES'])
     return flask.send_from_directory(uploads, filename, as_attachment=False)
 
 @blueprint.route('/judge/update/<int:user_id>', methods=['POST'])

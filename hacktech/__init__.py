@@ -55,7 +55,7 @@ def init(environment_name):
     app.config["DB_NAME"] = environment.db_name
     app.config["EM"] = environment.em
     app.config["EMAIL"] = environment.email
-    app.config["RESUMES"] = 'modules/uploads/resume'
+    app.config["RESUMES"] = 'modules/applications/resumes'
     # Maximum file upload size, in bytes.
     app.config["MAX_CONTENT_LENGTH"] = constants.MAX_CONTENT_LENGTH
 
