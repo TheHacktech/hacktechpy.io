@@ -35,6 +35,8 @@ def check_status(self_email, other_email):
     with flask.g.pymysql_db.cursor() as cursor:
         cursor.execute(query, [other_email])
         result = cursor.fetchone()
+    if result == None:
+        return None
     return result['status']
 
 ### TODO: Move these into a utils/helpers/core file. 

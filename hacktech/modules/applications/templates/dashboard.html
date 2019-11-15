@@ -22,8 +22,11 @@
 
 {% elif status == "RSVPed" %}
 <p class="text-center"> YAY!!!!! We are so excited that you are coming. If you change your mind, you can always  <a href = {{url_for('applications.rsvp')}} > go here </a> to update your response </p>
-{% else %}
+
+{% elif status == "Submitted" %}
 <p class="text-center"> We've received your application and it is under review!</p>
+{% else %}
+<p class="text-center"> What are you waiting for?? <a href = {{url_for('applications.applications')}}> Fill up your application here! </a> </p>
 {% endif %}
 </div>
 {% endblock %}

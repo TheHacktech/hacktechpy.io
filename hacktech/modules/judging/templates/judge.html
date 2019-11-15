@@ -6,7 +6,7 @@
 {% block page %} 
 <div class="jumbotron">
 <div class="row">
-  <div class="col-12 col-md-4">
+  <div class="col-12 col-md-4" style="padding-left: 50px;">
     Status types:
 
     </br>
@@ -32,6 +32,10 @@
     </br>
     <label class="checkbox-inline">Rejected</label>
     <input type="checkbox" name="display_tag" value="Rejected"/>
+
+    </br>
+    <label class="checkbox-inline">Not Started</label>
+    <input type="checkbox" name="display_tag" value="Not Started"/>
   </div>
   <div class="col-12 col-md-8">
     <table style="width:100%">
@@ -41,7 +45,7 @@
     <th>Link</th>
   </tr>
   {% for i in info %}
-  <tr class={{i.status}}>
+  <tr class='{{i.status}}'>
 	  <td> {{i.first_name}} {{i.last_name}} </td>
 	  <td> {{i.status}} </td>
 	  <td> <a href={{i.link}} >Go</a></td>
