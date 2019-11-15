@@ -45,6 +45,7 @@ def update_applications():
     """Handles an application update request."""
     if not auth_utils.check_login():
         return auth_utils.login_redirect()
+    action = flask.request.form.get("Submit") or flask.request.form.get("Save")
     email = flask.session['username']
     phone_number = flask.request.form.get("phoneNumber", None)
     school = flask.request.form.get("school", None)
@@ -61,8 +62,8 @@ def update_applications():
     if 'resume' in flask.request.files:
         resume = flask.request.files['resume']
          # Make sure user selected file
-        if resume.filename == '':
-            flash('No selected file')
+        if action == 'Submit' and resume.filename == '':
+            flask.flash('No selected file')
             # todo: redirect
     if resume and helpers.allowed_file(resume.filename):
         filename = secure_filename(resume.filename)
@@ -88,12 +89,13 @@ def update_applications():
     code_of_conduct = flask.request.form.get("codeOfConduct", None)
 
     success, error_msg = helpers.handle_update_applications(
-        email, phone_number, school, major, degree_type, graduation_year,
-        github, linkedin, resume, latino, race, gender, shirt_size,
-        need_transportation, bus_from, airport, dietary_restrictions,
-        diet_choices, diet_details, q1, q2, q3, q4, code_of_conduct)
+        action, email, phone_number, school, major, degree_type, 
+        graduation_year, github, linkedin, resume, latino, race, gender, 
+        shirt_size, need_transportation, bus_from, airport, 
+        dietary_restrictions, diet_choices, diet_details, q1, q2, q3, q4, 
+        code_of_conduct)
     if success:
-        flask.flash("Your application has been submitted!")
+        flask.flash("Your application has been updated!")
     else:
         flask.flash(error_msg)
         return flask.redirect(flask.url_for("applications.applications"))
