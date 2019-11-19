@@ -27,7 +27,7 @@
       <div class="form-group">
         <label for="degreeType">What is your year of study? *</label>
       <select name="degreeType">
-        <option value="Choose">Choose...</option>
+        <option value="NA">Choose...</option>
         <option value="High School">High School</option>
         <option value="Undergraduate">Undergraduate</option>
         <option value="Graduate">Graduate</option>
@@ -38,6 +38,7 @@
       <div class="form-group">
         <label for="graduationYear">What is your expected graduation date? *</label>
       <select name="graduationYear">
+	 <option value="NA">Choose...</option>
         <option value="2020">2020</option>
         <option value="2021">2021</option>
         <option value="2022">2022</option>
@@ -49,7 +50,7 @@
       <div class="form-group">
         <label for="over18">We can only accept hackers over the age of 18. Will you be 18 or older by March 6, 2020? *</label>
       	<select name="over18e">
-        <option value="Choose">Choose...</option>
+        <option value="NA">Choose...</option>
         <option value="True">Yes</option>
         <option value="False">No</option>
         </select>
@@ -57,6 +58,7 @@
       <div class="form-group">
         <label for="shirtSize">What is your shirt size? *</label>
           <select name="shirtSize">
+            <option value="NA">Choose...</option>
             <option value="XS">Extra Small</option>
             <option value="S">Small</option>
             <option value="M">Medium</option>
@@ -77,7 +79,7 @@
       <div class="form-group">
         <label for="busFrom">If you are traveling from CA, which of the following schools would you prefer to bus from? Please choose the closest school. </label>
           <select name="busFrom">
-            <option value="None">Not Applicable</option>
+            <option value="Not Applicable">Not Applicable</option>
             <option value="UCLA">UCLA</option>
             <option value="UC Berkeley">UC Berkeley</option>
             <option value="Stanford">Stanford</option>
@@ -102,7 +104,7 @@
       <div class="form-group">
 	      <label for="dietaryRestrictionsChoices">What restrictions?</label>
           <input type="checkbox" name="dietaryRestrictionsChoices" value="Vegetarian">  Vegetarian
-	  <input type="checkbox" name="dietaryRestrictionsChoices"  value="Vegan">  Vegan
+	  <input type="checkbox" name="dietaryRestrictionsChoices" value="Vegan">  Vegan
 	  <input type="checkbox" name="dietaryRestrictionsChoices" value="Gluten-free">  Gluten-free 
 	  <input type="checkbox" name="dietaryRestrictionsChoices" value="Kosher">  Kosher 
 	  <input type="checkbox" name="dietaryRestrictionsChoices" value="Halal">  Halal  
@@ -115,22 +117,22 @@
      </div>
 
      <div class="form-group">
-        <label for="Q1">TODO: insert Q1 here *</label>
+        <label for="Q1"> The theme for Hacktech this year is "20/20 Vision: Connecting to the Future". Why would you like to come to Hacktech 2020? *</label>
         <input type="text" class="form-control" id="Q1" name="Q1">
      </div>
 
      <div class="form-group">
-        <label for="Q2">TODO: insert Q2 here *</label>
+        <label for="Q2">You just stepped off a time machine 20 years into the future. What is the first thing that catches your eye? *</label>
         <input type="text" class="form-control" id="Q2" name="Q2">
      </div>
 
      <div class="form-group">
-        <label for="Q3">TODO: insert Q3 here *</label>
+        <label for="Q3">Whose eyes would you like to view the world from (i.e. alien, dog, Albert Einstein, etc)? Describe what you see. *</label>
         <input type="text" class="form-control" id="Q3" name="Q3">
      </div>
 
      <div class="form-group">
-        <label for="Q4">TODO: insert Q4 here *</label>
+        <label for="Q4">We want to improve Hacktech -- what would you like to see at Hacktech this year? Is there anything else you want us to know about you? *</label>
         <input type="text" class="form-control" id="Q4" name="Q4">
      </div>
 
@@ -145,7 +147,7 @@
       </div>
 
       <div class="form-group">
-        <label for="resume">Please upload your resume in PDF or DOC format (less than 500 KB only) *</label>
+        <label for="resume">Please upload your resume in PDF or DOC format (less than 500 KB only): *</label>
         <input type="file" class="form-control" id="resume" name="resume">
       </div>
  
@@ -189,8 +191,8 @@
       </div>
 
 
-      <button type="submit" class="btn btn-default" value="Save" name="Save">Save</button> 
-      <button type="submit" class="btn btn-default" value="Submit" name="Submit">Submit Application!</button>
+      <button type="submit" class="btn btn-success" value="Save" name="Save">Save</button> 
+      <button type="submit" class="btn btn-success" value="Submit" name="Submit">Submit Application!</button>
     </form>
     </div>
 </div>
