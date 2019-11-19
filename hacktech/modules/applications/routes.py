@@ -63,8 +63,8 @@ def update_applications():
         resume = flask.request.files['resume']
          # Make sure user selected file
         if action == 'Submit' and resume.filename == '':
-            flask.flash('No selected file')
-            # todo: redirect
+            flask.flash('Please upload your resume.')
+            return flask.redirect(flask.url_for("applications.applications"))
     if resume and helpers.allowed_file(resume.filename):
         filename = secure_filename(resume.filename)
         resumes = os.path.join(flask.current_app.root_path,

@@ -154,4 +154,11 @@ def handle_update_applications(
         flask.g.pymysql_db.rollback()
         return (False,
                 "An unexpected error occurred. Please contact the organizers.")
+    # Check all required fields are filled out
+    if action == 'Submit':
+        if phone_number is None or school is  None or degree_type == "Choose" or graduation_year == "Choose" or not q1 or not q2 or not q3 or not q4:
+            return (False, "Please fill out all required fields before submitting.")
+        else:
+            # Update status
+            pass
     return (True, "")
