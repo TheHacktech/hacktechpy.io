@@ -84,5 +84,5 @@ def test_check_admin(client):
     """
 
     """
-    assert not auth_utils.check_admin("jhu@caltech.edu")
-    assert auth_utils.check_admin('zmo@yahoo.com')
+    assert not auth_utils.check_admin("11111@caltech.edu")
+    assert auth_utils.check_admin('wingfrillie@gmail.com')

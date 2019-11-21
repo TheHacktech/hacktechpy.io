@@ -1,12 +1,12 @@
 /* Test data / initial data */
 
 INSERT INTO users(user_id, email, password_hash, admin) VALUES
-    (1, "zmo@yahoo.com", 111, True),
-    (2, "jmu@caltech.edu", 111, False),
-    (3, "zo@caltech.edu", 111, False),
-    (4, "hwu@caltech.edu", 111, False), 
-    (5, "ugne@caltech.edu", 111, False), 
-    (6, "jaga@caltech.edu", 111, False);
+    (1, "wingfrillie@gmail.com", 111, True),
+    (2, "11111@caltech.edu", 111, False),
+    (3, "22222@caltech.edu", 111, False),
+    (4, "33333@caltech.edu", 111, False), 
+    (5, "44444@caltech.edu", 111, False), 
+    (6, "55555@caltech.edu", 111, False);
 
 INSERT INTO members(user_id, last_name, first_name, preferred_name) VALUES
     (1, "Mo", "Ziyan", "Momo"), 

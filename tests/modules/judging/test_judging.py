@@ -19,7 +19,7 @@ def test_judging_routes(client):
     assert client.get(flask.url_for('judging.show_stats')).status_code == 302
 
     with client.session_transaction() as sess:
-        sess['username'] = 'zmo@yahoo.com'
+        sess['username'] = 'wingfrillie@gmail.com'
         sess['admin'] = True
     # Now that we are logged in, the pages should load.
     assert client.get(flask.url_for('judging.judge')).status_code == 200
@@ -32,12 +32,12 @@ def test_judging_helpers(client):
     res = helpers.get_application(-1)
     assert res == None
     all_applications = helpers.get_all_application_links()
-    assert len(all_applications) == 5
+    assert len(all_applications) == 6
     # None admin should never be able to see applications
     assert client.get(all_applications[1]['link']).status_code == 302
 
     with client.session_transaction() as sess:
-        sess['username'] = 'zmo@yahoo.com'
+        sess['username'] = 'wingfrillie@gmail.com'
         sess['admin'] = True
     assert client.get(all_applications[1]['link']).status_code == 200
 

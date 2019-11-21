@@ -41,8 +41,10 @@ def get_application(user_id):
     print(result)
     return result
 
+
 def generate_resume_url(resume_name):
-    return flask.url_for("judging.uploaded_file", filename=resume_name) 
+    return flask.url_for("judging.uploaded_file", filename=resume_name)
+
 
 def get_all_application_links():
     """

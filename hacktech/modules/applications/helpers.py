@@ -2,14 +2,17 @@ import flask
 from hacktech import auth_utils
 import hacktech.modules.judging.helpers as judging_helpers
 
+
 def check_accepted(self_email, other_email):
     status = check_status(self_email, other_email)
     return "Accepted" == status or "Declined" == status or "RSVPed" == status
 
-ALLOWED_EXTENSIONS = set(['txt','docx', 'doc', 'pdf'])
+
+ALLOWED_EXTENSIONS = set(['txt', 'docx', 'doc', 'pdf'])
 
 # 10 MB
 MAX_FILE_SIZE = 10 * 1024 * 1024
+
 
 def allowed_file(filename):
     '''
@@ -17,6 +20,7 @@ def allowed_file(filename):
     '''
     splits = filename.rsplit('.', 1)
     return len(splits) >= 2 and splits[1].lower() in ALLOWED_EXTENSIONS
+
 
 def check_status(self_email, other_email):
     """
@@ -39,10 +43,12 @@ def check_status(self_email, other_email):
         return None
     return result['status']
 
-### TODO: Move these into a utils/helpers/core file. 
+
+### TODO: Move these into a utils/helpers/core file.
 def update_status(email, status):
     user_id = get_user_id(email)
     judging_helpers.update_status(user_id, status)
+
 
 def get_user_id(email):
     query = """
@@ -56,12 +62,13 @@ def get_user_id(email):
         return None
     return result['user_id']
 
-def handle_update_applications(
-        action, email, phone_number, school, major, degree_type, 
-        graduation_year, github, linkedin, resume, latino, race, gender, 
-        shirt_size, need_transportation, bus_from, airport, 
-        dietary_restrictions, diet_choices, diet_details, q1, q2, q3, q4, 
-        code_of_conduct):
+
+def handle_update_applications(action, email, phone_number, school, major,
+                               degree_type, graduation_year, github, linkedin,
+                               resume, latino, race, gender, shirt_size,
+                               need_transportation, bus_from, airport,
+                               dietary_restrictions, diet_choices,
+                               diet_details, q1, q2, q3, q4, code_of_conduct):
     """Handles application updates by updating the applications table in 
     the database with application form info, updating status table if 
     application is submitted."""
@@ -118,7 +125,7 @@ def handle_update_applications(
                 shirt_size, transportation, in_state, bus_from, airport,
                 diet_rest, diet_details, q1, q2, q3, q4, code_of_conduct
             ])
-        # Delete existing rows in diet table for this user. 
+        # Delete existing rows in diet table for this user.
         query = """
         DELETE FROM diet
         WHERE user_id = %s
@@ -133,7 +140,7 @@ def handle_update_applications(
         for diet in diet_choices:
             with flask.g.pymysql_db.cursor() as cursor:
                 cursor.execute(query, [user_id, diet])
-        # Delete existing rows in race table for this user. 
+        # Delete existing rows in race table for this user.
         query = """
         DELETE FROM race
         WHERE user_id = %s
@@ -156,8 +163,9 @@ def handle_update_applications(
                 "An unexpected error occurred. Please contact the organizers.")
     # Check all required fields are filled out
     if action == 'Submit':
-        if phone_number is None or school is  None or degree_type == "Choose" or graduation_year == "Choose" or not q1 or not q2 or not q3 or not q4:
-            return (False, "Please fill out all required fields before submitting.")
+        if phone_number is None or school is None or degree_type == "Choose" or graduation_year == "Choose" or not q1 or not q2 or not q3 or not q4:
+            return (False,
+                    "Please fill out all required fields before submitting.")
         else:
             # Update status
             pass

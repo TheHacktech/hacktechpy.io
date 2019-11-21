@@ -4,6 +4,7 @@ from hacktech.modules.judging import blueprint, helpers
 from hacktech import auth_utils
 import os
 
+
 @blueprint.route("/judge")
 def judge():
     if not auth_utils.check_login() or not auth_utils.check_admin(
@@ -38,6 +39,7 @@ def uploaded_file(filename):
     uploads = os.path.join(flask.current_app.root_path,
                            flask.current_app.config['RESUMES'])
     return flask.send_from_directory(uploads, filename, as_attachment=False)
+
 
 @blueprint.route('/judge/update/<int:user_id>', methods=['POST'])
 def update_status(user_id):
