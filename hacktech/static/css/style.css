@@ -64,7 +64,7 @@ a {
 
   transition: opacity 0.5s;
   opacity: 0.9;
-  color: #00a8ff;
+  color: #009dee;
 }
 
 /* Make sure the button is completely visible when hovered. */
@@ -84,34 +84,34 @@ button {
 input {
   padding: 0.5%;
   margin-top: 1%;
-  border: 1px #00a8ff solid;
+  border: 1px #009dee solid;
   border-radius: 5px;
   padding: 5px;
 }
 
 /* Removes blue coloring when focusing. */
 input:focus {
-  border: 1px #00a8ff solid;
+  border: 1px #009dee solid;
 }
 
 /* All textareas should have an orange border. */
 textarea {
-  border: 1px #00a8ff solid;
+  border: 1px #009dee solid;
 }
 
 /* Removes blue coloring when focusing. */
 textarea:focus {
-  border: 1px #00a8ff solid;
+  border: 1px #009dee solid;
 }
 
 /* All dropdowns should have an orange border. */
 select {
-  border: 1px #00a8ff solid;
+  border: 1px #009dee solid;
 }
 
 /* Removes blue coloring when focusing. */
 select:focus {
-  border: 1px #00a8ff solid;
+  border: 1px #009dee solid;
 }
 
 /* Anything that has a required tag should have a red star next to it to
@@ -148,9 +148,9 @@ table {
   width: 20%;
   background-color: #FFF;
   color: #333;
-  border-color: #00a8ff;
+  border-color: #009dee;
   outline: 0;
-  border: 2px  #00a8ff solid;
+  border: 2px  #009dee solid;
   margin-bottom: 5%;
   font-size: 20px;
   border-radius: 4px;
@@ -163,9 +163,9 @@ table {
   -o-transition: all 0.5s;
   transition: all 0.5s;
 
-  background-color: #00a8ff;
+  background-color: #009dee;
   color: #FFF;
-  border-color: #00a8ff;
+  border-color: #009dee;
   margin-bottom: 5%;
 }
 
@@ -362,7 +362,7 @@ input[type=checkbox], input[type=radio] {
 .navbar-inverse {
   background-color: transparent;
   border-color: #fff;
-  background-image: linear-gradient(#000000, transparent);
+  background-image: linear-gradient(#000000, rgba(0, 0, 0, 0.1));
 }
 
 .navbar-inverse .navbar-brand {
@@ -374,7 +374,7 @@ input[type=checkbox], input[type=radio] {
 }
 
 #navbar li a:active {
-  background-color: #00a8ff;
+  background-color: #009dee;
 }
 
 #navbar a {
@@ -411,13 +411,20 @@ input[type=checkbox], input[type=radio] {
 /*****************************************************************************/
 #application_form {
   background:white;
-  color: #00a8ff;
+  color: #009dee;
 }
 #logInButton {
   background: transparent;
   color:white;
 }
 
+#observe {
+  padding-left: 20px;
+  padding-right: 20px;
+  display: inline-block;
+  width: 40%;
+  max-width: 400px;
+}
 /* Content needs to span the width of its parent. */
 #content {
   width: 100%;
@@ -432,7 +439,7 @@ input[type=checkbox], input[type=radio] {
  * copyright notice.
  */
 #footer {
-  background-color: #00a8ff;
+  background-color: #009dee;
   color: #fff; 
   padding: 20px;
   margin-top: 20px;
@@ -512,7 +519,7 @@ input[type=checkbox], input[type=radio] {
   .jumbotron form input {
     padding: 1%;
     margin-top: 5%;
-    border: 1px #00a8ff solid;
+    border: 1px #009dee solid;
     border-radius: 5px;
   }
 

@@ -1,5 +1,6 @@
 import flask
 from hacktech import auth_utils
+from hacktech import app_year
 import hacktech.modules.judging.helpers as judging_helpers
 
 
@@ -120,7 +121,7 @@ def handle_update_applications(action, email, phone_number, school, major,
         code_of_conduct = (code_of_conduct != "False")
         with flask.g.pymysql_db.cursor() as cursor:
             cursor.execute(query, [
-                user_id, "2020", phone_number, school, major, degree_type,
+                user_id, app_year.year, phone_number, school, major, degree_type,
                 graduation_year, github, linkedin, resume, latino, gender,
                 shirt_size, transportation, in_state, bus_from, airport,
                 diet_rest, diet_details, q1, q2, q3, q4, code_of_conduct

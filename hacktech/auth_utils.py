@@ -235,7 +235,7 @@ def generate_reset_key():
 def check_reset_key(reset_key):
     """Returns the username if the reset key is valid, otherwise None."""
     query = """
-    SELECT username
+    SELECT email
     FROM users
     WHERE password_reset_key = %s AND NOW() < password_reset_expiration
     """
@@ -243,7 +243,7 @@ def check_reset_key(reset_key):
         cursor.execute(query, reset_key)
         result = cursor.fetchone()
     if result is not None:
-        return result['username']
+        return result['email']
     else:
         return None
 

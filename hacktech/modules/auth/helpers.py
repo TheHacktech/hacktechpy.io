@@ -108,7 +108,7 @@ def handle_password_reset(username, new_password, new_password2):
     query = """
     UPDATE users
     SET password_reset_key = NULL, password_reset_expiration = NULL
-    WHERE username = %s
+    WHERE email = %s
     """
     with flask.g.pymysql_db.cursor() as cursor:
         cursor.execute(query, [username])
@@ -117,7 +117,7 @@ def handle_password_reset(username, new_password, new_password2):
     SELECT first_name, email
     FROM members
       NATURAL JOIN users
-    WHERE username = %s
+    WHERE email = %s
     """
     with flask.g.pymysql_db.cursor() as cursor:
         cursor.execute(query, [username])

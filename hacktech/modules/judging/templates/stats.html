@@ -5,17 +5,76 @@
 {% endblock %}
 {% block scripts %}
   {{ super() }}
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.bundle.min.js"></script>
   <script src='{{ url_for("static", filename="js/search.js") }}'></script>
+  <script>
+    var data = {{raw_data | safe}};
+    console.log(data);
+    function new_chart(ctx, title, cur_data, cur_labels){
+      new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: cur_labels,
+        datasets: [{
+            data: cur_data,
+	    backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+	      
+        }]
+      },
+      options: {
+          title: {
+              display: true,
+              text: title
+          },
+	  scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        },
+       legend: {
+          display: false
+        }      
+      }
+      });
+    }
+    var ctx = document.getElementById('c1').getContext('2d');
+    new_chart(ctx, "Shirt Size", data.shirt_size.data, data.shirt_size.labels);
+    var ctx = document.getElementById('c2').getContext('2d');
+    new_chart(ctx, "Graduation Year", data.graduation_year.data, data.graduation_year.labels);
+    var ctx = document.getElementById('c3').getContext('2d');
+    new_chart(ctx, "Major", data.major.data, data.major.labels);
+    var ctx = document.getElementById('c4').getContext('2d');
+    new_chart(ctx, "Degree Type", data.degree_type.data, data.degree_type.labels);
+    var ctx = document.getElementById('c5').getContext('2d');
+    new_chart(ctx, "In state", data.in_state.data, data.in_state.labels);
+    var ctx = document.getElementById('c6').getContext('2d');
+    new_chart(ctx, "In state", data.school.data, data.school.labels);
+  </script>
 {% endblock %}
 {% block page %}
 
-
-  <select class="form-control" id="sel1">
-    <option>1</option>
-    <option>2</option>
-    <option>3</option>
-    <option>4</option>
-  </select>
-
+  <h2 class="text-center">Statistics</h2>
+  {% for i in ['1', '2', '3', '4', '5', '6', '7'] %}
+  <div id="observe">
+	  <canvas id={{"c" + i}} width="100" height="100"></canvas>
+  </div>
+  {% endfor %}
 {% endblock %}

@@ -1,6 +1,6 @@
 import flask
 import pymysql.cursors
-
+from hacktech import app_year
 
 def get_application(user_id):
     """
@@ -60,12 +60,42 @@ def get_all_application_links():
     with flask.g.pymysql_db.cursor() as cursor:
         cursor.execute(query, [])
         result = cursor.fetchall()
-    print(result)
     for i in result:
         i['link'] = flask.url_for(
             "judging.view_application", user_id=i['user_id'], _external=True)
     return result
 
+def get_current_stats():
+    stats = {}
+    query = """
+    SELECT status, COUNT(*) FROM status NATURAL JOIN 
+    applications WHERE application_year = %s
+    GROUP BY status
+    """
+    with flask.g.pymysql_db.cursor() as cursor:
+        cursor.execute(query, [app_year.year])
+        res = cursor.fetchall()
+    cats = ["shirt_size", "school", "major", "degree_type", "graduation_year", "in_state", "bus_from"]
+    ### TODO: SELECT ONLY THE CURRENT YEAR!!!!
+    for cat in cats:
+        query = """
+        SELECT {0}, COUNT(*) from applications 
+        GROUP BY {0}
+        """.format(cat)
+        with flask.g.pymysql_db.cursor() as cursor:
+            cursor.execute(query)#, [app_year.year])
+            res = cursor.fetchall()
+        print(res)
+        stats[cat] = reorder_stat(res, cat)
+    return stats
+
+def reorder_stat(res, col_name):
+    labels = []
+    data = []
+    for i in res:
+        labels.append(str(i[col_name]))
+        data.append(i['COUNT(*)'])
+    return {"labels":labels, "data":data}
 
 def update_status(user_id, new_status):
     """

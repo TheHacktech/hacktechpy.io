@@ -3,6 +3,7 @@ import flask
 from hacktech.modules.judging import blueprint, helpers
 from hacktech import auth_utils
 import os
+import json
 
 
 @blueprint.route("/judge")
@@ -28,7 +29,8 @@ def show_stats():
     if not auth_utils.check_login() or not auth_utils.check_admin(
             flask.session['username']):
         return flask.redirect(flask.url_for("home"))
-    return flask.render_template("stats.html")
+    default_stats = helpers.get_current_stats()
+    return flask.render_template("stats.html", raw_data=json.dumps(default_stats))
 
 
 @blueprint.route('/resume/<filename>', methods=['GET'])
