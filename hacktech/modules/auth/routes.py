@@ -44,20 +44,13 @@ def forgot_password():
 @blueprint.route('/login/forgot/submit', methods=['POST'])
 def forgot_password_submit():
     """Handle forgotten password submission."""
-    username = flask.request.form.get('username', None)
     email = flask.request.form.get('email', None)
 
-    if helpers.handle_forgotten_password(username, email):
+    if helpers.handle_forgotten_password(email):
         flask.flash(
-            "An email with a recovery link has been sent. If you no longer have access to your email (alums),"
-            " please contact devteam@hacktech.caltech.edu to recover your account."
+            "An email with a recovery link has been sent, if that email exists"
         )
         return flask.redirect(flask.url_for('auth.login'))
-    else:
-        flask.flash(
-            "Incorrect username and/or email. If you continue to have issues with account recovery, contact devteam@hacktech.caltech.edu."
-        )
-        return flask.redirect(flask.url_for('auth.forgot_password'))
 
 
 @blueprint.route('/login/reset/<reset_key>')

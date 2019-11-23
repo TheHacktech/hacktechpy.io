@@ -34,14 +34,3 @@ def create_account_submit():
         return flask.redirect(flask.url_for("account.create_account"))
     return flask.redirect(flask.url_for("home"))
 
-
-@blueprint.route("/confirm/<confirm_account_key>")
-def confirm_account(confirm_account_key):
-    """Checks the key. If valid, displays the create account page."""
-    user_id = auth_utils.check_confirm_account_key(confirm_account_key)
-    if user_id is None:
-        flask.flash("Invalid request. Please check your link and try again.")
-        return flask.redirect(flask.url_for("home"))
-
-    flask.flash("Your email has been confirmed! Thanks!")
-    return flask.redirect(flask.url_for("home"))

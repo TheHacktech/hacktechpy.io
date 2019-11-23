@@ -90,12 +90,8 @@ def handle_create_account(email, password, password2, first_name, middle_name,
 
         flask.g.pymysql_db.commit()
         subject = "Thanks for creating an account!"
-        link = flask.url_for(
-            "account.confirm_account",
-            confirm_account_key=confirm_account_key,
-            _external=True)
         msg = email_templates.CreateAccountSuccessfulEmail.format(
-            first_name, link)
+            first_name)
         email_utils.send_email(email, msg, subject)
     except Exception as e:
         print(e)
