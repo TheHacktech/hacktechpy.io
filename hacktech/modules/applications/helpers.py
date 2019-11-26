@@ -78,6 +78,7 @@ def handle_update_applications(action, email, phone_number, school, major,
         cursor.execute(query, email)
         result = cursor.fetchone()
     user_id = result['user_id']
+    print(app_year.year)
     if not user_id:
         return (False, "Invalid user ID. Please contact the organizers.")
     flask.g.pymysql_db.begin()
@@ -114,14 +115,14 @@ def handle_update_applications(action, email, phone_number, school, major,
         q4 = VALUES(q4),
         code_of_conduct = VALUES(code_of_conduct)
         """
-        latino = (latino != "False")
-        in_state = (need_transportation != "outsideCA")
-        transportation = (need_transportation != "no")
-        diet_rest = (dietary_restrictions != "True")
-        code_of_conduct = (code_of_conduct != "False")
+        latino = (latino == "True")
+        in_state = (need_transportation == "insideCA" or need_transportation == "no")
+        transportation = (need_transportation == "insideCA" or need_transportation == "outsideCA")
+        diet_rest = (dietary_restrictions == "True")
+        code_of_conduct = (code_of_conduct == "True")
         with flask.g.pymysql_db.cursor() as cursor:
             cursor.execute(query, [
-                user_id, app_year.year, phone_number, school, major, degree_type,
+                user_id, app_year.year + "0000", phone_number, school, major, degree_type,
                 graduation_year, github, linkedin, resume, latino, gender,
                 shirt_size, transportation, in_state, bus_from, airport,
                 diet_rest, diet_details, q1, q2, q3, q4, code_of_conduct

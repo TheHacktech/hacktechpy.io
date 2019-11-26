@@ -27,7 +27,7 @@
       <div class="form-group">
         <label for="degreeType">What is your year of study? *</label>
       <select name="degreeType">
-        <option value="NA">Choose...</option>
+        <option value="">Choose...</option>
         <option value="High School">High School</option>
         <option value="Undergraduate">Undergraduate</option>
         <option value="Graduate">Graduate</option>
@@ -38,7 +38,7 @@
       <div class="form-group">
         <label for="graduationYear">What is your expected graduation date? *</label>
       <select name="graduationYear">
-	 <option value="NA">Choose...</option>
+	 <option value="">Choose...</option>
         <option value="2020">2020</option>
         <option value="2021">2021</option>
         <option value="2022">2022</option>
@@ -48,17 +48,9 @@
       </div>
 
       <div class="form-group">
-        <label for="over18">We can only accept hackers over the age of 18. Will you be 18 or older by March 6, 2020? *</label>
-      	<select name="over18e">
-        <option value="NA">Choose...</option>
-        <option value="True">Yes</option>
-        <option value="False">No</option>
-        </select>
-      </div>
-      <div class="form-group">
         <label for="shirtSize">What is your shirt size? *</label>
           <select name="shirtSize">
-            <option value="NA">Choose...</option>
+            <option value="">Choose...</option>
             <option value="XS">Extra Small</option>
             <option value="S">Small</option>
             <option value="M">Medium</option>
@@ -70,6 +62,7 @@
       <div class="form-group">
         <label for="needTransportation">Will you be needed transportation to Hacktech 2020? *</label>
           <select name="needTransportation">
+            <option value="">Choose...</option>
             <option value="no">No, I've got it handled!</option>         
             <option value="insideCA">Yes, I will be traveling from CA.</option>
             <option value="outsideCA">Yes, I will be traveling from outside of CA.</option>
@@ -79,7 +72,7 @@
       <div class="form-group">
         <label for="busFrom">If you are traveling from CA, which of the following schools would you prefer to bus from? Please choose the closest school. </label>
           <select name="busFrom">
-            <option value="Not Applicable">Not Applicable</option>
+            <option value="N/A">Not Applicable</option>
             <option value="UCLA">UCLA</option>
             <option value="UC Berkeley">UC Berkeley</option>
             <option value="Stanford">Stanford</option>
@@ -96,7 +89,8 @@
       <div class="form-group">
         <label for="dietaryRestrictions">Do you have any dietary restrictions? *</label>
           <select name="dietaryRestrictions">
-            <option value="True">Yes</option>
+            <option value="">Choose...</option>
+	    <option value="True">Yes</option>
             <option value="False">No</option>
          </select>
      </div>
@@ -113,27 +107,27 @@
 
      <div class="form-group">
         <label for="dietaryRestrictionsDetail">Please specify any details about your dietary restrictions: </label>
-        <input type="text" class="form-control" id="dietaryRestrictionsDetail" name="dietaryRestrictionsDetail">
+     	<textarea class="form-control" id="dietaryRestrictionsDetail" name="dietaryRestrictionsDetail" ></textarea>
      </div>
 
      <div class="form-group">
-        <label for="Q1"> The theme for Hacktech this year is "20/20 Vision: Connecting to the Future". Why would you like to come to Hacktech 2020? *</label>
-        <input type="text" class="form-control" id="Q1" name="Q1">
+        <label for="Q1">Why would you like to come to Hacktech 2020? *</label>
+	<textarea  class="form-control" id="Q1" name="Q1"></textarea>
      </div>
 
      <div class="form-group">
         <label for="Q2">You just stepped off a time machine 20 years into the future. What is the first thing that catches your eye? *</label>
-        <input type="text" class="form-control" id="Q2" name="Q2">
+	<textarea  class="form-control" id="Q2" name="Q2"></textarea>
      </div>
 
      <div class="form-group">
-        <label for="Q3">Whose eyes would you like to view the world from (i.e. alien, dog, Albert Einstein, etc)? Describe what you see. *</label>
-        <input type="text" class="form-control" id="Q3" name="Q3">
+        <label for="Q3">The theme for Hacktech this year is "20/20 Vision: Connecting to the Future". Write a short haiku related to this theme. *</label>
+	<textarea  class="form-control" id="Q3" name="Q3"></textarea>
      </div>
 
      <div class="form-group">
         <label for="Q4">We want to improve Hacktech -- what would you like to see at Hacktech this year? Is there anything else you want us to know about you? *</label>
-        <input type="text" class="form-control" id="Q4" name="Q4">
+	<textarea  class="form-control" id="Q4" name="Q4"></textarea>
      </div>
 
       <div class="form-group">
@@ -185,6 +179,7 @@
      <div class="form-group">
         <label for="codeOfConduct">I've read and understood the MLH code of conduct and the MLH data sharing provision. *</label>
           <select name="codeOfConduct">
+            <option value="">Choose...</option>
             <option value="True">Yes</option>
             <option value="False">No</option>
          </select>
