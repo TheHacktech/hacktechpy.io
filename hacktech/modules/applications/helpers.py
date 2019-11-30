@@ -69,7 +69,9 @@ def handle_update_applications(action, email, phone_number, school, major,
                                resume, latino, race, gender, shirt_size,
                                need_transportation, bus_from, airport,
                                dietary_restrictions, diet_choices,
-                               diet_details, q1, q2, q3, q4, code_of_conduct):
+                               diet_details, q1, q2, q3, q4, code_of_conduct,
+                               first_name, middle_name, last_name, 
+                               preferred_name):
     """Handles application updates by updating the applications table in 
     the database with application form info, updating status table if 
     application is submitted."""
@@ -126,6 +128,15 @@ def handle_update_applications(action, email, phone_number, school, major,
                 shirt_size, transportation, in_state, bus_from, airport,
                 diet_rest, diet_details, q1, q2, q3, q4, code_of_conduct
             ])
+        # Update members table with name info from application.
+        query = """
+        UPDATE members
+        SET first_name=%s, middle_name=%s, last_name=%s, preferred_name=%s
+        WHERE user_id=%s 
+        """
+        with flask.g.pymysql_db.cursor() as cursor:
+            cursor.execute(query, [first_name, middle_name, last_name, 
+                preferred_name, user_id])
         # Delete existing rows in diet table for this user.
         query = """
         DELETE FROM diet
@@ -166,7 +177,8 @@ def handle_update_applications(action, email, phone_number, school, major,
     if action == 'Submit':
         if not school or not degree_type or not graduation_year or not shirt_size \
                 or not need_transportation or dietary_restrictions == "" \
-                or not q1 or not q2 or not q3 or not q4:
+                or not q1 or not q2 or not q3 or not q4 or not first_name \
+                or not last_name:
             return (False,
                     "Please fill out all required fields before submitting.")
         if not code_of_conduct:

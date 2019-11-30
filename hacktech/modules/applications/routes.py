@@ -54,6 +54,10 @@ def update_applications():
         return auth_utils.login_redirect()
     action = flask.request.form.get("Submit") or flask.request.form.get("Save")
     email = flask.session['username']
+    first_name = flask.request.form.get("firstName", None)
+    middle_name = flask.request.form.get("middleName", None)
+    last_name = flask.request.form.get("lastName", None)
+    preferred_name = flask.request.form.get("preferredName", None)
     phone_number = flask.request.form.get("phoneNumber", None)
     school = flask.request.form.get("school", None)
     major = flask.request.form.get("major", None)
@@ -102,7 +106,7 @@ def update_applications():
         graduation_year, github, linkedin, resume, latino, race, gender,
         shirt_size, need_transportation, bus_from, airport,
         dietary_restrictions, diet_choices, diet_details, q1, q2, q3, q4,
-        code_of_conduct)
+        code_of_conduct, first_name, middle_name, last_name, preferred_name)
     if success:
         flask.flash("Your application has been updated!")
     else:

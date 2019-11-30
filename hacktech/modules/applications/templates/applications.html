@@ -10,18 +10,48 @@
     <form action="{{url_for('applications.update_applications')}}" method="post"} enctype="multipart/form-data">
     <p><small> We're so pumped to see you at Hacktech 2020, so don't forget to apply! Please note that all fields with asterisks (*) are required. </small></p>
     <hr>
-      <div class="form-group">
-        <label for="phoneNumber">Phone Number *</label>
-	<input type="text" class="form-control" id="phoneNumber" name="phoneNumber">
-      </div>
- 
-      <div class="form-group">
-        <label for="school">School *</label>
-        <input type="text" class="form-control" id="school" name="school">
+      <div class="row">
+        <div class="form-group col-md-4">
+	  <label for="firstName">First Name *</label>
+          <input type="text" class="form-control" id="firstName" name="firstName">
+        </div>
+        <div class="form-group col-md-4">
+	  <label for="middleName">Middle Name </label>
+          <input type="text" class="form-control" id="middleName" name="middleName">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="lastName">Last Name *</label>
+          <input type="text" class="form-control" id="lastName" name="lastName">
+        </div>
       </div>
 
-      <div class="form-inline">
-	<div class="form-group">
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label for="preferredName">Preferred Name </label>
+	  <input type="text" class="form-control" id="preferredName" name="preferredName">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="phoneNumber">Phone Number *</label>
+	  <input type="text" class="form-control" id="phoneNumber" name="phoneNumber">
+        </div>
+      </div>
+ 
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label for="school">School *</label>
+          <input type="text" class="form-control" id="school" name="school">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label for="major">Major</label>
+          <input type="text" class="form-control" id="major" name="major">
+        </div>
+      </div>
+
+      <div class="row">
+	<div class="form-group col-md-6">
           <label for="degreeType">What is your year of study? *  </label>
 	  <select class="form-control" name="degreeType">
             <option value="">Choose...</option>
@@ -31,15 +61,7 @@
             <option value="Postdoc">Postdoc</option>
           </select>
         </div>
-      </div>
-
-      <div class="form-group">
-        <label for="major">Major</label>
-        <input type="text" class="form-control" id="major" name="major">
-      </div>
-
-      <div class="form-inline">
-        <div class="form-group">
+        <div class="form-group col-md-6">
           <label for="graduationYear">What is your expected graduation date? *</label>
           <select class="form-control" name="graduationYear">
 	    <option value="">Choose...</option>
@@ -52,8 +74,8 @@
         </div>
       </div>
 
-      <div class="form-inline">
-        <div class="form-group">
+      <div class="row">
+        <div class="form-group col-md-12">
         <label for="shirtSize">What is your shirt size? *</label>
           <select class="form-control" name="shirtSize">
             <option value="">Choose...</option>
@@ -98,13 +120,15 @@
         <input type="text" class="form-control" id="airport" name="airport">
       </div>
 
-      <div class="form-group">
-        <label for="dietaryRestrictions">Do you have any dietary restrictions? *</label>
-          <select class="form-control" name="dietaryRestrictions">
-            <option value="">Choose...</option>
-	    <option value="True">Yes</option>
-            <option value="False">No</option>
-         </select>
+      <div class="form-inline">
+        <div class="form-group">
+          <label for="dietaryRestrictions">Do you have any dietary restrictions? *</label>
+            <select class="form-control" name="dietaryRestrictions">
+              <option value="">Choose...</option>
+	      <option value="True">Yes</option>
+              <option value="False">No</option>
+           </select>
+       </div>
      </div>
 
       <div class="form-group">
@@ -191,14 +215,16 @@
 
       <hr>	
       <p><small>  We want Hacktech to be an inclusive and welcoming space for all participants.  The following demographic questions are optional: </small></p>
-      <div class="form-group">
-        <label for="latino">Are you Hispanic or Latino?</label>
-          <select class="form-control" name="latino">
-            <option value="False">Prefer not to answer</option>
-            <option value="True">Yes</option>
-            <option value="False">No</option>
-         </select>
-      </div>
+     <div class="form-inline">
+       <div class="form-group">
+         <label for="latino">Are you Hispanic or Latino?</label>
+           <select class="form-control" name="latino">
+             <option value="False">Prefer not to answer</option>
+             <option value="True">Yes</option>
+             <option value="False">No</option>
+          </select>
+       </div>
+     </div>
   
       <div class="form-group">
 	<label for="race">What is your race or ethnicity?  </label> 
@@ -248,14 +274,14 @@
 
       <hr> 
 
-     <div class="form-group">
+       <div class="form-group">
 	     <label for="codeOfConduct">I've read and understood the <a href="static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH code of conduct</a> and the <a href="github.com/MLH/mlh-policies/blob/master/data-sharing.md">MLH data sharing provision</a>. *</label>
           <select class="form-control" name="codeOfConduct">
             <option value="">Choose...</option>
-            <option value="True">Yes</option>
+	    <option value="True">Yes</option>
             <option value="False">No</option>
          </select>
-      </div>
+        </div>
 
       <button type="submit" class="btn btn-success" value="Save" name="Save">Save</button> 
       <button type="submit" class="btn btn-success" value="Submit" name="Submit">Submit Application!</button>
