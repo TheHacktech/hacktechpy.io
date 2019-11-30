@@ -17,7 +17,12 @@
  
       <div class="form-group">
         <label for="school">School *</label>
-        <input type="text" class="form-control" id="school" name="school">
+        <select class="form-control" name="school">
+	  <option value="">Choose...</option>
+          {% for school in schools %}
+	    <option value={{school}}>{{school}}</option>
+          {%endfor%}	
+	</select>
       </div>
 
       <div class="form-inline">
@@ -35,7 +40,12 @@
 
       <div class="form-group">
         <label for="major">Major</label>
-        <input type="text" class="form-control" id="major" name="major">
+        <select class="form-control" name="major">
+          <option value="">Choose...</option>
+          {% for major in majors %}
+            <option value={{major}}>{{major}}</option>
+          {%endfor%}
+        </select>
       </div>
 
       <div class="form-inline">

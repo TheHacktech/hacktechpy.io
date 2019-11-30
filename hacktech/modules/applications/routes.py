@@ -10,7 +10,7 @@ def applications():
     if not auth_utils.check_login():
         return auth_utils.login_redirect()
     # TODO: pre-fill with already existing information!
-    return flask.render_template("applications.html")
+    return flask.render_template("applications.html", schools = helpers.get_schools(), majors = helpers.get_majors())
 
 
 @blueprint.route("/applications/rsvp")

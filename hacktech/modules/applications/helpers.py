@@ -3,6 +3,27 @@ from hacktech import auth_utils
 from hacktech import app_year
 import hacktech.modules.judging.helpers as judging_helpers
 
+def get_schools():
+    schools = []
+    with open("hacktech/modules/applications/schools.txt") as f: 
+        for line in f: 
+            schools.append(line)
+    return schools
+
+def get_majors():
+    majors = ["Astronomy", 
+    "Bioengineering", 
+    "Biology", 
+    "Chemical Engineering", 
+    "Chemistry", 
+    "Computer Engineering", 
+    "Computer Science", 
+    "Electrical Engineering", 
+    "Mathematics", 
+    "Mechanical Engineering", 
+    "N/A", 
+    "Physics"]
+    return majors
 
 def check_accepted(self_email, other_email):
     status = check_status(self_email, other_email)
