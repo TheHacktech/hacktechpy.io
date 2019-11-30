@@ -62,22 +62,24 @@ def update_applications():
     github = flask.request.form.get("github", None)
     linkedin = flask.request.form.get("linkedin", None)
     # Check if the request has a resume attached
-    # todo: finish error-handling for submit flow (redirect)
-    # if 'resume' not in flask.request.files:
-    #    flask.flash('Please attach a resume.')
-    resume = None
+    resume = ""
+    resume_file = None
     if 'resume' in flask.request.files:
-        resume = flask.request.files['resume']
+        resume_file = flask.request.files['resume']
         # Make sure user selected file
-        if action == 'Submit' and resume.filename == '':
+        if action == 'Submit' and resume_file.filename == '':
             flask.flash('Please upload your resume.')
             return flask.redirect(flask.url_for("applications.applications"))
-    if resume and helpers.allowed_file(resume.filename):
-        filename = secure_filename(resume.filename)
+    if resume_file and helpers.allowed_file(resume_file.filename):
+        filename = secure_filename(resume_file.filename)
         resumes = os.path.join(flask.current_app.root_path,
                                flask.current_app.config['RESUMES'])
-        resume.save(os.path.join(resumes, filename))
-    resume = flask.request.form.get("resume", None)
+        resume_file.save(os.path.join(resumes, filename))
+        resume = filename
+    elif action == 'Submit':
+        flask.flash('Please make sure your resume is a PDF file less than 500 KB.')
+        return flask.redirect(flask.url_for("applications.applications"))
+
     latino = flask.request.form.get("latino", None)
     race = flask.request.form.getlist("race", None)
     gender = flask.request.form.get("gender", None)

@@ -165,10 +165,13 @@ def handle_update_applications(action, email, phone_number, school, major,
     # Check all required fields are filled out
     if action == 'Submit':
         if not school or not degree_type or not graduation_year or not shirt_size \
-                or not need_transportation or dietary_restrictions =="" or not \
-                resume or not q1 or not q2 or not q3 or not q4 or not code_of_conduct:
+                or not need_transportation or dietary_restrictions == "" \
+                or not q1 or not q2 or not q3 or not q4:
             return (False,
                     "Please fill out all required fields before submitting.")
+        if not code_of_conduct:
+            return (False,
+                    "You must accept the MLH code of conduct and data sharing provision.")
         else:
             # Update status
             pass
