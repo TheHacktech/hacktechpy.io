@@ -6,7 +6,7 @@ import hacktech.modules.judging.helpers as judging_helpers
 
 def check_accepted(self_email, other_email):
     status = check_status(self_email, other_email)
-    return "Accepted" == status or "Declined" == status or "RSVPed" == status
+    return "Accepted" == status['status'] or "Declined" == status['status'] or "RSVPed" == status['status']
 
 
 ALLOWED_EXTENSIONS = set(['txt', 'docx', 'doc', 'pdf'])
@@ -33,16 +33,16 @@ def check_status(self_email, other_email):
     if not auth_utils.check_admin(self_email) and self_email != other_email:
         return ""
     query = """
-    SELECT status FROM users NATURAL JOIN status WHERE
-    email = %s
+    SELECT status, reimbursement_amt FROM users NATURAL JOIN status NATURAL JOIN applications WHERE
+    email = %s AND application_year = %s
     """
 
     with flask.g.pymysql_db.cursor() as cursor:
-        cursor.execute(query, [other_email])
+        cursor.execute(query, [other_email, app_year.year + "0000"])
         result = cursor.fetchone()
     if result == None:
         return None
-    return result['status']
+    return result
 
 
 ### TODO: Move these into a utils/helpers/core file.

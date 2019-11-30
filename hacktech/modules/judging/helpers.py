@@ -41,7 +41,16 @@ def get_application(user_id):
     print(result)
     return result
 
+def get_status(user_id):
+    query = """
+    SELECT status, reimbursement_amt FROM users NATURAL JOIN status NATURAL JOIN applications WHERE
+    user_id = %s AND application_year = %s
+    """
 
+    with flask.g.pymysql_db.cursor() as cursor:
+        cursor.execute(query, [user_id, app_year.year + "0000"])
+        result = cursor.fetchone()
+    return result
 def generate_resume_url(resume_name):
     return flask.url_for("judging.uploaded_file", filename=resume_name)
 
@@ -85,9 +94,26 @@ def get_current_stats():
         with flask.g.pymysql_db.cursor() as cursor:
             cursor.execute(query)#, [app_year.year])
             res = cursor.fetchall()
-        print(res)
         stats[cat] = reorder_stat(res, cat)
+
+    query = """
+    SELECT diet_restrictions, COUNT(*) FROM diet GROUP BY diet_restrictions
+    """
+    with flask.g.pymysql_db.cursor() as cursor:
+        cursor.execute(query)
+        res = cursor.fetchall()
+    stats['diet'] =  reorder_stat(res, "diet_restrictions")
+
+    query = """
+    SELECT race_type, COUNT(*) FROM race GROUP BY race_type
+    """
+    with flask.g.pymysql_db.cursor() as cursor:
+        cursor.execute(query)
+        res = cursor.fetchall()
+    stats['race'] =  reorder_stat(res, "race_type")
+
     return stats
+
 
 def reorder_stat(res, col_name):
     labels = []
@@ -97,13 +123,13 @@ def reorder_stat(res, col_name):
         data.append(i['COUNT(*)'])
     return {"labels":labels, "data":data}
 
-def update_status(user_id, new_status):
+def update_status(user_id, new_status, reimbursement_amount):
     """
     Given a user_id and a status, update the status in the status
     table. 
     """
     query = """
-    UPDATE status SET status = %s WHERE user_id = %s
+    UPDATE status SET status = %s, reimbursement_amt = %s WHERE user_id = %s
     """
     with flask.g.pymysql_db.cursor() as cursor:
-        cursor.execute(query, [new_status, user_id])
+        cursor.execute(query, [new_status, reimbursement_amount, user_id])

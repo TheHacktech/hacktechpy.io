@@ -7,6 +7,7 @@
   <div class = "jumbotron col-md-8 col-md-offset-2">
     <h2 class="text-center">Judging</h2>
     {% if info != None %}
+
       <label>Name: </label>
       {{info.first_name}} {{info.middle_name}} {{info.last_name}}
      
@@ -36,11 +37,11 @@
 
       <hr/>
       <label>GitHub Link: </label>
-      <a href={{info.github}}>{{info.github}}</a>
+      <a href={{ "https://github.com/" ~ info.github}}>{{"https://github.com/"~info.github}}</a>
 
       <br/>
       <label>Linkedin Link: </label>
-      <a href={{info.linkedin}}>{{info.linkedin}}</a>
+      <a href={{ "https://linkedin.com/in/" ~ info.linkedin}}>{{"https://linkedin.com/in/"~info.linkedin}}</a>
 
       <hr/>
       <label>Latino: </label>
@@ -86,7 +87,6 @@
       <hr/>
       <label>TODO: Q4: </label>
       {{info.q4}}
-
       <hr/>
 
 
@@ -99,9 +99,17 @@
 		></iframe>
       </div>
       <form action="{{ url_for('judging.update_status', user_id=info.user_id) }}" method="post">
+      <div class="form-group">      
+        <label> Reimbursement Amount </label>
+	<div class="input-group">
+   	  <span class="input-group-addon">$</span>
+	  <input type="numbers" class="form-control" id="reimbursement_amount" value={{status.reimbursement_amt}} name="reimbursement_amount">
+	</div>
+      </div>
       <select class="form-control" name='new_status'>
-        <option value="Accepted">Accept</option>
-        <option value="Rejected">Reject</option>
+        <option>Choose...</option>
+	<option value="Accepted" {%if status.status == "RSVPed" or status.status == "Accepted" or status.status == "Declined"%} selected {%endif%}>Accept</option>
+	<option value="Rejected" {%if status.status == "Rejected" %} selected {%endif%}>Reject</option>
       </select>
       <button type="submit" class="btn btn-default">Go</button>
       </form>

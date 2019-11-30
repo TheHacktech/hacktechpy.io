@@ -74,6 +74,7 @@ CREATE TABLE status(
     application_id     INT          NOT NULL,
     status             VARCHAR(50)  NOT NULL,
     decider_user_id    INT          DEFAULT NULL,
+    reimbursement_amt  INT	    DEFAULT NULL,
     FOREIGN KEY (user_id) REFERENCES users(user_id),
     FOREIGN KEY (application_id) REFERENCES applications(application_id),
     PRIMARY KEY (user_id, application_id)
