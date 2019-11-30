@@ -36,8 +36,7 @@ def get_application(user_id):
         race_info_dict = cursor.fetchall()
     race_info = [x['race_type'] for x in race_info_dict]
     result['race'] = race_info
-    print(result['resume'])
-    result['resume_url'] = generate_resume_url("Ziyan_Mo_resume_5.0.4.pdf")
+    result['resume_url'] = generate_resume_url(result['resume'])
     print(result)
     return result
 
@@ -51,9 +50,11 @@ def get_status(user_id):
         cursor.execute(query, [user_id, app_year.year + "0000"])
         result = cursor.fetchone()
     return result
-def generate_resume_url(resume_name):
-    return flask.url_for("judging.uploaded_file", filename=resume_name)
 
+def generate_resume_url(resume_name):
+    if resume_name is not None:
+        return flask.url_for("judging.uploaded_file", filename=resume_name)
+    return ""
 
 def get_all_application_links():
     """

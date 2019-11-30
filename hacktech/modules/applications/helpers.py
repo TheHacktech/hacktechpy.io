@@ -2,6 +2,7 @@ import flask
 from hacktech import auth_utils
 from hacktech import app_year
 import hacktech.modules.judging.helpers as judging_helpers
+import os
 
 def get_schools():
     schools = []
@@ -30,18 +31,22 @@ def check_accepted(self_email, other_email):
     return "Accepted" == status['status'] or "Declined" == status['status'] or "RSVPed" == status['status']
 
 
-ALLOWED_EXTENSIONS = set(['txt', 'docx', 'doc', 'pdf'])
+ALLOWED_EXTENSIONS = set(['pdf'])
 
-# 10 MB
-MAX_FILE_SIZE = 10 * 1024 * 1024
+# 500 KB
+MAX_FILE_SIZE = 500 * 1024
 
 
-def allowed_file(filename):
+def allowed_file(file):
     '''
     Checks for allowed file extensions.
     '''
-    splits = filename.rsplit('.', 1)
-    return len(splits) >= 2 and splits[1].lower() in ALLOWED_EXTENSIONS
+    splits = file.filename.rsplit('.', 1)
+    file.seek(0, os.SEEK_END)
+    file_length = file.tell()
+    # Reset to beginning of file
+    file.seek(0, 0)
+    return len(splits) >= 2 and splits[1].lower() in ALLOWED_EXTENSIONS and file_length < MAX_FILE_SIZE
 
 
 def check_status(self_email, other_email):
