@@ -78,7 +78,6 @@ def handle_update_applications(action, email, phone_number, school, major,
         cursor.execute(query, email)
         result = cursor.fetchone()
     user_id = result['user_id']
-    print(app_year.year)
     if not user_id:
         return (False, "Invalid user ID. Please contact the organizers.")
     flask.g.pymysql_db.begin()
@@ -123,7 +122,7 @@ def handle_update_applications(action, email, phone_number, school, major,
         with flask.g.pymysql_db.cursor() as cursor:
             cursor.execute(query, [
                 user_id, app_year.year + "0000", phone_number, school, major, degree_type,
-                graduation_year, github, linkedin, resume, latino, gender,
+                graduation_year, github, linkedin, resume, latino, gender,  
                 shirt_size, transportation, in_state, bus_from, airport,
                 diet_rest, diet_details, q1, q2, q3, q4, code_of_conduct
             ])
@@ -165,7 +164,9 @@ def handle_update_applications(action, email, phone_number, school, major,
                 "An unexpected error occurred. Please contact the organizers.")
     # Check all required fields are filled out
     if action == 'Submit':
-        if phone_number is None or school is None or degree_type == "Choose" or graduation_year == "Choose" or not q1 or not q2 or not q3 or not q4:
+        if not school or not degree_type or not graduation_year or not shirt_size \
+                or not need_transportation or dietary_restrictions =="" or not \
+                resume or not q1 or not q2 or not q3 or not q4 or not code_of_conduct:
             return (False,
                     "Please fill out all required fields before submitting.")
         else:
