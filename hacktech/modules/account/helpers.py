@@ -5,7 +5,7 @@ from hacktech import email_templates
 from hacktech import email_utils
 from hacktech import misc_utils
 from hacktech import validation_utils
-
+from hacktech import app_year
 
 def get_user_data(user_id):
     """Returns user data for the create account form."""
@@ -66,12 +66,12 @@ def handle_create_account(email, password, password2, first_name, middle_name,
                 user_id, first_name, preferred_name, middle_name, last_name
             ])
         query = """
-        INSERT INTO applications (user_id) 
-        VALUES(%s)
+        INSERT INTO applications (user_id, application_year) 
+        VALUES(%s, %s)
         """
         ## TODO: Make sure to select it only from the current application year
         with flask.g.pymysql_db.cursor() as cursor:
-            cursor.execute(query, [user_id])
+            cursor.execute(query, [user_id, app_year.year + "0000"])
         query = """ 
         SELECT application_id FROM applications 
         WHERE user_id = %s

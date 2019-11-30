@@ -10,23 +10,29 @@
 
 <p class="text-center"> Your status is...</p>
 
-<h3 class="text-center"> {{status}} </h3>
-{% if status == "Accepted" %}
+<h3 class="text-center"> {{status.status}} </h3>
+{% if status.status == "Accepted" %}
 <p class="text-center"> Woooh! You got accepted into Hacktech!!!  </p>
 
 <p class="text-center"> Please go to <a href = {{url_for('applications.rsvp')}} >this page to rsvp</a></p>
-{% elif status == "In-progress" %}
+{% elif status.status == "In-progress" %}
 <p class="text-center"> Looks like you still need to fill in your application!</p>
-{% elif status == "Declined" %}
+{% elif status.status == "Declined" %}
 <p class="text-center"> We are sad that we will be missing you! If you change your mind, you can always  <a href = {{url_for('applications.rsvp')}} > go here </a> to update your response </p>
 
-{% elif status == "RSVPed" %}
+{% elif status.status == "RSVPed" %}
 <p class="text-center"> YAY!!!!! We are so excited that you are coming. If you change your mind, you can always  <a href = {{url_for('applications.rsvp')}} > go here </a> to update your response </p>
 
-{% elif status == "Submitted" %}
+{% elif status.status == "Submitted" %}
 <p class="text-center"> We've received your application and it is under review!</p>
 {% else %}
 <p class="text-center"> What are you waiting for?? <a href = {{url_for('applications.applications')}}> Fill up your application here! </a> </p>
+{% endif %}
+
+{% if status.reimbursement_amt is not none %}
+<p class="text-center"> Your reimbursement will be approximately ${{status.reimbursement_amt}}. </p>
+{% else %}
+<p class="text-center"> Your reimbursement is $0 at this time (check back if your status changes!) </p> 
 {% endif %}
 </div>
 {% endblock %}

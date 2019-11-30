@@ -244,6 +244,9 @@ input[type=checkbox], input[type=radio] {
   margin-top: 0 !important;
 }
 
+.alert {
+  position: relative;
+}
 /* END FORM ELEMENTS */
 
 /* Main wrapper class for all elements in the body. */
