@@ -7,6 +7,7 @@ from hacktech import misc_utils
 from hacktech import validation_utils
 from hacktech import app_year
 
+
 def get_user_data(user_id):
     """Returns user data for the create account form."""
     query = """
@@ -90,8 +91,7 @@ def handle_create_account(email, password, password2, first_name, middle_name,
 
         flask.g.pymysql_db.commit()
         subject = "Thanks for creating an account!"
-        msg = email_templates.CreateAccountSuccessfulEmail.format(
-            first_name)
+        msg = email_templates.CreateAccountSuccessfulEmail.format(first_name)
         email_utils.send_email(email, msg, subject)
     except Exception as e:
         print(e)

@@ -33,4 +33,3 @@ def create_account_submit():
         flask.flash(error_msg)
         return flask.redirect(flask.url_for("account.create_account"))
     return flask.redirect(flask.url_for("home"))
-

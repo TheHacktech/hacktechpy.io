@@ -4,27 +4,24 @@ from hacktech import app_year
 import hacktech.modules.judging.helpers as judging_helpers
 import os
 
+
 def get_schools():
     schools = []
-    with open("hacktech/modules/applications/schools.txt") as f: 
-        for line in f: 
+    with open("hacktech/modules/applications/schools.txt") as f:
+        for line in f:
             schools.append(line)
     return schools
 
+
 def get_majors():
-    majors = ["Astronomy", 
-    "Bioengineering", 
-    "Biology", 
-    "Chemical Engineering", 
-    "Chemistry", 
-    "Computer Engineering", 
-    "Computer Science", 
-    "Electrical Engineering", 
-    "Mathematics", 
-    "Mechanical Engineering", 
-    "N/A", 
-    "Physics"]
+    majors = [
+        "Astronomy", "Bioengineering", "Biology", "Chemical Engineering",
+        "Chemistry", "Computer Engineering", "Computer Science",
+        "Electrical Engineering", "Mathematics", "Mechanical Engineering",
+        "N/A", "Physics"
+    ]
     return majors
+
 
 def check_accepted(self_email, other_email):
     status = check_status(self_email, other_email)
@@ -46,7 +43,8 @@ def allowed_file(file):
     file_length = file.tell()
     # Reset to beginning of file
     file.seek(0, 0)
-    return len(splits) >= 2 and splits[1].lower() in ALLOWED_EXTENSIONS and file_length < MAX_FILE_SIZE
+    return len(splits) >= 2 and splits[1].lower(
+    ) in ALLOWED_EXTENSIONS and file_length < MAX_FILE_SIZE
 
 
 def check_status(self_email, other_email):
@@ -90,14 +88,12 @@ def get_user_id(email):
     return result['user_id']
 
 
-def handle_update_applications(action, email, phone_number, school, major,
-                               degree_type, graduation_year, github, linkedin,
-                               resume, latino, race, gender, shirt_size,
-                               need_transportation, bus_from, airport,
-                               dietary_restrictions, diet_choices,
-                               diet_details, q1, q2, q3, q4, code_of_conduct,
-                               first_name, middle_name, last_name, 
-                               preferred_name):
+def handle_update_applications(
+        action, email, phone_number, school, major, degree_type,
+        graduation_year, github, linkedin, resume, latino, race, gender,
+        shirt_size, need_transportation, bus_from, airport,
+        dietary_restrictions, diet_choices, diet_details, q1, q2, q3, q4,
+        code_of_conduct, first_name, middle_name, last_name, preferred_name):
     """Handles application updates by updating the applications table in 
     the database with application form info, updating status table if 
     application is submitted."""
@@ -143,16 +139,19 @@ def handle_update_applications(action, email, phone_number, school, major,
         code_of_conduct = VALUES(code_of_conduct)
         """
         latino = (latino == "True")
-        in_state = (need_transportation == "insideCA" or need_transportation == "no")
-        transportation = (need_transportation == "insideCA" or need_transportation == "outsideCA")
+        in_state = (need_transportation == "insideCA"
+                    or need_transportation == "no")
+        transportation = (need_transportation == "insideCA"
+                          or need_transportation == "outsideCA")
         diet_rest = (dietary_restrictions == "True")
         code_of_conduct = (code_of_conduct == "True")
         with flask.g.pymysql_db.cursor() as cursor:
             cursor.execute(query, [
-                user_id, app_year.year + "0000", phone_number, school, major, degree_type,
-                graduation_year, github, linkedin, resume, latino, gender,  
-                shirt_size, transportation, in_state, bus_from, airport,
-                diet_rest, diet_details, q1, q2, q3, q4, code_of_conduct
+                user_id, app_year.year + "0000", phone_number, school, major,
+                degree_type, graduation_year, github, linkedin, resume, latino,
+                gender, shirt_size, transportation, in_state, bus_from,
+                airport, diet_rest, diet_details, q1, q2, q3, q4,
+                code_of_conduct
             ])
         # Update members table with name info from application.
         query = """
@@ -161,8 +160,9 @@ def handle_update_applications(action, email, phone_number, school, major,
         WHERE user_id=%s 
         """
         with flask.g.pymysql_db.cursor() as cursor:
-            cursor.execute(query, [first_name, middle_name, last_name, 
-                preferred_name, user_id])
+            cursor.execute(query, [
+                first_name, middle_name, last_name, preferred_name, user_id
+            ])
         # Delete existing rows in diet table for this user.
         query = """
         DELETE FROM diet
@@ -208,8 +208,10 @@ def handle_update_applications(action, email, phone_number, school, major,
             return (False,
                     "Please fill out all required fields before submitting.")
         if not code_of_conduct:
-            return (False,
-                    "You must accept the MLH code of conduct and data sharing provision.")
+            return (
+                False,
+                "You must accept the MLH code of conduct and data sharing provision."
+            )
         else:
             # Update status
             pass

@@ -5,6 +5,7 @@ from hacktech import auth_utils
 import os
 import json
 
+
 @blueprint.route("/judge")
 def judge():
     if not auth_utils.check_login() or not auth_utils.check_admin(
@@ -21,7 +22,8 @@ def view_application(user_id):
         return flask.redirect(flask.url_for("home"))
     info = helpers.get_application(user_id)
     status = helpers.get_status(user_id)
-    return flask.render_template("view_application.html", info=info, status=status)
+    return flask.render_template(
+        "view_application.html", info=info, status=status)
 
 
 @blueprint.route("/stats")
@@ -30,7 +32,8 @@ def show_stats():
             flask.session['username']):
         return flask.redirect(flask.url_for("home"))
     default_stats = helpers.get_current_stats()
-    return flask.render_template("stats.html", raw_data=json.dumps(default_stats))
+    return flask.render_template(
+        "stats.html", raw_data=json.dumps(default_stats))
 
 
 @blueprint.route('/resume/<filename>', methods=['GET'])
@@ -48,6 +51,8 @@ def update_status(user_id):
     if not auth_utils.check_login() or not auth_utils.check_admin(
             flask.session['username']):
         return flask.redirect(flask.url_for("home"))
-    helpers.update_status(user_id, flask.request.form.get('new_status'), flask.request.form.get('reimbursement_amount'))
+    helpers.update_status(user_id,
+                          flask.request.form.get('new_status'),
+                          flask.request.form.get('reimbursement_amount'))
     flask.flash('Status has been updated')
     return flask.redirect(flask.url_for('judging.judge'))

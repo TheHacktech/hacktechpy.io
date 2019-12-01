@@ -10,7 +10,10 @@ def applications():
     if not auth_utils.check_login():
         return auth_utils.login_redirect()
     # TODO: pre-fill with already existing information!
-    return flask.render_template("applications.html", schools = helpers.get_schools(), majors = helpers.get_majors())
+    return flask.render_template(
+        "applications.html",
+        schools=helpers.get_schools(),
+        majors=helpers.get_majors())
 
 
 @blueprint.route("/applications/rsvp")
@@ -80,11 +83,15 @@ def update_applications():
         resume_name = secure_filename(resume_file.filename)
         resumes = os.path.join(flask.current_app.root_path,
                                flask.current_app.config['RESUMES'])
-        resume_file.save(os.path.join(resumes, secure_filename(str(helpers.get_user_id(email))+".pdf")))
-        resume = secure_filename(str(helpers.get_user_id(email))+".pdf")
+        resume_file.save(
+            os.path.join(resumes,
+                         secure_filename(
+                             str(helpers.get_user_id(email)) + ".pdf")))
+        resume = secure_filename(str(helpers.get_user_id(email)) + ".pdf")
         #os.rename(os.path.join(resumes, resume_name), os.path.join(resumes, resume))
     elif action == 'Submit':
-        flask.flash('Please make sure your resume is a PDF file less than 500 KB.')
+        flask.flash(
+            'Please make sure your resume is a PDF file less than 500 KB.')
         return flask.redirect(flask.url_for("applications.applications"))
 
     latino = flask.request.form.get("latino", None)

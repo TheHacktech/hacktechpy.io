@@ -2,6 +2,7 @@ import flask
 import pymysql.cursors
 from hacktech import app_year
 
+
 def get_application(user_id):
     """
     Returns the application information for a given user_id
@@ -37,10 +38,13 @@ def get_application(user_id):
     race_info = [x['race_type'] for x in race_info_dict]
     result['race'] = race_info
     result['resume_url'] = generate_resume_url(result['resume'])
-    print(result)
     return result
 
+
 def get_status(user_id):
+    """
+    Using the user_id, returns the status and reimbursement amount for a user
+    """
     query = """
     SELECT status, reimbursement_amt FROM users NATURAL JOIN status NATURAL JOIN applications WHERE
     user_id = %s AND application_year = %s
@@ -51,10 +55,15 @@ def get_status(user_id):
         result = cursor.fetchone()
     return result
 
+
 def generate_resume_url(resume_name):
+    """
+    Given a resume_name, generates the resume url
+    """
     if resume_name is not None:
         return flask.url_for("judging.uploaded_file", filename=resume_name)
     return ""
+
 
 def get_all_application_links():
     """
@@ -75,7 +84,11 @@ def get_all_application_links():
             "judging.view_application", user_id=i['user_id'], _external=True)
     return result
 
+
 def get_current_stats():
+    """
+    Returns some statistics from the db. 
+    """
     stats = {}
     query = """
     SELECT status, COUNT(*) FROM status NATURAL JOIN 
@@ -85,7 +98,10 @@ def get_current_stats():
     with flask.g.pymysql_db.cursor() as cursor:
         cursor.execute(query, [app_year.year])
         res = cursor.fetchall()
-    cats = ["shirt_size", "school", "major", "degree_type", "graduation_year", "in_state", "bus_from"]
+    cats = [
+        "shirt_size", "school", "major", "degree_type", "graduation_year",
+        "in_state", "bus_from"
+    ]
     ### TODO: SELECT ONLY THE CURRENT YEAR!!!!
     for cat in cats:
         query = """
@@ -93,7 +109,7 @@ def get_current_stats():
         GROUP BY {0}
         """.format(cat)
         with flask.g.pymysql_db.cursor() as cursor:
-            cursor.execute(query)#, [app_year.year])
+            cursor.execute(query)  #, [app_year.year])
             res = cursor.fetchall()
         stats[cat] = reorder_stat(res, cat)
 
@@ -103,7 +119,7 @@ def get_current_stats():
     with flask.g.pymysql_db.cursor() as cursor:
         cursor.execute(query)
         res = cursor.fetchall()
-    stats['diet'] =  reorder_stat(res, "diet_restrictions")
+    stats['diet'] = reorder_stat(res, "diet_restrictions")
 
     query = """
     SELECT race_type, COUNT(*) FROM race GROUP BY race_type
@@ -111,18 +127,23 @@ def get_current_stats():
     with flask.g.pymysql_db.cursor() as cursor:
         cursor.execute(query)
         res = cursor.fetchall()
-    stats['race'] =  reorder_stat(res, "race_type")
+    stats['race'] = reorder_stat(res, "race_type")
 
     return stats
 
 
 def reorder_stat(res, col_name):
+    """
+    Redordering such that we have a label (ie, XS, S, M, L, XL) 
+    as the key and the count as the val. 
+    """
     labels = []
     data = []
     for i in res:
         labels.append(str(i[col_name]))
         data.append(i['COUNT(*)'])
-    return {"labels":labels, "data":data}
+    return {"labels": labels, "data": data}
+
 
 def update_status(user_id, new_status, reimbursement_amount):
     """
