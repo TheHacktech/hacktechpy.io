@@ -28,7 +28,8 @@ def create_account_submit():
         email, password, password2, first_name, middle_name, preferred_name,
         last_name)
     if success:
-        flask.flash("An email has been sent! Please confirm your account.")
+        flask.flash("You've successfully created an account!")
+        flask.session['username'] = email
     else:
         flask.flash(error_msg)
         return flask.redirect(flask.url_for("account.create_account"))

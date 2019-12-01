@@ -96,8 +96,9 @@ def get_current_stats():
     GROUP BY status
     """
     with flask.g.pymysql_db.cursor() as cursor:
-        cursor.execute(query, [app_year.year])
+        cursor.execute(query, [app_year.year + "0000"])
         res = cursor.fetchall()
+    stats["status"] = reorder_stat(res, "status")
     cats = [
         "shirt_size", "school", "major", "degree_type", "graduation_year",
         "in_state", "bus_from"
@@ -105,27 +106,31 @@ def get_current_stats():
     ### TODO: SELECT ONLY THE CURRENT YEAR!!!!
     for cat in cats:
         query = """
-        SELECT {0}, COUNT(*) from applications 
+        SELECT {0}, COUNT(*) from applications WHERE application_year = %s
         GROUP BY {0}
         """.format(cat)
         with flask.g.pymysql_db.cursor() as cursor:
-            cursor.execute(query)  #, [app_year.year])
+            cursor.execute(query, [app_year.year + "0000"])
             res = cursor.fetchall()
         stats[cat] = reorder_stat(res, cat)
 
     query = """
-    SELECT diet_restrictions, COUNT(*) FROM diet GROUP BY diet_restrictions
+    SELECT diet_restrictions, COUNT(*) FROM diet NATURAL JOIN applications 
+    WHERE application_year = %s
+    GROUP BY diet_restrictions
     """
     with flask.g.pymysql_db.cursor() as cursor:
-        cursor.execute(query)
+        cursor.execute(query, [app_year.year + "0000"])
         res = cursor.fetchall()
     stats['diet'] = reorder_stat(res, "diet_restrictions")
 
     query = """
-    SELECT race_type, COUNT(*) FROM race GROUP BY race_type
+    SELECT race_type, COUNT(*) FROM race NATURAL JOIN applications 
+    WHERE application_year = %s
+    GROUP BY race_type
     """
     with flask.g.pymysql_db.cursor() as cursor:
-        cursor.execute(query)
+        cursor.execute(query, [app_year.year + "0000"])
         res = cursor.fetchall()
     stats['race'] = reorder_stat(res, "race_type")
 
@@ -139,9 +144,16 @@ def reorder_stat(res, col_name):
     """
     labels = []
     data = []
+    empty_count = 0
     for i in res:
+        if str(i[col_name]) == "NULL" or i[col_name] == None or str(i[col_name]) == "":
+            empty_count += i['COUNT(*)']
+            continue
         labels.append(str(i[col_name]))
         data.append(i['COUNT(*)'])
+    if empty_count > 0:
+        labels.append("EMPTY")
+        data.append(empty_count)
     return {"labels": labels, "data": data}
 
 

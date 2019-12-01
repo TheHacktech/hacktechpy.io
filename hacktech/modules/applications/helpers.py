@@ -7,7 +7,7 @@ import os
 
 def get_schools():
     schools = []
-    with open("hacktech/modules/applications/schools.txt") as f:
+    with open("/home/hacktech/hacktechpy.io/hacktech/modules/applications/schools.txt") as f:
         for line in f:
             schools.append(line)
     return schools

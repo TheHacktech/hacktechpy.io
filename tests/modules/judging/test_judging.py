@@ -52,7 +52,5 @@ def test_judging_helpers(client):
     assert app['preferred_name'] == 'Julietto-sama'
     assert app['school'] == 'Caltech'
 
-    email = "jmu@caltech.edu"
-    assert not app_helpers.check_accepted(email, email)
-
-    helpers.update_status(email, "Accepted")
+    email = "11111@caltech.edu"
+    helpers.update_status(email, "Accepted", 0)

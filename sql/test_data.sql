@@ -2,11 +2,11 @@
 
 INSERT INTO users(user_id, email, password_hash, admin) VALUES
     (1, "wingfrillie@gmail.com", 111, True),
-    (2, "11111@caltech.edu", 111, False),
-    (3, "22222@caltech.edu", 111, False),
-    (4, "33333@caltech.edu", 111, False), 
-    (5, "44444@caltech.edu", 111, False), 
-    (6, "55555@caltech.edu", 111, False);
+    (2, "1", 111, False),
+    (3, "2", 111, False),
+    (4, "3", 111, False), 
+    (5, "4", 111, False), 
+    (6, "5", 111, False);
 
 INSERT INTO members(user_id, last_name, first_name, preferred_name) VALUES
     (1, "Mo", "Ziyan", "Momo"), 

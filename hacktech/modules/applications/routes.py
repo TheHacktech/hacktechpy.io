@@ -68,6 +68,13 @@ def update_applications():
     graduation_year = flask.request.form.get("graduationYear", None)
     github = flask.request.form.get("github", None)
     linkedin = flask.request.form.get("linkedin", None)
+    
+    # Special cases for major and school not in options
+    if school == "N/A" or not school:
+        school = flask.request.form.get("school_opt", None)
+    if major == "N/A" or not major:
+        school = flask.request.form.get("major_opt", None)
+        
     # Check if the request has a resume attached
     resume = ""
     resume_file = None
@@ -88,7 +95,6 @@ def update_applications():
                          secure_filename(
                              str(helpers.get_user_id(email)) + ".pdf")))
         resume = secure_filename(str(helpers.get_user_id(email)) + ".pdf")
-        #os.rename(os.path.join(resumes, resume_name), os.path.join(resumes, resume))
     elif action == 'Submit':
         flask.flash(
             'Please make sure your resume is a PDF file less than 500 KB.')
@@ -111,6 +117,7 @@ def update_applications():
     q4 = flask.request.form.get("Q4", None)
     code_of_conduct = flask.request.form.get("codeOfConduct", None)
 
+    
     success, error_msg = helpers.handle_update_applications(
         action, email, phone_number, school, major, degree_type,
         graduation_year, github, linkedin, resume, latino, race, gender,
