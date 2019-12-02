@@ -63,7 +63,6 @@ a {
   transition: all 0.5s;
 
   transition: opacity 0.5s;
-  opacity: 0.9;
   color: #009dee;
 }
 
@@ -381,6 +380,7 @@ input[type=checkbox], input[type=radio] {
 }
 
 #navbar a {
+  font-size: 16px;
   color: #fff;
   background-color: transparent;
 }
