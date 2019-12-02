@@ -608,7 +608,6 @@ input[type=checkbox], input[type=radio] {
 
   /* Make sure the footer is fixed and at the bottom of the page. */
   #footer {
-    position: fixed;
     bottom: 0;
   }
 

@@ -218,6 +218,7 @@ body {
     max-height: 100px;
     margin: 20px 20px;
     opacity: 0.55;
+    max-width: 100%;
     -webkit-transition-duration: .5s;
     -moz-transition-duration: .5s;
     -o-transition-duration: .5s;
