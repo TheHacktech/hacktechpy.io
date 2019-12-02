@@ -28,11 +28,12 @@
 
 		    {% else %}
 		    <li><a class = "sliding" href=" {{ url_for('applications.applications') }} ">Application</a></li>
+                    <li><a class = "sliding" href=" {{ url_for('applications.status') }} ">Status</a></li>
 		    {% endif %}
                     <li>
-                        <a href="{{ url_for('applications.status') }}" class="sliding">
-                            Greetings, {{ session['username'] }}
-                        </a>
+                        <a class = "sliding" href=" {{ url_for('applications.status') }} ">
+			    Greetings, {{ session['username'] }}
+			</a>
                     </li>
                     <li>
                         <form action="{{ url_for('auth.logout') }}">

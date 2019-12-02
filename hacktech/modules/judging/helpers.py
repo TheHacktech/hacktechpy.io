@@ -134,8 +134,23 @@ def get_current_stats():
         res = cursor.fetchall()
     stats['race'] = reorder_stat(res, "race_type")
 
-    return stats
+    query = """
+    SELECT COUNT(*) FROM applications
+    WHERE application_year = %s
+    """
+    with flask.g.pymysql_db.cursor() as cursor:
+        cursor.execute(query, [app_year.year + "0000"])
+        res = cursor.fetchall()
+    stats['total_applications'] = res[0]['COUNT(*)']
 
+    query = """
+    SELECT COUNT(*) FROM users
+    """
+    with flask.g.pymysql_db.cursor() as cursor:
+        cursor.execute(query)
+        res = cursor.fetchall()
+    stats['total_users'] = res[0]['COUNT(*)']
+    return stats
 
 def reorder_stat(res, col_name):
     """

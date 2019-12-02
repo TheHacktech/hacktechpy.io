@@ -72,23 +72,32 @@
     new_chart(ctx, "Race", data.race.data, data.race.labels);
     var ctx = document.getElementById('c2').getContext('2d');
     new_chart(ctx, "Diet", data.diet.data, data.diet.labels);
+    document.getElementById("users_info").textContent += String(data.total_users);
+    document.getElementById("application_info").textContent += String(data.total_applications);
 
   </script>
 {% endblock %}
 {% block page %}
-
+  <div class="container">
   <h2 class="text-center">Statistics</h2>
+
+
+  <p id="users_info"> Total users on website: </p>
+
+  <p id="application_info"> Total applications this year: </p>
+
   {% for i in ['0', '1', '2'] %}
   <div id="observe">
 	  <canvas id={{"c" + i}} width="100" height="100"></canvas>
   </div>
   {%endfor%}
   </hr>
+  
   <h4 class="text-center">Demographics</h4>
   {% for i in ['3', '4', '5', '6', '7', '8', '9'] %}
   <div id="observe">
           <canvas id={{"c" + i}} width="100" height="100"></canvas>
   </div>
-
   {% endfor %}
-{% endblock %}
+  </div>
+  {% endblock %}

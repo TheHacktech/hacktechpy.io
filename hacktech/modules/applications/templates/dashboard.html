@@ -25,6 +25,8 @@
 
 {% elif status.status == "Submitted" %}
 <p class="text-center"> We've received your application and it is under review!</p>
+{% elif status.status == "Rejected" %}
+<p class="text-center"> Sorry we couldn't offer you a spot this year :( </p>
 {% else %}
 <p class="text-center"> What are you waiting for?? <a href = {{url_for('applications.applications')}}> Fill up your application here! </a> </p>
 {% endif %}
