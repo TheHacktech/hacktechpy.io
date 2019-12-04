@@ -31,8 +31,8 @@
 	  <input type="text" class="form-control" id="preferredName" name="preferredName">
         </div>
         <div class="form-group col-md-6">
-          <label for="phoneNumber">Phone Number *</label>
-	  <input type="text" class="form-control" id="phoneNumber" name="phoneNumber">
+		<label for="phoneNumber">Phone Number * </label>
+		<input type="text" class="form-control" id="phoneNumber" name="phoneNumber" value="{{form_info.phone}}">
         </div>
       </div>
  
@@ -42,7 +42,7 @@
           <select class="form-control" name="school">
 	    <option value="">Choose...</option>
             {% for school in schools %}
-	      <option value={{school}}>{{school}}</option>
+	      <option {%if form_info.school == school %} selected {%endif%} value="{{school}}">{{school}}</option>
             {%endfor%}	
 	  </select>
         </div>
@@ -61,7 +61,7 @@
         <select class="form-control" name="major">
           <option value="">Choose...</option>
           {% for major in majors %}
-            <option value={{major}}>{{major}}</option>
+	  <option {%if form_info.major == major %} selected {%endif%} value="{{major}}">{{major}}</option>
           {%endfor%}
         </select>
 	</div>
@@ -80,21 +80,21 @@
           <label for="degreeType">What is your year of study? *  </label>
 	  <select class="form-control" name="degreeType">
             <option value="">Choose...</option>
-            <option value="High School">High School</option>
-            <option value="Undergraduate">Undergraduate</option>
-            <option value="Graduate">Graduate</option>
-            <option value="Postdoc">Postdoc</option>
+            <option {%if form_info.degree_type == "High School" %} selected {%endif%} value="High School">High School</option>
+            <option {%if form_info.degree_type == "Undergraduate" %} selected {%endif%} value="Undergraduate">Undergraduate</option>
+            <option {%if form_info.degree_type == "Graduate" %} selected {%endif%} value="Graduate">Graduate</option>
+            <option {%if form_info.degree_type == "Postdoc" %} selected {%endif%} value="Postdoc">Postdoc</option>
           </select>
 	</div>
 	<div class="form-group col-md-6">
           <label for="graduationYear">What is your expected graduation date? *</label>
           <select class="form-control" name="graduationYear">
 	    <option value="">Choose...</option>
-            <option value="2020">2020</option>
-            <option value="2021">2021</option>
-            <option value="2022">2022</option>
-            <option value="2023">2023</option>
-            <option value="2024+">2024+</option>
+            <option {%if form_info.graduation_year == "2020" %} selected {%endif%} value="2020">2020</option>
+            <option {%if form_info.graduation_year == "2021" %} selected {%endif%} value="2021">2021</option>
+            <option {%if form_info.graduation_year == "2022" %} selected {%endif%} value="2022">2022</option>
+            <option {%if form_info.graduation_year == "2023" %} selected {%endif%} value="2023">2023</option>
+            <option {%if form_info.graduation_year == "2024+" %} selected {%endif%} value="2024+">2024+</option>
           </select>
 	</div>
       </div>
@@ -104,11 +104,11 @@
         <label for="shirtSize">What is your shirt size? *</label>
           <select class="form-control" name="shirtSize">
             <option value="">Choose...</option>
-            <option value="XS">Extra Small</option>
-            <option value="S">Small</option>
-            <option value="M">Medium</option>
-            <option value="L">Large</option>
-            <option value="XL">Extra Large</option>
+            <option {%if form_info.shirt_size == "XS" %} selected {%endif%} value="XS">Extra Small</option>
+            <option {%if form_info.shirt_size == "S" %} selected {%endif%} value="S">Small</option>
+            <option {%if form_info.shirt_size == "M" %} selected {%endif%} value="M">Medium</option>
+            <option {%if form_info.shirt_size == "L" %} selected {%endif%} value="L">Large</option>
+            <option {%if form_info.shirt_size == "XL" %} selected {%endif%} value="XL">Extra Large</option>
          </select>
         </div>
       </div>
@@ -131,18 +131,18 @@
           <label for="busFrom">If you are traveling from CA, which of the following schools would you prefer to bus from? Please choose the closest school. </label>
           <select class="form-control" name="busFrom">
             <option value="N/A">Not Applicable</option>
-            <option value="UCLA">UCLA</option>
-            <option value="UC Berkeley">UC Berkeley</option>
-            <option value="Stanford">Stanford</option>
-            <option value="UCSD">UCSD</option>
-            <option value="USC">USC</option>
+            <option {%if form_info.bus_from == "UCLA" %} selected {%endif%} value="UCLA">UCLA</option>
+            <option {%if form_info.bus_from == "UC Berkeley" %} selected {%endif%} value="UC Berkeley">UC Berkeley</option>
+            <option {%if form_info.bus_from == "Stanford" %} selected {%endif%} value="Stanford">Stanford</option>
+            <option {%if form_info.bus_from == "UCSD" %} selected {%endif%} value="UCSD">UCSD</option>
+            <option {%if form_info.bus_from == "USC" %} selected {%endif%} value="USC">USC</option>
            </select>
         </div>
       </div>
 
      <div class="form-group">
         <label for="airport">We will be able to provide travel reimbursement on a case-by-case basis only. If you plan on flying, which airport will you be traveling from?</label>
-        <input type="text" class="form-control" id="airport" name="airport">
+	<input type="text" class="form-control" id="airport" name="airport" value="{{form_info.airport}}">
       </div>
 
       <div class="form-inline">
@@ -192,36 +192,36 @@
 
      <div class="form-group">
         <label for="dietaryRestrictionsDetail">Please specify any details about your dietary restrictions: </label>
-     	<textarea class="form-control" id="dietaryRestrictionsDetail" name="dietaryRestrictionsDetail" rows="2"></textarea>
+	<textarea class="form-control" id="dietaryRestrictionsDetail" name="dietaryRestrictionsDetail" rows="2">{{form_info.diet_rest_detail}}</textarea>
      </div>
 
      <hr>
 
      <div class="form-group">
         <label for="Q1">Why would you like to come to Hacktech 2020? *</label>
-	<textarea  class="form-control" id="Q1" name="Q1" rows="5"></textarea>
+	<textarea  class="form-control" id="Q1" name="Q1" rows="5">{{form_info.q1}}</textarea>
      </div>
 
      <div class="form-group">
         <label for="Q2">You just stepped off a time machine 20 years into the future. What is the first thing that catches your eye? *</label>
-	<textarea  class="form-control" id="Q2" name="Q2" rows="5"></textarea>
+	<textarea  class="form-control" id="Q2" name="Q2" rows="5">{{form_info.q2}}</textarea>
      </div>
 
      <div class="form-group">
         <label for="Q3">The theme for Hacktech this year is "20/20 Vision: Connecting to the Future". Write a short haiku related to this theme. *</label>
-	<textarea  class="form-control" id="Q3" name="Q3" rows="5"></textarea>
+	<textarea  class="form-control" id="Q3" name="Q3" rows="5">{{form_info.q3}}</textarea>
      </div>
 
      <div class="form-group">
         <label for="Q4">We want to improve Hacktech -- what would you like to see at Hacktech this year? Is there anything else you want us to know about you? *</label>
-	<textarea  class="form-control" id="Q4" name="Q4" rows="5"></textarea>
+	<textarea  class="form-control" id="Q4" name="Q4" rows="5">{{form_info.q4}}</textarea>
      </div>
 
       <div class="form-group">
           <label for="github">What is your GitHub?</label>
           <div class="input-group">
    	    <span class="input-group-addon" id="github-url">https://github.com/</span>
-  	  <input type="text" class="form-control" id="github" name="github" aria-describedby="github-url">
+	    <input type="text" class="form-control" id="github" name="github" aria-describedby="github-url" value="{{form_info.github}}">
         </div>
       </div>
 
@@ -229,13 +229,13 @@
         <label for="linkedin">What is your LinkedIn?</label>
         <div class="input-group">
    	    <span class="input-group-addon" id="linkedin-url">https://linkedin.com/in/</span>
-          <input type="text" class="form-control" id="linkedin" name="linkedin" aria-describedby="linkedin-url">
+	    <input type="text" class="form-control" id="linkedin" name="linkedin" aria-describedby="linkedin-url" value="{{form_info.linkedin}}">
         </div>
       </div>
 
       <div class="form-group">
         <label for="resume">Please upload your resume in PDF format, with naming convention: lastname_firstname.pdf (less than 500 KB only) *</label>
-        <input type="file" class="form-control" id="resume" name="resume">
+	<input type="file" class="form-control" id="resume" name="resume">
       </div>
 
       <hr>	
@@ -289,10 +289,10 @@
         <div class="form-group">
           <label for="gender">What is your gender?</label>
           <select class="form-control" name="gender">
-            <option value="P">Prefer not to answer</option>
-            <option value="M">Male</option>
-            <option value="F">Female</option>
-            <option value="O">Other</option>
+            <option {%if form_info.gender == "P" %} selected {%endif%} value="P">Prefer not to answer</option>
+            <option {%if form_info.gender == "M" %} selected {%endif%} value="M">Male</option>
+            <option {%if form_info.gender == "F" %} selected {%endif%} value="F">Female</option>
+            <option {%if form_info.gender == "O" %} selected {%endif%} value="O">Other</option>
          </select>
         </div>
       </div>

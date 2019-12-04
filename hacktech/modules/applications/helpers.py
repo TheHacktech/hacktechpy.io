@@ -4,12 +4,11 @@ from hacktech import app_year
 import hacktech.modules.judging.helpers as judging_helpers
 import os
 
-
 def get_schools():
     schools = []
     with open("/home/hacktech/hacktechpy.io/hacktech/modules/applications/schools.txt") as f:
         for line in f:
-            schools.append(line)
+            schools.append(line.rstrip())
     return schools
 
 
@@ -52,7 +51,7 @@ def check_status(self_email, other_email):
     Using the user's email, check the user's status for the
     current year and return it.
     """
-    # If they aren't an admin or thye aren't themselves,
+    # If they aren't an admin or they aren't themselves,
     # then they shouldn't see status
     if not auth_utils.check_admin(self_email) and self_email != other_email:
         return ""
@@ -87,6 +86,43 @@ def get_user_id(email):
         return None
     return result['user_id']
 
+class FormInfo:
+    def __init__(self, application):
+        self.phone = application['phone']
+        self.school = application['school']
+        self.major = application['major']
+        self.degree_type = application['degree_type']
+        self.graduation_year = application['graduation_year']
+        self.github = application['github']
+        self.linkedin = application['linkedin']
+        self.resume = application['resume']
+        self.latino = application['latino']
+        self.gender = application['gender']
+        self.shirt_size = application['shirt_size']
+        self.transportation = application['transportation']
+        self.in_state = application['in_state']
+        self.bus_from = application['bus_from']
+        self.airport = application['airport']
+        self.diet_rest = application['diet_rest']
+        self.diet_rest_detail = application['diet_rest_detail']
+        self.q1 = application['q1']
+        self.q2 = application['q2']
+        self.q3 = application['q3']
+        self.q4 = application['q4']
+        self.code_of_conduct = application['code_of_conduct']
+
+def get_form_info(email):
+    """Gets all existing application form info from the database."""
+    user_id = get_user_id(email)
+    if not user_id:
+        return (False, "Invalid user ID. Please contact the organizers.")
+    query = """
+    SELECT * FROM applications WHERE user_id = %s AND application_year = %s
+    """
+    with flask.g.pymysql_db.cursor() as cursor:
+        cursor.execute(query, [user_id, app_year.year + "0000"])
+        result = cursor.fetchone()
+    return FormInfo(result)
 
 def handle_update_applications(
         action, email, phone_number, school, major, degree_type,

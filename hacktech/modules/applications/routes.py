@@ -9,11 +9,12 @@ from werkzeug.utils import secure_filename
 def applications():
     if not auth_utils.check_login():
         return auth_utils.login_redirect()
-    # TODO: pre-fill with already existing information!
+    email = flask.session['username']
     return flask.render_template(
         "applications.html",
         schools=helpers.get_schools(),
-        majors=helpers.get_majors())
+        majors=helpers.get_majors(),
+        form_info=helpers.get_form_info(email))
 
 
 @blueprint.route("/applications/rsvp")
