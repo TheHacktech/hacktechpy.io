@@ -13,50 +13,50 @@
       <div class="row">
         <div class="form-group col-md-4">
 	  <label for="firstName">First Name *</label>
-          <input type="text" class="form-control" id="firstName" name="firstName">
+	  <input type="text" class="form-control" id="firstName" name="firstName" value="{{form_info.first_name}}">
         </div>
         <div class="form-group col-md-4">
 	  <label for="middleName">Middle Name </label>
-          <input type="text" class="form-control" id="middleName" name="middleName">
+	  <input type="text" class="form-control" id="middleName" name="middleName" value="{{form_info.middle_name}}">
         </div>
         <div class="form-group col-md-4">
           <label for="lastName">Last Name *</label>
-          <input type="text" class="form-control" id="lastName" name="lastName">
+	  <input type="text" class="form-control" id="lastName" name="lastName" value="{{form_info.last_name}}">
         </div>
       </div>
 
       <div class="row">
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-12">
           <label for="preferredName">Preferred Name </label>
-	  <input type="text" class="form-control" id="preferredName" name="preferredName">
-        </div>
-        <div class="form-group col-md-6">
-		<label for="phoneNumber">Phone Number * </label>
-		<input type="text" class="form-control" id="phoneNumber" name="phoneNumber" value="{{form_info.phone}}">
+	  <input type="text" class="form-control" id="preferredName" name="preferredName" value="{{form_info.preferred_name}}">
         </div>
       </div>
- 
+
       <div class="row">
         <div class="form-group col-md-12">
+	  <label for="phoneNumber">Phone Number * </label>
+	  <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" value="{{form_info.phone}}">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-md-8">
           <label for="school">School *</label>
           <select class="form-control" name="school">
 	    <option value="">Choose...</option>
-            {% for school in schools %}
-	      <option {%if form_info.school == school %} selected {%endif%} value="{{school}}">{{school}}</option>
+	    {% for school in schools %}
+	    	<option {%if form_info.school == school %} selected {%endif%} value="{{school}}">{{school}}</option>
             {%endfor%}	
 	  </select>
         </div>
-      </div>
-
-      <div class="row">
-        <div class="form-group col-md-12">
+        <div class="form-group col-md-4">
 	  <label for="school">If your school wasn't listed, please type it here</label>
-	  <input type="text" class="form-control" name="school_opt">
+	  <input type="text" class="form-control" name="school_opt" value="{{form_info.school}}">
 	</div>
       </div>
 
       <div class="row">
-        <div class="form-group col-md-12">
+        <div class="form-group col-md-8">
         <label for="major">Major</label>
         <select class="form-control" name="major">
           <option value="">Choose...</option>
@@ -65,15 +65,11 @@
           {%endfor%}
         </select>
 	</div>
-      </div>
-
-      <div class="row">
-        <div class="form-group col-md-12">
+        <div class="form-group col-md-4">
           <label for="school">If your major wasn't listed, please type it here</label>
-          <input type="text" class="form-control" name="major_opt">
+	  <input type="text" class="form-control" name="major_opt" value="{{form_info.major}}">
         </div>
       </div>
-
 
       <div class="row">
 	<div class="form-group col-md-6">
@@ -119,9 +115,9 @@
           <label for="needTransportation">Will you need transportation to Hacktech 2020? *</label>
           <select class="form-control" name="needTransportation">
             <option value="">Choose...</option>
-            <option value="no">No, I've got it handled!</option>         
-            <option value="insideCA">Yes, I will be traveling from CA.</option>
-            <option value="outsideCA">Yes, I will be traveling from outside of CA.</option>
+            <option {%if form_info.transportation == False %} selected {%endif%} value="no">No, I've got it handled!</option>         
+            <option {%if form_info.transportation == True and form_info.in_state == True %} selected {%endif%} value="insideCA">Yes, I will be traveling from CA.</option>
+            <option {%if form_info.transportation == True and form_info.in_state == False %} selected {%endif%} value="outsideCA">Yes, I will be traveling from outside of CA.</option>
           </select>
         </div>
       </div>
@@ -150,8 +146,8 @@
           <label for="dietaryRestrictions">Do you have any dietary restrictions? *</label>
             <select class="form-control" name="dietaryRestrictions">
               <option value="">Choose...</option>
-	      <option value="True">Yes</option>
-              <option value="False">No</option>
+	      <option {%if form_info.diet_rest == True %} selected {%endif%} value="True">Yes</option>
+              <option {%if form_info.diet_reste == False %} selected {%endif%} value="False">No</option>
            </select>
        </div>
      </div>
@@ -160,32 +156,32 @@
 	<label for="dietaryRestrictionsChoices">What restrictions?</label>
           <div class="checkbox-inline">
 	    <label class="checkbox-inline">
-              <input type="checkbox" name="dietaryRestrictionsChoices" value="Vegetarian"> Vegetarian
+              <input type="checkbox" name="dietaryRestrictionsChoices" {%if "Vegetarian" in form_info.diet_types %} checked {%endif%} value="Vegetarian"> Vegetarian
 	    </label>
 	  </div>
           <div class="checkbox-inline">
 	    <label class="checkbox-inline">
-              <input type="checkbox" name="dietaryRestrictionsChoices" value="Vegan"> Vegan
+              <input type="checkbox" name="dietaryRestrictionsChoices" {%if "Vegan" in form_info.diet_types %} checked {%endif%} value="Vegan"> Vegan
 	    </label>
 	  </div>
           <div class="checkbox-inline">
 	    <label class="checkbox-inline">
-              <input type="checkbox" name="dietaryRestrictionsChoices" value="Gluten-free"> Gluten-free
+              <input type="checkbox" name="dietaryRestrictionsChoices" {%if "Gluten-free" in form_info.diet_types %} checked {%endif%} value="Gluten-free"> Gluten-free
 	    </label>
 	  </div>
           <div class="checkbox-inline">
 	    <label class="checkbox-inline">
-              <input type="checkbox" name="dietaryRestrictionsChoices" value="Kosher"> Kosher
+              <input type="checkbox" name="dietaryRestrictionsChoices" {%if "Kosher" in form_info.diet_types %} checked {%endif%} value="Kosher"> Kosher
 	    </label>
 	  </div>
           <div class="checkbox-inline">
 	    <label class="checkbox-inline">
-              <input type="checkbox" name="dietaryRestrictionsChoices" value="Halal"> Halal
+              <input type="checkbox" name="dietaryRestrictionsChoices" {%if "Halal" in form_info.diet_types %} checked {%endif%} value="Halal"> Halal
 	    </label>
 	  </div>
           <div class="checkbox-inline">
 	    <label class="checkbox-inline">
-              <input type="checkbox" name="dietaryRestrictionsChoices" value="Allergy"> Food Allergy (please specify below)
+              <input type="checkbox" name="dietaryRestrictionsChoices" {%if "Allergy" in form_info.diet_types %} checked {%endif%} value="Allergy"> Food Allergy (please specify below)
 	    </label>
 	  </div>
      </div>
@@ -245,7 +241,7 @@
          <label for="latino">Are you Hispanic or Latino?</label>
            <select class="form-control" name="latino">
              <option value="False">Prefer not to answer</option>
-             <option value="True">Yes</option>
+             <option {%if form_info.latino == True %} selected {%endif%} value="True">Yes</option>
              <option value="False">No</option>
           </select>
        </div>
@@ -255,32 +251,32 @@
 	<label for="race">What is your race or ethnicity?  </label> 
         <div class="checkbox-inline">
 	    <label class="checkbox-inline">
-              <input type="checkbox" name="race" value="Asian"> Asian
+              <input type="checkbox" name="race" {%if "Asian" in form_info.race_types %} checked {%endif%} value="Asian"> Asian
 	    </label>
 	  </div>
 	  <div class="checkbox-inline">
 	    <label class="checkbox-inline">
-              <input type="checkbox" name="race" value="Black"> Black/African
+              <input type="checkbox" name="race" {%if "Black" in form_info.race_types %} checked {%endif%} value="Black"> Black/African
 	    </label>
 	  </div>
 	  <div class="checkbox-inline">
 	    <label class="checkbox-inline">
-              <input type="checkbox" name="race" value="Caucasian"> Caucasian
+              <input type="checkbox" name="race" {%if "Caucasian" in form_info.race_types %} checked {%endif%} value="Caucasian"> Caucasian
 	    </label>
 	  </div>
 	  <div class="checkbox-inline">
 	    <label class="checkbox-inline">
-              <input type="checkbox" name="race" value="Latino"> Hispanic/Latinx
+              <input type="checkbox" name="race" {%if "Latino" in form_info.race_types %} checked {%endif%} value="Latino"> Hispanic/Latinx
 	    </label>
 	  </div>
 	  <div class="checkbox-inline">
 	    <label class="checkbox-inline">
-              <input type="checkbox" name="race" value="Native American"> Native American
+              <input type="checkbox" name="race" {%if "Native American" in form_info.race_types %} checked {%endif%} value="Native American"> Native American
 	    </label>
 	  </div>
 	  <div class="checkbox-inline">
 	    <label class="checkbox-inline">
-              <input type="checkbox" name="race" value="Other"> Other
+              <input type="checkbox" name="race" {%if "Other" in form_info.race_types %} checked {%endif%} value="Other"> Other
 	    </label>
 	  </div>
       </div>
@@ -303,7 +299,7 @@
 	     <label for="codeOfConduct">I've read and understood the <a href="static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH code of conduct</a> and the <a href="github.com/MLH/mlh-policies/blob/master/data-sharing.md">MLH data sharing provision</a>. *</label>
           <select class="form-control" name="codeOfConduct">
             <option value="">Choose...</option>
-	    <option value="True">Yes</option>
+	    <option {%if form_info.code_of_conduct == True %} selected {%endif%} value="True">Yes</option>
             <option value="False">No</option>
          </select>
         </div>

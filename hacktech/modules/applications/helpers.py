@@ -87,7 +87,11 @@ def get_user_id(email):
     return result['user_id']
 
 class FormInfo:
-    def __init__(self, application):
+    def __init__(self, application, member, diet, race):
+        self.first_name = member['first_name']
+        self.middle_name = member['middle_name']
+        self.last_name = member['last_name']
+        self.preferred_name = member['preferred_name']
         self.phone = application['phone']
         self.school = application['school']
         self.major = application['major']
@@ -110,6 +114,8 @@ class FormInfo:
         self.q3 = application['q3']
         self.q4 = application['q4']
         self.code_of_conduct = application['code_of_conduct']
+        self.diet_types = [entry['diet_restrictions'] for entry in diet]
+        self.race_types = [entry['race_type'] for entry in race]
 
 def get_form_info(email):
     """Gets all existing application form info from the database."""
@@ -121,8 +127,26 @@ def get_form_info(email):
     """
     with flask.g.pymysql_db.cursor() as cursor:
         cursor.execute(query, [user_id, app_year.year + "0000"])
-        result = cursor.fetchone()
-    return FormInfo(result)
+        application = cursor.fetchone()
+    query = """
+    SELECT * FROM members WHERE user_id = %s
+    """
+    with flask.g.pymysql_db.cursor() as cursor:
+        cursor.execute(query, [user_id])
+        member = cursor.fetchone()
+    query = """
+    SELECT * FROM diet WHERE user_id = %s
+    """
+    with flask.g.pymysql_db.cursor() as cursor:
+        cursor.execute(query, [user_id])
+        diet = cursor.fetchall()
+    query = """
+    SELECT * FROM race WHERE user_id = %s
+    """
+    with flask.g.pymysql_db.cursor() as cursor:
+        cursor.execute(query, [user_id])
+        race = cursor.fetchall()
+    return FormInfo(application, member, diet, race)
 
 def handle_update_applications(
         action, email, phone_number, school, major, degree_type,
