@@ -24,12 +24,15 @@ def get_majors():
 
 def check_accepted(self_email, other_email):
     status = check_status(self_email, other_email)
-    return "Accepted" == status['status'] or "Declined" == status['status'] or "RSVPed" == status['status']
+    return "Accepted" == status['status'] or "Declined" == status['status'] \
+            or "RSVPed" == status['status']
 
 
 def check_submitted(self_email, other_email):
     status = check_status(self_email, other_email)
-    return "Submitted" == status['status'] or "Accepted" == status['status'] or "Declined" == status['status'] or "RSVPed" == status['status']
+    return "Submitted" == status['status'] or "Accepted" == status['status'] \
+            or "Declined" == status['status'] or "RSVPed" == status['status'] \
+            or "Rejected" == status['status']
 
 ALLOWED_EXTENSIONS = set(['pdf'])
 
@@ -92,31 +95,31 @@ def get_user_id(email):
 
 class FormInfo:
     def __init__(self, application, member, diet, race):
-        self.first_name = member['first_name']
-        self.middle_name = member['middle_name']
-        self.last_name = member['last_name']
-        self.preferred_name = member['preferred_name']
-        self.phone = application['phone']
-        self.school = application['school']
-        self.major = application['major']
-        self.degree_type = application['degree_type']
-        self.graduation_year = application['graduation_year']
-        self.github = application['github']
-        self.linkedin = application['linkedin']
-        self.resume = application['resume']
-        self.latino = application['latino']
-        self.gender = application['gender']
-        self.shirt_size = application['shirt_size']
+        self.first_name = member['first_name'] or ''
+        self.middle_name = member['middle_name'] or ''
+        self.last_name = member['last_name'] or ''
+        self.preferred_name = member['preferred_name'] or ''
+        self.phone = application['phone'] or ''
+        self.school = application['school'] or ''
+        self.major = application['major'] or ''
+        self.degree_type = application['degree_type'] or ''
+        self.graduation_year = application['graduation_year'] or ''
+        self.github = application['github'] or ''
+        self.linkedin = application['linkedin'] or ''
+        self.resume = application['resume'] or ''
+        self.latino = application['latino'] or ''
+        self.gender = application['gender'] or ''
+        self.shirt_size = application['shirt_size'] or ''
         self.transportation = application['transportation']
         self.in_state = application['in_state']
-        self.bus_from = application['bus_from']
-        self.airport = application['airport']
+        self.bus_from = application['bus_from'] or ''
+        self.airport = application['airport'] or ''
         self.diet_rest = application['diet_rest']
-        self.diet_rest_detail = application['diet_rest_detail']
-        self.q1 = application['q1']
-        self.q2 = application['q2']
-        self.q3 = application['q3']
-        self.q4 = application['q4']
+        self.diet_rest_detail = application['diet_rest_detail'] or ''
+        self.q1 = application['q1'] or ''
+        self.q2 = application['q2'] or ''
+        self.q3 = application['q3'] or ''
+        self.q4 = application['q4'] or ''
         self.code_of_conduct = application['code_of_conduct']
         self.diet_types = [entry['diet_restrictions'] for entry in diet]
         self.race_types = [entry['race_type'] for entry in race]
