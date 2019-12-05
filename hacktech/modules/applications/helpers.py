@@ -27,6 +27,10 @@ def check_accepted(self_email, other_email):
     return "Accepted" == status['status'] or "Declined" == status['status'] or "RSVPed" == status['status']
 
 
+def check_submitted(self_email, other_email):
+    status = check_status(self_email, other_email)
+    return "Submitted" == status['status'] or "Accepted" == status['status'] or "Declined" == status['status'] or "RSVPed" == status['status']
+
 ALLOWED_EXTENSIONS = set(['pdf'])
 
 # 500 KB
@@ -69,9 +73,9 @@ def check_status(self_email, other_email):
 
 
 ### TODO: Move these into a utils/helpers/core file.
-def update_status(email, status):
+def update_status(email, status, reimbursement_amount):
     user_id = get_user_id(email)
-    judging_helpers.update_status(user_id, status)
+    judging_helpers.update_status(user_id, status, reimbursement_amount)
 
 
 def get_user_id(email):
@@ -273,6 +277,7 @@ def handle_update_applications(
                 "You must accept the MLH code of conduct and data sharing provision."
             )
         else:
-            # Update status
-            pass
-    return (True, "")
+            # Update status table for applicant
+            update_status(email, "Submitted", None)
+        return (True, "You have submitted your application successfully!")
+    return(True, "Your application has been updated!")

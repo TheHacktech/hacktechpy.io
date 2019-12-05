@@ -14,7 +14,8 @@ def applications():
         "applications.html",
         schools=helpers.get_schools(),
         majors=helpers.get_majors(),
-        form_info=helpers.get_form_info(email))
+        form_info=helpers.get_form_info(email),
+        submitted=(helpers.check_submitted(email, email)))
 
 
 @blueprint.route("/applications/rsvp")
@@ -119,15 +120,14 @@ def update_applications():
     code_of_conduct = flask.request.form.get("codeOfConduct", None)
 
     
-    success, error_msg = helpers.handle_update_applications(
+    success, msg = helpers.handle_update_applications(
         action, email, phone_number, school, major, degree_type,
         graduation_year, github, linkedin, resume, latino, race, gender,
         shirt_size, need_transportation, bus_from, airport,
         dietary_restrictions, diet_choices, diet_details, q1, q2, q3, q4,
         code_of_conduct, first_name, middle_name, last_name, preferred_name)
-    if success:
-        flask.flash("Your application has been updated!")
-    else:
-        flask.flash(error_msg)
+    # Display message from application update
+    flask.flash(msg)
+    if not success:
         return flask.redirect(flask.url_for("applications.applications"))
     return flask.redirect(flask.url_for("home"))

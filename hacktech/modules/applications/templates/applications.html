@@ -304,8 +304,9 @@
          </select>
         </div>
 
-      <button type="submit" class="btn btn-success" value="Save" name="Save">Save</button> 
-      <button type="submit" class="btn btn-success" value="Submit" name="Submit">Submit Application!</button>
+      <p><small>  Are you ready to submit? Once you submit you will not be able to make any changes to your applications. </small></p>
+      <button type="submit" class="btn btn-success" value="Save" name="Save" {%if submitted %} disabled {%endif%} >Save</button> 
+      <button type="submit" class="btn btn-success" value="Submit" name="Submit" {%if submitted %} disabled {%endif%} >Submit Application!</button>
     </form>
     </div>
 </div>
