@@ -231,7 +231,7 @@
 
       <div class="form-group">
         <label for="resume">Please upload your resume in PDF format, with naming convention: lastname_firstname.pdf (less than 500 KB only) *</label>
-	{%if form_info.resume_link != ""%}
+	{%if form_info.resume is not none and form_info.resume != ""%}
 	<label>Previous file: <a href={{form_info.resume_link}}> <u>{{form_info.resume_original_name}}</u> </a></label>
 	{%endif%}
 	<input type="file" class="form-control" id="resume" name="resume">
