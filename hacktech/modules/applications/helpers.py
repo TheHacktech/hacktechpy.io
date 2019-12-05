@@ -123,6 +123,8 @@ class FormInfo:
         self.code_of_conduct = application['code_of_conduct']
         self.diet_types = [entry['diet_restrictions'] for entry in diet]
         self.race_types = [entry['race_type'] for entry in race]
+        self.resume_link = judging_helpers.generate_resume_url(self.resume)
+        self.resume_original_name = "_".join(str(self.resume, encoding="utf-8").split("_")[:-1])+".pdf"
 
 def get_form_info(email):
     """Gets all existing application form info from the database."""

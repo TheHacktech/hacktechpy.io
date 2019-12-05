@@ -30,7 +30,6 @@ def rsvp():
 
 @blueprint.route("/applications/status")
 def status():
-    print("/applications/status")
     if not auth_utils.check_login():
         return auth_utils.login_redirect()
 
@@ -80,23 +79,22 @@ def update_applications():
     # Check if the request has a resume attached
     resume = ""
     resume_file = None
-    print("?????")
     if 'resume' in flask.request.files:
         resume_file = flask.request.files['resume']
-        print(resume_file)
         # Make sure user selected file
         if action == 'Submit' and resume_file.filename == '':
             flask.flash('Please upload your resume.')
             return flask.redirect(flask.url_for("applications.applications"))
     if resume_file and helpers.allowed_file(resume_file):
         resume_name = secure_filename(resume_file.filename)
-        resumes = os.path.join(flask.current_app.root_path,
+        resumes_root_path = os.path.join(flask.current_app.root_path,
                                flask.current_app.config['RESUMES'])
+        resume_name = resume_name.split(".")
+        resume_name = secure_filename(str(resume_name[:-1]) + '_' +str(helpers.get_user_id(email)) + ".pdf")
+
         resume_file.save(
-            os.path.join(resumes,
-                         secure_filename(
-                             str(helpers.get_user_id(email)) + ".pdf")))
-        resume = secure_filename(str(helpers.get_user_id(email)) + ".pdf")
+            os.path.join(resumes_root_path, resume_name))
+        print(resume_name)
     elif action == 'Submit':
         flask.flash(
             'Please make sure your resume is a PDF file less than 500 KB.')
@@ -122,7 +120,7 @@ def update_applications():
     
     success, msg = helpers.handle_update_applications(
         action, email, phone_number, school, major, degree_type,
-        graduation_year, github, linkedin, resume, latino, race, gender,
+        graduation_year, github, linkedin, resume_name, latino, race, gender,
         shirt_size, need_transportation, bus_from, airport,
         dietary_restrictions, diet_choices, diet_details, q1, q2, q3, q4,
         code_of_conduct, first_name, middle_name, last_name, preferred_name)
