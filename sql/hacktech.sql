@@ -27,6 +27,7 @@ CREATE TABLE members (
     preferred_name     VARCHAR(255) DEFAULT NULL,
     middle_name        VARCHAR(255) DEFAULT NULL,
     last_name          VARCHAR(255) NOT NULL,
+    date_of_birth      DATE NOT NULL,
     PRIMARY KEY (user_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );

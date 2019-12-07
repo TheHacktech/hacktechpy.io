@@ -232,6 +232,7 @@ def handle_update_applications(
         WHERE user_id=%s 
         """
         with flask.g.pymysql_db.cursor() as cursor:
+            print(last_name)
             cursor.execute(query, [
                 first_name, middle_name, last_name, preferred_name, user_id
             ])
@@ -289,3 +290,14 @@ def handle_update_applications(
             update_status(email, "Submitted", None)
         return (True, "You have submitted your application successfully!")
     return(True, "Your application has been updated!")
+
+def check_resume_exists(user_id):
+    query = """
+    SELECT resume FROM applications WHERE user_id = %s AND
+    application_year = %s
+    """
+    with flask.g.pymysql_db.cursor() as cursor:
+        cursor.execute(query, [user_id, app_year.year + "0000"])
+        res = cursor.fetchone()
+    print(res)
+    return None if res == None or res['resume'] == "" else res['resume']

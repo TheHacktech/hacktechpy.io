@@ -24,9 +24,11 @@
  * to include padding in that height.
  */
 html {
-  height: 100%;
+  min-height: 100%;
   margin: 0;
   padding: 0;
+  position: relative;
+  padding-bottom: 180px;
   box-sizing: border-box;
 }
 
@@ -39,8 +41,8 @@ body {
   font-family: "Roboto Condensed", sans-serif;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
-  position: relative;
   min-height: 100%;
+  padding-top: 50px;
 }
 
 /* Creates a dark orange hover effect on links. */
@@ -445,6 +447,8 @@ input[type=checkbox], input[type=radio] {
   color: #fff; 
   padding: 20px;
   margin-top: 20px;
+  position: absolute;
+  bottom: 0px;
 }
 #footer .contents {
     padding: 50px 13%; }

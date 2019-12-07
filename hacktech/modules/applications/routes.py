@@ -79,10 +79,13 @@ def update_applications():
     # Check if the request has a resume attached
     resume = ""
     resume_file = None
+    resume_name = ""
+    last_resume_name = helpers.check_resume_exists(helpers.get_user_id(email))
+    print(last_resume_name)
     if 'resume' in flask.request.files:
         resume_file = flask.request.files['resume']
         # Make sure user selected file
-        if action == 'Submit' and resume_file.filename == '':
+        if action == 'Submit' and resume_file.filename == '' and not last_resume_name:
             flask.flash('Please upload your resume.')
             return flask.redirect(flask.url_for("applications.applications"))
     if resume_file and helpers.allowed_file(resume_file):
@@ -94,12 +97,13 @@ def update_applications():
 
         resume_file.save(
             os.path.join(resumes_root_path, resume_name))
-        print(resume_name)
-    elif action == 'Submit':
+    elif action == 'Submit' and not last_resume_name:
         flask.flash(
             'Please make sure your resume is a PDF file less than 500 KB.')
         return flask.redirect(flask.url_for("applications.applications"))
 
+    if resume_name == "":
+        resume_name = last_resume_name 
     latino = flask.request.form.get("latino", None)
     race = flask.request.form.getlist("race", None)
     gender = flask.request.form.get("gender", None)
