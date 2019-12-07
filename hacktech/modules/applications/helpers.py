@@ -4,11 +4,24 @@ from hacktech import app_year
 import hacktech.modules.judging.helpers as judging_helpers
 import os
 
+SCHOOLS = []
+
+
 def get_schools():
     schools = []
-    with open("/home/hacktech/hacktechpy.io/hacktech/modules/applications/schools.txt") as f:
+    global SCHOOLS
+    if SCHOOLS != []:
+        print(SCHOOLS)
+        return SCHOOLS
+    # Cache this.
+    with open(
+            "/home/hacktech/hacktechpy.io/hacktech/modules/applications/schools.txt"
+    ) as f:
         for line in f:
-            schools.append(line.rstrip())
+            line = line.rstrip()
+            if line != "":
+                schools.append(line.rstrip())
+    SCHOOLS = schools
     return schools
 
 
@@ -33,6 +46,7 @@ def check_submitted(self_email, other_email):
     return "Submitted" == status['status'] or "Accepted" == status['status'] \
             or "Declined" == status['status'] or "RSVPed" == status['status'] \
             or "Rejected" == status['status']
+
 
 ALLOWED_EXTENSIONS = set(['pdf'])
 
@@ -93,6 +107,7 @@ def get_user_id(email):
         return None
     return result['user_id']
 
+
 class FormInfo:
     def __init__(self, application, member, diet, race):
         self.first_name = member['first_name'] or ''
@@ -125,9 +140,12 @@ class FormInfo:
         self.race_types = [entry['race_type'] for entry in race]
         self.resume_link = judging_helpers.generate_resume_url(self.resume)
         self.resume_original_name = ""
-        print(self.resume)
+        self.major_opt = ""
+        self.school_opt = ""
         if self.resume is not None and self.resume != "":
-            self.resume_original_name = "_".join(str(self.resume, encoding="utf-8").split("_")[:-1])+".pdf"
+            self.resume_original_name = "_".join(
+                str(self.resume, encoding="utf-8").split("_")[:-1]) + ".pdf"
+
 
 def get_form_info(email):
     """Gets all existing application form info from the database."""
@@ -159,6 +177,7 @@ def get_form_info(email):
         cursor.execute(query, [user_id])
         race = cursor.fetchall()
     return FormInfo(application, member, diet, race)
+
 
 def handle_update_applications(
         action, email, phone_number, school, major, degree_type,
@@ -289,7 +308,8 @@ def handle_update_applications(
             # Update status table for applicant
             update_status(email, "Submitted", None)
         return (True, "You have submitted your application successfully!")
-    return(True, "Your application has been updated!")
+    return (True, "Your application has been updated!")
+
 
 def check_resume_exists(user_id):
     query = """

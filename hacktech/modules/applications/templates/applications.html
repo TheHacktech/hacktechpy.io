@@ -54,7 +54,7 @@
         </div>
         <div class="form-group col-md-4">
 	  <label for="school">If you choose N/A, type here </label>
-	  <input type="text" class="form-control" name="school_opt" value="{{form_info.school}}">
+	  <input type="text" class="form-control" name="school_opt" value="{{form_info.school_opt}}">
 	</div>
       </div>
 
@@ -70,7 +70,7 @@
 	</div>
         <div class="form-group col-md-4">
           <label for="major">If you choose N/A, type here </label>
-	  <input type="text" class="form-control" name="major_opt" value="{{form_info.major}}">
+	  <input type="text" class="form-control" name="major_opt" value="{{form_info.major_opt}}">
         </div>
       </div>
 
@@ -235,7 +235,8 @@
       <div class="form-group">
         <label for="resume">Please upload your resume in PDF format, with naming convention: lastname_firstname.pdf (less than 500 KB only) *</label>
 	{%if form_info.resume is not none and form_info.resume != ""%}
-	<label>Previous file: <a href={{form_info.resume_link}}> <u>{{form_info.resume_original_name}}</u> </a></label>
+          <br />
+	  <label>Previous file: <a href={{form_info.resume_link}}> <u>{{form_info.resume_original_name}}</u> </a></label>
 	{%endif%}
 	<input type="file" class="form-control" id="resume" name="resume">
       </div>

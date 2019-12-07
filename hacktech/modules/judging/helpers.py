@@ -152,6 +152,7 @@ def get_current_stats():
     stats['total_users'] = res[0]['COUNT(*)']
     return stats
 
+
 def reorder_stat(res, col_name):
     """
     Redordering such that we have a label (ie, XS, S, M, L, XL) 
@@ -161,7 +162,8 @@ def reorder_stat(res, col_name):
     data = []
     empty_count = 0
     for i in res:
-        if str(i[col_name]) == "NULL" or i[col_name] == None or str(i[col_name]) == "":
+        if str(i[col_name]) == "NULL" or i[col_name] == None or str(
+                i[col_name]) == "":
             empty_count += i['COUNT(*)']
             continue
         labels.append(str(i[col_name]))

@@ -10,11 +10,16 @@ def applications():
     if not auth_utils.check_login():
         return auth_utils.login_redirect()
     email = flask.session['username']
+    majors = helpers.get_majors()
+    schools = helpers.get_schools()
+    form_info = helpers.get_form_info(email)
+    form_info.major_opt = form_info.major if form_info.major not in majors else ""
+    form_info.school_opt = form_info.school if form_info.school not in schools else ""
     return flask.render_template(
         "applications.html",
-        schools=helpers.get_schools(),
-        majors=helpers.get_majors(),
-        form_info=helpers.get_form_info(email),
+        schools=schools,
+        majors=majors,
+        form_info=form_info,
         submitted=(helpers.check_submitted(email, email)))
 
 
@@ -69,19 +74,18 @@ def update_applications():
     graduation_year = flask.request.form.get("graduationYear", None)
     github = flask.request.form.get("github", None)
     linkedin = flask.request.form.get("linkedin", None)
-    
+
     # Special cases for major and school not in options
     if school == "N/A" or not school:
         school = flask.request.form.get("school_opt", None)
     if major == "N/A" or not major:
         school = flask.request.form.get("major_opt", None)
-        
+
     # Check if the request has a resume attached
     resume = ""
     resume_file = None
     resume_name = ""
     last_resume_name = helpers.check_resume_exists(helpers.get_user_id(email))
-    print(last_resume_name)
     if 'resume' in flask.request.files:
         resume_file = flask.request.files['resume']
         # Make sure user selected file
@@ -91,19 +95,20 @@ def update_applications():
     if resume_file and helpers.allowed_file(resume_file):
         resume_name = secure_filename(resume_file.filename)
         resumes_root_path = os.path.join(flask.current_app.root_path,
-                               flask.current_app.config['RESUMES'])
+                                         flask.current_app.config['RESUMES'])
         resume_name = resume_name.split(".")
-        resume_name = secure_filename(str(resume_name[:-1]) + '_' +str(helpers.get_user_id(email)) + ".pdf")
+        resume_name = secure_filename(
+            str(resume_name[:-1]) + '_' + str(helpers.get_user_id(email)) +
+            ".pdf")
 
-        resume_file.save(
-            os.path.join(resumes_root_path, resume_name))
+        resume_file.save(os.path.join(resumes_root_path, resume_name))
     elif action == 'Submit' and not last_resume_name:
         flask.flash(
             'Please make sure your resume is a PDF file less than 500 KB.')
         return flask.redirect(flask.url_for("applications.applications"))
 
     if resume_name == "":
-        resume_name = last_resume_name 
+        resume_name = last_resume_name
     latino = flask.request.form.get("latino", None)
     race = flask.request.form.getlist("race", None)
     gender = flask.request.form.get("gender", None)
@@ -121,7 +126,6 @@ def update_applications():
     q4 = flask.request.form.get("Q4", None)
     code_of_conduct = flask.request.form.get("codeOfConduct", None)
 
-    
     success, msg = helpers.handle_update_applications(
         action, email, phone_number, school, major, degree_type,
         graduation_year, github, linkedin, resume_name, latino, race, gender,

@@ -64,7 +64,8 @@ def handle_create_account(email, password, password2, first_name, middle_name,
         """
         with flask.g.pymysql_db.cursor() as cursor:
             cursor.execute(query, [
-                user_id, first_name, preferred_name, middle_name, last_name, dob
+                user_id, first_name, preferred_name, middle_name, last_name,
+                dob
             ])
         query = """
         INSERT INTO applications (user_id, application_year) 
