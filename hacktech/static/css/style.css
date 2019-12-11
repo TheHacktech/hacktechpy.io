@@ -404,6 +404,9 @@ input[type=checkbox], input[type=radio] {
     background: white;
 }
 
+ .mobile_show {
+    visibility:hidden;
+ }
 /*****************************************************************************/
 /* Below are specific IDs for elements that needed individual styling. These *
  * should not be used for general styling or anything of the like. Odds are, *
@@ -470,6 +473,17 @@ input[type=checkbox], input[type=radio] {
 
 #question_container {
   list-style-type: none;
+}
+
+#mlh-trust-badge {
+    display: block;
+    max-width: 100px;
+    min-width: 60px;
+    position: fixed;
+    right: 50px;
+    top: 0;
+    width: 10%;
+    z-index: 10000;
 }
 
 /*****************************************************************************/
@@ -599,8 +613,8 @@ input[type=checkbox], input[type=radio] {
    */
   #navbar li {
     width: 100%;
-    margin-bottom: 10%;
-    margin-top: 5%;
+    margin-bottom: 0px;
+    margin-top: 0px;
     font-size: 2vh;
   }
 
@@ -618,6 +632,17 @@ input[type=checkbox], input[type=radio] {
   #copyright {
     font-size: 1vh;
     text-align: left;
+ }
+ #mlh-trust-badge {
+    right: 2px;
+    -webkit-box-sizing: unset;
+    box-sizing: unset;
+ }
+ .mobile_show {
+    visibility:visible;
+ }
+ #mobile_hide {
+    display: none;
  }
 }
 

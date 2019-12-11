@@ -10,10 +10,12 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand sliding" href=" {{ url_for('home') }} ">Hacktech</a>
-            </div>
+	    </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    {% if 'username' not in session %}
+                    <li class="mobile_show"><a href=" {{ url_for('home') }} ">Home</a></li>
+
+	            {% if 'username' not in session %}
                     <li>
                         <form action="{{ url_for('auth.login') }}">
                             <button id="logInButton" class="btn no-border pull-right navbar-btn sliding">Log In</button>
@@ -29,7 +31,7 @@
 		    <li><a class = "sliding" href=" {{ url_for('applications.applications') }} ">Application</a></li>
                     <li><a class = "sliding" href=" {{ url_for('applications.status') }} ">Status</a></li>
 		    {% endif %}
-                    <li>
+                    <li id="mobile_hide">
                         <a class = "sliding" href=" {{ url_for('applications.status') }} ">
 			    Greetings, {{ session['username'] }}
 			</a>
