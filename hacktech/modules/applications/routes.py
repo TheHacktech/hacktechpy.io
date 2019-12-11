@@ -79,7 +79,7 @@ def update_applications():
     if school == "N/A" or not school:
         school = flask.request.form.get("school_opt", None)
     if major == "N/A" or not major:
-        school = flask.request.form.get("major_opt", None)
+        major = flask.request.form.get("major_opt", None)
 
     # Check if the request has a resume attached
     resume = ""

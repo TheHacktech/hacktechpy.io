@@ -6,7 +6,14 @@ from hacktech import email_utils
 from hacktech import misc_utils
 from hacktech import validation_utils
 from hacktech import app_year
+import re
 
+def check_valid_dob(dob):
+    """
+    Checks if the dob is in a valid format
+    """
+    x = re.search("[0-9]{4,4}\-[0-9]{1,2}\-[0-9]{1,2}", dob)
+    return True if x is not None else False
 
 def get_user_data(user_id):
     """Returns user data for the create account form."""
@@ -34,7 +41,7 @@ def handle_create_account(email, password, password2, first_name, middle_name,
         return (False, "You already have an account. Try recovering it?")
 
     if not validation_utils.validate_password(password, password2):
-        return (False, "Make sure your passwords match!")
+        return (False, "")
     flask.g.pymysql_db.begin()
     try:
         confirm_account_key = auth_utils.generate_confirm_account_key()
@@ -99,6 +106,6 @@ def handle_create_account(email, password, password2, first_name, middle_name,
         flask.g.pymysql_db.rollback()
         return (
             False,
-            "An unexpected error occurred. Please contact the hacktech organizers"
+            "An unexpected error occurred. Make sure that you entered a valid email! If the error persists, please contact the hacktech organizers"
         )
     return (True, "")

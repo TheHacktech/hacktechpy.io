@@ -60,7 +60,6 @@ def handle_forgotten_password(email):
     with flask.g.pymysql_db.cursor() as cursor:
         cursor.execute(query, [email])
         result = cursor.fetchone()
-
     if result is not None and email == result['email']:
         name = result['first_name']
         user_id = result['user_id']
@@ -91,8 +90,6 @@ def handle_forgotten_password(email):
             expiration_time_str)
         subject = "Password reset request"
         email_utils.send_email(email, msg, subject, gmail=True)
-        return True
-    return False
 
 
 def handle_password_reset(username, new_password, new_password2):
@@ -127,5 +124,5 @@ def handle_password_reset(username, new_password, new_password2):
     name = result['first_name']
     msg = email_templates.ResetPasswordSuccessfulEmail.format(name)
     subject = "Password reset successful"
-    email_utils.send_email(email, msg, subject)
+    email_utils.send_email(email, msg, subject, gmail=True)
     return True

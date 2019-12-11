@@ -11,7 +11,7 @@ def send_email(to, msg, subject, gmail=False, use_prefix=True):
     msg = MIMEText(msg, 'html')
 
     if use_prefix:
-        subject = '[Hacktech]' + subject
+        subject = '[Hacktech] ' + subject
 
     msg['Subject'] = subject
     msg['From'] = 'auto@hacktech.io'
