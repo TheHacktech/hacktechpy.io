@@ -250,8 +250,9 @@ body {
     margin: 0px 10px; }
 
 .alert {
-  position: relative;
-  top: 0px;
+  position: absolute;
+  top: 50px;
+  width: 100%;
 }
 ::-webkit-scrollbar {
   width: 12px; }

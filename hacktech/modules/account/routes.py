@@ -21,9 +21,9 @@ def create_account_submit():
     preferred_name = flask.request.form.get("preferred_name", None)
     last_name = flask.request.form.get("last_name", None)
     dob = flask.request.form.get("date_of_birth", None)
-
-    if email is None or password is None or password2 is None or first_name is None or last_name is None or dob is "0000-00-00":
-        flask.flash("Invalid request.")
+    print(dob)
+    if email is None or password is None or password2 is None or first_name is None or last_name is None or dob is None or dob == "" or dob is "0000-00-00":
+        flask.flash("Make sure you fill out all parts of the form!")
         return flask.redirect(flask.url_for("account.create_account"))
     success, error_msg = helpers.handle_create_account(
         email, password, password2, first_name, middle_name, preferred_name,

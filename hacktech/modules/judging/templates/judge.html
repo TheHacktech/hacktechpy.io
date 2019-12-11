@@ -46,7 +46,7 @@
   </tr>
   {% for i in info %}
   <tr class='{{i.status}}'>
-	  <td> {{i.first_name}} {{i.last_name}} </td>
+	  <td>{{loop.index}}. {{i.first_name}} {{i.last_name}} </td>
 	  <td> {{i.status}} </td>
 	  <td> <a href={{i.link}} >Go</a></td>
   </tr>

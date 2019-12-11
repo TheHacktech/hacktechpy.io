@@ -68,15 +68,10 @@ a {
   color: #009dee;
 }
 
-/* Make sure the button is completely visible when hovered. */
-button:hover {
-  opacity: 1;
-}
-
 /* Fade buttons slightly when not hovered. */
 button {
   transition: opacity 0.5s;
-  opacity: 0.9;
+  opacity: 1;
 }
 
 /* All inputs should have an orange border with light spacing around
@@ -422,6 +417,7 @@ input[type=checkbox], input[type=radio] {
 #logInButton {
   background: transparent;
   color:white;
+  font-size: 16px;  
 }
 
 #observe {
