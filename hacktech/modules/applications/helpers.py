@@ -228,20 +228,48 @@ def handle_update_applications(
         q4 = VALUES(q4),
         code_of_conduct = VALUES(code_of_conduct)
         """
-        latino = (latino == "True")
-        in_state = (need_transportation == "insideCA"
-                    or need_transportation == "no")
-        transportation = (need_transportation == "insideCA"
-                          or need_transportation == "outsideCA")
-        diet_rest = (dietary_restrictions == "True")
-        code_of_conduct = (code_of_conduct == "True")
+        
+        latino_bool = None
+        if latino == "True":
+            latino_bool = True
+        elif latino == "False":
+            latino_bool = False
+
+        in_state = None
+        if need_transportation == "insideCA" or need_transportation == "no":
+            in_state = True
+        elif need_transportation == "outsideCA":
+            in_state = False
+
+        transportation = None
+        if need_transportation == "insideCA" or need_transportation == "outsideCA":
+            transportation = True
+        elif need_transportation == "no":
+            transportation = False
+        
+        diet_rest = None
+        if dietary_restrictions == "True":
+            diet_rest = True
+        elif dietary_restrictions == "False":
+            diet_rest = False
+
+        code_of_conduct_bool = None
+        if code_of_conduct == "True":
+            code_of_conduct_bool = True
+            print("TRUE")
+        elif code_of_conduct == "False":
+            code_of_conduct_bool = False
+            print("FALSE")
+        else:
+            print("NOOOO")
+            
         with flask.g.pymysql_db.cursor() as cursor:
             cursor.execute(query, [
                 user_id, app_year.year + "0000", phone_number, school, major,
-                degree_type, graduation_year, github, linkedin, resume, latino,
-                gender, shirt_size, transportation, in_state, bus_from,
-                airport, diet_rest, diet_details, q1, q2, q3, q4,
-                code_of_conduct
+                degree_type, graduation_year, github, linkedin, resume, 
+                latino_bool, gender, shirt_size, transportation, in_state, 
+                bus_from, airport, diet_rest, diet_details, q1, q2, q3, q4,
+                code_of_conduct_bool
             ])
         # Update members table with name info from application.
         query = """
@@ -292,20 +320,50 @@ def handle_update_applications(
                 "An unexpected error occurred. Please contact the organizers.")
     # Check all required fields are filled out
     if action == 'Submit':
-        if not school or not degree_type or not graduation_year or not shirt_size \
-                or not need_transportation or dietary_restrictions == "" \
-                or not q1 or not q2 or not q3 or not q4 or not first_name \
-                or not last_name:
+        if not school:
             return (False,
-                    "Please fill out all required fields before submitting.")
-        if not code_of_conduct:
+                    "Please fill out the required field: school")
+        if not degree_type:
+            return (False,
+                    "Please fill out the required field: year of study")
+        if not graduation_year:
+            return (False,
+                    "Please fill out the required field: graduation year")
+        if not shirt_size:
+            return (False,
+                    "Please fill out the required field: shirt size")
+        if not need_transportation:
+            return (False,
+                    "Please fill out the required field: transportation needs")
+        if not dietary_restrictions:
+            return (False,
+                    "Please fill out the required field: dietary restrictions")
+        if not q1:
+            return (False,
+                    "Please fill out the required field: short response question 1")
+        if not q2:
+            return (False,
+                    "Please fill out the required field: short response question 2")
+        if not q3:
+            return (False,
+                    "Please fill out the required field: short response question 3")
+        if not q4:
+            return (False,
+                    "Please fill out the required field: short response question 4")
+        if not first_name:
+            return (False,
+                    "Please fill out the required field: first name")
+        if not last_name:
+            return (False,
+                    "Please fill out the required field: last name")
+        if not code_of_conduct_bool:
             return (
                 False,
                 "You must accept the MLH code of conduct and data sharing provision."
             )
         else:
             # Update status table for applicant
-            update_status(email, "Submitted", None)
+            update_status(email, "Submitted", 0)
         return (True, "You have submitted your application successfully!")
     return (True, "Your application has been updated!")
 

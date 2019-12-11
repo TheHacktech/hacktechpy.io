@@ -86,7 +86,7 @@
           </select>
 	</div>
 	<div class="form-group col-md-6">
-          <label for="graduationYear">What is your expected graduation date? *</label>
+          <label for="graduationYear">What is your expected graduation year? *</label>
           <select class="form-control" name="graduationYear">
 	    <option value="">Choose...</option>
             <option {%if form_info.graduation_year == "2020" %} selected {%endif%} value="2020">2020</option>
@@ -150,7 +150,7 @@
             <select class="form-control" name="dietaryRestrictions">
               <option value="">Choose...</option>
 	      <option {%if form_info.diet_rest == True %} selected {%endif%} value="True">Yes</option>
-              <option {%if form_info.diet_reste == False %} selected {%endif%} value="False">No</option>
+              <option {%if form_info.diet_rest == False %} selected {%endif%} value="False">No</option>
            </select>
        </div>
      </div>
@@ -196,23 +196,24 @@
 
      <hr>
 
+      <p><small> We want to get to know you better! Please answer the following short response questions.  </small></p>
      <div class="form-group">
-        <label for="Q1">Why would you like to come to Hacktech 2020? *</label>
+        <label for="Q1">1. Why would you like to come to Hacktech 2020? *</label>
 	<textarea  class="form-control" id="Q1" name="Q1" rows="5">{{form_info.q1}}</textarea>
      </div>
 
      <div class="form-group">
-        <label for="Q2">You just stepped off a time machine 20 years into the future. What is the first thing that catches your eye? *</label>
+        <label for="Q2">2. You just stepped off a time machine 20 years into the future. What is the first thing that catches your eye? *</label>
 	<textarea  class="form-control" id="Q2" name="Q2" rows="5">{{form_info.q2}}</textarea>
      </div>
 
      <div class="form-group">
-        <label for="Q3">The theme for Hacktech this year is "20/20 Vision: Connecting to the Future". Write a short haiku related to this theme. *</label>
+        <label for="Q3">3. The theme for Hacktech this year is "20/20 Vision: Connecting to the Future". Write a short haiku related to this theme. *</label>
 	<textarea  class="form-control" id="Q3" name="Q3" rows="5">{{form_info.q3}}</textarea>
      </div>
 
      <div class="form-group">
-        <label for="Q4">We want to improve Hacktech -- what would you like to see at Hacktech this year? Is there anything else you want us to know about you? *</label>
+        <label for="Q4">4. We want to improve Hacktech -- what would you like to see at Hacktech this year? Is there anything else you want us to know about you? *</label>
 	<textarea  class="form-control" id="Q4" name="Q4" rows="5">{{form_info.q4}}</textarea>
      </div>
 
@@ -247,9 +248,9 @@
        <div class="form-group">
          <label for="latino">Are you Hispanic or Latino?</label>
            <select class="form-control" name="latino">
-             <option value="False">Prefer not to answer</option>
+             <option value="">Prefer not to answer</option>
              <option {%if form_info.latino == True %} selected {%endif%} value="True">Yes</option>
-             <option value="False">No</option>
+	     <option {%if form_info.latino == False %} selected {%endif%} value="False">No</option>
           </select>
        </div>
      </div>
@@ -305,9 +306,9 @@
        <div class="form-group">
 	     <label for="codeOfConduct">I've read and understood the <a href="static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH code of conduct</a> and the <a href="github.com/MLH/mlh-policies/blob/master/data-sharing.md">MLH data sharing provision</a>. *</label>
           <select class="form-control" name="codeOfConduct">
-            <option value="">Choose...</option>
+            <option {%if form_info.code_of_conduct == ""%} selected {%endif%} value="">Choose...</option>
 	    <option {%if form_info.code_of_conduct == True %} selected {%endif%} value="True">Yes</option>
-            <option value="False">No</option>
+	    <option {%if form_info.code_of_conduct == False %} selected {%endif%} value="False">No</option>
          </select>
         </div>
 
