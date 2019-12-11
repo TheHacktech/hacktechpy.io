@@ -121,7 +121,10 @@ class FormInfo:
         self.github = application['github'] or ''
         self.linkedin = application['linkedin'] or ''
         self.resume = application['resume'] or ''
-        self.latino = application['latino'] or ''
+        if application['latino'] is None:
+            self.latino = ''
+        else:
+            self.latino = application['latino']
         self.gender = application['gender'] or ''
         self.shirt_size = application['shirt_size'] or ''
         self.transportation = application['transportation']
@@ -253,19 +256,13 @@ def handle_update_applications(
         elif dietary_restrictions == "False":
             diet_rest = False
 
-        code_of_conduct_bool = None
-        if code_of_conduct == "True":
-            code_of_conduct_bool = True
-        elif code_of_conduct == "False":
-            code_of_conduct_bool = False
-            
         with flask.g.pymysql_db.cursor() as cursor:
             cursor.execute(query, [
                 user_id, app_year.year + "0000", phone_number, school, major,
                 degree_type, graduation_year, github, linkedin, resume, 
                 latino_bool, gender, shirt_size, transportation, in_state, 
                 bus_from, airport, diet_rest, diet_details, q1, q2, q3, q4,
-                code_of_conduct_bool
+                code_of_conduct
             ])
         # Update members table with name info from application.
         query = """
@@ -355,7 +352,7 @@ def handle_update_applications(
         if not last_name:
             return (False,
                     "Please fill out the required field: last name")
-        if not code_of_conduct_bool:
+        if not code_of_conduct:
             return (
                 False,
                 "You must accept the MLH code of conduct and data sharing provision."
