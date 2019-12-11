@@ -249,6 +249,10 @@ body {
     max-height: 30px;
     margin: 0px 10px; }
 
+.alert {
+  position: relative;
+  top: 0px;
+}
 ::-webkit-scrollbar {
   width: 12px; }
 

@@ -1,8 +1,24 @@
 import flask
 import pymysql.cursors
 from hacktech import app_year
-
-
+from hacktech import email_templates, email_utils
+def get_name(user_id):
+    query = """
+    SELECT first_name, preferred_name FROM members where user_id=%s
+    """
+    with flask.g.pymysql_db.cursor() as cursor:
+        cursor.execute(query, [user_id])
+        result = cursor.fetchone()
+    res = result["preferred_name"] if result["preferred_name"] is not None and result["preferred_name"] != "" else result["first_name"] 
+    return res
+def get_email(user_id):
+    query = """
+    SELECT email FROM users where user_id=%s
+    """
+    with flask.g.pymysql_db.cursor() as cursor:
+        cursor.execute(query, [user_id])
+        result = cursor.fetchone()
+    return result["email"]
 def get_application(user_id):
     """
     Returns the application information for a given user_id
@@ -107,7 +123,7 @@ def get_current_stats():
     for cat in cats:
         query = """
         SELECT {0}, COUNT(*) from applications WHERE application_year = %s
-        GROUP BY {0}
+        GROUP BY {0} ORDER BY {0} DESC
         """.format(cat)
         with flask.g.pymysql_db.cursor() as cursor:
             cursor.execute(query, [app_year.year + "0000"])
@@ -184,3 +200,16 @@ def update_status(user_id, new_status, reimbursement_amount):
     """
     with flask.g.pymysql_db.cursor() as cursor:
         cursor.execute(query, [new_status, reimbursement_amount, user_id])
+    first_name = get_name(user_id)
+    email = get_email(user_id)
+    if reimbursement_amount != "" and float(reimbursement_amount) != 0 and reimbursement_amount is not None:
+        subject = "Reimbursement Information"
+        msg = email_templates.ReimbursementEmail.format(first_name, reimbursement_amount)
+    elif new_status == "Accepted":
+        subject = "Congratulations! You've Been Accepted!"
+        msg = email_templates.AcceptedEmail.format(first_name)
+    elif new_status == "Rejected":
+        subject = "Hacktech Application Update"
+        msg = email_templates.RejectedEmail.format(first_name)
+
+    email_utils.send_email(email, msg, subject, gmail=True)
