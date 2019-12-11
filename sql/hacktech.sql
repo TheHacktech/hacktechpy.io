@@ -1,5 +1,5 @@
 DROP TABLE IF EXISTS race;
-DROP VIEW IF EXISTS members_full_name;
+DROP TABLE IF EXISTS diet;
 DROP TABLE IF EXISTS status;
 DROP TABLE IF EXISTS applications;
 DROP TABLE IF EXISTS members;
@@ -32,13 +32,6 @@ CREATE TABLE members (
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
--- Member Full Name View
-CREATE VIEW members_full_name AS (
-    SELECT user_id,
-        CONCAT(IFNULL(preferred_name, first_name), ' ', last_name) AS full_name
-    FROM members
-);
-
 CREATE TABLE applications(
     application_id    INT          NOT NULL AUTO_INCREMENT,
     user_id           INT          NOT NULL,
@@ -50,21 +43,21 @@ CREATE TABLE applications(
     graduation_year   CHAR(4)      DEFAULT NULL,
     github            VARCHAR(255) DEFAULT NULL,
     linkedin          VARCHAR(255) DEFAULT NULL,
-    resume            BLOB         DEFAULT NULL,
-    latino            BOOLEAN      DEFAULT FALSE,
+    resume            VARCHAR(255) DEFAULT NULL,
+    latino            BOOLEAN      DEFAULT NULL,
     gender            CHAR(1)      DEFAULT NULL, -- W, M, O
-    shirt_size        VARCHAR(2)  DEFAULT NULL, -- XS, S, M, L, XL
-    transportation    BOOLEAN      DEFAULT FALSE,
-    in_state          BOOLEAN      DEFAULT FALSE,
+    shirt_size        VARCHAR(2)   DEFAULT NULL, -- XS, S, M, L, XL
+    transportation    BOOLEAN      DEFAULT NULL,
+    in_state          BOOLEAN      DEFAULT NULL,
     bus_from          VARCHAR(50)  DEFAULT NULL,
     airport           VARCHAR(50)  DEFAULT NULL,
-    diet_rest         BOOLEAN      DEFAULT FALSE,
+    diet_rest         BOOLEAN      DEFAULT NULL,
     diet_rest_detail  TEXT         DEFAULT NULL,
     q1                TEXT         DEFAULT NULL,
     q2                TEXT         DEFAULT NULL,
     q3                TEXT         DEFAULT NULL,
     q4                TEXT         DEFAULT NULL,
-    code_of_conduct     BOOLEAN    DEFAULT FALSE,
+    code_of_conduct     BOOLEAN    DEFAULT NULL,
     PRIMARY KEY (application_id),
     UNIQUE (user_id, application_year) -- One application per year.
 );

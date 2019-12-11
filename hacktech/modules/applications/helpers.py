@@ -11,7 +11,6 @@ def get_schools():
     schools = []
     global SCHOOLS
     if SCHOOLS != []:
-        print(SCHOOLS)
         return SCHOOLS
     # Cache this.
     with open(
@@ -144,7 +143,7 @@ class FormInfo:
         self.school_opt = ""
         if self.resume is not None and self.resume != "":
             self.resume_original_name = "_".join(
-                str(self.resume, encoding="utf-8").split("_")[:-1]) + ".pdf"
+                self.resume.split("_")[:-1]) + ".pdf"
 
 
 def get_form_info(email):
