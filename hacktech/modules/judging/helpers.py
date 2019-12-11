@@ -205,11 +205,12 @@ def update_status(user_id, new_status, reimbursement_amount):
     if reimbursement_amount != "" and float(reimbursement_amount) != 0 and reimbursement_amount is not None:
         subject = "Reimbursement Information"
         msg = email_templates.ReimbursementEmail.format(first_name, reimbursement_amount)
+        email_utils.send_email(email, msg, subject, gmail=True)
     elif new_status == "Accepted":
         subject = "Congratulations! You've Been Accepted!"
         msg = email_templates.AcceptedEmail.format(first_name)
+        email_utils.send_email(email, msg, subject, gmail=True)
     elif new_status == "Rejected":
         subject = "Hacktech Application Update"
         msg = email_templates.RejectedEmail.format(first_name)
-
-    email_utils.send_email(email, msg, subject, gmail=True)
+        email_utils.send_email(email, msg, subject, gmail=True)

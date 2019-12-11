@@ -90,7 +90,7 @@ def handle_forgotten_password(email):
                 'auth.reset_password', reset_key=reset_key, _external=True),
             expiration_time_str)
         subject = "Password reset request"
-        email_utils.send_email(email, msg, subject)
+        email_utils.send_email(email, msg, subject, gmail=True)
         return True
     return False
 

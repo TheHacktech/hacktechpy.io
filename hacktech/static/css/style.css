@@ -481,7 +481,8 @@ input[type=checkbox], input[type=radio] {
     min-width: 60px;
     position: fixed;
     right: 50px;
-    top: 0;
+    top: 52px;
+    position: absolute;
     width: 10%;
     z-index: 10000;
 }
