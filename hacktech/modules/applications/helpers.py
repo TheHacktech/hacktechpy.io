@@ -293,12 +293,42 @@ def handle_update_applications(
                 "An unexpected error occurred. Please contact the organizers.")
     # Check all required fields are filled out
     if action == 'Submit':
-        if not school or not degree_type or not graduation_year or not shirt_size \
-                or not need_transportation or dietary_restrictions == "" \
-                or not q1 or not q2 or not q3 or not q4 or not first_name \
-                or not last_name:
+        if not school:
             return (False,
-                    "Please fill out all required fields before submitting.")
+                    "Please fill out the required field: school")
+        if not degree_type:
+            return (False,
+                    "Please fill out the required field: year of study")
+        if not graduation_year:
+            return (False,
+                    "Please fill out the required field: graduation year")
+        if not shirt_size:
+            return (False,
+                    "Please fill out the required field: shirt size")
+        if not need_transportation:
+            return (False,
+                    "Please fill out the required field: transportation needs")
+        if not dietary_restrictions:
+            return (False,
+                    "Please fill out the required field: dietary restrictions")
+        if not q1:
+            return (False,
+                    "Please fill out the required field: short response question 1")
+        if not q2:
+            return (False,
+                    "Please fill out the required field: short response question 2")
+        if not q3:
+            return (False,
+                    "Please fill out the required field: short response question 3")
+        if not q4:
+            return (False,
+                    "Please fill out the required field: short response question 4")
+        if not first_name:
+            return (False,
+                    "Please fill out the required field: first name")
+        if not last_name:
+            return (False,
+                    "Please fill out the required field: last name")
         if not code_of_conduct:
             return (
                 False,
