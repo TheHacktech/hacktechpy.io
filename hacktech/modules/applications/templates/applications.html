@@ -150,7 +150,7 @@
             <select class="form-control" name="dietaryRestrictions">
               <option value="">Choose...</option>
 	      <option {%if form_info.diet_rest == True %} selected {%endif%} value="True">Yes</option>
-              <option {%if form_info.diet_reste == False %} selected {%endif%} value="False">No</option>
+              <option {%if form_info.diet_rest == False %} selected {%endif%} value="False">No</option>
            </select>
        </div>
      </div>
@@ -248,9 +248,9 @@
        <div class="form-group">
          <label for="latino">Are you Hispanic or Latino?</label>
            <select class="form-control" name="latino">
-             <option value="False">Prefer not to answer</option>
+             <option value="">Prefer not to answer</option>
              <option {%if form_info.latino == True %} selected {%endif%} value="True">Yes</option>
-             <option value="False">No</option>
+	     <option {%if form_info.latino == False %} selected {%endif%} value="False">No</option>
           </select>
        </div>
      </div>
@@ -308,7 +308,7 @@
           <select class="form-control" name="codeOfConduct">
             <option value="">Choose...</option>
 	    <option {%if form_info.code_of_conduct == True %} selected {%endif%} value="True">Yes</option>
-            <option value="False">No</option>
+	    <option {%if form_info.code_of_conduct == False %} selected {%endif%} value="False">No</option>
          </select>
         </div>
 
