@@ -306,7 +306,7 @@
        <div class="form-group">
 	     <label for="codeOfConduct">I've read and understood the <a href="static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH code of conduct</a> and the <a href="github.com/MLH/mlh-policies/blob/master/data-sharing.md">MLH data sharing provision</a>. *</label>
           <select class="form-control" name="codeOfConduct">
-            <option value="">Choose...</option>
+            <option {%if form_info.code_of_conduct == ""%} selected {%endif%} value="">Choose...</option>
 	    <option {%if form_info.code_of_conduct == True %} selected {%endif%} value="True">Yes</option>
 	    <option {%if form_info.code_of_conduct == False %} selected {%endif%} value="False">No</option>
          </select>

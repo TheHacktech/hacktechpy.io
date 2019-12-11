@@ -50,7 +50,7 @@ def update_status():
     email = flask.session['username']
     helpers.update_status(email,
                           flask.request.form.get("RSVPed")
-                          or flask.request.form.get("Declined"))
+                          or flask.request.form.get("Declined"), 0)
     print(flask.request.form.get("RSVPed"))
     print(flask.request.form.get("Declined"))
     return flask.redirect(flask.url_for(".status"))
