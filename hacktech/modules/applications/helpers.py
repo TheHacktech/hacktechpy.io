@@ -256,12 +256,8 @@ def handle_update_applications(
         code_of_conduct_bool = None
         if code_of_conduct == "True":
             code_of_conduct_bool = True
-            print("TRUE")
         elif code_of_conduct == "False":
             code_of_conduct_bool = False
-            print("FALSE")
-        else:
-            print("NOOOO")
             
         with flask.g.pymysql_db.cursor() as cursor:
             cursor.execute(query, [
@@ -320,6 +316,9 @@ def handle_update_applications(
                 "An unexpected error occurred. Please contact the organizers.")
     # Check all required fields are filled out
     if action == 'Submit':
+        if not phone_number:
+            return (False,
+                    "Please fill out the required field: phone number")
         if not school:
             return (False,
                     "Please fill out the required field: school")
@@ -362,9 +361,9 @@ def handle_update_applications(
                 "You must accept the MLH code of conduct and data sharing provision."
             )
         else:
-            # Update status table for applicant
             update_status(email, "Submitted", 0)
         return (True, "You have submitted your application successfully!")
+    update_status(email, "In-Progress", 0)
     return (True, "Your application has been updated!")
 
 

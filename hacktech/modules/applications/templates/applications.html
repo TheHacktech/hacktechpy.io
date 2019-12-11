@@ -196,7 +196,7 @@
 
      <hr>
 
-      <p><small> We want to get to know you better! Please answer the following short response questions.  </small></p>
+      <p><small> We believe that everyone is unique, and we want to get to know you better! Please answer the following short response questions.  </small></p>
      <div class="form-group">
         <label for="Q1">1. Why would you like to come to Hacktech 2020? *</label>
 	<textarea  class="form-control" id="Q1" name="Q1" rows="5">{{form_info.q1}}</textarea>
@@ -302,14 +302,15 @@
       </div>
 
       <hr> 
+      <p><small> Please review the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH code of conduct</a> and  <a href="https://github.com/MLH/mlh-policies/blob/master/data-sharing.md">MLH data sharing provision</a>. *  </small></p>
 
-       <div class="form-group">
-	     <label for="codeOfConduct">I've read and understood the <a href="static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH code of conduct</a> and the <a href="github.com/MLH/mlh-policies/blob/master/data-sharing.md">MLH data sharing provision</a>. *</label>
-          <select class="form-control" name="codeOfConduct">
-            <option {%if form_info.code_of_conduct == ""%} selected {%endif%} value="">Choose...</option>
-	    <option {%if form_info.code_of_conduct == True %} selected {%endif%} value="True">Yes</option>
-	    <option {%if form_info.code_of_conduct == False %} selected {%endif%} value="False">No</option>
-         </select>
+       <div class="form-group col-md-12">
+	 <div class="checkbox">
+		 <label><input type="checkbox" value="codeOfConduct1" {%if form_info.code_of_conduct == True %} checked {%endif%}>I have read and agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a>.</label>
+	 </div>
+	 <div class="checkbox">
+	   <label><input type="checkbox" value="codeOfConduct2" {%if form_info.code_of_conduct == True %} checked {%endif%}>I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>. I further agree to the terms of both the <a href="https://github.com/MLH/mlh-policies/tree/master/prize-terms-and-conditions">MLH Contest Terms and Conditions</a> and the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.</label>
+	 </div>
         </div>
 
       <p><small>  Are you ready to submit? Once you submit you will not be able to make any changes to your applications. </small></p>
