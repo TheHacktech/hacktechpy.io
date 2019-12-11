@@ -359,9 +359,8 @@ input[type=checkbox], input[type=radio] {
 }
 
 .navbar-inverse {
-  background-color: transparent;
+  background-color: #009dee;
   border-color: #fff;
-  background-image: linear-gradient(#000000, rgba(0, 0, 0, 0.1));
 }
 
 .navbar-inverse .navbar-brand {
@@ -369,7 +368,7 @@ input[type=checkbox], input[type=radio] {
 }
 
 .navbar-nav {
-  float: right;
+  float: left;
 }
 
 #navbar li a:active {
@@ -479,12 +478,20 @@ input[type=checkbox], input[type=radio] {
     display: block;
     max-width: 100px;
     min-width: 60px;
-    position: fixed;
     right: 50px;
     top: 52px;
-    position: absolute;
+    position: fixed;
     width: 10%;
     z-index: 10000;
+}
+
+#mobile_show {
+    visibility:hidden;
+    position:absolute;
+}
+#mobile_hide {
+    visibility:hidden;
+    position:relative;
 }
 
 /*****************************************************************************/
@@ -639,11 +646,13 @@ input[type=checkbox], input[type=radio] {
     -webkit-box-sizing: unset;
     box-sizing: unset;
  }
- .mobile_show {
+ #mobile_show {
     visibility:visible;
+    position:relative;
  }
  #mobile_hide {
-    display: none;
+    visibility:hidden;
+    position:absolute;
  }
 }
 

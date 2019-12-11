@@ -46,11 +46,11 @@ def forgot_password_submit():
     """Handle forgotten password submission."""
     email = flask.request.form.get('email', None)
 
-    if helpers.handle_forgotten_password(email):
-        flask.flash(
+    helpers.handle_forgotten_password(email)
+    flask.flash(
             "An email with a recovery link has been sent, if that email exists"
-        )
-        return flask.redirect(flask.url_for('auth.login'))
+    )
+    return flask.redirect(flask.url_for('auth.login'))
 
 
 @blueprint.route('/login/reset/<reset_key>')

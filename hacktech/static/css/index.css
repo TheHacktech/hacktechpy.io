@@ -248,6 +248,11 @@ body {
   #footer .socialicon {
     max-height: 30px;
     margin: 0px 10px; }
+.navbar-inverse {
+  background-color: transparent;
+  border-color: #fff;
+  background-image: linear-gradient(#000000, rgba(0, 0, 0, 0.1));
+}
 
 .alert {
   position: absolute;

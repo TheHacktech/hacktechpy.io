@@ -2,12 +2,15 @@ import flask
 
 from hacktech import auth_utils
 from hacktech.modules.account import blueprint, helpers
+import json
 
 
 @blueprint.route("/create")
 def create_account():
     """Provides a form to confirm an account."""
-    return flask.render_template("request_account.html")
+    partial = flask.request.args.get("partial", '{"email":"", "first_name":"", "middle_name":"", "preferred_name":"", "last_name":"", "dob":""}')
+    partial = json.loads(partial)
+    return flask.render_template("request_account.html", partial=partial)
 
 
 @blueprint.route("/create/submit", methods=["POST"])
@@ -21,10 +24,19 @@ def create_account_submit():
     preferred_name = flask.request.form.get("preferred_name", None)
     last_name = flask.request.form.get("last_name", None)
     dob = flask.request.form.get("date_of_birth", None)
-    print(dob)
+    partial = {}
+    partial["email"] = email
+    partial["first_name"] = first_name
+    partial["middle_name"] = middle_name
+    partial["preferred_name"] = preferred_name
+    partial["last_name"] = last_name
+    partial["dob"] = dob
     if email is None or password is None or password2 is None or first_name is None or last_name is None or dob is None or dob == "" or dob is "0000-00-00":
         flask.flash("Make sure you fill out all parts of the form!")
         return flask.redirect(flask.url_for("account.create_account"))
+    if not helpers.check_valid_dob(dob):
+        flask.flash("Make sure that your birthday is formatted as 2020-03-06")
+        return flask.redirect(flask.url_for("account.create_account", partial = json.dumps(partial)))
     success, error_msg = helpers.handle_create_account(
         email, password, password2, first_name, middle_name, preferred_name,
         last_name, dob)
@@ -32,6 +44,7 @@ def create_account_submit():
         flask.flash("You've successfully created an account!")
         flask.session['username'] = email
     else:
-        flask.flash(error_msg)
-        return flask.redirect(flask.url_for("account.create_account"))
+        if error_msg != "":
+            flask.flash(error_msg)
+        return flask.redirect(flask.url_for("account.create_account", partial = json.dumps(partial)))
     return flask.redirect(flask.url_for("home"))
