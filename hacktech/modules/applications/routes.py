@@ -2,7 +2,6 @@ import flask
 import os
 from hacktech import auth_utils
 from hacktech.modules.applications import blueprint, helpers
-from werkzeug.utils import secure_filename
 
 
 @blueprint.route("/applications")
@@ -82,33 +81,10 @@ def update_applications():
         major = flask.request.form.get("major_opt", None)
 
     # Check if the request has a resume attached
-    resume = ""
     resume_file = None
-    resume_name = ""
-    last_resume_name = helpers.check_resume_exists(helpers.get_user_id(email))
     if 'resume' in flask.request.files:
         resume_file = flask.request.files['resume']
-        # Make sure user selected file
-        if action == 'Submit' and resume_file.filename == '' and not last_resume_name:
-            flask.flash('Please upload your resume.')
-            return flask.redirect(flask.url_for("applications.applications"))
-    if resume_file and helpers.allowed_file(resume_file):
-        resume_name = secure_filename(resume_file.filename)
-        resumes_root_path = os.path.join(flask.current_app.root_path,
-                                         flask.current_app.config['RESUMES'])
-        resume_name = resume_name.split(".")
-        resume_name = secure_filename(
-            str(resume_name[:-1]) + '_' + str(helpers.get_user_id(email)) +
-            ".pdf")
-
-        resume_file.save(os.path.join(resumes_root_path, resume_name))
-    elif action == 'Submit' and not last_resume_name:
-        flask.flash(
-            'Please make sure your resume is a PDF file less than 500 KB.')
-        return flask.redirect(flask.url_for("applications.applications"))
-
-    if resume_name == "":
-        resume_name = last_resume_name
+    
     latino = flask.request.form.get("latino", None)
     race = flask.request.form.getlist("race", None)
     gender = flask.request.form.get("gender", None)
@@ -128,12 +104,10 @@ def update_applications():
             and (flask.request.form.get("codeOfConduct2") == "True")
     success, msg = helpers.handle_update_applications(
         action, email, phone_number, school, major, degree_type,
-        graduation_year, github, linkedin, resume_name, latino, race, gender,
+        graduation_year, github, linkedin, resume_file, latino, race, gender,
         shirt_size, need_transportation, bus_from, airport,
         dietary_restrictions, diet_choices, diet_details, q1, q2, q3, q4,
         code_of_conduct, first_name, middle_name, last_name, preferred_name)
     # Display message from application update
     flask.flash(msg)
-    if not success:
-        return flask.redirect(flask.url_for("applications.applications"))
-    return flask.redirect(flask.url_for("home"))
+    return flask.redirect(flask.url_for("applications.applications"))

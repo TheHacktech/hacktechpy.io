@@ -2,6 +2,7 @@ import flask
 from hacktech import auth_utils
 from hacktech import app_year
 import hacktech.modules.judging.helpers as judging_helpers
+from werkzeug.utils import secure_filename
 import os
 
 SCHOOLS = []
@@ -183,7 +184,7 @@ def get_form_info(email):
 
 def handle_update_applications(
         action, email, phone_number, school, major, degree_type,
-        graduation_year, github, linkedin, resume, latino, race, gender,
+        graduation_year, github, linkedin, resume_file, latino, race, gender,
         shirt_size, need_transportation, bus_from, airport,
         dietary_restrictions, diet_choices, diet_details, q1, q2, q3, q4,
         code_of_conduct, first_name, middle_name, last_name, preferred_name):
@@ -255,11 +256,27 @@ def handle_update_applications(
             diet_rest = True
         elif dietary_restrictions == "False":
             diet_rest = False
+        
+        resume_name = ""
+        last_resume_name = check_resume_exists(get_user_id(email))
+        if resume_file and allowed_file(resume_file):
+            resume_name = secure_filename(resume_file.filename)
+            resumes_root_path = os.path.join(flask.current_app.root_path,
+                                         flask.current_app.config['RESUMES'])
+            resume_name = resume_name.split(".")
+            resume_name = secure_filename(
+                str(resume_name[:-1]) + '_' + str(get_user_id(email)) +
+                ".pdf")
+
+            resume_file.save(os.path.join(resumes_root_path, resume_name))
+
+        if resume_name == "":
+            resume_name = last_resume_name
 
         with flask.g.pymysql_db.cursor() as cursor:
             cursor.execute(query, [
                 user_id, app_year.year + "0000", phone_number, school, major,
-                degree_type, graduation_year, github, linkedin, resume, 
+                degree_type, graduation_year, github, linkedin, resume_name, 
                 latino_bool, gender, shirt_size, transportation, in_state, 
                 bus_from, airport, diet_rest, diet_details, q1, q2, q3, q4,
                 code_of_conduct
@@ -313,6 +330,12 @@ def handle_update_applications(
                 "An unexpected error occurred. Please contact the organizers.")
     # Check all required fields are filled out
     if action == 'Submit':
+        if not first_name:
+            return (False,
+                    "Please fill out the required field: first name")
+        if not last_name:
+            return (False,
+                    "Please fill out the required field: last name")
         if not phone_number:
             return (False,
                     "Please fill out the required field: phone number")
@@ -346,16 +369,20 @@ def handle_update_applications(
         if not q4:
             return (False,
                     "Please fill out the required field: short response question 4")
-        if not first_name:
-            return (False,
-                    "Please fill out the required field: first name")
-        if not last_name:
-            return (False,
-                    "Please fill out the required field: last name")
         if not code_of_conduct:
             return (
                 False,
                 "You must accept the MLH code of conduct and data sharing provision."
+            )
+        if (resume_file is None or resume_file.filename == '') and not last_resume_name:
+            return (
+                False,
+                "Please upload your resume."
+            )
+        if not allowed_file(resume_file):
+            return (
+                False,
+                'Please make sure your resume is a PDF file less than 500 KB.'
             )
         else:
             update_status(email, "Submitted", 0)
