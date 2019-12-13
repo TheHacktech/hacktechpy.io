@@ -144,16 +144,17 @@
 	<input type="text" class="form-control" id="airport" name="airport" value="{{form_info.airport}}">
       </div>
 
-      <div class="form-inline">
-        <div class="form-group">
+      <div class="form-group">
           <label for="dietaryRestrictions">Do you have any dietary restrictions? *</label>
-            <select class="form-control" name="dietaryRestrictions">
-              <option value="">Choose...</option>
-	      <option {%if form_info.diet_rest == True %} selected {%endif%} value="True">Yes</option>
-              <option {%if form_info.diet_rest == False %} selected {%endif%} value="False">No</option>
-           </select>
-       </div>
-     </div>
+            <div class="radio-inline">
+	      <label class="radio-inline">
+                <input type="radio" name="dietaryRestrictions" {%if form_info.diet_rest == True %} checked {%endif%} value="True"> Yes  
+	      </label>
+	      <label class="radio-inline">
+                <input type="radio" name="dietaryRestrictions" {%if form_info.diet_rest == False %} checked {%endif%} value="False"> No  
+	      </label>
+           </div>
+      </div>
 
       <div class="form-group">
 	<label for="dietaryRestrictionsChoices">What restrictions?</label>
@@ -235,26 +236,30 @@
 
       <div class="form-group">
         <label for="resume">Please upload your resume in PDF format, with naming convention: lastname_firstname.pdf (less than 500 KB only) *</label>
-	{%if form_info.resume is not none and form_info.resume != ""%}
-          <br />
-	  <label>Current resume on file: <a href={{form_info.resume_link}}> <u>{{form_info.resume_original_name}}</u> </a></label>
-	{%endif%}
-	<input type="file" class="form-control" id="resume" name="resume">
+	<div class="input-group">
+	  {%if form_info.resume is not none and form_info.resume != ""%}
+	    <span class="input-group-addon" id="uploadFileText">Current resume on file: <a href={{form_info.resume_link}}> <u>{{form_info.resume_original_name}}</u> </a></span>
+	  {%else%}
+    	    <span class="input-group-addon" id="uploadFileText">Upload</span>
+	  {%endif%}
+    	  <input type="file" class="form-control" id="resume" name="resume" aria-describedby="uploadFileText">
+        </div>
       </div>
 
       <hr>	
       <p><small>  We want Hacktech to be an inclusive and welcoming space for all participants.  The following demographic questions are optional: </small></p>
-     <div class="form-inline">
-       <div class="form-group">
-         <label for="latino">Are you Hispanic or Latino?</label>
-           <select class="form-control" name="latino">
-             <option value="">Prefer not to answer</option>
-             <option {%if form_info.latino == True %} selected {%endif%} value="True">Yes</option>
-	     <option {%if form_info.latino == False %} selected {%endif%} value="False">No</option>
-          </select>
-       </div>
-     </div>
-  
+      <div class="form-group">
+          <label for="latino">Are you Hispanic or Latino?</label>
+            <div class="radio-inline">
+	      <label class="radio-inline">
+                <input type="radio" name="latino" {%if form_info.latino == True %} checked {%endif%} value="True"> Yes  
+	      </label>
+	      <label class="radio-inline">
+                <input type="radio" name="latino" {%if form_info.latino == False %} checked {%endif%} value="False"> No  
+	      </label>
+           </div>
+      </div>
+
       <div class="form-group">
 	<label for="race">What is your race or ethnicity?  </label> 
         <div class="checkbox-inline">
@@ -289,16 +294,22 @@
 	  </div>
       </div>
 
-      <div class="form-inline">
-        <div class="form-group">
+      <div class="form-group">
           <label for="gender">What is your gender?</label>
-          <select class="form-control" name="gender">
-            <option {%if form_info.gender == "P" %} selected {%endif%} value="P">Prefer not to answer</option>
-            <option {%if form_info.gender == "M" %} selected {%endif%} value="M">Male</option>
-            <option {%if form_info.gender == "F" %} selected {%endif%} value="F">Female</option>
-            <option {%if form_info.gender == "O" %} selected {%endif%} value="O">Other</option>
-         </select>
-        </div>
+            <div class="radio-inline">
+	      <label class="radio-inline">
+                <input type="radio" name="gender" {%if form_info.gender == "F" %} checked {%endif%} value="F"> Female  
+	      </label>
+	      <label class="radio-inline">
+                <input type="radio" name="gender" {%if form_info.gender == "M" %} checked {%endif%} value="M"> Male  
+	      </label>
+	      <label class="radio-inline">
+                <input type="radio" name="gender" {%if form_info.gender == "O" %} checked {%endif%} value="O"> Other  
+	      </label>
+	      <label class="radio-inline">
+                <input type="radio" name="gender" {%if form_info.gender == "P" %} checked {%endif%} value="P"> Prefer not to answer  
+	      </label>
+           </div>
       </div>
 
       <hr> 
