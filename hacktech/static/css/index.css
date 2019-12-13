@@ -35,21 +35,25 @@ body {
   height: 100%;
   display: block;
   position: absolute;
-  animation: illuminate 5s infinite;
+  animation: illuminate 4s infinite;
   animation-timing-function: linear;
   opacity: 0;
 }
 
 #light1 {
-  animation-delay: 2s;
+  animation-delay: 1s;
+    animation: illuminate 3s infinite;
+  animation-timing-function: linear;
 }
 
 #light2 {
-  animation-delay: 3s;
+  animation-delay: 2s;
+  animation: illuminate 2s infinite;
+  animation-timing-function: linear;
 }
 
 #light3 {
-  animation-delay: 4s;
+  animation-delay: 2s;
 }
 #center_info{
   text-align: center;
