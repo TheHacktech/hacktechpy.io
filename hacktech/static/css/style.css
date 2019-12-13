@@ -368,7 +368,7 @@ input[type=checkbox], input[type=radio] {
 }
 
 .navbar-nav {
-  float: left;
+  float: right;
 }
 
 #navbar li a:active {
@@ -403,8 +403,22 @@ input[type=checkbox], input[type=radio] {
     background: white;
 }
 
+label.checkbox-inline{
+    padding-left:4px;
+}
+
+div.checkbox-inline{
+    padding-left:14px;
+}
+.checkbox label{
+    padding-left:5px;
+}
  .mobile_show {
     visibility:hidden;
+ }
+
+ .checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio]{
+    margin-top:5px;
  }
 /*****************************************************************************/
 /* Below are specific IDs for elements that needed individual styling. These *
@@ -490,7 +504,7 @@ input[type=checkbox], input[type=radio] {
     position:absolute;
 }
 #mobile_hide {
-    visibility:hidden;
+    visibility:visible;
     position:relative;
 }
 
@@ -608,7 +622,7 @@ input[type=checkbox], input[type=radio] {
   #navbar button {
     font-size: 2vh;
     position: absolute;
-    left: 7%;
+    left: 3%;
   }
 
   /* Space list elements in the navbar such that they don't overlap. */
@@ -620,7 +634,7 @@ input[type=checkbox], input[type=radio] {
    * elements.
    */
   #navbar li {
-    width: 100%;
+    float: left;
     margin-bottom: 0px;
     margin-top: 0px;
     font-size: 2vh;
@@ -654,6 +668,11 @@ input[type=checkbox], input[type=radio] {
     visibility:hidden;
     position:absolute;
  }
+
+ .navbar-nav {
+  float: left;
+}
+
 }
 
 /* END MOBILE CSS */
