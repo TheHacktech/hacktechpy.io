@@ -632,9 +632,10 @@ div.radio-inline{
 
   /* Make sure the login button is positioned well and is easily accessed. */
   #navbar button {
-    font-size: 2vh;
+    font-size: 16px;
     position: absolute;
     left: 3%;
+    padding-top: 4px;
   }
 
   /* Space list elements in the navbar such that they don't overlap. */
@@ -671,7 +672,8 @@ div.radio-inline{
     right: 2px;
     -webkit-box-sizing: unset;
     box-sizing: unset;
- }
+    top:0px; 
+}
  #mobile_show {
     visibility:visible;
     position:relative;
