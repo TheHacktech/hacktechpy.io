@@ -25,6 +25,35 @@ body {
   padding-top: 0px; 
 }
 
+#animations {
+  display: block;
+  height:100%;
+}
+
+.lights {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  animation: illuminate 5s infinite;
+  animation-timing-function: linear;
+  opacity: 0;
+}
+
+#light1 {
+  animation-delay: 2s;
+}
+
+#light2 {
+  animation-delay: 3s;
+}
+
+#light3 {
+  animation-delay: 4s;
+}
+#center_info{
+  text-align: center;
+}
 #landing {
   height: 100%; 
   background-image: url('/static/images/2020_bkgd.jpg');
@@ -50,7 +79,10 @@ body {
     -webkit-align-items: center;
     align-items: center; }
   #landing img {
-    max-height: 40%;
+  object-fit: cover;
+  }
+  #landing #hektek {
+    max-height: 32%;
     width: auto; }
   #landing h1 {
     text-align: center;
@@ -63,10 +95,19 @@ body {
     text-transform: uppercase;
     font-size: 1.2em;
     letter-spacing: .08em; }
+  #landing #center_info{
+    display:block;
+    top: 23%;
+    width: 100%;
+    text-align: center;
+    height:100%;
+    position: absolute;
+  }
   #landing #form {
     margin: 30px 0px;
     font-size: 0px;
     text-align: center;
+    display: inline-block;
     width: 45%; }
     #landing #form button {
       width: 10%;
@@ -288,8 +329,8 @@ body {
   #faq .faqcolumn {
     width: 100%; } }
 @media screen and (max-height: 700px) {
-  #landing img {
-    max-height: 40%; }
+  #landing #hektek {
+    max-height: 35%; }
   #landing h1 {
     font-size: 2.5em; }
   #landing h3 {
@@ -408,4 +449,12 @@ body {
   transform: rotateX(-90deg) translateZ(120px);
   -webkit-backface-visibility: hidden; }
 
+@keyframes illuminate {
+0%, 100% {
+    opacity: 0;
+}
+50% {
+    opacity: 1;
+}
+}
 /*# sourceMappingURL=index.css.map */
