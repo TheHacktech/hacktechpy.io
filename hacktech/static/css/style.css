@@ -242,6 +242,7 @@ input[type=checkbox], input[type=radio] {
 .alert {
   position: relative;
   top: -49px;
+  z-index: 9000;
 }
 /* END FORM ELEMENTS */
 

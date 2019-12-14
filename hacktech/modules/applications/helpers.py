@@ -379,7 +379,7 @@ def handle_update_applications(
                 False,
                 "Please upload your resume."
             )
-        if not allowed_file(resume_file):
+        if resume_file is not None and not allowed_file(resume_file):
             return (
                 False,
                 'Please make sure your resume is a PDF file less than 500 KB.'
