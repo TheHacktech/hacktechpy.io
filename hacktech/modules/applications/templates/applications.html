@@ -5,6 +5,37 @@
 {% endblock %}
 {% block scripts %}
   {{super()}}
+  <script> 
+	  $('.diet-extra').hide();
+          $('.travel-CA').hide();
+          $('.travel-airport').hide();
+    $('input:radio[name=dietaryRestrictions]').change(function() {
+        if (this.value == 'True') {
+          $('.diet-extra').show();
+	}
+        else{
+          $('.diet-extra').hide();
+	}
+    });
+
+    $('#needTransportation').change(function() {
+        console.log(this.value);
+        if (this.value !== 'no') {
+	  $('.travel-airport').show();
+	  if(this.value === "insideCA")
+	  {
+            $('.travel-CA').show();
+	  } else {
+	    $('.travel-CA').hide();
+	  }
+        }
+        else{
+          $('.travel-CA').hide();
+          $('.travel-airport').hide();
+        }
+
+    });
+  </script>
 {% endblock %}
 {% block page %}
 <div class = "jumbotron">
@@ -55,7 +86,7 @@
             {%endfor%}	
 	  </select>
         </div>
-        <div class="form-group col-md-4 {%if form_info.school == "N/A"%} {{validations.school}} {%endif%}">
+        <div id="school_opt" class="form-group col-md-4 {%if form_info.school == "N/A"%} {{validations.school}} {%endif%}">
 	  <label class="control-label" for="school">If you choose N/A, type here </label>
 	  <input type="text" class="form-control" name="school_opt" value="{{form_info.school_opt}}">
 	</div>
@@ -71,7 +102,7 @@
           {%endfor%}
         </select>
 	</div>
-        <div class="form-group col-md-4">
+        <div id="major_opt" class="form-group col-md-4">
           <label for="major">If you choose N/A, type here </label>
 	  <input type="text" class="form-control" name="major_opt" value="{{form_info.major_opt}}">
         </div>
@@ -119,7 +150,7 @@
       <div class="form-inline">
 	      <div class="form-group {{validations.transportation}}">
           <label class="labelSpace control-label" for="needTransportation">Will you need transportation to Hacktech 2020? *</label>
-          <select class="form-control" name="needTransportation">
+          <select id="needTransportation" class="form-control" name="needTransportation">
             <option value="">Choose...</option>
             <option {%if form_info.transportation == False %} selected {%endif%} value="no">No, I've got it handled!</option>         
             <option {%if form_info.transportation == True and form_info.in_state == True %} selected {%endif%} value="insideCA">Yes, I will be traveling from CA.</option>
@@ -128,7 +159,7 @@
         </div>
       </div>
 
-      <div class="form-inline">
+      <div class="form-inline travel-CA">
         <div class="form-group">
           <label for="busFrom" class="labelSpace" >If you are traveling from CA, which of the following schools would you prefer to bus from? Please choose the closest school. </label>
           <select class="form-control" name="busFrom">
@@ -142,7 +173,7 @@
         </div>
       </div>
 
-     <div class="form-group">
+     <div class="form-group travel-airport">
         <label for="airport">We will be able to provide travel reimbursement on a case-by-case basis only. If you plan on flying, which airport will you be traveling from?</label>
 	<input type="text" class="form-control" id="airport" name="airport" value="{{form_info.airport}}">
       </div>
@@ -159,7 +190,7 @@
            </div>
       </div>
 
-      <div class="form-group">
+      <div class="form-group diet-extra">
 	<label for="dietaryRestrictionsChoices" class="labelSpace" >What restrictions?</label>
           <div class="checkbox-inline">
 	    <label class="checkbox-inline">
@@ -193,7 +224,7 @@
 	  </div>
      </div>
 
-     <div class="form-group">
+     <div class="form-group diet-extra">
         <label for="dietaryRestrictionsDetail">Please specify any details about your dietary restrictions: </label>
 	<textarea class="form-control" id="dietaryRestrictionsDetail" name="dietaryRestrictionsDetail" rows="2">{{form_info.diet_rest_detail}}</textarea>
      </div>
