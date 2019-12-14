@@ -245,7 +245,16 @@ input[type=checkbox], input[type=radio] {
   z-index: 9000;
 }
 /* END FORM ELEMENTS */
+#border {
+  border: solid;
+  width: 50%;
+  border-color: #009dee;
+  display: inline-block;
+}
 
+#statusPage{
+  text-align: center;
+}
 /* Main wrapper class for all elements in the body. */
 .jumbotron {
   background-color: #FFF;
