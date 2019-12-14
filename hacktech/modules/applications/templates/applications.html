@@ -349,7 +349,7 @@
       <hr> 
       <p><small> Please review the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH code of conduct</a> and  <a href="https://github.com/MLH/mlh-policies/blob/master/data-sharing.md">MLH data sharing provision</a>. *  </small></p>
  
-      <div class="form-group col-md-12 {{validations.code_of_conduct}}">
+      <div class="form-group col-md-12 {{validations.code_of_conduct}}"> 
 	 <div class="checkbox">
 		 <label><input class="control-label" type="checkbox" name="codeOfConduct1" value="True" {%if form_info.code_of_conduct == True %} checked {%endif%}>I have read and agree to the <u><a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a></u>.</label>
 	 </div>
@@ -357,7 +357,7 @@
 		 <label><input class="control-label" type="checkbox" name="codeOfConduct2" value="True" {%if form_info.code_of_conduct == True %} checked {%endif%}>I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with the <u><a href="https://mlh.io/privacy">MLH Privacy Policy</a></u>. I further agree to the terms of both the <u><a href="https://github.com/MLH/mlh-policies/tree/master/prize-terms-and-conditions">MLH Contest Terms and Conditions</a></u> and the <u><a href="https://mlh.io/privacy">MLH Privacy Policy</a></u>.</label>
 	 </div>
 	{% if validations.code_of_conduct != "" %}
-        <label class="control-label"><small> Fill in ????</small></label>
+	<label class="control-label"><small> You must accept both the MLH code of conduct and the MLH data sharing provision before submitting this application. </small></label>
         {% endif %}
         </div>
       <p><small>  Are you ready to submit? Once you submit you will not be able to make any changes to your applications. </small></p>

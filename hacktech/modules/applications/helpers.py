@@ -178,11 +178,11 @@ class ValidationForm:
         self.info["school"] = "" if application['school'] != "" and application['school'] != "N/A" else  "has-error"
         self.info["degree_type"] = "" if application['degree_type'] != "" else  "has-error"
         self.info["graduation_year"] = "" if application['graduation_year'] != "" else  "has-error"
-        self.info["resume"] = "" if application['resume'] != None and application['resume'] == "" else  "has-error"
+        self.info["resume"] = "" if application['resume'] != None and application['resume'] != "" else  "has-error"
         self.info["gender"] = "" if application['gender'] != "" else  "has-error"
         self.info["shirt_size"] = "" if application['shirt_size'] != "" else  "has-error"
-        self.info["transportation"] = "" if application['transportation'] else  "has-error"
-        self.info["diet_rest"] = "" if application['diet_rest'] == None else  "has-error"
+        self.info["transportation"] = "" if application['transportation'] != ""  else  "has-error"
+        self.info["diet_rest"] = "" if application['diet_rest'] != None else  "has-error"
         self.info["q1"] = "" if application['q1'] != "" else  "has-error"
         self.info["q2"] = "" if application['q2'] != "" else  "has-error"
         self.info["q3"] = "" if application['q3'] != "" else  "has-error"
@@ -371,49 +371,15 @@ def handle_update_applications(
                 "An unexpected error occurred. Please contact the organizers.")
     # Check all required fields are filled out
     if action == 'Submit':
-        if not first_name:
-            return (False,
-                    "Please fill out the required field: first name") 
-        if not last_name:
-            return (False,
-                    "Please fill out the required field: last name") 
-        if not phone_number:
-            return (False,
-                    "Please fill out the required field: phone number") 
-        if not school:
-            return (False,
-                    "Please fill out the required field: school") 
-        if not degree_type:
-            return (False,
-                    "Please fill out the required field: year of study") 
-        if not graduation_year:
-            return (False,
-                    "Please fill out the required field: graduation year") 
-        if not shirt_size:
-            return (False,
-                    "Please fill out the required field: shirt size") 
-        if not need_transportation:
-            return (False,
-                    "Please fill out the required field: transportation needs") 
-        if not dietary_restrictions:
-            return (False,
-                    "Please fill out the required field: dietary restrictions") 
-        if not q1:
-            return (False,
-                    "Please fill out the required field: short response question 1") 
-        if not q2:
-            return (False,
-                    "Please fill out the required field: short response question 2") 
-        if not q3:
-            return (False,
-                    "Please fill out the required field: short response question 3") 
-        if not q4:
-            return (False,
-                    "Please fill out the required field: short response question 4") 
-        if not code_of_conduct:
-            return (
-                False,
-                "You must accept the MLH code of conduct and data sharing provision.")
+        fields = [first_name, last_name, phone_number, school, degree_type, 
+                graduation_year, shirt_size, need_transportation, 
+                dietary_restrictions, q1, q2, q3, q4, code_of_conduct]
+        for field in fields:
+            if not field:
+                return (
+                    False,
+                    "Please fill out the required fields in red.")
+
         if (resume_file is None or resume_file.filename == '') and not last_resume_name:
             return (
                 False,
