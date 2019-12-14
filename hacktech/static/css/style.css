@@ -242,9 +242,19 @@ input[type=checkbox], input[type=radio] {
 .alert {
   position: relative;
   top: -49px;
+  z-index: 9000;
 }
 /* END FORM ELEMENTS */
+#border {
+  border: solid;
+  width: 50%;
+  border-color: #009dee;
+  display: inline-block;
+}
 
+#statusPage{
+  text-align: center;
+}
 /* Main wrapper class for all elements in the body. */
 .jumbotron {
   background-color: #FFF;
@@ -520,6 +530,9 @@ div.radio-inline{
     position:relative;
 }
 
+.labelSpace {
+    padding-right: 10px;
+}
 /*****************************************************************************/
 /* Below is all the formatting for mobile devices. Basically, it just takes  *
  * the classes you love and augments them a bit to make sure they look great *

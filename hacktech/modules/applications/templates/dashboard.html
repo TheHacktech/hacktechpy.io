@@ -4,8 +4,8 @@
   {{super()}}
 {% endblock %}
 {% block page %}
-<div class = "jumbotron">
-
+<div id="statusPage" class = "jumbotron">
+	<div id="border">
 <h2 class="text-center">Hacktech</h2>
 
 <p class="text-center"> Your status is...</p>
@@ -36,5 +36,6 @@
 {% else %}
 <p class="text-center"> Your reimbursement is $0 at this time (check back if your status changes!) </p> 
 {% endif %}
+</div>
 </div>
 {% endblock %}

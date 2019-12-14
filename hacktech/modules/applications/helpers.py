@@ -256,7 +256,7 @@ def handle_update_applications(
             diet_rest = True
         elif dietary_restrictions == "False":
             diet_rest = False
-        
+        print(resume_file)        
         resume_name = ""
         last_resume_name = check_resume_exists(get_user_id(email))
         if resume_file and allowed_file(resume_file):
@@ -379,7 +379,10 @@ def handle_update_applications(
                 False,
                 "Please upload your resume."
             )
-        if not allowed_file(resume_file):
+        print("????")
+        print(resume_file)
+        print(resume_file.filename)
+        if resume_file.filename != "" and not allowed_file(resume_file):
             return (
                 False,
                 'Please make sure your resume is a PDF file less than 500 KB.'
