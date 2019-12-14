@@ -115,7 +115,7 @@
       <hr>
       <div class="form-inline">
         <div class="form-group">
-          <label for="needTransportation">Will you need transportation to Hacktech 2020? *</label>
+          <label class="labelSpace" for="needTransportation">Will you need transportation to Hacktech 2020? *</label>
           <select class="form-control" name="needTransportation">
             <option value="">Choose...</option>
             <option {%if form_info.transportation == False %} selected {%endif%} value="no">No, I've got it handled!</option>         
@@ -127,7 +127,7 @@
 
       <div class="form-inline">
         <div class="form-group">
-          <label for="busFrom">If you are traveling from CA, which of the following schools would you prefer to bus from? Please choose the closest school. </label>
+          <label for="busFrom" class="labelSpace" >If you are traveling from CA, which of the following schools would you prefer to bus from? Please choose the closest school. </label>
           <select class="form-control" name="busFrom">
             <option value="N/A">Not Applicable</option>
             <option {%if form_info.bus_from == "UCLA" %} selected {%endif%} value="UCLA">UCLA</option>
@@ -145,7 +145,7 @@
       </div>
 
       <div class="form-group">
-          <label for="dietaryRestrictions">Do you have any dietary restrictions? *</label>
+          <label class="labelSpace" for="dietaryRestrictions">Do you have any dietary restrictions? *</label>
             <div class="radio-inline">
 	      <label class="radio-inline">
                 <input type="radio" name="dietaryRestrictions" {%if form_info.diet_rest == True %} checked {%endif%} value="True"> Yes  
@@ -157,7 +157,7 @@
       </div>
 
       <div class="form-group">
-	<label for="dietaryRestrictionsChoices">What restrictions?</label>
+	<label for="dietaryRestrictionsChoices" class="labelSpace" >What restrictions?</label>
           <div class="checkbox-inline">
 	    <label class="checkbox-inline">
               <input type="checkbox" name="dietaryRestrictionsChoices" {%if "Vegetarian" in form_info.diet_types %} checked {%endif%} value="Vegetarian"> Vegetarian
@@ -249,7 +249,7 @@
       <hr>	
       <p><small>  We want Hacktech to be an inclusive and welcoming space for all participants.  The following demographic questions are optional: </small></p>
       <div class="form-group">
-          <label for="latino">Are you Hispanic or Latino?</label>
+          <label for="latino" class="labelSpace">Are you Hispanic or Latino?</label>
             <div class="radio-inline">
 	      <label class="radio-inline">
                 <input type="radio" name="latino" {%if form_info.latino == True %} checked {%endif%} value="True"> Yes  
@@ -295,7 +295,7 @@
       </div>
 
       <div class="form-group">
-          <label for="gender">What is your gender?</label>
+          <label class="labelSpace" for="gender">What is your gender?</label>
             <div class="radio-inline">
 	      <label class="radio-inline">
                 <input type="radio" name="gender" {%if form_info.gender == "F" %} checked {%endif%} value="F"> Female  

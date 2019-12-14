@@ -520,6 +520,9 @@ div.radio-inline{
     position:relative;
 }
 
+.labelSpace {
+    padding-right: 10px;
+}
 /*****************************************************************************/
 /* Below is all the formatting for mobile devices. Basically, it just takes  *
  * the classes you love and augments them a bit to make sure they look great *
