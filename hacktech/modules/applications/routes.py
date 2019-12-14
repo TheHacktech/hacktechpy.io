@@ -2,24 +2,32 @@ import flask
 import os
 from hacktech import auth_utils
 from hacktech.modules.applications import blueprint, helpers
-
+import json
 
 @blueprint.route("/applications")
 def applications():
     if not auth_utils.check_login():
         return auth_utils.login_redirect()
     email = flask.session['username']
+    submitted = flask.request.args.get("submit", "")
     majors = helpers.get_majors()
     schools = helpers.get_schools()
-    form_info = helpers.get_form_info(email)
+    form_info, validations = helpers.get_form_info(email)
     form_info.major_opt = form_info.major if form_info.major not in majors else ""
     form_info.school_opt = form_info.school if form_info.school not in schools else ""
+    if form_info.school_opt != "":
+        form_info.school = "N/A"
+    if form_info.major_opt != "":
+        form_info.major = "N/A"
+    if submitted != "True":
+        validations = helpers.ValidationForm()
     return flask.render_template(
         "applications.html",
         schools=schools,
         majors=majors,
         form_info=form_info,
-        submitted=(helpers.check_submitted(email, email)))
+        submitted=(helpers.check_submitted(email, email)), 
+        validations=validations.info)
 
 
 @blueprint.route("/applications/rsvp")
@@ -50,8 +58,6 @@ def update_status():
     helpers.update_status(email,
                           flask.request.form.get("RSVPed")
                           or flask.request.form.get("Declined"), 0)
-    print(flask.request.form.get("RSVPed"))
-    print(flask.request.form.get("Declined"))
     return flask.redirect(flask.url_for(".status"))
 
 
@@ -73,13 +79,12 @@ def update_applications():
     graduation_year = flask.request.form.get("graduationYear", None)
     github = flask.request.form.get("github", None)
     linkedin = flask.request.form.get("linkedin", None)
-
     # Special cases for major and school not in options
     if school == "N/A" or not school:
-        school = flask.request.form.get("school_opt", None)
+        school_opt = flask.request.form.get("school_opt", None)
+        school = school if school_opt == None or school_opt == "" else school_opt
     if major == "N/A" or not major:
         major = flask.request.form.get("major_opt", None)
-
     # Check if the request has a resume attached
     resume_file = None
     if 'resume' in flask.request.files:
@@ -110,4 +115,4 @@ def update_applications():
         code_of_conduct, first_name, middle_name, last_name, preferred_name)
     # Display message from application update
     flask.flash(msg)
-    return flask.redirect(flask.url_for("applications.applications"))
+    return flask.redirect(flask.url_for("applications.applications", submit=True if action == "Submit" else False))

@@ -150,6 +150,45 @@ class FormInfo:
                 self.resume.split("_")[:-1]) + ".pdf"
 
 
+class ValidationForm:
+    def __init__(self):
+        self.info = {}
+        self.info["first_name"] = ""
+        self.info["last_name"] = ""
+        self.info["phone"] = ""
+        self.info["school"] = ""
+        self.info["major"] = ""
+        self.info["degree_type"] = ""
+        self.info["graduation_year"] = ""
+        self.info["resume"] = ""
+        self.info["gender"] = ""
+        self.info["shirt_size"] = ""
+        self.info["transportation"] = ""
+        self.info["diet_rest"] = ""
+        self.info["q1"] = ""
+        self.info["q2"] = ""
+        self.info["q3"] = ""
+        self.info["q4"] = ""
+        self.info["code_of_conduct"] = "" 
+
+    def fill(self, application, member):
+        self.info["first_name"] = "" if member['first_name'] != "" else  "has-error"
+        self.info["last_name"] = "" if member['last_name'] != "" else  "has-error"
+        self.info["phone"] = "" if application['phone'] != "" else  "has-error"
+        self.info["school"] = "" if application['school'] != "" and application['school'] != "N/A" else  "has-error"
+        self.info["degree_type"] = "" if application['degree_type'] != "" else  "has-error"
+        self.info["graduation_year"] = "" if application['graduation_year'] != "" else  "has-error"
+        self.info["resume"] = "" if application['resume'] != None and application['resume'] == "" else  "has-error"
+        self.info["gender"] = "" if application['gender'] != "" else  "has-error"
+        self.info["shirt_size"] = "" if application['shirt_size'] != "" else  "has-error"
+        self.info["transportation"] = "" if application['transportation'] else  "has-error"
+        self.info["diet_rest"] = "" if application['diet_rest'] == None else  "has-error"
+        self.info["q1"] = "" if application['q1'] != "" else  "has-error"
+        self.info["q2"] = "" if application['q2'] != "" else  "has-error"
+        self.info["q3"] = "" if application['q3'] != "" else  "has-error"
+        self.info["q4"] = "" if application['q4'] != "" else  "has-error"
+        self.info["code_of_conduct"] = "" if application['code_of_conduct'] == 1 else  "has-error"
+
 def get_form_info(email):
     """Gets all existing application form info from the database."""
     user_id = get_user_id(email)
@@ -179,7 +218,9 @@ def get_form_info(email):
     with flask.g.pymysql_db.cursor() as cursor:
         cursor.execute(query, [user_id])
         race = cursor.fetchall()
-    return FormInfo(application, member, diet, race)
+    validationForm = ValidationForm()
+    validationForm.fill(application, member)
+    return (FormInfo(application, member, diet, race), validationForm)
 
 
 def handle_update_applications(
@@ -198,6 +239,7 @@ def handle_update_applications(
     user_id = result['user_id']
     if not user_id:
         return (False, "Invalid user ID. Please contact the organizers.")
+    validations = ValidationForm()
     flask.g.pymysql_db.begin()
     try:
         # Insert the new row into applications, or update if it exists.
@@ -256,7 +298,6 @@ def handle_update_applications(
             diet_rest = True
         elif dietary_restrictions == "False":
             diet_rest = False
-        print(resume_file)        
         resume_name = ""
         last_resume_name = check_resume_exists(get_user_id(email))
         if resume_file and allowed_file(resume_file):
@@ -269,7 +310,8 @@ def handle_update_applications(
                 ".pdf")
 
             resume_file.save(os.path.join(resumes_root_path, resume_name))
-
+        elif resume_file and not allowed_file(resume_file):
+            flask.flash("Make sure that your resume is a pdf and < 500 KB!")
         if resume_name == "":
             resume_name = last_resume_name
 
@@ -288,7 +330,6 @@ def handle_update_applications(
         WHERE user_id=%s 
         """
         with flask.g.pymysql_db.cursor() as cursor:
-            print(last_name)
             cursor.execute(query, [
                 first_name, middle_name, last_name, preferred_name, user_id
             ])
@@ -332,64 +373,59 @@ def handle_update_applications(
     if action == 'Submit':
         if not first_name:
             return (False,
-                    "Please fill out the required field: first name")
+                    "Please fill out the required field: first name") 
         if not last_name:
             return (False,
-                    "Please fill out the required field: last name")
+                    "Please fill out the required field: last name") 
         if not phone_number:
             return (False,
-                    "Please fill out the required field: phone number")
+                    "Please fill out the required field: phone number") 
         if not school:
             return (False,
-                    "Please fill out the required field: school")
+                    "Please fill out the required field: school") 
         if not degree_type:
             return (False,
-                    "Please fill out the required field: year of study")
+                    "Please fill out the required field: year of study") 
         if not graduation_year:
             return (False,
-                    "Please fill out the required field: graduation year")
+                    "Please fill out the required field: graduation year") 
         if not shirt_size:
             return (False,
-                    "Please fill out the required field: shirt size")
+                    "Please fill out the required field: shirt size") 
         if not need_transportation:
             return (False,
-                    "Please fill out the required field: transportation needs")
+                    "Please fill out the required field: transportation needs") 
         if not dietary_restrictions:
             return (False,
-                    "Please fill out the required field: dietary restrictions")
+                    "Please fill out the required field: dietary restrictions") 
         if not q1:
             return (False,
-                    "Please fill out the required field: short response question 1")
+                    "Please fill out the required field: short response question 1") 
         if not q2:
             return (False,
-                    "Please fill out the required field: short response question 2")
+                    "Please fill out the required field: short response question 2") 
         if not q3:
             return (False,
-                    "Please fill out the required field: short response question 3")
+                    "Please fill out the required field: short response question 3") 
         if not q4:
             return (False,
-                    "Please fill out the required field: short response question 4")
+                    "Please fill out the required field: short response question 4") 
         if not code_of_conduct:
             return (
                 False,
-                "You must accept the MLH code of conduct and data sharing provision."
-            )
+                "You must accept the MLH code of conduct and data sharing provision.")
         if (resume_file is None or resume_file.filename == '') and not last_resume_name:
             return (
                 False,
-                "Please upload your resume."
+                "Please upload your resume.", validations
             )
-        print("????")
-        print(resume_file)
-        print(resume_file.filename)
         if resume_file.filename != "" and not allowed_file(resume_file):
             return (
                 False,
-                'Please make sure your resume is a PDF file less than 500 KB.'
-            )
+                'Please make sure your resume is a PDF file less than 500 KB.')
         else:
             update_status(email, "Submitted", 0)
-        return (True, "You have submitted your application successfully!")
+        return (True, "You have submitted your application successfully!") 
     update_status(email, "In-Progress", 0)
     return (True, "Your application has been updated!")
 
@@ -402,5 +438,4 @@ def check_resume_exists(user_id):
     with flask.g.pymysql_db.cursor() as cursor:
         cursor.execute(query, [user_id, app_year.year + "0000"])
         res = cursor.fetchone()
-    print(res)
     return None if res == None or res['resume'] == "" else res['resume']
