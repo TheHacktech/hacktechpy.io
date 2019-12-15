@@ -242,7 +242,7 @@ input[type=checkbox], input[type=radio] {
 .alert {
   position: relative;
   top: -49px;
-  z-index: 9000;
+  z-index: 1000;
 }
 /* END FORM ELEMENTS */
 #border {
@@ -447,6 +447,10 @@ div.radio-inline{
  * should not be used for general styling or anything of the like. Odds are, *
  * you won't need them for anything!                                         */
 /*****************************************************************************/
+
+#mlh-notice {
+  color: #009dee;
+}
 #application_form {
   background:white;
   color: #009dee;
