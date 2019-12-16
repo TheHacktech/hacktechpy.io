@@ -41,9 +41,15 @@
         <h3>March 6-8, 2020 @ Pasadena, CA</h3>
 	<!-- <h3>Apply by Jan 31th! </h3> -->
         <!-- PRE-APPLICATION INTEREST FORM -->
+	<p> Applications are open! Decision is made on a rolling basis. </br> Apply by 2/1! </p>
 	<div id="form">
           <!-- <input type="email" id="hackerEmail" placeholder="Email"> -->
-        <button type="btn btn-primary" id="updatebtn" onclick="window.open('https://forms.gle/fHUbqy6qUGcbjnW6A')">Receive Updates</button></div>
+	  <!--<button type="btn btn-primary" id="updatebtn" onclick="window.open('https://forms.gle/fHUbqy6qUGcbjnW6A')">Receive Updates</button></div> -->
+	  {%if 'username' in session%}
+	  <button id="apply" onclick="location.href='https://hacktech.io/applications';" style="cursor:pointer;">Apply</button>
+	  {%else%}
+	  <button id="apply" onclick="location.href='https://hacktech.io/login';" style="cursor:pointer;">Apply</button>
+	  {%endif%}
         <!-- <div id="form"><button type="btn btn-primary" id="updatebtn" onclick="window.open('[INTEREST_FORM_LINK]')">Apply Here on 12/9!</button>
         <button id="apply" onclick="window.open('https://forms.gle/fHUbqy6qUGcbjnW6A');">Receive Updates</button> -->
         <!-- APPLICATION -->
