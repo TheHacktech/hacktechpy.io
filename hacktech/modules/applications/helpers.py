@@ -157,7 +157,6 @@ class ValidationForm:
         self.info["last_name"] = ""
         self.info["phone"] = ""
         self.info["school"] = ""
-        self.info["major"] = ""
         self.info["degree_type"] = ""
         self.info["graduation_year"] = ""
         self.info["resume"] = ""
@@ -181,7 +180,7 @@ class ValidationForm:
         self.info["resume"] = "" if application['resume'] != None and application['resume'] != "" else  "has-error"
         self.info["gender"] = "" if application['gender'] != "" else  "has-error"
         self.info["shirt_size"] = "" if application['shirt_size'] != "" else  "has-error"
-        self.info["transportation"] = "" if application['transportation'] != ""  else  "has-error"
+        self.info["transportation"] = "" if application['transportation'] != None  else  "has-error"
         self.info["diet_rest"] = "" if application['diet_rest'] != None else  "has-error"
         self.info["q1"] = "" if application['q1'] != "" else  "has-error"
         self.info["q2"] = "" if application['q2'] != "" else  "has-error"
@@ -310,8 +309,6 @@ def handle_update_applications(
                 ".pdf")
 
             resume_file.save(os.path.join(resumes_root_path, resume_name))
-        elif resume_file and not allowed_file(resume_file):
-            flask.flash("Make sure that your resume is a pdf and < 500 KB!")
         if resume_name == "":
             resume_name = last_resume_name
 
@@ -383,12 +380,12 @@ def handle_update_applications(
         if (resume_file is None or resume_file.filename == '') and not last_resume_name:
             return (
                 False,
-                "Please upload your resume.", validations
+                "Please upload your resume."
             )
-        if resume_file.filename != "" and not allowed_file(resume_file):
+        if (resume_file and resume_file.filename != "") and not allowed_file(resume_file):
             return (
                 False,
-                'Please make sure your resume is a PDF file less than 500 KB.')
+                'Please upload your resume as a PDF file less than 500 KB.')
         else:
             update_status(email, "Submitted", 0)
         return (True, "You have submitted your application successfully!") 

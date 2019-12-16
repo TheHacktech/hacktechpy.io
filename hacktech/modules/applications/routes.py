@@ -106,7 +106,7 @@ def update_applications():
     q3 = flask.request.form.get("Q3", None)
     q4 = flask.request.form.get("Q4", None)
     code_of_conduct = (flask.request.form.get("codeOfConduct1", None) == "True") \
-            and (flask.request.form.get("codeOfConduct2") == "True")
+            and (flask.request.form.get("codeOfConduct2", None) == "True")
     success, msg = helpers.handle_update_applications(
         action, email, phone_number, school, major, degree_type,
         graduation_year, github, linkedin, resume_file, latino, race, gender,

@@ -4,6 +4,8 @@
 {% block styles %}
     {{ super() }}
    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <meta property="og:image"              content="https://hacktech.io/static/images/preview.jpg" />
+    <meta name="description" content="Caltech's annual Hackathon!">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=EB+Garamond|Roboto" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
