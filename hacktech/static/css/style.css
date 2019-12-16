@@ -250,6 +250,7 @@ input[type=checkbox], input[type=radio] {
   width: 50%;
   border-color: #009dee;
   display: inline-block;
+  padding: 25px;
 }
 
 #statusPage{
