@@ -15,8 +15,8 @@
 <p class="text-center"> Woooh! You got accepted into Hacktech!!!  </p>
 
 <p class="text-center"> Please go to <a href = {{url_for('applications.rsvp')}} >this page to rsvp</a></p>
-{% elif status.status == "In-progress" %}
-<p class="text-center"> Looks like you still need to fill in your application!</p>
+{% elif status.status == "In-Progress" %}
+<p class="text-center"> Looks like you still need to finish filling in your application!</p>
 {% elif status.status == "Declined" %}
 <p class="text-center"> We are sad that we will be missing you! If you change your mind, you can always  <a href = {{url_for('applications.rsvp')}} > go here </a> to update your response </p>
 
@@ -28,7 +28,7 @@
 {% elif status.status == "Rejected" %}
 <p class="text-center"> Sorry we couldn't offer you a spot this year :( </p>
 {% else %}
-<p class="text-center"> What are you waiting for?? <a href = {{url_for('applications.applications')}}> Fill up your application here! </a> </p>
+<p class="text-center"> What are you waiting for?? <a href = {{url_for('applications.applications')}}> Fill out your application here! </a> </p>
 {% endif %}
 
 {% if status.reimbursement_amt is not none %}

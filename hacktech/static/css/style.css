@@ -518,7 +518,7 @@ div.radio-inline{
     display: block;
     max-width: 100px;
     min-width: 60px;
-    right: 50px;
+    left: 49px;
     top: 52px;
     position: fixed;
     width: 10%;
@@ -687,6 +687,7 @@ div.radio-inline{
  }
  #mlh-trust-badge {
     right: 2px;
+    left: auto;
     -webkit-box-sizing: unset;
     box-sizing: unset;
     top:0px; 
