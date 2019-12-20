@@ -1,5 +1,6 @@
 import flask
 import pymysql.cursors
+from datetime import date
 from hacktech import app_year
 from hacktech import email_templates, email_utils
 def get_name(user_id):
@@ -29,7 +30,7 @@ def get_application(user_id):
     result = []
     query = """
     SELECT user_id, first_name, preferred_name, middle_name, last_name,
-    phone, school, major, degree_type, graduation_year, 
+    date_of_birth, phone, school, major, degree_type, graduation_year, 
     github, linkedin, resume, latino, gender, shirt_size, 
     transportation, in_state, bus_from, airport, 
     diet_rest, diet_rest_detail, 
@@ -54,6 +55,8 @@ def get_application(user_id):
     race_info = [x['race_type'] for x in race_info_dict]
     result['race'] = race_info
     result['resume_url'] = generate_resume_url(result['resume'])
+    dt = date.fromisoformat(str(result['date_of_birth']))
+    result['is_18']= 'YES' if app_year.dob_threshold > dt else 'NO'
     return result
 
 
@@ -101,7 +104,7 @@ def get_all_application_links():
     return result
 
 
-def get_current_stats():
+def get_current_stats(limit=6):
     """
     Returns some statistics from the db. 
     """
@@ -123,10 +126,10 @@ def get_current_stats():
     for cat in cats:
         query = """
         SELECT {0}, COUNT(*) from applications WHERE application_year = %s
-        GROUP BY {0} ORDER BY {0} DESC
+        GROUP BY {0} ORDER BY {0} ASC LIMIT %s 
         """.format(cat)
         with flask.g.pymysql_db.cursor() as cursor:
-            cursor.execute(query, [app_year.year + "0000"])
+            cursor.execute(query, [app_year.year + "0000", limit])
             res = cursor.fetchall()
         stats[cat] = reorder_stat(res, cat)
 

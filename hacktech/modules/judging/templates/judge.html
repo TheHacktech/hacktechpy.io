@@ -5,8 +5,9 @@
 {% endblock %}
 {% block page %} 
 <div class="jumbotron">
+	<div class='container'>
 <div class="row">
-  <div class="col-12 col-md-4" style="padding-left: 50px;">
+  <div class="col-12 col-md-3" style="padding-left: 50px;">
     Status types:
 
     </br>
@@ -37,7 +38,7 @@
     <label class="checkbox-inline">Not Started</label>
     <input type="checkbox" name="display_tag" value="Not Started"/>
   </div>
-  <div class="col-12 col-md-8">
+  <div class="col-12 col-md-9">
     <table style="width:100%">
   <tr>
     <th>Name</th>
@@ -46,14 +47,20 @@
   </tr>
   {% for i in info %}
   <tr class='{{i.status}}'>
-	  <td>{{loop.index}}. {{i.first_name}} {{i.last_name}} </td>
+	  <td>{{page*100+loop.index}}. {{i.first_name}} {{i.last_name}} </td>
 	  <td> {{i.status}} </td>
 	  <td> <a href={{i.link}} >Go</a></td>
   </tr>
   {% endfor %}
 </table>
-
+  {%if page > 0%}
+  <a href="{{ url_for('judging.judge', page=page-1) }}"> Prev Page </a>
+  {%endif%}
+  {%if finalPage == False %}
+  <a href="{{ url_for('judging.judge', page=page+1) }}" id="nextPage"> Next Page </a>
+  {%endif%}
   </div>
+</div>
 </div>
 </div>
 {% block scripts %}

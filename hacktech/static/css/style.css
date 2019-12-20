@@ -448,7 +448,9 @@ div.radio-inline{
  * should not be used for general styling or anything of the like. Odds are, *
  * you won't need them for anything!                                         */
 /*****************************************************************************/
-
+#nextPage {
+  float: right;
+}
 #mlh-notice {
   color: #009dee;
 }
