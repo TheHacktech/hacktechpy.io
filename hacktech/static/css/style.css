@@ -523,7 +523,7 @@ div.radio-inline{
     top: 52px;
     position: fixed;
     width: 10%;
-    z-index: 10000;
+    z-index: 999;
 }
 
 #mobile_show {
