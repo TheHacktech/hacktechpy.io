@@ -8,11 +8,14 @@ import json
 
 @blueprint.route("/judge")
 def judge():
+    curpage = int(flask.request.args.get('page', 0))
     if not auth_utils.check_login() or not auth_utils.check_admin(
             flask.session['username']):
         return flask.redirect(flask.url_for("home"))
     info = helpers.get_all_application_links()
-    return flask.render_template("judge.html", info=info)
+    final_page= True if (curpage+1)*100 > len(info) else False
+    info = info[curpage*100:(curpage+1)*100]
+    return flask.render_template("judge.html", info=info, page=curpage, finalPage=final_page)
 
 
 @blueprint.route("/view_application/<int:user_id>")
