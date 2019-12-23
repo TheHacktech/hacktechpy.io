@@ -9,14 +9,20 @@ import json
 @blueprint.route("/judge")
 def judge():
     curpage = int(flask.request.args.get('page', 0))
+    page_size = int(flask.session.get('page_size', 100))
+    flask.session['page_size'] = page_size
     if not auth_utils.check_login() or not auth_utils.check_admin(
             flask.session['username']):
         return flask.redirect(flask.url_for("home"))
     info = helpers.get_all_application_links()
-    final_page= True if (curpage+1)*100 > len(info) else False
-    info = info[curpage*100:(curpage+1)*100]
-    return flask.render_template("judge.html", info=info, page=curpage, finalPage=final_page)
+    total_pages = int(len(info) / page_size)+1
+    info = info[curpage*page_size:(curpage+1)*page_size]
+    return flask.render_template("judge.html", info=info, page=curpage, total_pages=total_pages)
 
+@blueprint.route("/update_page_size", methods=['POST'])
+def update_page_size():
+    flask.session['page_size'] = int(flask.request.form.get('page_size', 100))
+    return flask.redirect(flask.url_for("judging.judge"))
 
 @blueprint.route("/view_application/<int:user_id>")
 def view_application(user_id):
