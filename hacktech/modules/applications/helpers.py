@@ -64,7 +64,7 @@ def allowed_file(file):
     # Reset to beginning of file
     file.seek(0, 0)
     return len(splits) >= 2 and splits[1].lower(
-    ) in ALLOWED_EXTENSIONS and file_length < MAX_FILE_SIZE
+    ) in ALLOWED_EXTENSIONS and file_length > 0 and file_length < MAX_FILE_SIZE
 
 
 def check_status(self_email, other_email):

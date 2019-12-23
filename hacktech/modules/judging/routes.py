@@ -2,6 +2,7 @@ import flask
 
 from hacktech.modules.judging import blueprint, helpers
 from hacktech import auth_utils
+from hacktech.modules.applications import helpers as app_helpers
 import os
 import json
 
@@ -44,6 +45,13 @@ def uploaded_file(filename):
     '''
     Serves the actual uploaded file.
     '''
+    if not auth_utils.check_login():
+        return flask.redirect(flask.url_for("home"))
+    
+    user_res_name = app_helpers.check_resume_exists(app_helpers.get_user_id(flask.session['username']))
+
+    if user_res_name != filename and not auth_utils.check_admin(flask.session['username']):
+        return flask.redirect(flask.url_for("home"))
     uploads = os.path.join(flask.current_app.root_path,
                            flask.current_app.config['RESUMES'])
     return flask.send_from_directory(uploads, filename, as_attachment=False)

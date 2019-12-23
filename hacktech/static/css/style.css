@@ -448,6 +448,14 @@ div.radio-inline{
  * should not be used for general styling or anything of the like. Odds are, *
  * you won't need them for anything!                                         */
 /*****************************************************************************/
+#judgingTable td {
+  border-bottom: 1pt solid #bbb;
+}
+
+#judgingTable tr:hover {
+background-color: rgba(0,190,255,.5);
+}
+
 #nextPage {
   float: right;
 }

@@ -126,7 +126,7 @@ def get_current_stats(limit=6):
     for cat in cats:
         query = """
         SELECT {0}, COUNT(*) from applications WHERE application_year = %s
-        GROUP BY {0} ORDER BY {0} ASC LIMIT %s 
+        GROUP BY {0} ORDER BY COUNT(*) DESC LIMIT %s 
         """.format(cat)
         with flask.g.pymysql_db.cursor() as cursor:
             cursor.execute(query, [app_year.year + "0000", limit])
