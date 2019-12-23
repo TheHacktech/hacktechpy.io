@@ -18,7 +18,7 @@ def judge():
     info = helpers.get_all_application_links()
     total_pages = int(len(info) / page_size)+1
     info = info[curpage*page_size:(curpage+1)*page_size]
-    return flask.render_template("judge.html", info=info, page=curpage, total_pages=total_pages)
+    return flask.render_template("judge.html", info=info, page=curpage, total_pages=total_pages, page_size=page_size)
 
 @blueprint.route("/update_page_size", methods=['POST'])
 def update_page_size():

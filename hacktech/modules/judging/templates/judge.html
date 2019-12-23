@@ -41,7 +41,7 @@
               <form class="form-inline" action="{{ url_for('judging.update_page_size', page=page) }}" method="post">
                             <div id="pageSize" class="form-group">
             <label for="page_size">page size: </label>
-            <input type="number" class="form-control" id="page_size" name="page_size" placeholder="100" />
+	    <input type="number" class="form-control" id="page_size" name="page_size" placeholder="{{page_size}}" />
 	    <button type="submit" class="btn btn-primary">Go</button>
 
           </div>
@@ -56,7 +56,7 @@
   </tr>
   {% for i in info %}
   <tr class='{{i.status}}'>
-	  <td>{{page*100+loop.index}}. {{i.first_name}} {{i.last_name}} </td>
+	  <td>{{page*page_size+loop.index}}. {{i.first_name}} {{i.last_name}} </td>
 	  <td> {{i.status}} </td>
 	  <td><a href="{{i.link}}">Go</a></td>
   </tr>
@@ -68,7 +68,7 @@
 
   <div id="pageJumpDiv">
 	{%if page >= 3 %}
-  	<a href="{{ url_for('judging.judge', page=0) }}"> First </a>
+	<a href="{{ url_for('judging.judge', page=0) }}">1...</a>
 	{%endif%}
 	{%for i in range(3, 0, -1)%}
 	  {%if page - i >= 0%}
@@ -81,6 +81,9 @@
             <a href="{{ url_for('judging.judge', page=page+i) }}"> {{page+i+1}} </a>
           {%endif%}
         {%endfor%}
+	{%if page <= total_pages - 3 %}
+	<a href="{{ url_for('judging.judge', page=total_pages - 1)}}">...{{total_pages}}</a>
+        {%endif%}
   </div>
   {%if total_pages > page + 1%}
   <a href="{{ url_for('judging.judge', page=page+1) }}" id="nextPage"> Next Page </a>
