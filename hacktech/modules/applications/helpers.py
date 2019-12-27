@@ -387,9 +387,9 @@ def handle_update_applications(
                 False,
                 'Please upload your resume as a PDF file less than 500 KB.')
         else:
-            update_status(email, "Submitted", 0)
+            update_status(email, "Submitted", None)
         return (True, "You have submitted your application successfully!") 
-    update_status(email, "In-Progress", 0)
+    update_status(email, "In-Progress", None)
     return (True, "Your application has been updated!")
 
 
