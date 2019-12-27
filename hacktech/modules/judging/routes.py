@@ -70,6 +70,7 @@ def update_status(user_id):
         return flask.redirect(flask.url_for("home"))
     helpers.update_status(user_id,
                           flask.request.form.get('new_status'),
-                          flask.request.form.get('reimbursement_amount'))
+                          flask.request.form.get('reimbursement_amount'), 
+                          app_helpers.get_user_id(flask.session['username']))
     flask.flash('Status has been updated')
     return flask.redirect(flask.url_for('judging.judge'))
