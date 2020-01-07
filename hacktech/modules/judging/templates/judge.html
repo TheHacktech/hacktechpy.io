@@ -67,10 +67,11 @@
   {%endif%}
 
   <div id="pageJumpDiv">
+    <div>
 	{%if page >= 3 %}
 	<a href="{{ url_for('judging.judge', page=0) }}">1...</a>
 	{%endif%}
-	{%for i in range(3, 0, -1)%}
+	{%for i in range(2, 0, -1)%}
 	  {%if page - i >= 0%}
 	    <a href="{{ url_for('judging.judge', page=page-i) }}"> {{page-i+1}} </a>  	
 	  {%endif%}
@@ -81,9 +82,10 @@
             <a href="{{ url_for('judging.judge', page=page+i) }}"> {{page+i+1}} </a>
           {%endif%}
         {%endfor%}
-	{%if page <= total_pages - 3 %}
+	{%if page < total_pages - 3 %}
 	<a href="{{ url_for('judging.judge', page=total_pages - 1)}}">...{{total_pages}}</a>
         {%endif%}
+    </div>
   </div>
   {%if total_pages > page + 1%}
   <a href="{{ url_for('judging.judge', page=page+1) }}" id="nextPage"> Next Page </a>

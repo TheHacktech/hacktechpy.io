@@ -200,14 +200,21 @@ def update_status(user_id, new_status, reimbursement_amount, decider_id=None):
     """
     if reimbursement_amount == "None":
         reimbursement_amount = None
-    query = """
-    UPDATE status SET status = %s, reimbursement_amt = %s, decider_user_id = %s WHERE user_id = %s
-    """
-    with flask.g.pymysql_db.cursor() as cursor:
-        cursor.execute(query, [new_status, reimbursement_amount, decider_id, user_id])
+    if decider_id is None:
+        query = """
+        UPDATE status SET status = %s, reimbursement_amt = %s WHERE user_id = %s
+        """
+        with flask.g.pymysql_db.cursor() as cursor:
+            cursor.execute(query, [new_status, reimbursement_amount, user_id])
+    else:
+        query = """
+        UPDATE status SET status = %s, reimbursement_amt = %s, decider_user_id = %s WHERE user_id = %s
+        """
+        with flask.g.pymysql_db.cursor() as cursor:
+            cursor.execute(query, [new_status, reimbursement_amount, decider_id, user_id])
     first_name = get_name(user_id)
     email = get_email(user_id)
-    if reimbursement_amount is not None:
+    if reimbursement_amount is not None and new_status == "Accepted":
         subject = "Reimbursement Information"
         msg = email_templates.ReimbursementEmail.format(first_name, reimbursement_amount)
         email_utils.send_email(email, msg, subject, gmail=True)
