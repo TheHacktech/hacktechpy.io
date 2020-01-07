@@ -62,6 +62,17 @@ def uploaded_file(filename):
                            flask.current_app.config['RESUMES'])
     return flask.send_from_directory(uploads, filename, as_attachment=False)
 
+@blueprint.route('/judge/resumes', methods=['POST'])
+def serve_resume_book():
+    if not auth_utils.check_login() or not auth_utils.check_admin(
+        flask.session['username']):
+        return flask.redirect(flask.url_for("home"))
+    fields=flask.request.form.getlist("groups", None)
+    if fields == None:
+        return flask.redirect(flask.url_for("judging.judge"))
+
+    helpers.generate_resume_book(fields)
+    return flask.redirect(flask.url_for("judging.uploaded_file", filename="resume_book.pdf"))
 
 @blueprint.route('/judge/update/<int:user_id>', methods=['POST'])
 def update_status(user_id):

@@ -5,47 +5,84 @@
 {% endblock %}
 {% block page %} 
 <div class="jumbotron">
-	<div class='container'>
+<div class='container'>
 <div class="row">
   <div class="col-12 col-md-3" style="padding-left: 50px;">
-    Status types:
-
-    </br>
-    <label class="checkbox-inline">Accepted</label>
-    <input type="checkbox" name="display_tag" value="Accepted"/>
-    </br>
-
-    <label class="checkbox-inline">In-progress</label>
-    <input type="checkbox" name="display_tag" value="In-Progress"/>
-
-    </br>
-    <label class="checkbox-inline">Submitted</label>
-    <input type="checkbox" name="display_tag" value="Submitted"/>
-
-</br>
-    <label class="checkbox-inline">RSVPed</label>
-    <input type="checkbox" name="display_tag" value="RSVPed"/>
-
-    </br>
-    <label class="checkbox-inline">Declined</label>
-    <input type="checkbox" name="display_tag" value="Declined"/>
-
-    </br>
-    <label class="checkbox-inline">Rejected</label>
-    <input type="checkbox" name="display_tag" value="Rejected"/>
-
-    </br>
-    <label class="checkbox-inline">Not Started</label>
-    <input type="checkbox" name="display_tag" value="Not Started"/>
-
-              <form class="form-inline" action="{{ url_for('judging.update_page_size', page=page) }}" method="post">
-                            <div id="pageSize" class="form-group">
-            <label for="page_size">page size: </label>
+    <div id="judgeViewOpt">
+      <h5>Options</h5>
+      Status types:
+      </br>
+      <label class="checkbox-inline">
+        <input type="checkbox" name="display_tag" value="Accepted"/>
+        Accepted</label>
+      </br>
+      <label class="checkbox-inline">
+         <input type="checkbox" name="display_tag" value="In-Progress"/>
+        In-progress</label>
+      </br>
+      <label class="checkbox-inline">
+        <input type="checkbox" name="display_tag" value="Submitted"/>
+        Submitted</label>
+      </br>
+      <label class="checkbox-inline">
+        <input type="checkbox" name="display_tag" value="RSVPed"/>
+        RSVPed</label>
+      </br>
+      <input type="checkbox" name="display_tag" value="Declined"/>
+      <label class="checkbox-inline">Declined</label>
+      </br>
+      <label class="checkbox-inline">Rejected</label>
+      <input type="checkbox" name="display_tag" value="Rejected"/>
+      </br>
+      <label class="checkbox-inline">Not Started</label>
+      <input type="checkbox" name="display_tag" value="Not Started"/>
+       <form class="form-inline" action="{{ url_for('judging.update_page_size', page=page) }}" method="post">
+         <div id="pageSize" class="form-group">
+            <label for="page_size">Entries per page: </label>
 	    <input type="number" class="form-control" id="page_size" name="page_size" placeholder="{{page_size}}" />
 	    <button type="submit" class="btn btn-primary">Go</button>
-
           </div>
           </form>
+    </div>
+    <div>
+      <h5>Downloads</h5>
+      <form class="form-inline" action="{{ url_for('judging.serve_resume_book') }}" method="post">
+        <div class="form-group">
+          <label for="groups">Download resume book of groups:  </label> 
+          <div class="1checkbox-inline">
+            <label class="checkbox-inline">
+              <input type="checkbox" name="groups" value="Accepted"> Accepted </input>
+	    </label>
+          </div>
+          <div class="1checkbox-inline">     
+            <label class="checkbox-inline">
+              <input type="checkbox" name="groups" value="Submitted"> Submitted </input>
+            </label>
+          </div>
+          <div class="1checkbox-inline">     
+            <label class="checkbox-inline">
+              <input type="checkbox" name="groups" value="In-Progress"> In-Progress </input>
+            </label>
+          </div>
+          <div class="1checkbox-inline">     
+            <label class="checkbox-inline">
+              <input type="checkbox" name="groups" value="RSVPed"> RSVPed </input>
+            </label>
+          </div>
+          <div class="1checkbox-inline">     
+            <label class="checkbox-inline">
+              <input type="checkbox" name="groups" value="Rejected"> Rejected </input>
+            </label>
+          </div>
+          <div class="1checkbox-inline">     
+            <label class="checkbox-inline">
+              <input type="checkbox" name="group" value="Declined"> Declined </input>
+            </label>
+          </div>
+	</div>
+        <button type="submit" class="btn btn-primary">Go</button> 
+      </form>
+    </div>
   </div>
   <div class="col-12 col-md-9">
     <table style="width:100%" id="judgingTable">
@@ -95,9 +132,9 @@
 {% block scripts %}
   {{ super() }}
   <script>
-    $(':checkbox').prop('checked', true);
+    $('#judgeViewOpt :checkbox').prop('checked', true);
     // Bind visible checkboxes.
-    $(':checkbox').change(function() {
+    $('#judgeViewOpt :checkbox').change(function() {
       toggle($(this).val(), this.checked);
     });  
     function toggle(tag, visibility){

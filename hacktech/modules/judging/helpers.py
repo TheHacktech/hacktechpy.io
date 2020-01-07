@@ -3,6 +3,41 @@ import pymysql.cursors
 from datetime import date
 from hacktech import app_year
 from hacktech import email_templates, email_utils
+from PyPDF2 import PdfFileMerger
+import os
+
+
+def generate_resume_book(fields):
+    query = """
+    SELECT resume FROM users NATURAL JOIN status NATURAL JOIN applications WHERE
+    status = %s AND application_year = %s
+    """
+    resume_names = []
+    print(fields)
+    upload_folder = os.path.join(flask.current_app.root_path,
+                           flask.current_app.config['RESUMES'])
+    upload_folder = "/home/hacktech/hacktechpy.io/hacktech/modules/applications/resumes/"
+    for i in fields:
+        with flask.g.pymysql_db.cursor() as cursor:
+            cursor.execute(query, [i, app_year.year + "0000"])
+            res = cursor.fetchall()
+            resume_names.extend([os.path.join(upload_folder, i['resume']) for i in res if i['resume'] is not None and i['resume'] != ""  ])
+    print(resume_names)
+    collect(resume_names)
+
+def collect(resume_names):
+    upload_folder = os.path.join(flask.current_app.root_path,
+                           flask.current_app.config['RESUMES'])
+    resume_book_path = os.path.join(upload_folder, "resume_book.pdf")
+    merger = PdfFileMerger()
+    for resumes in resume_names:
+        merger.append(resumes)
+    if os.path.exists(resume_book_path):
+        os.remove(resume_book_path)
+    if not os.path.exists(resume_book_path):
+        merger.write(resume_book_path)
+    merger.close()
+
 def get_name(user_id):
     query = """
     SELECT first_name, preferred_name FROM members where user_id=%s
@@ -122,7 +157,6 @@ def get_current_stats(limit=6):
         "shirt_size", "school", "major", "degree_type", "graduation_year",
         "in_state", "bus_from"
     ]
-    ### TODO: SELECT ONLY THE CURRENT YEAR!!!!
     for cat in cats:
         query = """
         SELECT {0}, COUNT(*) from applications WHERE application_year = %s
