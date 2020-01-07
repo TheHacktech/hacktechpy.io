@@ -465,6 +465,13 @@ background-color: rgba(0,190,255,.3);
     text-align: center;
     position: absolute;
     width: 100%;
+    pointer-events: none;
+}
+
+#pageJumpDiv div{
+    pointer-events: auto;
+    width: 50%;
+    display: inline-block;
 }
 
 #pageJumpCurPage{

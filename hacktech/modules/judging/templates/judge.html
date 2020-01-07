@@ -9,33 +9,29 @@
 <div class="row">
   <div class="col-12 col-md-3" style="padding-left: 50px;">
     <div id="judgeViewOpt">
-      <h5>Options</h5>
+      <h4>Options</h4>
       Status types:
       </br>
-      <label class="checkbox-inline">
-        <input type="checkbox" name="display_tag" value="Accepted"/>
-        Accepted</label>
+      <input type="checkbox" name="display_tag" value="Accepted"/>
+      <label class="checkbox-inline">Accepted</label>
       </br>
-      <label class="checkbox-inline">
-         <input type="checkbox" name="display_tag" value="In-Progress"/>
-        In-progress</label>
+      <input type="checkbox" name="display_tag" value="In-Progress"/>
+      <label class="checkbox-inline">In-progress</label>
       </br>
-      <label class="checkbox-inline">
-        <input type="checkbox" name="display_tag" value="Submitted"/>
-        Submitted</label>
+      <input type="checkbox" name="display_tag" value="Submitted"/>
+      <label class="checkbox-inline">Submitted</label>
       </br>
-      <label class="checkbox-inline">
-        <input type="checkbox" name="display_tag" value="RSVPed"/>
-        RSVPed</label>
+      <input type="checkbox" name="display_tag" value="RSVPed"/>
+      <label class="checkbox-inline">RSVPed</label>
       </br>
       <input type="checkbox" name="display_tag" value="Declined"/>
       <label class="checkbox-inline">Declined</label>
       </br>
-      <label class="checkbox-inline">Rejected</label>
       <input type="checkbox" name="display_tag" value="Rejected"/>
+      <label class="checkbox-inline">Rejected</label>
       </br>
-      <label class="checkbox-inline">Not Started</label>
       <input type="checkbox" name="display_tag" value="Not Started"/>
+      <label class="checkbox-inline">Not Started</label>
        <form class="form-inline" action="{{ url_for('judging.update_page_size', page=page) }}" method="post">
          <div id="pageSize" class="form-group">
             <label for="page_size">Entries per page: </label>
@@ -44,48 +40,44 @@
           </div>
           </form>
     </div>
+    <hr>
     <div>
-      <h5>Downloads</h5>
+      <h4>Downloads</h4>
       <form class="form-inline" action="{{ url_for('judging.serve_resume_book') }}" method="post">
         <div class="form-group">
           <label for="groups">Download resume book of groups:  </label> 
           <div class="1checkbox-inline">
-            <label class="checkbox-inline">
-              <input type="checkbox" name="groups" value="Accepted"> Accepted </input>
-	    </label>
+              <input type="checkbox" name="groups" value="Accepted"/>	    
+	     <label class="checkbox-inline">Accepted</label>
           </div>
           <div class="1checkbox-inline">     
-            <label class="checkbox-inline">
-              <input type="checkbox" name="groups" value="Submitted"> Submitted </input>
-            </label>
+              <input type="checkbox" name="groups" value="Submitted"></input>
+            <label class="checkbox-inline">Submitted</label>
           </div>
           <div class="1checkbox-inline">     
-            <label class="checkbox-inline">
-              <input type="checkbox" name="groups" value="In-Progress"> In-Progress </input>
-            </label>
+            <input type="checkbox" name="groups" value="In-Progress"></input>
+            <label class="checkbox-inline">In-Progress</label>
           </div>
           <div class="1checkbox-inline">     
-            <label class="checkbox-inline">
-              <input type="checkbox" name="groups" value="RSVPed"> RSVPed </input>
-            </label>
+            <input type="checkbox" name="groups" value="RSVPed"></input>
+            <label class="checkbox-inline">RSVPed</label>
           </div>
           <div class="1checkbox-inline">     
-            <label class="checkbox-inline">
-              <input type="checkbox" name="groups" value="Rejected"> Rejected </input>
-            </label>
+            <input type="checkbox" name="groups" value="Rejected"></input>
+            <label class="checkbox-inline">Rejected</label>
           </div>
           <div class="1checkbox-inline">     
-            <label class="checkbox-inline">
-              <input type="checkbox" name="group" value="Declined"> Declined </input>
-            </label>
+              <input type="checkbox" name="group" value="Declined"></input>
+            <label class="checkbox-inline">Declined</label>
           </div>
+          <button type="submit" class="btn btn-primary">Go</button> 
 	</div>
-        <button type="submit" class="btn btn-primary">Go</button> 
       </form>
     </div>
   </div>
   <div class="col-12 col-md-9">
-    <table style="width:100%" id="judgingTable">
+  <h4>Applicants</h4>    
+  <table style="width:100%" id="judgingTable">
   <tr>
     <th>Name</th>
     <th>Status</th>
@@ -104,10 +96,11 @@
   {%endif%}
 
   <div id="pageJumpDiv">
+    <div>
 	{%if page >= 3 %}
 	<a href="{{ url_for('judging.judge', page=0) }}">1...</a>
 	{%endif%}
-	{%for i in range(3, 0, -1)%}
+	{%for i in range(2, 0, -1)%}
 	  {%if page - i >= 0%}
 	    <a href="{{ url_for('judging.judge', page=page-i) }}"> {{page-i+1}} </a>  	
 	  {%endif%}
@@ -118,9 +111,10 @@
             <a href="{{ url_for('judging.judge', page=page+i) }}"> {{page+i+1}} </a>
           {%endif%}
         {%endfor%}
-	{%if page <= total_pages - 3 %}
+	{%if page < total_pages - 3 %}
 	<a href="{{ url_for('judging.judge', page=total_pages - 1)}}">...{{total_pages}}</a>
         {%endif%}
+    </div>
   </div>
   {%if total_pages > page + 1%}
   <a href="{{ url_for('judging.judge', page=page+1) }}" id="nextPage"> Next Page </a>

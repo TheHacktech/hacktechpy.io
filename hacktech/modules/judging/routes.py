@@ -10,7 +10,11 @@ import json
 @blueprint.route("/judge")
 def judge():
     curpage = int(flask.request.args.get('page', 0))
-    page_size = int(flask.session.get('page_size', 100))
+    page_size = flask.session.get('page_size', 100)
+    if page_size == "":
+        page_size = 100
+    else:
+        page_size = int(page_size)
     flask.session['page_size'] = page_size
     if not auth_utils.check_login() or not auth_utils.check_admin(
             flask.session['username']):
@@ -22,7 +26,10 @@ def judge():
 
 @blueprint.route("/update_page_size", methods=['POST'])
 def update_page_size():
-    flask.session['page_size'] = int(flask.request.form.get('page_size', 100))
+    flask.session['page_size'] = flask.request.form.get('page_size', 100)
+    if flask.session['page_size'] == "":
+        flask.session['page_size'] = 100
+    flask.session['page_size'] = int(flask.session['page_size'])
     return flask.redirect(flask.url_for("judging.judge"))
 
 @blueprint.route("/view_application/<int:user_id>")
@@ -72,7 +79,7 @@ def serve_resume_book():
         return flask.redirect(flask.url_for("judging.judge"))
 
     helpers.generate_resume_book(fields)
-    return flask.redirect(flask.url_for("judging.uploaded_file", filename="resume_book.pdf"))
+    return flask.redirect(flask.url_for("judging.uploaded_file", filename="hacktech_resume_book.pdf"))
 
 @blueprint.route('/judge/update/<int:user_id>', methods=['POST'])
 def update_status(user_id):
