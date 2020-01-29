@@ -23,12 +23,14 @@ def generate_resume_book(fields):
     collect(resume_names)
 
 def collect(resume_names):
+    print(resume_names)
     upload_folder = os.path.join(flask.current_app.root_path,
                            flask.current_app.config['RESUMES'])
     resume_book_path = os.path.join(upload_folder, "hacktech_resume_book.pdf")
     merger = PdfFileMerger()
     for resumes in resume_names:
-        merger.append(resumes)
+        print(resumes)
+        merger.append(resumes, import_bookmarks=False)
     if os.path.exists(resume_book_path):
         os.remove(resume_book_path)
     if not os.path.exists(resume_book_path):
