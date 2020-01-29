@@ -37,8 +37,8 @@ def create_account_submit():
     if not helpers.check_valid_dob(dob):
         flask.flash("Make sure that your birthday is formatted as 2020-03-06")
         return flask.redirect(flask.url_for("account.create_account", partial = json.dumps(partial)))
-    if '@' not in email:
-        flask.flask("Make sure you enter your email correctly!")
+    if '@' not in email and '.' in email:
+        flask.flash("Make sure you enter your email correctly!")
         return flask.redirect(flask.url_for("account.create_account", partial = json.dumps(partial)))
     success, error_msg = helpers.handle_create_account(
         email, password, password2, first_name, middle_name, preferred_name,
