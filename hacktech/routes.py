@@ -10,6 +10,6 @@ def home():
     return flask.render_template('hacktech.html')
 
 
-@app.route('/contact')
-def contact():
-    return flask.render_template('contact.html', contacts=CONTACTS)
+@app.route('/schedule')
+def schedule():
+    return flask.render_template('schedule.html')
