@@ -89,17 +89,17 @@ The Hacktech Team
 """
 
 ReimbursementEmail = \
-"""Hi {0}, \n
-
-Congratulations again on being accepted to Hacktech 2020!
-
-We have decided to offer you a reimbursement of ${1} to help cover some of your travel costs. In order to receive your travel reimbursement, you must be present at Hacktech and submit a project, and we will be distributing reimbursement on March 8 after the closing ceremony.
-
-If you do not RSVP within 1 week, we will consider your reimbursement forfeited and award it to the next person on the waitlist.
-
-Let us know at team@hacktech.io if you have any question, comment, or concern.
-
-Love,
+"""Hi {0}, <br>
+<br>
+Congratulations again on being accepted to Hacktech 2020! <br>
+<br>
+We have decided to offer you a reimbursement of ${1} to help cover some of your travel costs. In order to receive your travel reimbursement, you must be present at Hacktech and submit a project, and we will be distributing reimbursement on March 8 after the closing ceremony. <br>
+<br>
+If you do not RSVP within 1 week, we will consider your reimbursement forfeited and award it to the next person on the waitlist. <br>
+<br>
+Let us know at team@hacktech.io if you have any question, comment, or concern. <br>
+<br>
+Love,<br>
 The Hacktech Team
 
 """

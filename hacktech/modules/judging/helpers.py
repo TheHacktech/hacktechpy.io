@@ -154,11 +154,11 @@ def get_current_stats(limit=6):
     stats["status"] = reorder_stat(res, "status")
     cats = [
         "shirt_size", "school", "major", "degree_type", "graduation_year",
-        "in_state", "bus_from"
+        "in_state", "bus_from", "gender"
     ]
     for cat in cats:
         query = """
-        SELECT {0}, COUNT(*) from applications WHERE application_year = %s
+        SELECT {0}, COUNT(*) from applications NATURAL JOIN status WHERE application_year = %s AND status = "RSVPed"
         GROUP BY {0} ORDER BY COUNT(*) DESC LIMIT %s 
         """.format(cat)
         with flask.g.pymysql_db.cursor() as cursor:
@@ -167,8 +167,8 @@ def get_current_stats(limit=6):
         stats[cat] = reorder_stat(res, cat)
 
     query = """
-    SELECT diet_restrictions, COUNT(*) FROM diet NATURAL JOIN applications 
-    WHERE application_year = %s
+    SELECT diet_restrictions, COUNT(*) FROM diet NATURAL JOIN applications NATURAL JOIN status 
+    WHERE application_year = %s AND status = "RSVPed"
     GROUP BY diet_restrictions
     """
     with flask.g.pymysql_db.cursor() as cursor:
@@ -177,8 +177,8 @@ def get_current_stats(limit=6):
     stats['diet'] = reorder_stat(res, "diet_restrictions")
 
     query = """
-    SELECT race_type, COUNT(*) FROM race NATURAL JOIN applications 
-    WHERE application_year = %s
+    SELECT race_type, COUNT(*) FROM race NATURAL JOIN applications NATURAL JOIN status
+    WHERE application_year = %s AND status = "RSVPed"
     GROUP BY race_type
     """
     with flask.g.pymysql_db.cursor() as cursor:
@@ -240,11 +240,18 @@ def update_status(user_id, new_status, reimbursement_amount, decider_id=None):
         with flask.g.pymysql_db.cursor() as cursor:
             cursor.execute(query, [new_status, reimbursement_amount, user_id])
     else:
-        query = """
-        UPDATE status SET status = %s, reimbursement_amt = %s, decider_user_id = %s WHERE user_id = %s
-        """
-        with flask.g.pymysql_db.cursor() as cursor:
-            cursor.execute(query, [new_status, reimbursement_amount, decider_id, user_id])
+        if reimbursement_amount != None:
+            query = """
+            UPDATE status SET reimbursement_amt = %s, decider_user_id = %s WHERE user_id = %s
+            """
+            with flask.g.pymysql_db.cursor() as cursor:
+                cursor.execute(query, [reimbursement_amount, decider_id, user_id])
+        else:
+            query = """
+            UPDATE status SET status = %s, decider_user_id = %s WHERE user_id = %s
+            """
+            with flask.g.pymysql_db.cursor() as cursor:
+                cursor.execute(query, [new_status, decider_id, user_id])
     first_name = get_name(user_id)
     email = get_email(user_id)
     if reimbursement_amount is not None and new_status == "Accepted":

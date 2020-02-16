@@ -92,7 +92,13 @@ def check_status(self_email, other_email):
 ### TODO: Move these into a utils/helpers/core file.
 def update_status(email, status, reimbursement_amount):
     user_id = get_user_id(email)
-    judging_helpers.update_status(user_id, status, reimbursement_amount)
+
+    query = """
+    UPDATE status SET status = %s WHERE user_id = %s
+    """
+    with flask.g.pymysql_db.cursor() as cursor:
+        cursor.execute(query, [status, user_id])
+    return 
 
 
 def get_user_id(email):
