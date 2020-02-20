@@ -17,12 +17,8 @@ def send_email(to, msg, subject, gmail=False, use_prefix=True):
     msg['From'] = 'auto@hacktech.io'
     msg['To'] = to
 
-    #server = smtplib.SMTP('smtp.gmail.com', 587)
     server = smtplib.SMTP('localhost')
-    #server.starttls()
     server.ehlo()
-    #environment = config.DEV
-    #server.login(environment.email, environment.em)
     if gmail:
         server = smtplib.SMTP('smtp.gmail.com', 587)
         server.starttls()
