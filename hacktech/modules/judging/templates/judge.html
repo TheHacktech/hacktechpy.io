@@ -40,53 +40,19 @@
           </div>
           </form>
     </div>
-    <hr>
-    <div>
-      <h4>Downloads</h4>
-      <form class="form-inline" action="{{ url_for('judging.serve_resume_book') }}" method="post">
-        <div class="form-group">
-          <label for="groups">Download resume book of groups:  </label> 
-          <div class="1checkbox-inline">
-              <input type="checkbox" name="groups" value="Accepted"/>	    
-	     <label class="checkbox-inline">Accepted</label>
-          </div>
-          <div class="1checkbox-inline">     
-              <input type="checkbox" name="groups" value="Submitted"></input>
-            <label class="checkbox-inline">Submitted</label>
-          </div>
-          <div class="1checkbox-inline">     
-            <input type="checkbox" name="groups" value="In-Progress"></input>
-            <label class="checkbox-inline">In-Progress</label>
-          </div>
-          <div class="1checkbox-inline">     
-            <input type="checkbox" name="groups" value="RSVPed"></input>
-            <label class="checkbox-inline">RSVPed</label>
-          </div>
-          <div class="1checkbox-inline">     
-            <input type="checkbox" name="groups" value="Rejected"></input>
-            <label class="checkbox-inline">Rejected</label>
-          </div>
-          <div class="1checkbox-inline">     
-              <input type="checkbox" name="group" value="Declined"></input>
-            <label class="checkbox-inline">Declined</label>
-          </div>
-          <button type="submit" class="btn btn-primary">Go</button> 
-	</div>
-      </form>
-    </div>
   </div>
   <div class="col-12 col-md-9">
   <h4>Applicants</h4>    
   <table style="width:100%" id="judgingTable">
-  <tr>
-    <th>Name</th>
-    <th>Status</th>
-    <th>Link</th>
+  <tr>	
+    {%for i in range(len(header)%}
+    <th>{{header[i]}}</th>
   </tr>
   {% for i in info %}
   <tr class='{{i.status}}'>
 	  <td>{{page*page_size+loop.index}}. {{i.first_name}} {{i.last_name}} </td>
-	  <td> {{i.status}} </td>
+	  <td> {{i.status}}{{i.waiver_status}} </td>
+	  <td> {{i.medical_status}}</td>
 	  <td><a href="{{i.link}}">Go</a></td>
   </tr>
   {% endfor %}

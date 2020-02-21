@@ -57,6 +57,8 @@ def init(environment_name):
     app.config["EM"] = environment.em
     app.config["EMAIL"] = environment.email
     app.config["RESUMES"] = 'modules/applications/resumes'
+    app.config["WAIVERS"] = 'modules/waivers/waivers_files'
+    app.config["MEDICAL"] = 'modules/waivers/medical_info'
     # Maximum file upload size, in bytes.
     app.config["MAX_CONTENT_LENGTH"] = constants.MAX_CONTENT_LENGTH
 

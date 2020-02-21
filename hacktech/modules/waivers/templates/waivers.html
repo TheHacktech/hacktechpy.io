@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block styles %}
+  {{super()}}
+{% endblock %}
+{% block page %}
+<div class = "jumbotron" style="text-align:center;">
+{% if RSVPed %}
+
+<h2 class="text-center">Hacktech Waivers</h2>
+<div class = "col-md-6">
+<a href="{{url_for('waivers.caltech_waiver')}}" class="btn">Caltech Waiver</a>
+</div>
+<div class = "col-md-6">
+<a href="{{url_for('waivers.medical_information')}}" class="btn">Medical Information</a>
+</div>
+{% else %}
+
+Woops! We're not sure how you wondered onto this page....
+
+{% endif %}
+</div>
+{% endblock %}

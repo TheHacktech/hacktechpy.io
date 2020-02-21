@@ -5,7 +5,7 @@ from hacktech import app_year
 from hacktech import email_templates, email_utils
 from PyPDF2 import PdfFileMerger
 import os
-
+from hacktech import auth_utils
 
 def generate_resume_book(fields):
     query = """
@@ -27,7 +27,6 @@ def generate_resume_book(fields):
 
 
 def collect(resume_names):
-    print(resume_names)
     upload_folder = os.path.join(flask.current_app.root_path,
                                  flask.current_app.config['RESUMES'])
     resume_book_path = os.path.join(upload_folder, "hacktech_resume_book.pdf")
@@ -64,6 +63,15 @@ def get_email(user_id):
         result = cursor.fetchone()
     return result["email"]
 
+def get_waiver(user_id):
+    query = """
+    SELECT user_id, first_name, preferred_name, middle_name, last_name, 
+    waiver_path FROM members NATURAL JOIN caltech_waiver where user_id = %s"""
+    with flask.g.pymysql_db.cursor() as cursor:
+        cursor.execute(query, [user_id])
+        res = cursor.fetchone()
+    res['waiver_url'] = generate_waiver_url(res['waiver_path'])
+    return res
 
 def get_application(user_id):
     """
@@ -119,6 +127,13 @@ def get_status(user_id):
         result = cursor.fetchone()
     return result
 
+def get_waiver_status(user_id):
+    query = """
+    SELECT waiver_status FROM caltech_waiver where user_id = %s"""
+    with flask.g.pymysql_db.cursor() as cursor:
+        cursor.execute(query, [user_id])
+        result = cursor.fetchone()
+    return result
 
 def generate_resume_url(resume_name):
     """
@@ -128,6 +143,21 @@ def generate_resume_url(resume_name):
         return flask.url_for("judging.uploaded_file", filename=resume_name)
     return ""
 
+def generate_waiver_url(waiver_name):
+    """
+    Given a waiver_name, generates the waiver url
+    """
+    if waiver_name is not None:
+        return flask.url_for("judging.uploaded_waiver_file", filename=waiver_name)
+    return ""
+
+def get_waiver_name(email):
+    uid = auth_utils.get_user_id(email)
+    query = """ SELECT waiver_path FROM caltech_waiver WHERE user_id = %s"""
+    with flask.g.pymysql_db.cursor() as cursor:
+        cursor.execute(query, [uid])
+        res = cursor.fetchone()
+    return res.get('waiver_path', "")
 
 def get_all_application_links():
     """
@@ -138,8 +168,7 @@ def get_all_application_links():
     result = []
     query = """
     SELECT user_id, first_name, last_name, status 
-    FROM members NATURAL JOIN status
-    """
+    FROM members NATURAL JOIN status"""
     with flask.g.pymysql_db.cursor() as cursor:
         cursor.execute(query, [])
         result = cursor.fetchall()
@@ -148,6 +177,23 @@ def get_all_application_links():
             "judging.view_application", user_id=i['user_id'], _external=True)
     return result
 
+def get_all_waiver_links():
+    result = []
+    query = """
+    SELECT user_id, first_name, last_name, medical_status, waiver_status 
+    FROM 
+    (SELECT user_id, first_name, last_name, status
+        FROM members NATURAL JOIN status WHERE status = RSVPed) as t1 
+    LEFT JOIN 
+    (SELECT user_id, medical_status, waiver_status FROM caltech_waivers FULL OUTER JOIN medical_info on caltech_waivers.user_id = medical_info.user_id) AS t2 
+    ON t1.user_id = t2.user_id"""
+    with flask.g.pymysql_db.cursor() as cursor:
+        cursor.execute(query, [])
+        result = cursor.fetchall()
+    for i in result:
+        i['link'] = flask.url_for(
+            "judging.view_caltech_waiver", user_id=i['user_id'], _external=True)
+    return result
 
 def get_current_stats(limit=6):
     """
@@ -236,6 +282,13 @@ def reorder_stat(res, col_name):
         data.append(empty_count)
     return {"labels": labels, "data": data}
 
+def update_waiver_status(user_id, new_status, decider_id):
+    query = """
+    UPDATE caltech_waiver SET waiver_status = %s, reviewer_user_id = %s WHERE user_id = %s
+    """
+    with flask.g.pymysql_db.cursor() as cursor:
+        cursor.execute(query, [new_status, decider_id, user_id])
+    #TODO: email them
 
 def update_status(user_id, new_status, reimbursement_amount, decider_id=None):
     """

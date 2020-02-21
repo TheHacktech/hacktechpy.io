@@ -3,7 +3,7 @@ import os
 from hacktech import auth_utils
 from hacktech.modules.waivers import blueprint, helpers
 import json
-
+from hacktech.modules.judging import helpers as judging_helpers
 
 @blueprint.route("/waivers")
 def waivers():
@@ -12,6 +12,7 @@ def waivers():
     email = flask.session['username']
     return flask.render_template(
         "waivers.html",
+        RSVPed = True,
         caltech_waiver=helpers.submitted_caltech_waiver(email),
         medical_info=helpers.submitted_medical_info(email))
 
@@ -22,9 +23,10 @@ def caltech_waiver():
         return auth_utils.login_redirect()
     email = flask.session['username']
     status = helpers.submitted_caltech_waiver(email)
+    form_info = judging_helpers.get_waiver(auth_utils.get_user_id(email))
+    form_info['waiver_name'] = form_info['waiver_url'].split("/")[-1]
     return flask.render_template(
-        "caltech_waiver.html", validations={}, form_info={}, curdate={})
-
+        "caltech_waiver.html", form_info=form_info)
 
 @blueprint.route("/waivers/medical_information")
 def medical_information():
@@ -34,56 +36,43 @@ def medical_information():
     status = helpers.submitted_medical_info(email)
     return flask.render_template("medical_info.html", status=status)
 
+def general_waiver():
+    if not auth_utils.check_login():
+        return auth_utils.login_redirect()
+    email = flask.session['username']
+    status = helpers.submitted_caltech_waiver(email)
+    form_info = judging_helpers.get_waiver(auth_utils.get_user_id(email))
+    form_info['waiver_name'] = form_info['waiver_url'].split("/")[-1]
+    return flask.render_template(
+        "caltech_waiver.html", form_info=form_info)
 
 @blueprint.route("/waivers/update_caltech_waivers", methods=["POST"])
 def update_caltech_waiver():
     if not auth_utils.check_login():
         return auth_utils.login_redirect()
     email = flask.session['username']
-    first_name = flask.request.form.get("firstName", None)
-    middle_name = flask.request.form.get("middleName", None)
-    last_name = flask.request.form.get("lastName", None)
-    name_of_participant = flask.request.form.get("nameOfParticipant", None)
-    phone_number = flask.request.form.get("phoneNumber", None)
-    address = flask.request.form.get("streetAddress", None)
-    state = flask.request.form.get("state", None)
-    zip_code = flask.request.form.get("zipcode", None)
-    city = flask.request.form.get("city", None)
-    passwd = flask.request.form.get("password", None)
-    signature = flask.request.form.get("signature", None)
-    helpers.fill_caltech_waiver(email, first_name, middle_name, last_name,
-                                name_of_participant, phone_number, address,
-                                state, zip_code, city, passwd, signature)
-    return flask.redirect(flask.url_for(".waiver"))
+    if 'caltech_waiver' in flask.request.files:
+        waiver_file = flask.request.files['caltech_waiver']
+    else:
+        flask.flash("Please upload your filled waiver!")
+        flask.redirect(flask.url_for(".caltech_waiver"))
 
+    helpers.save_caltech_waiver(email, waiver_file, "WAIVERS", "caltech_waivers")
+    flask.flash("Thanks for submitted a waiver! A Hacktech organizer will view and make sure that your waiver is complete")
+    return flask.redirect(flask.url_for(".waivers"))
 
 @blueprint.route("/waivers/update_medical_information", methods=["POST"])
 def update_medical_information():
-    """Handles an application update request."""
     if not auth_utils.check_login():
         return auth_utils.login_redirect()
-
     email = flask.session['username']
+    if 'medical_information' in flask.request.files:
+        waiver_file = flask.request.files['medical_information']
+    else:
+        flask.flash("Please upload your filled medical information!")
+        flask.redirect(flask.url_for(".medical_information"))
 
-    diet = flask.request.form.get("diet", None)
-    allergy = flask.request.form.get("allergy", None)
-    medical_condition = flask.request.form.get("medicalCondition", None)
-    medicine = flask.request.form.get("medicine", None)
-    emergency_name = flask.request.form.get("emergencyName", None)
-    emergency_relation = flask.request.form.get("emergencyRelation", None)
-    emergency_phone = flask.request.form.get("emergencyPhone", None)
-    emergency_alt_phone = flask.request.form.get("emergencyAltPhone", None)
-    physician_name = flask.request.form.get("physicianName", None)
-    physician_phone = flask.request.form.get("physicianPhone", None)
-    insurance_company = flask.request.form.get("insuranceCompany", None)
-    insurance_phone = flask.request.form.get("insurancePhone", None)
-    insurance_policy = flask.request.form.get("insurancePolicy", None)
-    insurance_preauth = flask.request.form.get("insurancePreAuth", None)
-    insurance_detail = flask.request.form.get("insuranceDetail", None)
+    helpers.save_caltech_waiver(email, waiver_file, "MEDICAL", "medical_info")
+    flask.flash("Thanks for submitting your medical information! A Hacktech organizer will view and make sure that your info is complete")
+    return flask.redirect(flask.url_for(".waivers"))
 
-    helpers.fill_medical_info(
-        email, diet, allergy, medical_condition, medicine, emergency_name,
-        emergency_relation, emergency_phone, emergency_alt_phone,
-        physician_name, physician_phone, insurance_company, insurance_phone,
-        insurance_policy, insurance_preauth, insurance_detail)
-    return flask.redirect(flask.url_for(".waiver"))
