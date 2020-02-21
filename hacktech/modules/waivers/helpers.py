@@ -28,7 +28,7 @@ def get_full_name(uid):
         return ("", "")
     return (res['first_name'], res['last_name'])
 
-def save_info(email, waiver_file, app_folder, table_name):
+def save_info(email, waiver_file, app_folder, waiver_type):
     uid = auth_utils.get_user_id(email)
     first_name, last_name = get_full_name(uid)
     waiver_file_name = last_name+"_"+first_name + "_" + str(uid)+".pdf"
@@ -38,8 +38,10 @@ def save_info(email, waiver_file, app_folder, table_name):
     waiver_path = os.path.join(waiver_root_path, waiver_file_name)
 
     if waiver_file and allowed_file(waiver_file):
+        if os.path.exists(waiver_path):
+            os.remove(waiver_path)
         waiver_file.save(waiver_path)
-        query = "INSERT INTO "+table_name+"(user_id, waiver_path, waiver_status, submitted_time) VALUES (%s, %s, 'Submitted', NOW())"
+        query = "INSERT INTO {0}(user_id, {0}_path, {0}_status, submitted_time) VALUES (%s, %s, 'Submitted', NOW()) ON DUPLICATE KEY UPDATE {0}_status =  'Submitted', submitted_time = NOW()".format(waiver_type)
         
         with flask.g.pymysql_db.cursor() as cursor:
              cursor.execute(query, [uid, waiver_file_name])

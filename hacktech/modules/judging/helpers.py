@@ -63,14 +63,14 @@ def get_email(user_id):
         result = cursor.fetchone()
     return result["email"]
 
-def get_waiver(user_id):
-    query = """
-    SELECT user_id, first_name, preferred_name, middle_name, last_name, 
-    waiver_path FROM members NATURAL JOIN caltech_waiver where user_id = %s"""
+def get_waiver(user_id, waiver_type):
+    query = "SELECT user_id, first_name, preferred_name, middle_name, last_name, " + waiver_type + "_path FROM members NATURAL JOIN " + waiver_type +" where user_id = %s"
     with flask.g.pymysql_db.cursor() as cursor:
         cursor.execute(query, [user_id])
         res = cursor.fetchone()
-    res['waiver_url'] = generate_waiver_url(res['waiver_path'])
+    if res == None:
+        res = {}
+    res[waiver_type+'_url'] = generate_waiver_url(res.get(waiver_type+'_path', ''), waiver_type)
     return res
 
 def get_application(user_id):
@@ -127,9 +127,9 @@ def get_status(user_id):
         result = cursor.fetchone()
     return result
 
-def get_waiver_status(user_id):
+def get_waiver_status(user_id, waiver_type):
     query = """
-    SELECT waiver_status FROM caltech_waiver where user_id = %s"""
+    SELECT {0}_status FROM {0} where user_id = %s""".format(waiver_type)
     with flask.g.pymysql_db.cursor() as cursor:
         cursor.execute(query, [user_id])
         result = cursor.fetchone()
@@ -143,12 +143,12 @@ def generate_resume_url(resume_name):
         return flask.url_for("judging.uploaded_file", filename=resume_name)
     return ""
 
-def generate_waiver_url(waiver_name):
+def generate_waiver_url(waiver_name, waiver_type):
     """
     Given a waiver_name, generates the waiver url
     """
-    if waiver_name is not None:
-        return flask.url_for("judging.uploaded_waiver_file", filename=waiver_name)
+    if waiver_name is not "":
+        return flask.url_for("judging.uploaded_waiver_file", filename=waiver_name, waiver_type=waiver_type)
     return ""
 
 def get_waiver_name(email):
@@ -180,13 +180,26 @@ def get_all_application_links():
 def get_all_waiver_links():
     result = []
     query = """
-    SELECT user_id, first_name, last_name, medical_status, waiver_status 
-    FROM 
-    (SELECT user_id, first_name, last_name, status
-        FROM members NATURAL JOIN status WHERE status = RSVPed) as t1 
-    LEFT JOIN 
-    (SELECT user_id, medical_status, waiver_status FROM caltech_waivers FULL OUTER JOIN medical_info on caltech_waivers.user_id = medical_info.user_id) AS t2 
-    ON t1.user_id = t2.user_id"""
+    SELECT rsvped_user.user_id    AS user_id,
+       rsvped_user.first_name AS first_name,
+       rsvped_user.last_name  AS last_name,
+       waiver.caltech_waiver_status   AS caltech_waiver_status,
+       med_form.medical_info_status AS medical_info_status
+FROM   (SELECT user_id,
+               first_name,
+               last_name
+        FROM   status
+               NATURAL JOIN members
+        WHERE  status = "rsvped") AS rsvped_user
+       LEFT JOIN (SELECT user_id,
+                         caltech_waiver_status
+                  FROM   caltech_waiver) AS waiver
+              ON rsvped_user.user_id = waiver.user_id
+       LEFT JOIN (SELECT user_id,
+                         medical_info_status
+                  FROM   medical_info) AS med_form
+              ON rsvped_user.user_id = med_form.user_id
+    """
     with flask.g.pymysql_db.cursor() as cursor:
         cursor.execute(query, [])
         result = cursor.fetchall()

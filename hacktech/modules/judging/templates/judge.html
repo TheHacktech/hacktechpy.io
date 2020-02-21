@@ -44,15 +44,16 @@
   <div class="col-12 col-md-9">
   <h4>Applicants</h4>    
   <table style="width:100%" id="judgingTable">
-  <tr>	
-    {%for i in range(len(header)%}
-    <th>{{header[i]}}</th>
+  <tr>
+    {%for i in range(headers|length)%}
+    <th>{{headers[i]}}</th>
+    {%endfor%}
   </tr>
   {% for i in info %}
   <tr class='{{i.status}}'>
 	  <td>{{page*page_size+loop.index}}. {{i.first_name}} {{i.last_name}} </td>
-	  <td> {{i.status}}{{i.waiver_status}} </td>
-	  <td> {{i.medical_status}}</td>
+	  <td> {{i.status}}{{i.caltech_waiver_status}} </td>
+	  <td> {{i.medical_info_status}}</td>
 	  <td><a href="{{i.link}}">Go</a></td>
   </tr>
   {% endfor %}

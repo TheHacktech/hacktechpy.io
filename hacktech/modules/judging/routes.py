@@ -25,7 +25,7 @@ def judge():
     return flask.render_template(
         "judge.html",
         info=info,
-        headers=['Name', 'Status', 'Link'], 
+        headers=['Name', 'Status', "", 'Link'], 
         page=curpage,
         total_pages=total_pages,
         page_size=page_size)
@@ -48,7 +48,7 @@ def judge_waivers():
     return flask.render_template(
         "judge.html",
         info=info,
-        header=['Name', 'Waiver Status', 'Medical Status', 'Waiver Link'], 
+        headers=['Name', 'Waiver Status', 'Medical Status', 'Waiver Link'], 
         page=curpage,
         total_pages=total_pages,
         page_size=page_size)
@@ -77,9 +77,10 @@ def view_caltech_waiver(user_id):
     if not auth_utils.check_login() or not auth_utils.check_admin(
         flask.session['username']):
         return flask.redirect(flask.url_for("home"))
-    info = helpers.get_waiver(user_id)
-    status = helpers.get_waiver_status(user_id)
-    print(status)
+    info = helpers.get_waiver(user_id, "caltech_waiver")
+    info.update(helpers.get_waiver(user_id, "medical_info"))
+    info['user_id'] = user_id
+    status = helpers.get_waiver_status(user_id, "caltech_waiver")
     return flask.render_template(
         "view_caltech_waiver.html", info=info, status=status)
 
@@ -93,22 +94,23 @@ def show_stats():
         "stats.html", raw_data=json.dumps(default_stats))
 
 
-@blueprint.route('/waivers/<filename>', methods=['GET'])
-def uploaded_waiver_file(filename):
+@blueprint.route('/waivers/<waiver_type>/<filename>', methods=['GET'])
+def uploaded_waiver_file(filename, waiver_type):
     ''' 
     This function should be collapsed with the function below
     '''
     if not auth_utils.check_login():
         return flask.redirect(flask.url_for("home"))
     
-    cur_user_waiver = helpers.get_waiver(auth_utils.get_user_id(flask.session['username']))
+    cur_user_waiver = helpers.get_waiver(auth_utils.get_user_id(flask.session['username']), waiver_type)
 
     if cur_user_waiver != filename and not auth_utils.check_admin(
             flask.session['username']):
         return flask.redirect(flask.url_for("home"))
 
+    folder_path = "WAIVERS" if waiver_type == "caltech_waiver" else "MEDICAL"
     uploads = os.path.join(flask.current_app.root_path,
-                           flask.current_app.config['WAIVERS'])
+                           flask.current_app.config[folder_path])
     return flask.send_from_directory(uploads, filename, as_attachment=False)
 
 @blueprint.route('/resume/<filename>', methods=['GET'])

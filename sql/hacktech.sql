@@ -95,33 +95,24 @@ CREATE TABLE race(
 
 CREATE TABLE caltech_waiver(
     user_id           INT,
-    waiver_id         INT          NOT NULL AUTO_INCREMENT,
-    waiver_path 	VARCHAR(255) NOT NULL,
-    waiver_status	VARCHAR(20) NOT NULL,
+    caltech_waiver_id         INT          NOT NULL AUTO_INCREMENT,
+    reviewer_user_id          INT NOT NULL,
+    caltech_waiver_path 	VARCHAR(255) NOT NULL,
+    caltech_waiver_status	VARCHAR(20) NOT NULL,
     submitted_time     DATETIME    NOT NULL, 
     FOREIGN KEY (user_id) REFERENCES users(user_id),
-    PRIMARY KEY(waiver_id),
-    UNIQUE(user_id, waiver_id)
+    PRIMARY KEY(caltech_waiver_id),
+    UNIQUE(user_id)
 );
 
 CREATE TABLE medical_info(
     user_id           INT,
     medical_info_id         INT          NOT NULL AUTO_INCREMENT,
-    diet              TEXT         DEFAULT NULL,
-    allergy           TEXT         DEFAULT NULL,
-    medical_condition TEXT         DEFAULT NULL,
-    medicine          TEXT         DEFAULT NULL,
-    emergency_name    VARCHAR(255) NOT NULL,
-    emergency_phone   VARCHAR(64) NOT NULL,
-    emergency_alt_phone VARCHAR(64) DEFAULT NULL,
-    physician_name VARCHAR(255) DEFAULT NULL,
-    physician_phone   VARCHAR(64) DEFAULT NULL,
-    insurance_company  VARCHAR(255) DEFAULT NULL,
-    insurance_phone    VARCHAR(64) DEFAULT NULL,
-    insurance_policy   VARCHAR(64) DEFAULT NULL, -- isn't this a hippa violation
-    insurance_preauth  BOOLEAN DEFAULT NULL, 
-    insurance_detail   TEXT         DEFAULT NULL,
+    reviewer_user_id          INT NOT NULL,
+    medical_info_path         VARCHAR(255) NOT NULL,
+    medical_info_status       VARCHAR(20) NOT NULL,
+    submitted_time     DATETIME    NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(user_id),
-    PRIMARY KEY( medical_info_id), 
-    UNIQUE(user_id, medical_info_id)
+    PRIMARY KEY(medical_info_id),
+    UNIQUE(user_id)
 );

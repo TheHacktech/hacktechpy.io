@@ -5,20 +5,46 @@
 {% endblock %}
 {% block page %} 
   <div class = "jumbotron col-md-8 col-md-offset-2">
-    <h2 class="text-center">Caltech Waiver</h2>
+    <h2 class="text-center">Waivers</h2>
+    {%if info.caltech_waiver_url == ""%}
+    	No caltech waiver submitted!
+    {%else%}
       <div style="position: relative; text-align: center; height: 0; padding-bottom: 100%; overflow: hidden">
 	      <iframe
-			src={{info.waiver_url}}
+			src={{info.caltech_waiver_url}}
 			frameBorder="0"
 			seamless="seamless"
 			style="margin: auto; position: absolute; top: 0; left: 0; width: 70%; height: 100%"
 		></iframe>
       </div>
+      {%endif%}
       <form action="{{ url_for('judging.update_waiver_status', user_id=info.user_id) }}" method="post">
       <select class="form-control" name='new_status'>
         <option>Choose...</option>
 	<option value="Confirmed" {%if status.waiver_status == "Confirmed"%} selected {%endif%} >Confirm</option>
 	<option value="Rejected" {%if status.waiver_status == "Rejected" %} selected {%endif%}>Reject</option>
+      </select>
+      <button type="submit" class="btn btn-default">Go</button>
+      </form>
+
+
+          {%if info.caltech_waiver_url == ""%}
+        No caltech waiver submitted!
+    {%else%}
+      <div style="position: relative; text-align: center; height: 0; padding-bottom: 100%; overflow: hidden">
+              <iframe
+                        src={{info.medical_info_url}}
+                        frameBorder="0"
+                        seamless="seamless"
+                        style="margin: auto; position: absolute; top: 0; left: 0; width: 70%; height: 100%"
+                ></iframe>
+      </div>
+      {%endif%}
+      <form action="{{ url_for('judging.update_waiver_status', user_id=info.user_id) }}" method="post">
+      <select class="form-control" name='new_status'>
+        <option>Choose...</option>
+        <option value="Confirmed" {%if status.medical_info_status == "Confirmed"%} selected {%endif%} >Confirm</option>
+        <option value="Rejected" {%if status.medical_info_status == "Rejected" %} selected {%endif%}>Reject</option>
       </select>
       <button type="submit" class="btn btn-default">Go</button>
       </form>
