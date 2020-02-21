@@ -10,48 +10,39 @@ var schedule = [
 
   title: "Dinner",
   caption: "",
-  time: {day: "fri", start: "7:00PM", duration: "2:00"},
-  location: "Chandler",
+  time: {day: "fri", start: "6:00PM", duration: "2:00"},
+  location: "Bechtel",
   event_type: "Main timeline"
 },
-
-{
-  title: "Midnight Snack",
-  caption: "Come eat some dumplings!",
-  time: {day: "sat", start: "1:00AM", duration: "1:00"},
-  location: "Chandler",
-  event_type: "Main timeline",
-},
-
 {
   title: "Breakfast",
-  caption: "",
-  time: {day: "sat", start: "9:00AM", duration: "2:00"},
-  location: "Chandler",
+  caption: "Coffee, juice, muffins and fruit",
+  time: {day: "sat", start: "5:00AM", duration: "5:00"},
+  location: "Avery Outer Courtyard",
   event_type: "Main timeline"
 },
 
 {
   title: "Lunch",
-  caption: "Dessert Sponsored by Disney",
-  time: {day: "sat", start: "12:00PM", duration: "2:00"},
-  location: "Chandler",
+  caption: "Scrumptious barbeque cooked with love by our lovely volunteers",
+  time: {day: "sat", start: "11:00AM", duration: "2:00"},
+  location: "Bechtel",
   event_type: "Main timeline"
 },
 
 {
   title: "Dinner",
-  caption: "",
-  time: {day: "sat", start: "6:00PM", duration: "2:00"},
-  location: "Chandler",
+  caption: "Pasta dinner cooked with love by our wonderful volunteers",
+  time: {day: "sat", start: "6:30PM", duration: "2:00"},
+  location: "Bechtel",
   event_type: "Main timeline"
 },
 
 {
   title: "Midnight Snack",
-  caption: "Drink boba and chow down on Banh Mi!",
-  time: {day: "sun", start: "12:00AM", duration: "1:00"},
-  location: "Chandler",
+  caption: "Drink boba and chow down on eggrolls!",
+  time: {day: "sun", start: "12:30AM", duration: "1:00"},
+  location: "Bechtel",
   event_type: "Main timeline"
 },
 
@@ -73,7 +64,35 @@ var schedule = [
 
 
 // workshops
-
+{
+  title: "Sponsor Workshop",
+  caption: "TBA",
+  time: {day: "fri", start: "8:00 PM", duration: "1:00"},
+  location: "Annenberg 105",
+  event_type: "Workshops"
+},
+{
+  title: "Sponsor Workshop",
+  caption: "TBA",
+  time: {day: "fri", start: "11:30 PM", duration: "1:00"},
+  location: "Annenberg 105",
+  event_type: "Workshops"
+},
+{
+  title: "Hacking the NASA JPL Way: Solving Space Challenges",
+  caption: "Meet astronaut Larry James!",
+  time: {day: "sat", start: "8:45 AM", duration: "1:00"},
+  location: "Annenberg 105",
+  event_type: "Workshops"
+},
+{
+  title: "How to Host Your Web App on the Cloud for Free",
+  caption: "Alex Cui",
+  time: {day: "sat", start: "1:00 PM", duration: "1:00"},
+  location: "Annenberg 105",
+  event_type: "Workshops"
+},
+/*
 {
   title: "Using Cognitive Services to Uncover Your GoT House Pt. 1",
   caption: "Microsoft",
@@ -137,69 +156,29 @@ var schedule = [
   location: "Chandler Bar",
   event_type: "Workshops"
 },
-
-//
-// {
-//   title: "Build a Chatbot in 15 Minutes",
-//   caption: "Prompt",
-//   time: {day: "sat", start: "1:00AM", duration: "0:30"},
-//   location: "Winnett",
-//   event_type: "Workshops"
-// },
-//
-// {
-//   title: "Intro to Game Dev with Unity",
-//   caption: "Microsoft",
-//   time: {day: "sat", start: "1:30AM", duration: "1:00"},
-//   location: "Winnett",
-//   event_type: "Workshops"
-// },
-//
-// {
-//   title: "Venture Capital: From Idea to Startup",
-//   caption: "KPCB",
-//   time: {day: "sat", start: "3:00PM", duration: "1:00"},
-//   location: "Winnett",
-//   event_type: "Workshops"
-// },
-//
-// {
-//   title: "Algorithmic Trading 101 with Quantiacs",
-//   caption: "From 0 to system: How to write a trading algorithm",
-//   time: {day: "sat", start: "4:30PM", duration: "1:00"},
-//   location: "Winnett",
-//   event_type: "Workshops"
-// },
-//
-// {
-//   title: "Join the Mentor Army",
-//   caption: "Hacker Fund",
-//   time: {day: "sat", start: "7:00PM", duration: "1:00"},
-//   location: "Winnett",
-//   event_type: "Workshops"
-// },
+*/
 
 // Events
 
 {
   title: "Registration",
-  caption: "",
-  time: {day: "fri", start: "6:30PM", duration: "2:30"},
+  caption: "Welcome to Hacktech! Come check-in and grab some swag!",
+  time: {day: "fri", start: "6:00PM", duration: "2:30"},
   location: "Avery",
   event_type: "events"
 },
 
 {
-  title: "Buses Arrive",
-  caption: "",
-  time: {day: "fri", start: "6:30PM", duration: "1:00"},
+  title: "Snack Mix & Mingle",
+  caption: "Come grab some snacks and mingle with other hackers!",
+  time: {day: "fri", start: "9:00PM", duration: "1:00"},
+  location: "Avery",
   event_type: "events"
 },
-
 {
   title: "Opening Ceremony",
-  caption: "Get hyped for Hacktech 2018!",
-  time: {day: "fri", start: "9:00PM", duration: "1:30"},
+  caption: "Get hyped for Hacktech 2020!",
+  time: {day: "fri", start: "10:00PM", duration: "1:00"},
   location: "Beckman Auditorium",
   event_type: "events",
 },
@@ -207,7 +186,7 @@ var schedule = [
 {
   title: "Team Building",
   caption: "Find a team to work with!",
-  time: {day: "fri", start: "10:30PM", duration: "1:00"},
+  time: {day: "fri", start: "11:00PM", duration: "1:00"},
   location: "Beckman Auditorium",
   event_type: "events"
 },
@@ -215,25 +194,16 @@ var schedule = [
 {
   title: "Puppy Party!",
   caption: "Take a break and come play with these adorable bundles of joy!",
-  time: {day:"sat", start:"10:00AM", duration:"1:30"},
+  time: {day:"sat", start:"3:00PM", duration:"1:00"},
   location: "Avery Garage",
   event_type: "events"
 },
 
 {
-  title: "1517 Fund Bagel Social",
-  caption: "Eat bagels with 1517 Fund!",
-  time: {day:"sat", start:"10:30AM", duration:"1:00"},
-  location: "Avery Conference",
-  event_type: "events",
-  offset: 1
-},
-
-{
-  title: "Life-Sized Jenga + Board Games",
-  caption: "Get away from the computer and get your game-face on!",
-  time: {day:"sat", start:"3:00PM", duration:"2:00"},
-  location: "Avery Conference Room",
+  title: "Ultimate Frisbee",
+  caption: "Get in some physical activity and come learn how to throw a frisbee, or come play a pick-up game! All skill levels welcome!",
+  time: {day:"sat", start:"1:00PM", duration:"1:30"},
+  location: "Beckman Lawn",
   event_type: "events"
 },
 
@@ -241,22 +211,6 @@ var schedule = [
   title: "Werewolf",
   caption: "Find the werewolves among yourselves! Hosted by MLH.",
   time: {day:"sat", start:"8:00PM", duration:"1:00"},
-  location: "Avery Conference",
-  event_type: "events"
-},
-
-{
-  title: "Dance Dance Revolution",
-  caption: "Dance your heart out with DDR!",
-  time: {day:"sat", start:"9:30PM", duration:"1:00"},
-  location: "Avery Conference",
-  event_type: "events"
-},
-
-{
-  title: "Smash Tournament",
-  caption: "Show off your skills and win!",
-  time: {day:"sat", start:"11:00PM", duration:"1:30"},
   location: "Avery Conference",
   event_type: "events"
 },
@@ -335,7 +289,7 @@ var schedule = [
 
 {
   title: "Closing Ceremony",
-  caption: "",
+  caption: "Winners are announced! Come see the winning teams demo on stage!",
   time: {day: "sun", start: "2:30PM", duration: "1:30"},
   location: "Beckman Auditorium",
   event_type: "events",
@@ -343,8 +297,8 @@ var schedule = [
 
 {
   title: "Buses Depart",
-  caption: "Don't leave :'(",
-  time: {day: "sun", start: "4:00PM", duration: "0:30"},
+  caption: "Thanks for coming!",
+  time: {day: "sun", start: "4:00PM", duration: "1:00"},
   location: "",
   event_type: "events",
 },
