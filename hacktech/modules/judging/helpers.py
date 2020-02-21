@@ -14,18 +14,22 @@ def generate_resume_book(fields):
     """
     resume_names = []
     upload_folder = os.path.join(flask.current_app.root_path,
-                           flask.current_app.config['RESUMES'])
+                                 flask.current_app.config['RESUMES'])
     for i in fields:
         with flask.g.pymysql_db.cursor() as cursor:
             cursor.execute(query, [i, app_year.year + "0000"])
             res = cursor.fetchall()
-            resume_names.extend([os.path.join(upload_folder, i['resume']) for i in res if i['resume'] is not None and i['resume'] != ""  ])
+            resume_names.extend([
+                os.path.join(upload_folder, i['resume']) for i in res
+                if i['resume'] is not None and i['resume'] != ""
+            ])
     collect(resume_names)
+
 
 def collect(resume_names):
     print(resume_names)
     upload_folder = os.path.join(flask.current_app.root_path,
-                           flask.current_app.config['RESUMES'])
+                                 flask.current_app.config['RESUMES'])
     resume_book_path = os.path.join(upload_folder, "hacktech_resume_book.pdf")
     merger = PdfFileMerger()
     for resumes in resume_names:
@@ -37,6 +41,7 @@ def collect(resume_names):
         merger.write(resume_book_path)
     merger.close()
 
+
 def get_name(user_id):
     query = """
     SELECT first_name, preferred_name FROM members where user_id=%s
@@ -44,8 +49,12 @@ def get_name(user_id):
     with flask.g.pymysql_db.cursor() as cursor:
         cursor.execute(query, [user_id])
         result = cursor.fetchone()
-    res = result["preferred_name"] if result["preferred_name"] is not None and result["preferred_name"] != "" else result["first_name"] 
+    res = result[
+        "preferred_name"] if result["preferred_name"] is not None and result["preferred_name"] != "" else result[
+            "first_name"]
     return res
+
+
 def get_email(user_id):
     query = """
     SELECT email FROM users where user_id=%s
@@ -54,6 +63,8 @@ def get_email(user_id):
         cursor.execute(query, [user_id])
         result = cursor.fetchone()
     return result["email"]
+
+
 def get_application(user_id):
     """
     Returns the application information for a given user_id
@@ -90,7 +101,7 @@ def get_application(user_id):
     result['race'] = race_info
     result['resume_url'] = generate_resume_url(result['resume'])
     dt = date.fromisoformat(str(result['date_of_birth']))
-    result['is_18']= 'YES' if app_year.dob_threshold > dt else 'NO'
+    result['is_18'] = 'YES' if app_year.dob_threshold > dt else 'NO'
     return result
 
 
@@ -245,7 +256,8 @@ def update_status(user_id, new_status, reimbursement_amount, decider_id=None):
             UPDATE status SET reimbursement_amt = %s, decider_user_id = %s WHERE user_id = %s
             """
             with flask.g.pymysql_db.cursor() as cursor:
-                cursor.execute(query, [reimbursement_amount, decider_id, user_id])
+                cursor.execute(query,
+                               [reimbursement_amount, decider_id, user_id])
         else:
             query = """
             UPDATE status SET status = %s, decider_user_id = %s WHERE user_id = %s
@@ -256,7 +268,8 @@ def update_status(user_id, new_status, reimbursement_amount, decider_id=None):
     email = get_email(user_id)
     if reimbursement_amount is not None and new_status == "Accepted":
         subject = "Reimbursement Information"
-        msg = email_templates.ReimbursementEmail.format(first_name, reimbursement_amount)
+        msg = email_templates.ReimbursementEmail.format(
+            first_name, reimbursement_amount)
         email_utils.send_email(email, msg, subject, gmail=True)
     elif new_status == "Accepted":
         subject = "Congratulations! You've Been Accepted!"

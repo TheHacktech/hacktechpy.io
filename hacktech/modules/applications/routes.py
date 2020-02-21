@@ -4,6 +4,7 @@ from hacktech import auth_utils
 from hacktech.modules.applications import blueprint, helpers
 import json
 
+
 @blueprint.route("/applications")
 def applications():
     if not auth_utils.check_login():
@@ -26,9 +27,9 @@ def applications():
         schools=schools,
         majors=majors,
         form_info=form_info,
-        submitted=(helpers.check_submitted(email, email)), 
-        validations=validations.info, 
-	app_end=True)
+        submitted=(helpers.check_submitted(email, email)),
+        validations=validations.info,
+        app_end=True)
 
 
 @blueprint.route("/applications/rsvp")
@@ -67,7 +68,6 @@ def update_applications():
     if True:
         flask.flash("The application period has ended!")
         return flask.redirect(flask.url_for("home"))
-
     """Handles an application update request."""
     if not auth_utils.check_login():
         return auth_utils.login_redirect()
@@ -94,7 +94,7 @@ def update_applications():
     resume_file = None
     if 'resume' in flask.request.files:
         resume_file = flask.request.files['resume']
-    
+
     latino = flask.request.form.get("latino", None)
     race = flask.request.form.getlist("race", None)
     gender = flask.request.form.get("gender", None)
@@ -120,4 +120,7 @@ def update_applications():
         code_of_conduct, first_name, middle_name, last_name, preferred_name)
     # Display message from application update
     flask.flash(msg)
-    return flask.redirect(flask.url_for("applications.applications", submit=True if action == "Submit" else False))
+    return flask.redirect(
+        flask.url_for(
+            "applications.applications",
+            submit=True if action == "Submit" else False))

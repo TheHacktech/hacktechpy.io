@@ -48,8 +48,7 @@ def forgot_password_submit():
 
     helpers.handle_forgotten_password(email)
     flask.flash(
-            "An email with a recovery link has been sent, if that email exists"
-    )
+        "An email with a recovery link has been sent, if that email exists")
     return flask.redirect(flask.url_for('auth.login'))
 
 

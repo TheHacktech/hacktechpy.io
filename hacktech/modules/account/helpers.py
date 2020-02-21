@@ -8,12 +8,14 @@ from hacktech import validation_utils
 from hacktech import app_year
 import re
 
+
 def check_valid_dob(dob):
     """
     Checks if the dob is in a valid format
     """
     x = re.search("[0-9]{4,4}\-[0-9]{1,2}\-[0-9]{1,2}", dob)
     return True if x is not None else False
+
 
 def get_user_data(user_id):
     """Returns user data for the create account form."""

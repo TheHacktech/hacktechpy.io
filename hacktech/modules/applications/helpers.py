@@ -98,7 +98,7 @@ def update_status(email, status, reimbursement_amount):
     """
     with flask.g.pymysql_db.cursor() as cursor:
         cursor.execute(query, [status, user_id])
-    return 
+    return
 
 
 def get_user_id(email):
@@ -174,25 +174,37 @@ class ValidationForm:
         self.info["q2"] = ""
         self.info["q3"] = ""
         self.info["q4"] = ""
-        self.info["code_of_conduct"] = "" 
+        self.info["code_of_conduct"] = ""
 
     def fill(self, application, member):
-        self.info["first_name"] = "" if member['first_name'] != "" else  "has-error"
-        self.info["last_name"] = "" if member['last_name'] != "" else  "has-error"
-        self.info["phone"] = "" if application['phone'] != "" else  "has-error"
-        self.info["school"] = "" if application['school'] != "" and application['school'] != "N/A" else  "has-error"
-        self.info["degree_type"] = "" if application['degree_type'] != "" else  "has-error"
-        self.info["graduation_year"] = "" if application['graduation_year'] != "" else  "has-error"
-        self.info["resume"] = "" if application['resume'] != None and application['resume'] != "" else  "has-error"
-        self.info["gender"] = "" if application['gender'] != "" else  "has-error"
-        self.info["shirt_size"] = "" if application['shirt_size'] != "" else  "has-error"
-        self.info["transportation"] = "" if application['transportation'] != None  else  "has-error"
-        self.info["diet_rest"] = "" if application['diet_rest'] != None else  "has-error"
-        self.info["q1"] = "" if application['q1'] != "" else  "has-error"
-        self.info["q2"] = "" if application['q2'] != "" else  "has-error"
-        self.info["q3"] = "" if application['q3'] != "" else  "has-error"
-        self.info["q4"] = "" if application['q4'] != "" else  "has-error"
-        self.info["code_of_conduct"] = "" if application['code_of_conduct'] == 1 else  "has-error"
+        self.info[
+            "first_name"] = "" if member['first_name'] != "" else "has-error"
+        self.info[
+            "last_name"] = "" if member['last_name'] != "" else "has-error"
+        self.info["phone"] = "" if application['phone'] != "" else "has-error"
+        self.info[
+            "school"] = "" if application['school'] != "" and application['school'] != "N/A" else "has-error"
+        self.info[
+            "degree_type"] = "" if application['degree_type'] != "" else "has-error"
+        self.info[
+            "graduation_year"] = "" if application['graduation_year'] != "" else "has-error"
+        self.info[
+            "resume"] = "" if application['resume'] != None and application['resume'] != "" else "has-error"
+        self.info[
+            "gender"] = "" if application['gender'] != "" else "has-error"
+        self.info[
+            "shirt_size"] = "" if application['shirt_size'] != "" else "has-error"
+        self.info[
+            "transportation"] = "" if application['transportation'] != None else "has-error"
+        self.info[
+            "diet_rest"] = "" if application['diet_rest'] != None else "has-error"
+        self.info["q1"] = "" if application['q1'] != "" else "has-error"
+        self.info["q2"] = "" if application['q2'] != "" else "has-error"
+        self.info["q3"] = "" if application['q3'] != "" else "has-error"
+        self.info["q4"] = "" if application['q4'] != "" else "has-error"
+        self.info["code_of_conduct"] = "" if application[
+            'code_of_conduct'] == 1 else "has-error"
+
 
 def get_form_info(email):
     """Gets all existing application form info from the database."""
@@ -279,7 +291,7 @@ def handle_update_applications(
         q4 = VALUES(q4),
         code_of_conduct = VALUES(code_of_conduct)
         """
-        
+
         latino_bool = None
         if latino == "True":
             latino_bool = True
@@ -297,7 +309,7 @@ def handle_update_applications(
             transportation = True
         elif need_transportation == "no":
             transportation = False
-        
+
         diet_rest = None
         if dietary_restrictions == "True":
             diet_rest = True
@@ -307,12 +319,12 @@ def handle_update_applications(
         last_resume_name = check_resume_exists(get_user_id(email))
         if resume_file and allowed_file(resume_file):
             resume_name = secure_filename(resume_file.filename)
-            resumes_root_path = os.path.join(flask.current_app.root_path,
-                                         flask.current_app.config['RESUMES'])
+            resumes_root_path = os.path.join(
+                flask.current_app.root_path,
+                flask.current_app.config['RESUMES'])
             resume_name = resume_name.split(".")
             resume_name = secure_filename(
-                str(resume_name[:-1]) + '_' + str(get_user_id(email)) +
-                ".pdf")
+                str(resume_name[:-1]) + '_' + str(get_user_id(email)) + ".pdf")
 
             resume_file.save(os.path.join(resumes_root_path, resume_name))
         if resume_name == "":
@@ -321,8 +333,8 @@ def handle_update_applications(
         with flask.g.pymysql_db.cursor() as cursor:
             cursor.execute(query, [
                 user_id, app_year.year + "0000", phone_number, school, major,
-                degree_type, graduation_year, github, linkedin, resume_name, 
-                latino_bool, gender, shirt_size, transportation, in_state, 
+                degree_type, graduation_year, github, linkedin, resume_name,
+                latino_bool, gender, shirt_size, transportation, in_state,
                 bus_from, airport, diet_rest, diet_details, q1, q2, q3, q4,
                 code_of_conduct
             ])
@@ -374,27 +386,26 @@ def handle_update_applications(
                 "An unexpected error occurred. Please contact the organizers.")
     # Check all required fields are filled out
     if action == 'Submit':
-        fields = [first_name, last_name, phone_number, school, degree_type, 
-                graduation_year, shirt_size, need_transportation, 
-                dietary_restrictions, q1, q2, q3, q4, code_of_conduct]
+        fields = [
+            first_name, last_name, phone_number, school, degree_type,
+            graduation_year, shirt_size, need_transportation,
+            dietary_restrictions, q1, q2, q3, q4, code_of_conduct
+        ]
         for field in fields:
             if not field:
-                return (
-                    False,
-                    "Please fill out the required fields in red.")
+                return (False, "Please fill out the required fields in red.")
 
-        if (resume_file is None or resume_file.filename == '') and not last_resume_name:
-            return (
-                False,
-                "Please upload your resume."
-            )
-        if (resume_file and resume_file.filename != "") and not allowed_file(resume_file):
+        if (resume_file is None
+                or resume_file.filename == '') and not last_resume_name:
+            return (False, "Please upload your resume.")
+        if (resume_file and
+                resume_file.filename != "") and not allowed_file(resume_file):
             return (
                 False,
                 'Please upload your resume as a PDF file less than 500 KB.')
         else:
             update_status(email, "Submitted", None)
-        return (True, "You have submitted your application successfully!") 
+        return (True, "You have submitted your application successfully!")
     update_status(email, "In-Progress", None)
     return (True, "Your application has been updated!")
 

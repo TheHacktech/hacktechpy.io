@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+
+{% block styles %}
+  {{super()}}
+{% endblock %}
+{% block page %}
+<div class = "jumbotron">
+    <div id="application_form" class="col-md-8 col-md-offset-2">
+      <h3 class="text-center">Hacktech 2020 Medical Form</h3>
+        <form action="{{url_for('waivers.update_medical_information')}}" method="post"} enctype="multipart/form-data">
+          <div class="row">
+              <div class="form-group col-md-12">
+                <label class="control-label"  for="diet">Dietary Needs (i.e. vegetarian)</label> 
+                <textarea  class="form-control" id="diet" name="diet" rows="2"></textarea>
+              </div>
+              <div class="form-group col-md-12">
+                <label class="control-label"  for="allergy">Please list any allergies (food, medication, or other) and describe reactions.</label>
+                <textarea  class="form-control" id="allergy" name="allergy" rows="2"></textarea>
+             </div>
+             <div class="form-group col-md-12">
+                <label class="control-label"  for="medicalCondition">Please list any medical conditions or restrictions that Hacktech organizers should be aware of.</label>
+                <textarea  class="form-control" id="medicalCondition" name="medicalCondition" rows="3"></textarea>
+             </div>
+             <div class="form-group col-md-12">
+                <label class="control-label"  for="medicine">Please list medications you are using.</label>
+                <textarea  class="form-control" id="medicine" name="medicine" rows="3"></textarea>
+             </div>
+          </div>
+          <p><u><b>Emergency Contact Information</b></u> (A parent/guardian or someone who can make medical decisions on your behalf) </p>
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label class="control-label"  for="emergencyName">Name</label>
+              <input type="text" class="form-control" name="emergencyName"></input>
+            </div>
+            <div class="form-group col-md-6">
+              <label class="control-label"  for="emergencyRelation">Relationship To You</label>
+              <input type="text" class="form-control" name="emergencyRelation" required></input>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label class="control-label"  for="emergencyPhone">Phone</label>
+              <input type="text" class="form-control" name="emergencyPhone"></input>
+            </div>
+            <div class="form-group col-md-6">
+              <label class="control-label"  for="emergencyAltPhone">Alternate Phone</label>
+              <input type="text" class="form-control" name="emergencyAltPhone"></input>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label class="control-label"  for="physicianName">Family Physician</label>
+              <input type="text" class="form-control" name="physicianName"></input>
+            </div>
+            <div class="form-group col-md-6">
+              <label class="control-label"  for="physicianPhone">Physician Office Phone</label>
+              <input type="text" class="form-control" name="physicianPhone"></input>
+            </div>
+          </div>
+          <p><u><b>Insurance Information</b></u></p>
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label class="control-label"  for="insuranceCompany">Company</label>
+              <input type="text" class="form-control" name="emergencyPhone"></input>
+            </div>
+            <div class="form-group col-md-6">
+              <label class="control-label"  for="insurancePhone">Phone</label>
+              <input type="text" class="form-control" name="insurancePhone"></input>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label class="control-label"  for="insurancePolicy">Policy # / Info</label>
+              <input type="text" class="form-control" name="insurancePolicy"></input>
+            </div>
+            <div class="form-group col-md-6">
+              <label class="control-label"  for="insurancePreAuth">Is Pre-Authorization Required</label>
+              <div class="radio-inline">
+	            <label class="radio-inline">
+                <input type="radio" name="insurancePreAuth" value="True"> Yes </label>
+	            <label class="radio-inline">
+                <input type="radio" name="insurancePreAuth" value="False"> No </label>
+                <label class="radio-inline">
+                <input type="radio" name="insurancePreAuth" value="N/A"> N/A </label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-12">
+              <label class="control-label"  for="insuranceDetail">Other Detail</label>
+              <textarea  class="form-control" name="insuranceDetail" rows="3"></textarea>
+            </div>
+          </div>
+         <button type="submit" class="btn btn-success" value="Submit" name="Submit" {%if submitted or app_end %} disabled {%endif%}>Submit!</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

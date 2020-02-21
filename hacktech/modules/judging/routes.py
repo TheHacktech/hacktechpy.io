@@ -20,9 +20,15 @@ def judge():
             flask.session['username']):
         return flask.redirect(flask.url_for("home"))
     info = helpers.get_all_application_links()
-    total_pages = int(len(info) / page_size)+1
-    info = info[curpage*page_size:(curpage+1)*page_size]
-    return flask.render_template("judge.html", info=info, page=curpage, total_pages=total_pages, page_size=page_size)
+    total_pages = int(len(info) / page_size) + 1
+    info = info[curpage * page_size:(curpage + 1) * page_size]
+    return flask.render_template(
+        "judge.html",
+        info=info,
+        page=curpage,
+        total_pages=total_pages,
+        page_size=page_size)
+
 
 @blueprint.route("/update_page_size", methods=['POST'])
 def update_page_size():
@@ -31,6 +37,7 @@ def update_page_size():
         flask.session['page_size'] = 100
     flask.session['page_size'] = int(flask.session['page_size'])
     return flask.redirect(flask.url_for("judging.judge"))
+
 
 @blueprint.route("/view_application/<int:user_id>")
 def view_application(user_id):
@@ -60,26 +67,32 @@ def uploaded_file(filename):
     '''
     if not auth_utils.check_login():
         return flask.redirect(flask.url_for("home"))
-    
-    user_res_name = app_helpers.check_resume_exists(app_helpers.get_user_id(flask.session['username']))
 
-    if user_res_name != filename and not auth_utils.check_admin(flask.session['username']):
+    user_res_name = app_helpers.check_resume_exists(
+        app_helpers.get_user_id(flask.session['username']))
+
+    if user_res_name != filename and not auth_utils.check_admin(
+            flask.session['username']):
         return flask.redirect(flask.url_for("home"))
     uploads = os.path.join(flask.current_app.root_path,
                            flask.current_app.config['RESUMES'])
     return flask.send_from_directory(uploads, filename, as_attachment=False)
 
+
 @blueprint.route('/judge/resumes', methods=['POST'])
 def serve_resume_book():
     if not auth_utils.check_login() or not auth_utils.check_admin(
-        flask.session['username']):
+            flask.session['username']):
         return flask.redirect(flask.url_for("home"))
-    fields=flask.request.form.getlist("groups", None)
+    fields = flask.request.form.getlist("groups", None)
     if fields == None:
         return flask.redirect(flask.url_for("judging.judge"))
 
     helpers.generate_resume_book(fields)
-    return flask.redirect(flask.url_for("judging.uploaded_file", filename="hacktech_resume_book.pdf"))
+    return flask.redirect(
+        flask.url_for(
+            "judging.uploaded_file", filename="hacktech_resume_book.pdf"))
+
 
 @blueprint.route('/judge/update/<int:user_id>', methods=['POST'])
 def update_status(user_id):
@@ -88,7 +101,7 @@ def update_status(user_id):
         return flask.redirect(flask.url_for("home"))
     helpers.update_status(user_id,
                           flask.request.form.get('new_status'),
-                          flask.request.form.get('reimbursement_amount'), 
+                          flask.request.form.get('reimbursement_amount'),
                           app_helpers.get_user_id(flask.session['username']))
     flask.flash('Status has been updated')
     return flask.redirect(flask.url_for('judging.judge'))
