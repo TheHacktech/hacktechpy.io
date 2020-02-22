@@ -4,6 +4,7 @@ from hacktech.modules.auth import blueprint, helpers
 from hacktech.modules.auth.permissions import Permissions
 from hacktech.modules.judging import helpers as judging_helpers
 
+
 @blueprint.route('/login')
 def login():
     """Display login page."""
@@ -25,7 +26,8 @@ def login_submit():
 
             # Update last login time
             auth_utils.update_last_login(username)
-            flask.session['status'] = judging_helpers.get_status(user_id)['status']
+            flask.session['status'] = judging_helpers.get_status(user_id)[
+                'status']
             # Return to previous page if in session
             if 'next' in flask.session:
                 redirect_to = flask.session.pop('next')

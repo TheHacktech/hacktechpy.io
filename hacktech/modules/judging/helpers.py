@@ -7,6 +7,7 @@ from PyPDF2 import PdfFileMerger
 import os
 from hacktech import auth_utils
 
+
 def generate_resume_book(fields):
     query = """
     SELECT resume FROM users NATURAL JOIN status NATURAL JOIN applications WHERE
@@ -63,15 +64,18 @@ def get_email(user_id):
         result = cursor.fetchone()
     return result["email"]
 
+
 def get_waiver(user_id, waiver_type):
-    query = "SELECT user_id, first_name, preferred_name, middle_name, last_name, " + waiver_type + "_path FROM members NATURAL JOIN " + waiver_type +" where user_id = %s"
+    query = "SELECT user_id, first_name, preferred_name, middle_name, last_name, " + waiver_type + "_path FROM members NATURAL JOIN " + waiver_type + " where user_id = %s"
     with flask.g.pymysql_db.cursor() as cursor:
         cursor.execute(query, [user_id])
         res = cursor.fetchone()
     if res == None:
         res = {}
-    res[waiver_type+'_url'] = generate_waiver_url(res.get(waiver_type+'_path', ''), waiver_type)
+    res[waiver_type + '_url'] = generate_waiver_url(
+        res.get(waiver_type + '_path', ''), waiver_type)
     return res
+
 
 def get_application(user_id):
     """
@@ -127,6 +131,7 @@ def get_status(user_id):
         result = cursor.fetchone()
     return result
 
+
 def get_waiver_status(user_id, waiver_type):
     query = """
     SELECT {0}_status FROM {0} where user_id = %s""".format(waiver_type)
@@ -134,6 +139,7 @@ def get_waiver_status(user_id, waiver_type):
         cursor.execute(query, [user_id])
         result = cursor.fetchone()
     return result if result is not None else {}
+
 
 def generate_resume_url(resume_name):
     """
@@ -143,13 +149,18 @@ def generate_resume_url(resume_name):
         return flask.url_for("judging.uploaded_file", filename=resume_name)
     return ""
 
+
 def generate_waiver_url(waiver_name, waiver_type):
     """
     Given a waiver_name, generates the waiver url
     """
     if waiver_name is not "":
-        return flask.url_for("judging.uploaded_waiver_file", filename=waiver_name, waiver_type=waiver_type)
+        return flask.url_for(
+            "judging.uploaded_waiver_file",
+            filename=waiver_name,
+            waiver_type=waiver_type)
     return ""
+
 
 def get_waiver_name(email):
     uid = auth_utils.get_user_id(email)
@@ -158,6 +169,7 @@ def get_waiver_name(email):
         cursor.execute(query, [uid])
         res = cursor.fetchone()
     return res.get('waiver_path', "")
+
 
 def get_all_application_links():
     """
@@ -176,6 +188,7 @@ def get_all_application_links():
         i['link'] = flask.url_for(
             "judging.view_application", user_id=i['user_id'], _external=True)
     return result
+
 
 def get_all_waiver_links():
     result = []
@@ -205,8 +218,11 @@ FROM   (SELECT user_id,
         result = cursor.fetchall()
     for i in result:
         i['link'] = flask.url_for(
-            "judging.view_caltech_waiver", user_id=i['user_id'], _external=True)
+            "judging.view_caltech_waiver",
+            user_id=i['user_id'],
+            _external=True)
     return result
+
 
 def get_current_stats(limit=6):
     """
@@ -295,6 +311,7 @@ def reorder_stat(res, col_name):
         data.append(empty_count)
     return {"labels": labels, "data": data}
 
+
 def update_waiver_status(user_id, new_status, decider_id, waiver_type):
     query = """
     UPDATE {0} SET {0}_status = %s, reviewer_user_id = %s WHERE user_id = %s
@@ -302,6 +319,7 @@ def update_waiver_status(user_id, new_status, decider_id, waiver_type):
     with flask.g.pymysql_db.cursor() as cursor:
         cursor.execute(query, [new_status, decider_id, user_id])
     #TODO: email them
+
 
 def update_status(user_id, new_status, reimbursement_amount, decider_id=None):
     """

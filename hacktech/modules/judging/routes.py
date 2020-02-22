@@ -25,10 +25,11 @@ def judge():
     return flask.render_template(
         "judge.html",
         info=info,
-        headers=['Name', 'Status', "", 'Link'], 
+        headers=['Name', 'Status', "", 'Link'],
         page=curpage,
         total_pages=total_pages,
         page_size=page_size)
+
 
 @blueprint.route("/judge_waivers")
 def judge_waivers():
@@ -48,10 +49,11 @@ def judge_waivers():
     return flask.render_template(
         "judge.html",
         info=info,
-        headers=['Name', 'Waiver Status', 'Medical Status', 'Waiver Link'], 
+        headers=['Name', 'Waiver Status', 'Medical Status', 'Waiver Link'],
         page=curpage,
         total_pages=total_pages,
         page_size=page_size)
+
 
 @blueprint.route("/update_page_size", methods=['POST'])
 def update_page_size():
@@ -72,19 +74,20 @@ def view_application(user_id):
     return flask.render_template(
         "view_application.html", info=info, status=status)
 
+
 @blueprint.route("/view_caltech_waiver/<int:user_id>")
 def view_caltech_waiver(user_id):
     if not auth_utils.check_login() or not auth_utils.check_admin(
-        flask.session['username']):
+            flask.session['username']):
         return flask.redirect(flask.url_for("home"))
     info = helpers.get_waiver(user_id, "caltech_waiver")
     info.update(helpers.get_waiver(user_id, "medical_info"))
-    print(info)
     info['user_id'] = user_id
     status = helpers.get_waiver_status(user_id, "caltech_waiver")
     status.update(helpers.get_waiver_status(user_id, "medical_info"))
     return flask.render_template(
         "view_caltech_waiver.html", info=info, status=status)
+
 
 @blueprint.route("/stats")
 def show_stats():
@@ -103,8 +106,9 @@ def uploaded_waiver_file(filename, waiver_type):
     '''
     if not auth_utils.check_login():
         return flask.redirect(flask.url_for("home"))
-    
-    cur_user_waiver = helpers.get_waiver(auth_utils.get_user_id(flask.session['username']), waiver_type)
+
+    cur_user_waiver = helpers.get_waiver(
+        auth_utils.get_user_id(flask.session['username']), waiver_type)
 
     if cur_user_waiver != filename and not auth_utils.check_admin(
             flask.session['username']):
@@ -114,6 +118,7 @@ def uploaded_waiver_file(filename, waiver_type):
     uploads = os.path.join(flask.current_app.root_path,
                            flask.current_app.config[folder_path])
     return flask.send_from_directory(uploads, filename, as_attachment=False)
+
 
 @blueprint.route('/resume/<filename>', methods=['GET'])
 def uploaded_file(filename):
@@ -149,14 +154,19 @@ def serve_resume_book():
             "judging.uploaded_file", filename="hacktech_resume_book.pdf"))
 
 
-@blueprint.route('/judge_waivers/update/<waiver_type>/<int:user_id>', methods=['POST'])
+@blueprint.route(
+    '/judge_waivers/update/<waiver_type>/<int:user_id>', methods=['POST'])
 def update_waiver_status(waiver_type, user_id):
     if not auth_utils.check_login() or not auth_utils.check_admin(
             flask.session['username']):
         return flask.redirect(flask.url_for("home"))
-    helpers.update_waiver_status(user_id, flask.request.form.get('new_status'), auth_utils.get_user_id(flask.session['username']), waiver_type)
+    helpers.update_waiver_status(
+        user_id,
+        flask.request.form.get('new_status'),
+        auth_utils.get_user_id(flask.session['username']), waiver_type)
     flask.flash('Status has been updated')
-    return flask.redirect(flask.url_for('.view_caltech_waiver', user_id = user_id))
+    return flask.redirect(
+        flask.url_for('.view_caltech_waiver', user_id=user_id))
 
 
 @blueprint.route('/judge/update/<int:user_id>', methods=['POST'])
