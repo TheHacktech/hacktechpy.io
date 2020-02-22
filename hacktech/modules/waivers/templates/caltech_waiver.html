@@ -6,12 +6,12 @@
 {% block page %}
 <div class = "jumbotron col-md-6 col-md-offset-3">
 	    <h3 class="text-center">{{title}}</h3> 
-    <p> Please <a href={{link}}> go here </a> to download the fillable PDF, and upload it here</p>
+    <p> Please <a href={{link}}> go here </a> to download the fillable PDF, and upload it below.</p>
     <form action={{form_info.waiver_update}} method="post"} enctype="multipart/form-data">
       <div class="form-group">
-        <label class="control-label" for="resume">Please upload your signed caltech waiver.</label>
+        <label class="control-label" for="resume">Please upload the completed waiver/form.</label>
 	{%if form_info.waiver_url != None and  form_info.waiver_url != "" %}
-	<span class="input-group-addon" id="uploadFileText">Current waiver on file: <a href={{form_info.waiver_url}}> <u>{{form_info.waiver_name}}</u> </a></span>
+	<span class="input-group-addon" id="uploadFileText">Current document on file: <a href={{form_info.waiver_url}}> <u>{{form_info.waiver_name}}</u> </a></span>
 	{% else %}
 	<span class="input-group-addon" id="uploadFileText">Upload</span>
 	{% endif %}

@@ -26,9 +26,8 @@ def caltech_waiver():
         link=
         "https://drive.google.com/file/d/1GjhzwhWJ9EBUyjagxajQFY0dHs_SKAn_/view?usp=sharing",
         title=
-        "CONSENT, RELEASE AND ASSUMPTION OF RISK FOR PARTICIPATION IN HACKTECH AT THE CALIFORNIA INSTITUTE OF TECHNOLOGY March 6-8, 2020"
+        "CONSENT, RELEASE AND ASSUMPTION OF RISK FOR PARTICIPATION IN HACKTECH AT CALTECH MARCH 6-8, 2020"
     )
-
 
 @blueprint.route("/waivers/medical_information")
 def medical_information():
@@ -73,7 +72,7 @@ def update_caltech_waiver():
 
     helpers.save_info(email, waiver_file, "WAIVERS", "caltech_waiver")
     flask.flash(
-        "Thanks for submitted a waiver! A Hacktech organizer will view and make sure that your waiver is complete"
+        "Thanks for submitting a waiver! A Hacktech organizer will check and make sure that your waiver is complete."
     )
     return flask.redirect(flask.url_for(".waivers"))
 
@@ -91,6 +90,6 @@ def update_medical_info():
 
     helpers.save_info(email, waiver_file, "MEDICAL", "medical_info")
     flask.flash(
-        "Thanks for submitting your medical information! A Hacktech organizer will view and make sure that your info is complete"
+        "Thanks for submitting your medical information! A Hacktech organizer will check and make sure that your info is complete."
     )
     return flask.redirect(flask.url_for(".waivers"))
