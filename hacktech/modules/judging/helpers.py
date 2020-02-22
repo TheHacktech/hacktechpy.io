@@ -133,7 +133,7 @@ def get_waiver_status(user_id, waiver_type):
     with flask.g.pymysql_db.cursor() as cursor:
         cursor.execute(query, [user_id])
         result = cursor.fetchone()
-    return result
+    return result if result is not None else {}
 
 def generate_resume_url(resume_name):
     """
@@ -295,10 +295,10 @@ def reorder_stat(res, col_name):
         data.append(empty_count)
     return {"labels": labels, "data": data}
 
-def update_waiver_status(user_id, new_status, decider_id):
+def update_waiver_status(user_id, new_status, decider_id, waiver_type):
     query = """
-    UPDATE caltech_waiver SET waiver_status = %s, reviewer_user_id = %s WHERE user_id = %s
-    """
+    UPDATE {0} SET {0}_status = %s, reviewer_user_id = %s WHERE user_id = %s
+    """.format(waiver_type)
     with flask.g.pymysql_db.cursor() as cursor:
         cursor.execute(query, [new_status, decider_id, user_id])
     #TODO: email them

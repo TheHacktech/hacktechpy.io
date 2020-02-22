@@ -140,7 +140,6 @@ table {
   -moz-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s;
-  width: 20%;
   background-color: #FFF;
   color: #333;
   border-color: #009dee;
@@ -245,7 +244,7 @@ input[type=checkbox], input[type=radio] {
   z-index: 1000;
 }
 /* END FORM ELEMENTS */
-#border {
+.blue_border {
   border: solid;
   width: 50%;
   border-color: #009dee;

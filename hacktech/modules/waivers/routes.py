@@ -10,22 +10,23 @@ def waivers():
     if not auth_utils.check_login():
         return auth_utils.login_redirect()
     email = flask.session['username']
+    user_id = auth_utils.get_user_id(email)
     return flask.render_template(
         "waivers.html",
-        RSVPed = True,
-        caltech_waiver=helpers.submitted_caltech_waiver(email),
-        medical_info=helpers.submitted_medical_info(email))
+        RSVPed = (judging_helpers.get_status(user_id)['status'] == "RSVPed"),
+        caltech_waiver=helpers.get_waiver_status(user_id, "caltech_waiver"),
+        medical_info=helpers.get_waiver_status(user_id, "medical_info"))
 
 
 @blueprint.route("/waivers/caltech_waiver")
 def caltech_waiver():
-    return general_waiver("caltech_waiver", link="https://drive.google.com/file/d/1GjhzwhWJ9EBUyjagxajQFY0dHs_SKAn_/view?usp=sharing")
+    return general_waiver("caltech_waiver", link="https://drive.google.com/file/d/1GjhzwhWJ9EBUyjagxajQFY0dHs_SKAn_/view?usp=sharing", title="CONSENT, RELEASE AND ASSUMPTION OF RISK FOR PARTICIPATION IN HACKTECH AT THE CALIFORNIA INSTITUTE OF TECHNOLOGY March 6-8, 2020")
 
 @blueprint.route("/waivers/medical_information")
 def medical_information():
-    return general_waiver("medical_info", link="https://drive.google.com/file/d/1fivb6NFmqsSeuIWxov8cNWc8zh8NL2mj/view?usp=sharing")
+    return general_waiver("medical_info", link="https://drive.google.com/file/d/1fivb6NFmqsSeuIWxov8cNWc8zh8NL2mj/view?usp=sharing", title="MEDICAL INFORMATION DISCLOSURE FOR HACKTECH 2020")
 
-def general_waiver(waiver_type, link):
+def general_waiver(waiver_type, link, title):
     if not auth_utils.check_login():
         return auth_utils.login_redirect()
     email = flask.session['username']
@@ -37,7 +38,7 @@ def general_waiver(waiver_type, link):
     form_info['waiver_update'] = flask.url_for(".update_{0}".format(waiver_type))
     form_info['waiver_type'] = waiver_type
     return flask.render_template(
-        "caltech_waiver.html", form_info=form_info, waiver_type=waiver_type, link = link)
+        "caltech_waiver.html", form_info=form_info, waiver_type=waiver_type, link = link, title=title)
 
 @blueprint.route("/waivers/update_caltech_waivers", methods=["POST"])
 def update_caltech_waiver():

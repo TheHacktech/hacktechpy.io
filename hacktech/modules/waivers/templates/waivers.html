@@ -4,15 +4,27 @@
   {{super()}}
 {% endblock %}
 {% block page %}
-<div class = "jumbotron" style="text-align:center;">
+<div class = "jumbotron col-md-8 col-md-offset-2" style="text-align:center;">
 {% if RSVPed %}
 
 <h2 class="text-center">Hacktech Waivers</h2>
-<div class = "col-md-6">
-<a href="{{url_for('waivers.caltech_waiver')}}" class="btn">Caltech Waiver</a>
+<div class = "col-md-12">
+<p> Please submit the following waivers! We need them before you get on a bus or arrive to campus, 
+whichever one is earlier. You WILL not be able to board the bus without a copy of the waivers, either
+printed out or submitted through the portal here. </p>
+<hr>
 </div>
-<div class = "col-md-6">
-<a href="{{url_for('waivers.medical_information')}}" class="btn">Medical Information</a>
+<div class ="row">
+  <div class = "col-md-6">
+    <p>Status: {{caltech_waiver}}</p>
+    <a href="{{url_for('waivers.caltech_waiver')}}" class="btn btn-default">Caltech Waiver</a>
+    <p>blurb</p>
+  </div>
+  <div class = "col-md-6">
+  <p>Status: {{medical_info}}</p>
+  <a href="{{url_for('waivers.medical_information')}}" class="btn btn-default">Medical Information</a>
+  <p>blubr #2</p>
+  </div>
 </div>
 {% else %}
 

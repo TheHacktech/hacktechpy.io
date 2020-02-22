@@ -79,8 +79,10 @@ def view_caltech_waiver(user_id):
         return flask.redirect(flask.url_for("home"))
     info = helpers.get_waiver(user_id, "caltech_waiver")
     info.update(helpers.get_waiver(user_id, "medical_info"))
+    print(info)
     info['user_id'] = user_id
     status = helpers.get_waiver_status(user_id, "caltech_waiver")
+    status.update(helpers.get_waiver_status(user_id, "medical_info"))
     return flask.render_template(
         "view_caltech_waiver.html", info=info, status=status)
 
@@ -147,14 +149,14 @@ def serve_resume_book():
             "judging.uploaded_file", filename="hacktech_resume_book.pdf"))
 
 
-@blueprint.route('/judge_waivers/update/<int:user_id>', methods=['POST'])
-def update_waiver_status(user_id):
+@blueprint.route('/judge_waivers/update/<waiver_type>/<int:user_id>', methods=['POST'])
+def update_waiver_status(waiver_type, user_id):
     if not auth_utils.check_login() or not auth_utils.check_admin(
             flask.session['username']):
         return flask.redirect(flask.url_for("home"))
-    helpers.update_waiver_status(user_id, flask.request.form.get('new_status'), auth_utils.get_user_id(flask.session['username']))
+    helpers.update_waiver_status(user_id, flask.request.form.get('new_status'), auth_utils.get_user_id(flask.session['username']), waiver_type)
     flask.flash('Status has been updated')
-    return flask.redirect(flask.url_for('home'))
+    return flask.redirect(flask.url_for('.view_caltech_waiver', user_id = user_id))
 
 
 @blueprint.route('/judge/update/<int:user_id>', methods=['POST'])

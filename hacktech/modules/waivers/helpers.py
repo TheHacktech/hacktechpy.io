@@ -8,15 +8,14 @@ import os
 import PyPDF2
 
 
-def submitted_caltech_waiver(email):
+def get_waiver_status(user_id, waiver_type):
     query = """
-    SELECT waiver_status FROM caltech_waiver where user_id = %s"""
-    
-    pass
-
-
-def submitted_medical_info(email):
-    pass
+    SELECT {0}_status FROM {0} where user_id = %s""".format(waiver_type)
+    with flask.g.pymysql_db.cursor() as cursor:
+        cursor.execute(query, user_id)
+        res = cursor.fetchone()
+    key = "{0}_status".format(waiver_type)
+    return "Not Submitted" if res == None else res[key]    
 
 
 def get_full_name(uid):
