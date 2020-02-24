@@ -10,7 +10,7 @@ var schedule = [
 
   title: "Dinner",
   caption: "",
-  time: {day: "fri", start: "6:00PM", duration: "2:00"},
+  time: {day: "fri", start: "6:30PM", duration: "1:30"},
   location: "Bechtel",
   event_type: "Main timeline"
 },
@@ -49,16 +49,16 @@ var schedule = [
 {
   title: "Donuts!",
   caption: "Enjoy some early morning donuts.",
-  time: {day: "sun", start: "6:00AM", duration: "1:00"},
-  location: "Chandler",
+  time: {day: "sun", start: "7:00AM", duration: "1:00"},
+  location: "Bechtel",
   event_type: "Main timeline"
 },
 
 {
-  title: "Brunch",
+  title: "Lunch",
   caption: "",
-  time: {day: "sun", start: "9:00AM", duration: "3:00"},
-  location: "Chandler",
+  time: {day: "sun", start: "11:00AM", duration: "1:00"},
+  location: "Outside Avery",
   event_type: "Main timeline",
 },
 
