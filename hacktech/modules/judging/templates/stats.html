@@ -80,6 +80,7 @@
     new_chart(ctx, "Gender", data.gender.data, data.gender.labels);
     document.getElementById("users_info").textContent += String(data.total_users);
     document.getElementById("application_info").textContent += String(data.total_applications);
+    document.getElementById("waiver_info").textContent += String(data.waiver_status);
 
   </script>
 {% endblock %}
@@ -91,6 +92,8 @@
   <p id="users_info"> Total users on website: </p>
 
   <p id="application_info"> Total applications this year: </p>
+
+  <p id="waiver_info"> Total people who submitted both : </p>
 
   {% for i in ['0', '1', '2'] %}
   <div id="observe">

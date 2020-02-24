@@ -238,6 +238,15 @@ def get_current_stats(limit=6):
         cursor.execute(query, [app_year.year + "0000"])
         res = cursor.fetchall()
     stats["status"] = reorder_stat(res, "status")
+
+    query = """
+    select count(*) from medical_info JOIN caltech_waiver on medical_info.user_id = caltech_waiver.user_id;
+    """
+    with flask.g.pymysql_db.cursor() as cursor:
+        cursor.execute(query, [])
+        res = cursor.fetchall()
+    stats['waiver_status'] = res['count(*)'] 
+    
     cats = [
         "shirt_size", "school", "major", "degree_type", "graduation_year",
         "in_state", "bus_from", "gender"
