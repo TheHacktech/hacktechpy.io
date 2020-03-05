@@ -430,7 +430,50 @@ i {
     opacity: 0.6;
 }
 
-#schedule-hacking-end {
+#schedule-rise {
+    background: #5c99b8;
+    color: white;
+    top: 1788px;
+    position: absolute;
+    width: calc(100% - 24px);
+    padding: 12px;
+    font-size: 16px;
+    line-height: 24px;
+    border-radius: 2px;
+    font-weight: 700;
+    text-align: left;
+    opacity: 0.6;
+}
+#schedule-daylight {
+    background: #5c99b8;
+    color: white;
+    top: 3888px;
+    position: absolute;
+    width: calc(100% - 24px);
+    padding: 12px;
+    font-size: 16px;
+    line-height: 24px;
+    border-radius: 2px;
+    font-weight: 700;
+    text-align: left;
+    opacity: 0.6;
+}
+#schedule-hacking-ends {
+    background: #5c99b8;
+    color: white;
+    top: 4848px;
+    position: absolute;
+    width: calc(100% - 24px);
+    padding: 12px;
+    font-size: 16px;
+    line-height: 24px;
+    border-radius: 2px;
+    font-weight: 700;
+    text-align: left;
+    opacity: 0.6;
+}
+
+#schedule-finalists {
     background: #5c99b8;
     color: white;
     top: 5088px;
@@ -444,7 +487,6 @@ i {
     text-align: left;
     opacity: 0.6;
 }
-
 #schedule-guide-left {
     position: absolute;
     top: -5px;

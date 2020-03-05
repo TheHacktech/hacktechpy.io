@@ -306,7 +306,7 @@ var schedule = [
   title: "Project Expo",
   caption: "Judges will view the video demos of your fantastic hacks through your Devpost submission!",
   time: {day: "sun", start: "10:30AM", duration: "4:00"},
-  location: "Avery",
+  location: "Devpost",
   event_type: "events",
 },
 
@@ -314,7 +314,7 @@ var schedule = [
   title: "Closing Ceremony",
   caption: "Winners are announced! Tune in to see winning team's demos!",
   time: {day: "sun", start: "2:30PM", duration: "1:30"},
-  location: "Beckman Auditorium",
+  location: "Streamed on our channel!",
   event_type: "events",
 },
 /*
