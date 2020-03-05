@@ -4,6 +4,8 @@
 {% block styles %}
     {{ super() }}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/live.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/schedule.css') }}" />
+
 {% endblock %}
 {% block scripts %}
         <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -49,7 +51,7 @@
                                 <!-- For empty blocks, make sure the height value is 60 * # of 30 minute blocks. For example, if the empty block is 2.5 hours, make height 300px. -->
 
                                 <div class="schedule-column" id="main-timeline">
-                                    <div class="schedule-venue">Food</div>
+                                    <div class="schedule-venue">Announcements</div>
                                 </div>
                                 <div class="schedule-column" id="workshops">
                                     <div class="schedule-venue">Workshops</div>

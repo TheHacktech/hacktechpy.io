@@ -385,6 +385,7 @@ i {
 }
 
 #schedule-hacking-begin {
+    z-index: 0;
     background: #5c99b8;
     color: white;
     top: 648px;
@@ -395,7 +396,7 @@ i {
     line-height: 24px;
     border-radius: 2px;
     font-weight: 700;
-    text-align: center;
+    text-align: left;
     opacity: 0.6;
 }
 
@@ -410,7 +411,7 @@ i {
     line-height: 24px;
     border-radius: 2px;
     font-weight: 700;
-    text-align: center;
+    text-align: left;
     opacity: 0.6;
 }
 
@@ -425,7 +426,7 @@ i {
     line-height: 24px;
     border-radius: 2px;
     font-weight: 700;
-    text-align: center;
+    text-align: left;
     opacity: 0.6;
 }
 
