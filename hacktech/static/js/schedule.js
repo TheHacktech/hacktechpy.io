@@ -4,71 +4,6 @@
 //duration is duration in hours. ie 1 hour would be “1:00”
 
 var schedule = [
-{
-
-// food
-
-  title: "Dinner",
-  caption: "Come enjoy some Teriyaki rice bowls and meet fellow hackers!",
-  time: {day: "fri", start: "6:30PM", duration: "1:30"},
-  location: "Bechtel",
-  event_type: "Main timeline"
-},
-{
-  title: "Midnight Snack",
-  caption: "What's poppin, hackers! (Come enjoy fresh popcorn)!",
-  time: {day: "sat", start: "12:30AM", duration: "1:00"},
-  location: "Avery",
-  event_type: "Main timeline"
-},
-{
-  title: "Breakfast",
-  caption: "Coffee, juice, muffins and fruit",
-  time: {day: "sat", start: "5:00AM", duration: "5:00"},
-  location: "Avery Outer Courtyard",
-  event_type: "Main timeline"
-},
-
-{
-  title: "Lunch",
-  caption: "Scrumptious barbeque cooked with love by our lovely volunteers",
-  time: {day: "sat", start: "11:30AM", duration: "1:30"},
-  location: "Bechtel",
-  event_type: "Main timeline"
-},
-
-{
-  title: "Dinner",
-  caption: "Pasta dinner cooked with love by our wonderful volunteers",
-  time: {day: "sat", start: "6:30PM", duration: "2:00"},
-  location: "Bechtel",
-  event_type: "Main timeline"
-},
-
-{
-  title: "Midnight Snack",
-  caption: "Drink boba and chow down on eggrolls!",
-  time: {day: "sun", start: "12:30AM", duration: "1:00"},
-  location: "Bechtel",
-  event_type: "Main timeline"
-},
-
-{
-  title: "Donuts!",
-  caption: "Enjoy some early morning donuts.",
-  time: {day: "sun", start: "7:00AM", duration: "1:00"},
-  location: "Bechtel",
-  event_type: "Main timeline"
-},
-
-{
-  title: "Lunch",
-  caption: "Get hyped for project expo while enjoying In-N-Out!",
-  time: {day: "sun", start: "11:00AM", duration: "1:00"},
-  location: "Outside Avery",
-  event_type: "Main timeline",
-},
-
 
 // workshops
 {
@@ -81,7 +16,7 @@ var schedule = [
 {
   title: "[Google Cloud] Three Powerful Google Cloud Products for Your Project",
   caption: "Come for a chat about Google Cloud computing and Google Cloud Platform! This talk highlights App Engine, Machine Learning APIs, and Cloud Firestore. For each product, there are interactive demos and example use cases. There will be door prizes (aka free shirts!)",
-  time: {day: "fri", start: "11:30 PM", duration: "1:00"},
+  time: {day: "fri", start: "11:00 PM", duration: "1:00"},
   location: "Annenberg 105",
   event_type: "Workshops"
 },
@@ -95,7 +30,7 @@ var schedule = [
 {
   title: "Hacking the NASA JPL Way: Solving Space Challenges",
   caption: "Meet astronaut Larry James! He is currently the deputy director of NASA’s Jet Propulsion Laboratory and he will be speaking about his incredible experiences in solving space challenges.",
-  time: {day: "sat", start: "8:45 AM", duration: "1:00"},
+  time: {day: "sat", start: "9:00 AM", duration: "1:00"},
   location: "Annenberg 105",
   event_type: "Workshops"
 },
@@ -215,7 +150,7 @@ var schedule = [
 */
 
 // Events
-
+/*
 {
   title: "Registration",
   caption: "Welcome to Hacktech! Come check-in and grab some swag!",
@@ -223,7 +158,8 @@ var schedule = [
   location: "Avery",
   event_type: "events"
 },
-
+*/
+/*
 {
   title: "Snack Mix & Mingle",
   caption: "Come grab some snacks and mingle with other hackers!",
@@ -231,14 +167,36 @@ var schedule = [
   location: "Avery",
   event_type: "events"
 },
+*/
 {
   title: "Opening Ceremony",
   caption: "Get hyped for Hacktech 2020!",
   time: {day: "fri", start: "10:00PM", duration: "1:00"},
-  location: "Beckman Auditorium",
+  location: "Streamed on our channel!",
   event_type: "events",
 },
-
+{
+  title: "Hacktech Online Chess Tournament",
+  caption: "Compete against other Hacktech participants in online chess tournament (Blitz Time Control). Please see Workshops and Events link for more details on how to enter. There will be awesome prizes!",
+  time: {day:"sat", start:"12:30AM", duration:"2:00"},
+  location: "lichess.org",
+  event_type: "events"
+},
+{
+  title: "Capture the Flag Cybersecurity Challenge",
+  caption: "Hosted by MLH -- fun challenge to learn about basic cybersecurity!",
+  time: {day:"sat", start:"7:00PM", duration:"1:00"},
+  location: "Streamed on our channel!",
+  event_type: "events"
+},
+{
+  title: "Kahoot! Trivia Game",
+  caption: "Come join us for a fun game of random trivia! There will be prizes!",
+  time: {day:"sat", start:"8:00PM", duration:"1:00"},
+  location: "See Workshops and Events for more details!",
+  event_type: "events"
+},
+/*
 {
   title: "Team Building",
   caption: "Find a team to work with!",
@@ -246,7 +204,8 @@ var schedule = [
   location: "Beckman Auditorium",
   event_type: "events"
 },
-
+*/
+/*
 {
   title: "Puppy Party!",
   caption: "Take a break and come play with these adorable bundles of joy!",
@@ -277,6 +236,7 @@ var schedule = [
   location: "Avery Conference",
   event_type: "events"
 },
+*/
 
 // {
 //   title: "5-Hour Energy",
@@ -357,7 +317,7 @@ var schedule = [
   location: "Beckman Auditorium",
   event_type: "events",
 },
-
+/*
 {
   title: "Buses Depart",
   caption: "Thanks for coming!",
@@ -365,5 +325,5 @@ var schedule = [
   location: "",
   event_type: "events",
 },
-
+*/
 ]
