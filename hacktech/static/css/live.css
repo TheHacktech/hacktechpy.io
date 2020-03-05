@@ -384,6 +384,21 @@ i {
     z-index: 1;
 }
 
+#schedule-checkin {
+    z-index: 0;
+    background: #5c99b8;
+    color: white;
+    top: 348px;
+    position: absolute;
+    width: calc(100% - 24px);
+    padding: 12px;
+    font-size: 16px;
+    line-height: 24px;
+    border-radius: 2px;
+    font-weight: 700;
+    text-align: left;
+    opacity: 0.6;
+}
 #schedule-hacking-begin {
     z-index: 0;
     background: #5c99b8;
@@ -403,7 +418,7 @@ i {
 #schedule-submit {
     background: #5c99b8;
     color: white;
-    top: 4728px;
+    top: 4848px;
     position: absolute;
     width: calc(100% - 24px);
     padding: 12px;
@@ -418,7 +433,7 @@ i {
 #schedule-hacking-end {
     background: #5c99b8;
     color: white;
-    top: 4908px;
+    top: 5088px;
     position: absolute;
     width: calc(100% - 24px);
     padding: 12px;

@@ -304,15 +304,15 @@ var schedule = [
 
 {
   title: "Project Expo",
-  caption: "Show off your fantastic new hack!",
-  time: {day: "sun", start: "12:00PM", duration: "2:00"},
+  caption: "Judges will view the video demos of your fantastic hacks through your Devpost submission!",
+  time: {day: "sun", start: "10:30AM", duration: "4:00"},
   location: "Avery",
   event_type: "events",
 },
 
 {
   title: "Closing Ceremony",
-  caption: "Winners are announced! Come see the winning teams demo on stage!",
+  caption: "Winners are announced! Tune in to see winning team's demos!",
   time: {day: "sun", start: "2:30PM", duration: "1:30"},
   location: "Beckman Auditorium",
   event_type: "events",
