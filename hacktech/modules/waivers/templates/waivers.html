@@ -18,12 +18,12 @@ printed out or submitted through the portal here. </p>
   <div class = "col-md-6">
     <p>Status: {{caltech_waiver}}</p>
     <a href="{{url_for('waivers.caltech_waiver')}}" class="btn btn-default">Caltech Waiver</a>
-    <p>Waiver required by Caltech for consent, release, and assumption of risk for participation in Hacktech. </p>
+    <p><small>Waiver required by Caltech for consent, release, and assumption of risk for participation in Hacktech. </small></p>
   </div>
   <div class = "col-md-6">
   <p>Status: {{medical_info}}</p>
   <a href="{{url_for('waivers.medical_information')}}" class="btn btn-default">Medical Information</a>
-  <p>Medical form required by Caltech for emergency contact information and any medical needs. </p>
+  <p><small>Medical form required by Caltech for emergency contact information and any medical needs. </small></p>
   </div>
 </div>
 {% else %}

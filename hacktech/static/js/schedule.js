@@ -10,77 +10,77 @@ var schedule = [
   title: "[eBay] Innovation & Hacktech-Help Workshop",
   caption: "Come learn about innovation at eBay and how to get started working with eBay’s APIs. This session will kick-off with a short innovation docuseries which follows teams as they go through the Innovation Program at eBay. Afterwards, we’ll dive into a working session where you will learn about eBay’s public APIs and how to get started. We look forward to seeing you there!",
   time: {day: "fri", start: "9:00 PM", duration: "1:00"},
-  location: "Annenberg 105",
+  location: "Streamed on our channel!",
   event_type: "Workshops"
 },
 {
   title: "[Google Cloud] Three Powerful Google Cloud Products for Your Project",
-  caption: "Come for a chat about Google Cloud computing and Google Cloud Platform! This talk highlights App Engine, Machine Learning APIs, and Cloud Firestore. For each product, there are interactive demos and example use cases. There will be door prizes (aka free shirts!)",
+  caption: "Come for a chat about Google Cloud computing and Google Cloud Platform! This talk highlights App Engine, Machine Learning APIs, and Cloud Firestore. For each product, there are interactive demos and example use cases.",
   time: {day: "fri", start: "11:00 PM", duration: "1:00"},
-  location: "Annenberg 105",
+  location: "Streamed on our channel!",
   event_type: "Workshops"
 },
 {
   title: "[Esri] Maps and Location Services",
   caption: "Discover how to use maps and services to change the world. Learn about 2D and 3D technology, geocoding, routing, and other technologies.",
   time: {day: "sat", start: "1:00 AM", duration: "1:00"},
-  location: "Annenberg 105",
+  location: "Streamed on our channel!",
   event_type: "Workshops"
 },
 {
   title: "Hacking the NASA JPL Way: Solving Space Challenges",
   caption: "Meet astronaut Larry James! He is currently the deputy director of NASA’s Jet Propulsion Laboratory and he will be speaking about his incredible experiences in solving space challenges.",
   time: {day: "sat", start: "9:00 AM", duration: "1:00"},
-  location: "Annenberg 105",
+  location: "Streamed on our channel!",
   event_type: "Workshops"
 },
 {
   title: "[Oracle] Build Cloud-Native Applications with Oracle Cloud",
   caption: "Come and join us to see how you too can build cloud-native applications on Oracle Cloud. We will take you through the journey of MuShop, a fully cloud-native, microservices based online shop. You will discover how to leverage cloud technology to build leading-edge applications for the world of tomorrow.",
   time: {day: "sat", start: "10:00 AM", duration: "1:00"},
-  location: "Annenberg 105",
+  location: "Streamed on our channel!",
   event_type: "Workshops"
 },
 {
 	title: "[Keystone Strategy] Turning Data into a Story: The Secret Tales of Commit Logs",
   caption: "In today's world, data is created everywhere - including in your codebase. Good developers track projects with work planning tools and tickets, and that tracking can create a host of information contained within version control software and the code itself. At Keystone Strategy, we are often working to turn data into a story, and commit logs are goldmine. Understanding how to extract information and a project narrative from codebases allows us to understand the environmental factors altering project development and better inform our clients development narrative. Join us as we teach your teams how to analyze your projects to find insights about your working style and the projects development history.",
   time: {day: "sat", start: "11:00 AM", duration: "0:30"},
-  location: "Annenberg 105",
+  location: "Streamed on our channel!",
   event_type: "Workshops"
 },
 {
   title: "How to Host Your Web App on the Cloud for Free",
-  caption: "Caltech student Alex Cui will lead this workshop on hosting a web app publically on the cloud!",
+  caption: "Caltech student Alex Cui will lead this workshop on hosting a web app publicly on the cloud!",
   time: {day: "sat", start: "1:00 PM", duration: "1:00"},
-  location: "Annenberg 105",
+  location: "Streamed on our channel!",
   event_type: "Workshops"
 },
 {
-  title: "Mental Health",
-  caption: "Caltech Professor Adam Blank will speak about mental health.",
+  title: "Points Don’t Matter: Invest in Yourself, Not Your Grades",
+  caption: "Mental health advice from Caltech's CS faculty and how to succeed after college.",
   time: {day: "sat", start: "2:00 PM", duration: "1:00"},
-  location: "Annenberg 105",
+  location: "Streamed on our channel!",
   event_type: "Workshops"
 },
 {
   title: "[Office Ally] Office Ally Q & A",
   caption: "Come ask any questions about Office Ally, and meet Chief Technology Officer (and keynote speaker) Jay Wu, and Development Deployment Manager David Liljeblad.",
   time: {day: "sat", start: "3:00 PM", duration: "0:30"},
-  location: "Annenberg 105",
+  location: "Streamed on our channel!",
   event_type: "Workshops"
 },
 {
   title: "[Keystone Strategy] The AI Impact: How Technology is Changing Business Decisions",
   caption: "It should come as no surprise that artificial intelligence and machine learning are reshaping the business landscape, but where do these technical investments create the most impact? Join us as we review the current and potential value these technologies create across industries, based on the latest work from Harvard Business School Digital Innovation Chair Marco Iansiti. We will take a deeper dive into how these technologies are driving business decision making, and discuss how you can leverage this to create maximum impact via your hacks. ",
   time: {day: "sat", start: "5:00 PM", duration: "0:30"},
-  location: "Annenberg 105",
+  location: "Streamed on our channel!",
   event_type: "Workshops"
 },
 {
-  title: "SpatialDB: Enabling Rigorous Geospatial Queries",
-  caption: "Come hear Caltech student Rupesh Jeyaram speak about his research project on building spatial databases to access, explore, and navigate the terabytes of data. ",
+  title: "Breaking the Billion Datapoint Barrier",
+  caption: "Come hear Caltech student Rupesh Jeyaram speak about his research: With the rise of ubiquitous sensors, satellites, and devices, rapid information retrieval becomes paramount for both technological innovation and scientific research. Come by to learn about techniques that make data extraction, analysis, and visualization in large datasets tractable. I will use Python and SQL in the presentation, but no prior knowledge of either of these languages needed!",
   time: {day: "sat", start: "5:30 PM", duration: "0:45"},
-  location: "Annenberg 105",
+  location: "Streamed on our channel!",
   event_type: "Workshops"
 },
 /*
@@ -169,6 +169,13 @@ var schedule = [
 },
 */
 {
+  title: "Ice Breakers!",
+  caption: "Get to know your fellow Hacktech hackers and sponsors through fun icebreakers!! Introductions + Two Truths and A Lie on Slack.",
+  time: {day: "fri", start: "8:00PM", duration: "1:00"},
+  location: "Slack channel",
+  event_type: "events",
+},
+{
   title: "Opening Ceremony",
   caption: "Get hyped for Hacktech 2020!",
   time: {day: "fri", start: "10:00PM", duration: "1:00"},
@@ -178,7 +185,7 @@ var schedule = [
 {
   title: "Hacktech Online Chess Tournament",
   caption: "Compete against other Hacktech participants in online chess tournament (Blitz Time Control). Please see Workshops and Events link for more details on how to enter. There will be awesome prizes!",
-  time: {day:"sat", start:"12:30AM", duration:"2:00"},
+  time: {day:"sat", start:"3:00PM", duration:"2:00"},
   location: "lichess.org",
   event_type: "events"
 },
@@ -186,7 +193,7 @@ var schedule = [
   title: "Capture the Flag Cybersecurity Challenge",
   caption: "Hosted by MLH -- fun challenge to learn about basic cybersecurity!",
   time: {day:"sat", start:"7:00PM", duration:"1:00"},
-  location: "Streamed on our channel!",
+  location: "Slack channel",
   event_type: "events"
 },
 {
@@ -305,7 +312,14 @@ var schedule = [
 {
   title: "Project Expo",
   caption: "Judges will view the video demos of your fantastic hacks through your Devpost submission!",
-  time: {day: "sun", start: "10:30AM", duration: "4:00"},
+  time: {day: "sun", start: "10:30AM", duration: "2:00"},
+  location: "Devpost",
+  event_type: "events",
+},
+{
+  title: "Finalist Judging",
+  caption: "Judges will hold calls with finalists to choose winners - be sure to keep this block clear on your schedule in case you're chosen as a finalist!",
+  time: {day: "sun", start: "12:30PM", duration: "1:00"},
   location: "Devpost",
   event_type: "events",
 },

@@ -245,7 +245,7 @@ def get_current_stats(limit=6):
     with flask.g.pymysql_db.cursor() as cursor:
         cursor.execute(query, [])
         res = cursor.fetchall()
-    stats['waiver_status'] = res['count(*)'] 
+    stats['waiver_status'] = res[0]['count(*)'] 
     
     cats = [
         "shirt_size", "school", "major", "degree_type", "graduation_year",

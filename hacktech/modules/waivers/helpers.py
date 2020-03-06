@@ -35,7 +35,7 @@ def save_info(email, waiver_file, app_folder, waiver_type):
     waiver_root_path = os.path.join(flask.current_app.root_path,
                                     flask.current_app.config[app_folder])
     waiver_path = os.path.join(waiver_root_path, waiver_file_name)
-
+    print(waiver_file, allowed_file(waiver_file))
     if waiver_file and allowed_file(waiver_file):
         if os.path.exists(waiver_path):
             os.remove(waiver_path)

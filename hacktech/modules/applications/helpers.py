@@ -50,8 +50,8 @@ def check_submitted(self_email, other_email):
 
 ALLOWED_EXTENSIONS = set(['pdf'])
 
-# 500 KB
-MAX_FILE_SIZE = 500 * 1024
+# 5 MB
+MAX_FILE_SIZE = 5000 * 1024
 
 
 def allowed_file(file):

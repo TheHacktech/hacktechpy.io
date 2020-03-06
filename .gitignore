@@ -7,3 +7,5 @@ config.py
 __pycache__/
 
 hacktech/modules/applications/resumes/*.pdf
+hacktech/modules/waivers/waivers_files/*.pdf
+hacktech/modules/waivers/medical_info/*.pdf
