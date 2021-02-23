@@ -23,7 +23,7 @@ var schedule = [
 {
   title: "[Esri] Maps and Location Services",
   caption: "Discover how to use maps and services to change the world. Learn about 2D and 3D technology, geocoding, routing, and other technologies.",
-  time: {day: "sat", start: "1:00 AM", duration: "1:00"},
+  time: {day: "sat", start: "12:00 AM", duration: "1:00"},
   location: "Streamed on our channel!",
   event_type: "Workshops"
 },
@@ -198,9 +198,16 @@ var schedule = [
 },
 {
   title: "Kahoot! Trivia Game",
-  caption: "Come join us for a fun game of random trivia! There will be prizes!",
+  caption: "Come join us for three rounds of trivia through Kahoot! The themes will be: Caltech, pop culture, and trivia about our sponsors, with prizes for the winners of each round!",
   time: {day:"sat", start:"8:00PM", duration:"1:00"},
-  location: "See Workshops and Events for more details!",
+  location: "Streamed on our channel!",
+  event_type: "events"
+},
+{
+  title: "League 5v5 Stream",
+  caption: "5v5, organizers vs hackers League of Legends! See you on Summoner's Rift!",
+  time: {day:"sat", start:"9:30PM", duration:"1:00"},
+  location: "Streamed on our channel!",
   event_type: "events"
 },
 /*
@@ -319,15 +326,15 @@ var schedule = [
 {
   title: "Finalist Judging",
   caption: "Judges will hold calls with finalists to choose winners - be sure to keep this block clear on your schedule in case you're chosen as a finalist!",
-  time: {day: "sun", start: "12:30PM", duration: "1:00"},
-  location: "Devpost",
+  time: {day: "sun", start: "12:30PM", duration: "2:00"},
+  location: "Online",
   event_type: "events",
 },
 
 {
   title: "Closing Ceremony",
   caption: "Winners are announced! Tune in to see winning team's demos!",
-  time: {day: "sun", start: "2:30PM", duration: "1:30"},
+  time: {day: "sun", start: "3:00PM", duration: "1:00"},
   location: "Streamed on our channel!",
   event_type: "events",
 },
