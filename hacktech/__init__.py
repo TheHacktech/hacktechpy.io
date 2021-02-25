@@ -11,7 +11,7 @@ import datetime
 try:
     from hacktech import config
 except ImportError:
-    from hacktech import default_config as config
+    from hacktech import default_permissions as config
 from hacktech import constants
 from hacktech.modules import account, applications, auth, judging, waivers
 

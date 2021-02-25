@@ -13,35 +13,28 @@
     <link rel="shortcut icon" type="image/x-icon" href="./assets/img/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Caltech's annual Hackathon!">
-    <title>Hacktech 2020</title>
+    <title>Hacktech 2021</title>
   </head>
   <body>
 -->
 
 <body>
-    <a id="mlh-trust-badge" href="https://mlh.io/seasons/na-2020/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2020-season&utm_content=white" target="_blank"><img src="https://s3.amazonaws.com/logged-assets/trust-badge/2020/mlh-trust-badge-2020-white.svg" alt="Major League Hacking 2020 Hackathon Season" style="width:100%;position: absolute;"></a>
+    <a id="mlh-trust-badge" href="https://mlh.io/seasons/na-2021/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2021-season&utm_content=white" target="_blank"><img src="https://s3.amazonaws.com/logged-assets/trust-badge/2021/mlh-trust-badge-2021-white.svg" alt="Major League Hacking 2021 Hackathon Season" style="width:100%;position: absolute;"></a>
     <!-- LANDING -->
     <section id="landing">
-        <div id="animations">
-            <img id="baselight" class="lights" src="{{  url_for('static', filename='images/base_light.png')  }}" title="Base_lights">
-            <img id="light1" class="lights" src="{{  url_for('static', filename='images/light_1.png')  }}" title="Light_1">
-            <img id="light2" class="lights" src="{{  url_for('static', filename='images/light_2.png')  }}" title="Light_2">
-            <img id="light3" class="lights" src="{{  url_for('static', filename='images/light_3.png')  }}" title="Light_3">
-        </div>
         <div class="contents">
             <div id="center_info">
-                <img id="hektek" src="{{  url_for('static', filename='images/logo_2020.png')  }}" alt="Hacktech 2020 Logo" title="Hacktech">
+                <img id="hektek" src="{{  url_for('static', filename='images/logo_2021.png')  }}" alt="Hacktech 2021 Logo" title="Hacktech">
                 <h1>Hacktech 2021</h1>
                 <h3>Sometime in 2021 | All-Virtual </h3>
                 <!-- <h3>Apply by Jan 31th! </h3> -->
                 <!-- PRE-APPLICATION INTEREST FORM -->
-                <p> Decisions have been sent out! </br> Check out our facebook for updates! </p>
                 <div id="form">
                     <!-- <input type="email" id="hackerEmail" placeholder="Email"> -->
                     <!--<button type="btn btn-primary" id="updatebtn" onclick="window.open('https://forms.gle/fHUbqy6qUGcbjnW6A')">Receive Updates</button></div> -->
                     {%if 'username' in session%}
                     <button id="apply" onclick="location.href='https://hacktech.io/applications/status';" style="cursor:pointer;">Your Status</button> {%else%}
-                    <button id="apply" onclick="location.href='https://www.facebook.com/thehacktech/';" style="cursor:pointer;">Facebook</button> {%endif%}
+                    <button id="apply" onclick="location.href='https://www.facebook.com/thehacktech/';" style="cursor:pointer;">Apply</button> {%endif%}
                     <!-- <div id="form"><button type="btn btn-primary" id="updatebtn" onclick="window.open('[INTEREST_FORM_LINK]')">Apply Here on 12/9!</button>
         <button id="apply" onclick="window.open('https://forms.gle/fHUbqy6qUGcbjnW6A');">Receive Updates</button> -->
                     <!-- APPLICATION -->
@@ -59,7 +52,7 @@
     <!-- INTRO -->
     <section id="intro">
         <div class="contents">
-            <p><b>This is Hacktech.</b></p>
+            <h3 class="section-header">This is Hacktech.</h3>
             <p>A place where, given a total of 36 thrilling hours with your team, your idea, and our fuel (in the form of snacks, drinks, and more), you produce a fantastic project, while forming lasting relationships and chugging more caffeine than you
                 ever thought possible.</p>
         </div>
@@ -68,7 +61,7 @@
     <!-- FAQ -->
     <section id="faq">
         <div class="contents">
-            <h3>FAQ</h3>
+            <h3 class="section-header" id="faq-header">FAQ</h3>
             <div class="faqcolumn">
                 <div class="faqelem">
                     <div class="question">Tell me more!</div>
@@ -128,8 +121,8 @@
     <!-- SPONSORS -->
     <section id="sponsors">
         <div class="contents">
-            <h3>Hacktech 2020 Sponsors</h3>
-            <h5>Interested in sponsoring for 2020? Let us know at <a href="mailto:sponsors@hacktech.io">sponsors@hacktech.io</a>!</h5>
+            <h3 class="section-header">Past Sponsors</h3>
+            <h5>Interested in sponsoring for 2021? Let us know at <a href="mailto:sponsors@hacktech.io">sponsors@hacktech.app</a>!</h5>
             <a href="https://www.esri.com/"><img class="sponsor" src="{{  url_for('static', filename='images/logo/esri.jpg')  }}" alt="Esri Logo"></a>
             <a href="https://www.google.com/"><img class="sponsor" src="{{  url_for('static', filename='images/logo/google.png')  }}" alt="Google Logo"></a>
             <a href="https://www.oracle.com/index.html"><img class="sponsor" src="{{  url_for('static', filename='images/logo/oracle.png')  }}" alt="Oracle Logo"></a>
@@ -142,7 +135,7 @@
             <a href="https://www.facebook.com/"><img class="sponsor" src="{{  url_for('static', filename='images/logo/facebook.png')  }}" alt="Facebook Logo"></a>
             <a href="http://hackp.ac/mlh-stickermule-hackathons"><img class="sponsor" src="{{  url_for('static',filename='images/logo/sticker_mule.png')  }}""></a>
             <br><br><br>
-            <h3>Hacktech 2020 Partners</h3>
+            <h3 class="section-header">Hacktech 2021 Partners</h3>
             <img class="sponsor" src="{{  url_for('static', filename='images/logo/mlh_logo.png')  }}" alt="MLH Logo">
             <!-- <br><img class="sponsor" src="assets/img/logo/cmslogo.png"/> -->
             <img class="sponsor" src="{{  url_for('static', filename='images/logo/Pinnacle.png')  }}" alt="pinnacle Logo">
@@ -150,4 +143,5 @@
         </div>
     </section>
     <!-- MLH BADGE -->
+    <!-- γδβγ -->
     {% endblock %}

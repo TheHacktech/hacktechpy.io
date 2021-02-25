@@ -1,7 +1,5 @@
 /* Include Open Sans, courtesy of Google. */
-@import url(https://fonts.googleapis.com/css?family=Roboto);
-@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
-@import url(https://fonts.googleapis.com/css?family=Roboto+Slab);
+ @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
 /* Make sure that widths and heights are all done the same way.  */
 *,
 *:before,
@@ -38,7 +36,7 @@ html {
  * height.
  */
 body {
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   min-height: 100%;
@@ -135,31 +133,31 @@ table {
 /* This is the primary button class. Gives the button a white background
  * with an orange border and a slight bottom margin for spacing
  */
-.btn-default {
+.btn-default, .btn-primary {
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s;
   background-color: #FFF;
   color: #333;
-  border-color: #009dee;
+  border-color: #000;
   outline: 0;
-  border: 2px  #009dee solid;
+  border: 2px  #000 solid;
   margin-bottom: 5%;
   font-size: 20px;
   border-radius: 4px;
 }
 
 /* When the primary button class is hovered, give it an orange background. */
-.btn-default:hover {
+.btn-default:hover, .btn-primary:hover {
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s;
 
-  background-color: #009dee;
-  color: #FFF;
-  border-color: #009dee;
+  background-color: #000;
+  color: #fff;
+  border-color: #000;
   margin-bottom: 5%;
 }
 
@@ -367,17 +365,27 @@ input[type=checkbox], input[type=radio] {
   margin: 0;
 }
 
+.navbar {
+  background: black !important;
+}
+
 .navbar-inverse {
-  background-color: #009dee;
-  border-color: #fff;
+  background-color: black;
+  border-color: #d3a034;
 }
 
 .navbar-inverse .navbar-brand {
-  color: #fff;
+  color: #d3a034;
 }
 
 .navbar-nav {
   float: right;
+}
+
+#navbar li a {
+  margin: 8px;
+  padding: 12px 6px;
+  margin-bottom: 5% !important;
 }
 
 #navbar li a:active {
@@ -385,8 +393,10 @@ input[type=checkbox], input[type=radio] {
 }
 
 #navbar a {
-  font-size: 16px;
-  color: #fff;
+  color: #d3a034;
+  font-size: 1.5em;
+  font-weight: 200;
+  text-transform: uppercase;
   background-color: transparent;
 }
 
@@ -409,7 +419,7 @@ input[type=checkbox], input[type=radio] {
 }
 .sliding:hover:after {
     width: 100%;
-    background: white;
+    background: #d3a034;
 }
 
 label.checkbox-inline{
@@ -485,9 +495,11 @@ background-color: rgba(0,190,255,.3);
   padding-bottom: 50px;
 }
 #logInButton {
-  background: transparent;
-  color:white;
-  font-size: 16px;  
+  color: #d3a034;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  font-weight: 200;
+  background: none;
 }
 
 #observe {
@@ -511,8 +523,8 @@ background-color: rgba(0,190,255,.3);
  * copyright notice.
  */
 #footer {
-  background-color: #009dee;
-  color: #fff; 
+  background-color: #000;
+  color: #d3a034;
   padding: 20px;
   margin-top: 20px;
   position: absolute;
@@ -547,7 +559,7 @@ background-color: rgba(0,190,255,.3);
     max-width: 100px;
     min-width: 60px;
     left: 49px;
-    top: 52px;
+    top: 60px;
     position: fixed;
     width: 10%;
     z-index: 999;
@@ -687,6 +699,10 @@ background-color: rgba(0,190,255,.3);
     display: block;
   }
 
+  #navbar {
+    padding: 16px;
+  }
+
   /* Make sure the login button is positioned well and is easily accessed. */
   #navbar button {
     font-size: 16px;
@@ -705,9 +721,7 @@ background-color: rgba(0,190,255,.3);
    */
   #navbar li {
     float: left;
-    margin-bottom: 0px;
-    margin-top: 0px;
-    font-size: 2vh;
+    margin: 0px;
   }
 
   /* Make sure content spans the width of the page. */
@@ -730,7 +744,8 @@ background-color: rgba(0,190,255,.3);
     left: auto;
     -webkit-box-sizing: unset;
     box-sizing: unset;
-    top:0px; 
+    top: 52px;
+    width: 20vw;
 }
  #mobile_show {
     visibility:visible;
