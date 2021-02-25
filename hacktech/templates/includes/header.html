@@ -14,9 +14,9 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a class="btn no-border sliding navbar-btn" href=" {{ url_for('home') }} ">Home</a></li>
+	            {% if 'username' not in session %}
                     <li><a class="btn no-border sliding navbar-btn" href="/#faq">FAQ</a></li>
                     <li><a class="btn no-border sliding navbar-btn" href="/#sponsors">Sponsors</a></li>
-	            {% if 'username' not in session %}
                     <li>
                         <form action="{{ url_for('auth.login') }}">
                             <button id="logInButton" class="btn no-border pull-right navbar-btn sliding">Log In</button>
@@ -36,11 +36,6 @@
 		    <li><a class = "sliding" href=" {{ url_for('waivers.waivers') }} ">Waivers</a></li>
 		    {%endif%}
 		    {% endif %}
-                    <li id="mobile_hide">
-                        <a class = "sliding" href=" {{ url_for('applications.status') }} ">
-			    Greetings, {{ session['username'] }}
-			</a>
-                    </li>
                     <li>
                         <form action="{{ url_for('auth.logout') }}">
                             <button id="logInButton" class="btn no-border pull-right navbar-btn sliding">Logout</button>
