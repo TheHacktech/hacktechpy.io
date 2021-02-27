@@ -1,5 +1,6 @@
 {% extends "layout.html" %} {% block styles %} {{ super() }}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" /> {% endblock %} {% block scripts %} {{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" /> {% endblock %} {% block scripts %} {{
+super() }}
 <script src="{{ url_for('static', filename='js/copyright.js') }}"></script>
 <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -19,12 +20,17 @@
 -->
 
 <body>
-    <a id="mlh-trust-badge" href="https://mlh.io/seasons/na-2021/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2021-season&utm_content=white" target="_blank"><img src="https://s3.amazonaws.com/logged-assets/trust-badge/2021/mlh-trust-badge-2021-white.svg" alt="Major League Hacking 2021 Hackathon Season" style="width:100%;position: absolute;"></a>
+    <a id="mlh-trust-badge"
+        href="https://mlh.io/seasons/na-2021/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2021-season&utm_content=white"
+        target="_blank"><img
+            src="https://s3.amazonaws.com/logged-assets/trust-badge/2021/mlh-trust-badge-2021-white.svg"
+            alt="Major League Hacking 2021 Hackathon Season" style="width:100%;position: absolute;"></a>
     <!-- LANDING -->
     <section id="landing">
         <div class="contents">
             <div id="center_info">
-                <img id="hektek" src="{{  url_for('static', filename='images/logo_2021.png')  }}" alt="Hacktech 2021 Logo" title="Hacktech">
+                <img id="hektek" src="{{  url_for('static', filename='images/logo_2021.png')  }}"
+                    alt="Hacktech 2021 Logo" title="Hacktech">
                 <h1>Hacktech 2021</h1>
                 <h3>Sometime in 2021 | All-Virtual </h3>
                 <!-- <h3>Apply by Jan 31th! </h3> -->
@@ -33,8 +39,10 @@
                     <!-- <input type="email" id="hackerEmail" placeholder="Email"> -->
                     <!--<button type="btn btn-primary" id="updatebtn" onclick="window.open('https://forms.gle/fHUbqy6qUGcbjnW6A')">Receive Updates</button></div> -->
                     {%if 'username' in session%}
-                    <button id="apply" onclick="location.href='https://hacktech.io/applications/status';" style="cursor:pointer;">Your Status</button> {%else%}
-                    <button id="apply" onclick="location.href='https://www.facebook.com/thehacktech/';" style="cursor:pointer;">Apply</button> {%endif%}
+                    <button id="apply" onclick="location.href='https://hacktech.io/applications/status';"
+                        style="cursor:pointer;">Your Status</button> {%else%}
+                    <button id="apply" onclick="location.href='https://www.facebook.com/thehacktech/';"
+                        style="cursor:pointer;">Apply</button> {%endif%}
                     <!-- <div id="form"><button type="btn btn-primary" id="updatebtn" onclick="window.open('[INTEREST_FORM_LINK]')">Apply Here on 12/9!</button>
         <button id="apply" onclick="window.open('https://forms.gle/fHUbqy6qUGcbjnW6A');">Receive Updates</button> -->
                     <!-- APPLICATION -->
@@ -53,7 +61,9 @@
     <section id="intro">
         <div class="contents">
             <h3 class="section-header">This is Hacktech.</h3>
-            <p>A place where, given a total of 36 thrilling hours with your team, your idea, and our fuel (in the form of snacks, drinks, and more), you produce a fantastic project, while forming lasting relationships and chugging more caffeine than you
+            <p>A place where, given a total of 36 thrilling hours with your team, your idea, and our fuel (in the form
+                of snacks, drinks, and more), you produce a fantastic project, while forming lasting relationships and
+                chugging more caffeine than you
                 ever thought possible.</p>
         </div>
     </section>
@@ -65,44 +75,49 @@
             <div class="faqcolumn">
                 <div class="faqelem">
                     <div class="question">Tell me more!</div>
-                    <div class="answer">Hacktech is Caltech's premier intercollegiate hackathon: for 36 hours, nearly 450 awesome student hackers will identify and build innovative, technological solutions to solve problems in a variety of disciplines.</div>
+                    <div class="answer">Hacktech is Caltech's premier intercollegiate hackathon: for 36 hours, nearly
+                        450 awesome student hackers will identify and build innovative, technological solutions to solve
+                        problems in a variety of disciplines.</div>
                 </div>
                 <div class="faqelem">
                     <div class="question">Who can come?</div>
-                    <div class="answer">Any undergraduate or graduate students from anywhere in the world. We admit high school students (must be over 18 years old) on a case-by-case basis, and also welcome beginners - Hacktech is meant to be a learning experience! We want
+                    <div class="answer">Any undergraduate or graduate students from anywhere in the world. We admit high
+                        school students (must be over 18 years old) on a case-by-case basis, and also welcome beginners
+                        - Hacktech is meant to be a learning experience! We want
                         you to come here to have fun and leave having learned something.</div>
                 </div>
                 <div class="faqelem">
                     <div class="question">How do teams work?</div>
-                    <div class="answer">At the event, you can submit a project as a team of up to four members. Make sure that all of your team members submit an application! If you don't have a team before the event, don't fret! We will help you find fellow hackers to work
+                    <div class="answer">At the event, you can submit a project as a team of up to four members. Make
+                        sure that all of your team members submit an application! If you don't have a team before the
+                        event, don't fret! We will help you find fellow hackers to work
                         with once you arrive.</div>
                 </div>
                 <div class="faqelem">
-                    <div class="question">What should I bring?</div>
-                    <div class="answer">A student ID, a laptop, and a charger are the only necessities. We recommend you bring clothes, toiletries, and a sleeping bag as well!</div>
-                </div>
-                <div class="faqelem">
                     <div class="question">What can I create?</div>
-                    <div class="answer">Absolutely anything you want - websites, apps, hardware, you name it. We encourage you to go above and beyond the typical software project and make something that combines software with finance / medicine / electronics / science!</div>
+                    <div class="answer">Absolutely anything you want - websites, apps, hardware, you name it. We
+                        encourage you to go above and beyond the typical software project and make something that
+                        combines software with finance / medicine / electronics / science!</div>
                 </div>
                 <div class="faqelem">
                     <div class="question">How much will it cost?</div>
-                    <div class="answer">It's absolutely free! We'll be providing you with meals, a place to hack, and swag. We will also be offering travel reimbursements on a case-by-case basis!</div>
+                    <div class="answer">It's absolutely free! We hope to provide swag and prizes without any cost for
+                        our hackers.</div>
                 </div>
             </div>
             <div class="faqcolumn">
                 <div class="faqelem">
-                    <div class="question">How will I get there?</div>
-                    <div class="answer">We will be sending buses free of charge to certain universities in SoCal and NorCal. We may also be giving out travel reimbursements for flights to out-of-state hackers!</div>
-                </div>
-                <div class="faqelem">
                     <div class="question">Anything else I should know?</div>
-                    <div class="answer">There are a few things we don't encourage; you should refer to the <u><a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf" target="_blank">MLH Code of Conduct here</a></u> for some guidelines to follow. Also, be smart - don't
-                        use/bring anything that you obviously shouldn't, including: alcohol, open flames, firearms, katanas, candy canes, maces, bassoons, etc.</div>
+                    <div class="answer">There are a few things we don't encourage; you should refer to the <u><a
+                                href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf" target="_blank">MLH Code of
+                                Conduct here</a></u> for some guidelines to follow. Also, be smart - don't
+                        use/bring anything that you obviously shouldn't, including: alcohol, open flames, firearms,
+                        katanas, candy canes, maces, bassoons, etc.</div>
                 </div>
                 <div class="faqelem">
                     <div class="question">Sounds great, how do I apply?</div>
-                    <div class="answer">Applications are currently open! Please create an account and login to submit your application! :)</div>
+                    <div class="answer">Applications are currently open! Please create an account and login to submit
+                        your application! :)</div>
                     <!-- <div class="answer">Applications are closed. Acceptances have been sent out :)</div> -->
                     <!-- <div class="answer">Applications will open in early December. Please click the "Receive Updates" button to stay connected! </div> -->
                 </div>
@@ -112,7 +127,8 @@
                 </div>
                 <div class="faqelem">
                     <div class="question">Help!</div>
-                    <div class="answer">Shoot us an email at team@hacktech.io and we'll get back to you before you can say "Hacktech is awes-!"</div>
+                    <div class="answer">Shoot us an email at team@hacktech.io and we'll get back to you before you can
+                        say "Hacktech is awes-!"</div>
                 </div>
             </div>
         </div>
@@ -122,24 +138,39 @@
     <section id="sponsors">
         <div class="contents">
             <h3 class="section-header">Past Sponsors</h3>
-            <h5>Interested in sponsoring for 2021? Let us know at <a href="mailto:sponsors@hacktech.io">sponsors@hacktech.app</a>!</h5>
-            <a href="https://www.esri.com/"><img class="sponsor" src="{{  url_for('static', filename='images/logo/esri.jpg')  }}" alt="Esri Logo"></a>
-            <a href="https://www.google.com/"><img class="sponsor" src="{{  url_for('static', filename='images/logo/google.png')  }}" alt="Google Logo"></a>
-            <a href="https://www.oracle.com/index.html"><img class="sponsor" src="{{  url_for('static', filename='images/logo/oracle.png')  }}" alt="Oracle Logo"></a>
-            <a href="https://www.citadel.com/"><img class="sponsor" src="{{  url_for('static', filename='images/logo/citadel.png')  }}" alt="Citadel Logo"></a>
-            <a href="https://cms.officeally.com/"><img class="sponsor" src="{{  url_for('static', filename='images/logo/officeally.jpg')  }}" alt="Office Ally Logo"></a>
-            <a href="https://www.ebay.com/"><img class="sponsor" src="{{  url_for('static', filename='images/logo/ebay.png')  }}" alt="Ebay Logo"></a>
-            <a href="https://www.idtech.com/"><img class="sponsor" src="{{  url_for('static', filename='images/logo/idtech.png')  }}" alt="idtech Logo"></a>
-            <a href="https://www.keystonestrategy.com/"><img class="sponsor" src="{{  url_for('static', filename='images/logo/keystone.png')  }}" alt="Keystone Logo"></a>
-            <a href="https://www.bluebeam.com/"><img class="sponsor" src="{{  url_for('static', filename='images/logo/bluebeam.jpg')  }}" alt="Bluebeam Logo"></a>
-            <a href="https://www.facebook.com/"><img class="sponsor" src="{{  url_for('static', filename='images/logo/facebook.png')  }}" alt="Facebook Logo"></a>
-            <a href="http://hackp.ac/mlh-stickermule-hackathons"><img class="sponsor" src="{{  url_for('static',filename='images/logo/sticker_mule.png')  }}""></a>
+            <h5>Interested in sponsoring for 2021? Let us know at <a
+                    href="mailto:sponsors@hacktech.io">sponsors@hacktech.app</a>!</h5>
+            <a href="https://www.esri.com/"><img class="sponsor"
+                    src="{{  url_for('static', filename='images/logo/esri.jpg')  }}" alt="Esri Logo"></a>
+            <a href="https://www.google.com/"><img class="sponsor"
+                    src="{{  url_for('static', filename='images/logo/google.png')  }}" alt="Google Logo"></a>
+            <a href="https://www.oracle.com/index.html"><img class="sponsor"
+                    src="{{  url_for('static', filename='images/logo/oracle.png')  }}" alt="Oracle Logo"></a>
+            <a href="https://www.citadel.com/"><img class="sponsor"
+                    src="{{  url_for('static', filename='images/logo/citadel.png')  }}" alt="Citadel Logo"></a>
+            <a href="https://cms.officeally.com/"><img class="sponsor"
+                    src="{{  url_for('static', filename='images/logo/officeally.jpg')  }}" alt="Office Ally Logo"></a>
+            <a href="https://www.ebay.com/"><img class="sponsor"
+                    src="{{  url_for('static', filename='images/logo/ebay.png')  }}" alt="Ebay Logo"></a>
+            <a href="https://www.idtech.com/"><img class="sponsor"
+                    src="{{  url_for('static', filename='images/logo/idtech.png')  }}" alt="idtech Logo"></a>
+            <a href="https://www.keystonestrategy.com/"><img class="sponsor"
+                    src="{{  url_for('static', filename='images/logo/keystone.png')  }}" alt="Keystone Logo"></a>
+            <a href="https://www.bluebeam.com/"><img class="sponsor"
+                    src="{{  url_for('static', filename='images/logo/bluebeam.jpg')  }}" alt="Bluebeam Logo"></a>
+            <a href="https://www.facebook.com/"><img class="sponsor"
+                    src="{{  url_for('static', filename='images/logo/facebook.png')  }}" alt="Facebook Logo"></a>
+            <a href="http://hackp.ac/mlh-stickermule-hackathons"><img class="sponsor"
+                    src="{{  url_for('static',filename='images/logo/sticker_mule.png')  }}""></a>
             <br><br><br>
-            <h3 class="section-header">Hacktech 2021 Partners</h3>
-            <img class="sponsor" src="{{  url_for('static', filename='images/logo/mlh_logo.png')  }}" alt="MLH Logo">
-            <!-- <br><img class="sponsor" src="assets/img/logo/cmslogo.png"/> -->
-            <img class="sponsor" src="{{  url_for('static', filename='images/logo/Pinnacle.png')  }}" alt="pinnacle Logo">
-            <img class="sponsor" src="{{  url_for('static', filename='images/logo/caltech.png')  }}" alt="Caltech Logo">
+            <h3 class=" section-header">Hacktech 2021 Partners</h3>
+                <img class="sponsor" src="{{  url_for('static', filename='images/logo/mlh_logo.png')  }}"
+                    alt="MLH Logo">
+                <!-- <br><img class="sponsor" src="assets/img/logo/cmslogo.png"/> -->
+                <img class="sponsor" src="{{  url_for('static', filename='images/logo/Pinnacle.png')  }}"
+                    alt="pinnacle Logo">
+                <img class="sponsor" src="{{  url_for('static', filename='images/logo/caltech.png')  }}"
+                    alt="Caltech Logo">
         </div>
     </section>
     <!-- MLH BADGE -->
