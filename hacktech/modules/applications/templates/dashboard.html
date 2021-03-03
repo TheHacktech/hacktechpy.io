@@ -30,12 +30,13 @@
 {% else %}
 <p class="text-center"> What are you waiting for?? <a href = {{url_for('applications.applications')}}> Fill out your application here! </a> </p>
 {% endif %}
-
+<!--
 {% if status.reimbursement_amt is not none %}
 <p class="text-center"> Your reimbursement will be approximately ${{status.reimbursement_amt}}. </p>
 {% else %}
 <p class="text-center"> Your reimbursement is pending! Check out our <a href="https://www.facebook.com/thehacktech/"> facebook page </a> for updates!</p> 
 {% endif %}
+-->
 </div>
 </div>
 {% endblock %}
