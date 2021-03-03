@@ -58,7 +58,7 @@ body {
 
 #landing {
     height: 100%;
-    background-color: black;
+    background-image: url('/static/images/Background.PNG');
     background-repeat: repeat;
     background-size: cover;
     margin-top: -40px;
