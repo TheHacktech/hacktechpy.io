@@ -39,13 +39,13 @@
 {% block page %}
 <div class = "jumbotron">
     <div id="application_form" class="col-md-8 col-md-offset-2">
-    <h2 class="text-center">Hacktech 2020 Application</h2>
+    <h2 class="text-center">Hacktech 2021 Application</h2>
     <form action="{{url_for('applications.update_applications')}}" method="post"} enctype="multipart/form-data">
         <p><small> The application period has ended! Check your email and our <a href="https://www.facebook.com/thehacktech/">facebook page</a> for status updates!</p>
       {%if submitted%}
         <p><small> Thanks for applying! Please check the status page for any updates, and contact team@hacktech.io if you have any questions!  </small></p>  
       {%else%}
-        <p><small> We're so pumped to see you at Hacktech 2020, so don't forget to apply! Please note that all fields with asterisks (*) are required. </small></p>
+        <p><small> We're so pumped to see you at Hacktech 2021, so don't forget to apply! Please note that all fields with asterisks (*) are required. </small></p>
       {%endif%}
       <hr>
       <div class="row">
@@ -123,11 +123,11 @@
           <label class="control-label"  for="graduationYear">What is your expected graduation year? *</label>
           <select class="form-control" name="graduationYear">
 	    <option value="">Choose...</option>
-            <option {%if form_info.graduation_year == "2020" %} selected {%endif%} value="2020">2020</option>
             <option {%if form_info.graduation_year == "2021" %} selected {%endif%} value="2021">2021</option>
             <option {%if form_info.graduation_year == "2022" %} selected {%endif%} value="2022">2022</option>
             <option {%if form_info.graduation_year == "2023" %} selected {%endif%} value="2023">2023</option>
-            <option {%if form_info.graduation_year == "2024" %} selected {%endif%} value="2024">2024+</option>
+            <option {%if form_info.graduation_year == "2024" %} selected {%endif%} value="2024">2024</option>
+            <option {%if form_info.graduation_year == "2025" %} selected {%endif%} value="2025">2025+</option>
           </select>
 	</div>
       </div>
@@ -146,6 +146,7 @@
         </div>
       </div>
 
+      <!-- Hacktech 2021 is virtual, so the following transportation and dietary information is unnecessary
       <hr>
       <div class="form-inline">
 	      <div class="form-group {{validations.transportation}}">
@@ -228,22 +229,22 @@
         <label for="dietaryRestrictionsDetail">Please specify any details about your dietary restrictions: </label>
 	<textarea class="form-control" id="dietaryRestrictionsDetail" name="dietaryRestrictionsDetail" rows="2">{{form_info.diet_rest_detail}}</textarea>
      </div>
-
+    -->
      <hr>
 
       <p><small> We believe that everyone is unique, and we want to get to know you better! Please answer the following short response questions.  </small></p>
       <div class="form-group {{validations.q1}}">
-        <label class="control-label" for="Q1">1. Why would you like to come to Hacktech 2020? *</label>
+        <label class="control-label" for="Q1">1. Why would you like to come to Hacktech 2021? *</label>
 	<textarea  class="form-control" id="Q1" name="Q1" rows="5">{{form_info.q1}}</textarea>
      </div>
 
      <div class="form-group {{validations.q2}}">
-        <label class="control-label" for="Q2">2. You just stepped off a time machine 20 years into the future. What is the first thing that catches your eye? *</label>
+        <label class="control-label" for="Q2">2. It's time to seize your golden opportunity! What would this be? *</label>
 	<textarea  class="form-control" id="Q2" name="Q2" rows="5">{{form_info.q2}}</textarea>
      </div>
 
      <div class="form-group {{validations.q3}}">
-        <label class="control-label" for="Q3">3. The theme for Hacktech this year is "20/20 Vision: Connecting to the Future". Write a short haiku related to this theme. *</label>
+        <label class="control-label" for="Q3">3. Write a short haiku about something you did over quarantine. *</label>
 	<textarea  class="form-control" id="Q3" name="Q3" rows="5">{{form_info.q3}}</textarea>
      </div>
 
@@ -345,7 +346,7 @@
 	      </label>
            </div>
       </div>
-
+      <!-- We're not affiliated with MLH this year, so this shouldn't be necessary?
       <hr> 
       <p><small> Please review the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH code of conduct</a> and  <a href="https://github.com/MLH/mlh-policies/blob/master/data-sharing.md">MLH data sharing provision</a>. *  </small></p>
  
@@ -360,6 +361,7 @@
 	<label class="control-label"><small> You must accept both the MLH code of conduct and the MLH data sharing provision before submitting this application. </small></label>
         {% endif %}
         </div>
+      -->
       <p><small>  Are you ready to submit? Once you submit you will not be able to make any changes to your applications. </small></p>
       <button type="submit" class="btn btn-success" value="Save" name="Save" {%if submitted %} disabled {%endif%} >Save</button> 
       <button type="submit" class="btn btn-success" value="Submit" name="Submit" {%if submitted or app_end %} disabled {%endif%} onclick="return confirm('Are you sure you want to submit your application form now? All submissions are final.');">Submit Application!</button>
