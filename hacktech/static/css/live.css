@@ -46,7 +46,7 @@ i {
   width: 30vw;
   max-width: 400px;
   height: 100%;
-  background-color: #009dee;
+  background-color: #ffbf00;
   color: #fff;
   overflow-y: scroll;
 }
@@ -151,7 +151,7 @@ i {
 /*Container stuff*/
 
 .schedule_container {
-  color: #009dee;
+  color: #ffbf00;
   width: 100%;
   height: 100%;
   overflow: auto;
@@ -176,10 +176,10 @@ i {
 }
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #009dee;
+    background: #ffbf00;
 }
 ::-webkit-scrollbar-thumb:window-inactive {
-  background: #009dee;
+  background: #ffbf00;
 }
 
 #schedule {
@@ -194,7 +194,7 @@ i {
 }
 .schedule-venue {
   font-family: "Inter", sans-serif;
-    color: #009dee;
+    color: #ffbf00;
     font-size: 24px;
     line-height: 36px;
     font-weight: 700;
@@ -271,10 +271,10 @@ i {
     margin-bottom: 12px;
     width: calc(100% - 24px);
     position: absolute;
-    border-left: 6px solid #009dee;
-    border-top: 1px solid #009dee;
-    border-bottom: 1px solid #009dee;
-    border-right: 1px solid #009dee;
+    border-left: 6px solid #ffbf00;
+    border-top: 1px solid #ffbf00;
+    border-bottom: 1px solid #ffbf00;
+    border-right: 1px solid #ffbf00;
     transition: 0.3s ease;
     overflow-y: scroll;
 }
@@ -359,7 +359,7 @@ i {
     width: calc(100% + 24px);
     height: 4px;
     position: absolute;
-    background: #009dee;
+    background: #ffbf00;
     top: 48px;
     opacity: 0;
 }
@@ -367,7 +367,7 @@ i {
     content: '';
     border-top: 6px solid transparent;
     border-bottom: 6px solid transparent;
-    border-right: 12px solid #009dee;
+    border-right: 12px solid #ffbf00;
     position: absolute;
     top: -4px;
     right: 0px;

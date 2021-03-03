@@ -63,7 +63,7 @@ a {
   transition: all 0.5s;
 
   transition: opacity 0.5s;
-  color: #009dee;
+  color: #ffbf00;
 }
 
 /* Fade buttons slightly when not hovered. */
@@ -77,34 +77,34 @@ button {
  */
 input {
   padding: 0.5%;
-  border: 1px #009dee solid;
+  border: 1px #ffbf00 solid;
   border-radius: 5px;
   padding: 5px;
 }
 
 /* Removes blue coloring when focusing. */
 input:focus {
-  border: 1px #009dee solid;
+  border: 1px #ffbf00 solid;
 }
 
 /* All textareas should have an orange border. */
 textarea {
-  border: 1px #009dee solid;
+  border: 1px #ffbf00 solid;
 }
 
 /* Removes blue coloring when focusing. */
 textarea:focus {
-  border: 1px #009dee solid;
+  border: 1px #ffbf00 solid;
 }
 
 /* All dropdowns should have an orange border. */
 select {
-  border: 1px #009dee solid;
+  border: 1px #ffbf00 solid;
 }
 
 /* Removes blue coloring when focusing. */
 select:focus {
-  border: 1px #009dee solid;
+  border: 1px #ffbf00 solid;
 }
 
 /* Anything that has a required tag should have a red star next to it to
@@ -245,7 +245,7 @@ input[type=checkbox], input[type=radio] {
 .blue_border {
   border: solid;
   width: 50%;
-  border-color: #009dee;
+  border-color: #ffbf00;
   display: inline-block;
   padding: 25px;
 }
@@ -389,7 +389,7 @@ input[type=checkbox], input[type=radio] {
 }
 
 #navbar li a:active {
-  background-color: #009dee;
+  background-color: #ffbf00;
 }
 
 #navbar a {
@@ -487,11 +487,11 @@ background-color: rgba(0,190,255,.3);
   font-size: 18px;
 }
 #mlh-notice {
-  color: #009dee;
+  color: #ffbf00;
 }
 #application_form {
   background:white;
-  color: #009dee;
+  color: #ffbf00;
   padding-bottom: 50px;
 }
 #logInButton {
@@ -642,7 +642,7 @@ background-color: rgba(0,190,255,.3);
   .jumbotron form input {
     padding: 1%;
     margin-top: 5%;
-    border: 1px #009dee solid;
+    border: 1px #ffbf00 solid;
     border-radius: 5px;
   }
 
