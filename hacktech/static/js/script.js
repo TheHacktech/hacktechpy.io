@@ -1,7 +1,7 @@
 var BROWSER;
 var VIEWPORT_WIDTH;
-var START_TIME = (new Date(2021, 4, 16, 21, 0, 0, 0)).getTime();
-var END_TIME = (new Date(2021, 4, 18, 17, 0, 0, 0)).getTime();
+var START_TIME = (new Date(2020, 3, 6, 21, 0, 0, 0)).getTime();
+var END_TIME = (new Date(2020, 3, 8, 17, 0, 0, 0)).getTime();
 var TOTAL_TIME = END_TIME - START_TIME;
 var SCHEDULE_HEIGHT = 5400; //4400
 var countdown;

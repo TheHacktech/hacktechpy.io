@@ -59,7 +59,7 @@ was the exception:
 RejectedEmail = \
 """Hi {0},<br>
 <br>
-Thank you for your interest in Hacktech 2021! We loved reading all the amazing applications we received this year and truly wished that we could’ve accepted every single one of you. Unfortunately, we are unable to offer you a spot at this time. We also have to turn away all applicants who are under the age of 18 due to legal constraints. <br>
+Thank you for your interest in Hacktech 2020! We loved reading all the amazing applications we received this year and truly wished that we could’ve accepted every single one of you. Unfortunately, we are unable to offer you a spot at this time. We also have to turn away all applicants who are under the age of 18 due to legal constraints. <br>
 <br>
 Don’t be discouraged though. :) There are lots of opportunities for learning and hacking out there. We encourage you to stay in touch with us, and hopefully we will be able to see you next year at Hacktech 2021. <br>
 <br>
@@ -76,9 +76,9 @@ AcceptedEmail = \
 <br>
 Congratulations!<br>
 <br>
-You have been accepted to Hacktech 2021. We had lots of fun reading your applications and really enjoyed all the interesting responses!. We hope to see you at Caltech with us from March 6 to March 8.<br>
+You have been accepted to Hacktech 2020. We had lots of fun reading your applications and really enjoyed all the interesting responses!. We hope to see you at Caltech with us from March 6 to March 8.<br>
 <br>
-Please RSVP <a href="https://hacktech.app/applications/rsvp">here</a> by Feb. 20 to reserve your spot. You will lose your spot if you don’t RSVP by then. Please also note that, due to legal constraints, we are unfortunately unable to accommodate anyone under the age of 18. <br>
+Please RSVP <a href="https://hacktech.io/applications/rsvp">here</a> by Feb. 20 to reserve your spot. You will lose your spot if you don’t RSVP by then. Please also note that, due to legal constraints, we are unfortunately unable to accommodate anyone under the age of 18. <br>
 <br>
 We will release travel reimbursement decisions in a separate email. More information about buses, logistics, and other important announcement will also be sent out soon. Stay tuned! <br>
 <br>
@@ -91,7 +91,7 @@ The Hacktech Team
 ReimbursementEmail = \
 """Hi {0}, <br>
 <br>
-Congratulations again on being accepted to Hacktech 2021! <br>
+Congratulations again on being accepted to Hacktech 2020! <br>
 <br>
 We have decided to offer you a reimbursement of ${1} to help cover some of your travel costs. In order to receive your travel reimbursement, you must be present at Hacktech and submit a project, and we will be distributing reimbursement on March 8 after the closing ceremony. <br>
 <br>

@@ -177,7 +177,7 @@ var schedule = [
 },
 {
   title: "Opening Ceremony",
-  caption: "Get hyped for Hacktech 2021!",
+  caption: "Get hyped for Hacktech 2020!",
   time: {day: "fri", start: "10:00PM", duration: "1:00"},
   location: "Streamed on our channel!",
   event_type: "events",

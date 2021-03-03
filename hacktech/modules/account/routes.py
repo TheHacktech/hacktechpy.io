@@ -38,7 +38,7 @@ def create_account_submit():
         flask.flash("Make sure you fill out all parts of the form!")
         return flask.redirect(flask.url_for("account.create_account"))
     if not helpers.check_valid_dob(dob):
-        flask.flash("Make sure that your birthday is formatted as 2021-04-16")
+        flask.flash("Make sure that your birthday is formatted as 2020-03-06")
         return flask.redirect(
             flask.url_for(
                 "account.create_account", partial=json.dumps(partial)))
