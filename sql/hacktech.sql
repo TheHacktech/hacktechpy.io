@@ -3,6 +3,8 @@ DROP TABLE IF EXISTS diet;
 DROP TABLE IF EXISTS status;
 DROP TABLE IF EXISTS applications;
 DROP TABLE IF EXISTS members;
+DROP TABLE IF EXISTS caltech_waiver;
+DROP TABLE IF EXISTS medical_info;
 DROP TABLE IF EXISTS users;
 
 -- Users Table
