@@ -58,7 +58,8 @@ body {
 
 #landing {
     height: 100%;
-    background-image: url('/static/images/Background.PNG'), linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.8));
+    background-image: url('/static/images/Background.PNG'), linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+    background-blend-mode: multiply;
     background-repeat: repeat;
     background-size: cover;
     margin-top: -40px;
