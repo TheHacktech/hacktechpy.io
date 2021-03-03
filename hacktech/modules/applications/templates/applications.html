@@ -39,13 +39,13 @@
 {% block page %}
 <div class = "jumbotron">
     <div id="application_form" class="col-md-8 col-md-offset-2">
-    <h2 class="text-center">Hacktech 2020 Application</h2>
+    <h2 class="text-center">Hacktech 2021 Application</h2>
     <form action="{{url_for('applications.update_applications')}}" method="post"} enctype="multipart/form-data">
         <p><small> The application period has ended! Check your email and our <a href="https://www.facebook.com/thehacktech/">facebook page</a> for status updates!</p>
       {%if submitted%}
         <p><small> Thanks for applying! Please check the status page for any updates, and contact team@hacktech.io if you have any questions!  </small></p>  
       {%else%}
-        <p><small> We're so pumped to see you at Hacktech 2020, so don't forget to apply! Please note that all fields with asterisks (*) are required. </small></p>
+        <p><small> We're so pumped to see you at Hacktech 2021, so don't forget to apply! Please note that all fields with asterisks (*) are required. </small></p>
       {%endif%}
       <hr>
       <div class="row">
@@ -123,11 +123,11 @@
           <label class="control-label"  for="graduationYear">What is your expected graduation year? *</label>
           <select class="form-control" name="graduationYear">
 	    <option value="">Choose...</option>
-            <option {%if form_info.graduation_year == "2020" %} selected {%endif%} value="2020">2020</option>
             <option {%if form_info.graduation_year == "2021" %} selected {%endif%} value="2021">2021</option>
             <option {%if form_info.graduation_year == "2022" %} selected {%endif%} value="2022">2022</option>
             <option {%if form_info.graduation_year == "2023" %} selected {%endif%} value="2023">2023</option>
-            <option {%if form_info.graduation_year == "2024" %} selected {%endif%} value="2024">2024+</option>
+            <option {%if form_info.graduation_year == "2024" %} selected {%endif%} value="2024">2024</option>
+            <option {%if form_info.graduation_year == "2025" %} selected {%endif%} value="2025">2025+</option>
           </select>
 	</div>
       </div>
