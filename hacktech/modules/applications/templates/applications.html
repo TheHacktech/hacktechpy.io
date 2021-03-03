@@ -146,7 +146,7 @@
         </div>
       </div>
 
-      <!-- Hacktech 2021 is virtual, so the following transportation and dietary information is unnecessary
+      <!-- Hacktech 2021 is virtual, so the following transportation and dietary information is unnecessary-->
       <hr>
       <div class="form-inline">
 	      <div class="form-group {{validations.transportation}}">
@@ -229,7 +229,7 @@
         <label for="dietaryRestrictionsDetail">Please specify any details about your dietary restrictions: </label>
 	<textarea class="form-control" id="dietaryRestrictionsDetail" name="dietaryRestrictionsDetail" rows="2">{{form_info.diet_rest_detail}}</textarea>
      </div>
-    -->
+    <!---->
      <hr>
 
       <p><small> We believe that everyone is unique, and we want to get to know you better! Please answer the following short response questions.  </small></p>
@@ -346,7 +346,7 @@
 	      </label>
            </div>
       </div>
-      <!-- We're not affiliated with MLH this year, so this shouldn't be necessary?
+      <!-- We're not affiliated with MLH this year, so this shouldn't be necessary? -->
       <hr> 
       <p><small> Please review the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH code of conduct</a> and  <a href="https://github.com/MLH/mlh-policies/blob/master/data-sharing.md">MLH data sharing provision</a>. *  </small></p>
  
@@ -361,7 +361,7 @@
 	<label class="control-label"><small> You must accept both the MLH code of conduct and the MLH data sharing provision before submitting this application. </small></label>
         {% endif %}
         </div>
-      -->
+      <!---->
       <p><small>  Are you ready to submit? Once you submit you will not be able to make any changes to your applications. </small></p>
       <button type="submit" class="btn btn-success" value="Save" name="Save" {%if submitted %} disabled {%endif%} >Save</button> 
       <button type="submit" class="btn btn-success" value="Submit" name="Submit" {%if submitted or app_end %} disabled {%endif%} onclick="return confirm('Are you sure you want to submit your application form now? All submissions are final.');">Submit Application!</button>
