@@ -202,8 +202,8 @@ class ValidationForm:
         self.info["q2"] = "" if application['q2'] != "" else "has-error"
         self.info["q3"] = "" if application['q3'] != "" else "has-error"
         self.info["q4"] = "" if application['q4'] != "" else "has-error"
-        self.info["code_of_conduct"] = "" if application[
-            'code_of_conduct'] == 1 else "has-error"
+        self.info["code_of_conduct"] = "" # if application[
+            # 'code_of_conduct'] == 1 else "has-error"
 
 
 def get_form_info(email):
@@ -388,9 +388,9 @@ def handle_update_applications(
     if action == 'Submit':
         fields = [
             first_name, last_name, phone_number, school, degree_type,
-            graduation_year, shirt_size, need_transportation,
-            dietary_restrictions, q1, q2, q3, q4, code_of_conduct
+            graduation_year, shirt_size, q1, q2, q3, q4
         ]
+        # removed need_transportation, dietary_restrictions, code_of_conduct
         for field in fields:
             if not field:
                 return (False, "Please fill out the required fields in red.")
