@@ -61,9 +61,8 @@ a {
   -moz-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s;
-
   transition: opacity 0.5s;
-  color: #ffbf00;
+  color: #fda812;
 }
 
 /* Fade buttons slightly when not hovered. */
@@ -365,6 +364,14 @@ input[type=checkbox], input[type=radio] {
   margin: 0;
 }
 
+h2 {
+  text-transform: uppercase;
+  font-size: 2.5em;
+  font-weight: 600;
+  transform: scaleY(0.8);
+  color: black;
+}
+
 .navbar {
   background: black !important;
 }
@@ -389,13 +396,12 @@ input[type=checkbox], input[type=radio] {
 }
 
 #navbar li a:active {
-  background-color: #ffbf00;
 }
 
 #navbar a {
   color: #d3a034;
   font-size: 1.5em;
-  font-weight: 200;
+  font-weight: 700;
   text-transform: uppercase;
   background-color: transparent;
 }

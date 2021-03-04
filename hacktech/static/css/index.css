@@ -27,6 +27,7 @@ body {
     width: 100%;
     height: 100%;
     padding-bottom: 0px;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -54,14 +55,19 @@ body {
 
 #center_info {
     text-align: center;
+    background-color: black;
+    border: 8px solid;
+    border-image-source: linear-gradient(to top, #ffdc73, #fda812);
+    border-image-slice: 1;
 }
 
 #landing {
     height: 100%;
-    background-image: url('/static/images/Background.PNG'), linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+    background-image: url('/static/images/Background.PNG'), linear-gradient(to right, rgba(0,0,0,0.3), rgba(0,0,0,0.3));
     background-blend-mode: multiply;
     background-repeat: repeat;
     background-size: cover;
+    background-position: center center;
     margin-top: -40px;
 }
 
@@ -90,7 +96,12 @@ body {
 
 #landing #hektek {
     max-height: 32%;
-    width: auto;
+    width: 50vw;
+    height: 15vw;
+    margin-left: 10vw;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
 }
 
 #landing h1 {
@@ -98,7 +109,7 @@ body {
     text-transform: uppercase;
     font-weight: 900 !important;
     margin-top: 20px;
-    font-size: 4.5em !important;
+    font-size: 2.5em !important;
     transform: scaleY(0.8);
     letter-spacing: -.02em;
     color: #d3a034;
@@ -106,21 +117,19 @@ body {
 
 #landing h3 {
     text-transform: uppercase;
-    font-size: 1.8em;
+    font-size: 2.5em;
     font-weight: 600;
     transform: scaleY(0.8);
-    margin-top: -0.8em;
     letter-spacing: .08em;
     color: #dc8323;
 }
 
 #landing #center_info {
-    display: block;
-    top: 19%;
-    width: 100%;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    width: 70%;
     text-align: center;
-    height: 100%;
-    position: absolute;
+    max-height: 50vh;
 }
 
 #landing #form {
@@ -134,14 +143,13 @@ body {
 #landing #form button {
     font-family: "Inter", sans-serif;
     letter-spacing: .08em;
-    font-size: 20px;
+    font-size: 2.5vw;
     font-weight: bold;
     outline: 0;
-    color: #d3a034;
-    border: 2px #d3a034 solid;
+    color: #ffbf00;
+    border: 2px #ffbf00 solid;
     background: none;
-    width: 35%;
-    padding: 4px;
+    padding: 8px 16px;
     margin-top: 10px;
     -webkit-transition-duration: .3s;
     -moz-transition-duration: .3s;
@@ -150,8 +158,12 @@ body {
 }
 
 #landing #form button:hover {
-    background-color: #d3a034;
+    background-color: #ffbf00;
     color: #000;
+}
+
+#landing #mobile_header {
+    display: none;
 }
 
 #landing input {
@@ -332,10 +344,9 @@ body {
 #sponsors .sponsor {
     display: inline-block;
     max-height: 100px;
-    max-width: 300px;
     margin: 20px 20px;
-    opacity: 0.55;
-    max-width: 100%;
+    opacity: 0.75;
+    max-width: 20vw;
     -webkit-transition-duration: .5s;
     -moz-transition-duration: .5s;
     -o-transition-duration: .5s;
@@ -411,15 +422,28 @@ body {
 }
 
 @media screen and (max-width: 1200px) {
+    #center_info {
+        width: 80vw !important;
+        max-height: 80vh !important;
+    }
     #landing #form {
         text-align: center;
     }
     #landing #form button {
         margin-top: 10px;
-        width: 80%;
+        font-size: 2vh;
     }
     #landing #form input {
         width: 100%;
+    }
+    #landing #hektek {
+        background-image: url('/static/images/logo_2021.png') !important;
+        width: 40vw !important;
+        height: 30vw;
+        margin-left: 20vw;
+    }
+    #landing #mobile_header {
+        display: block;
     }
 }
 
@@ -436,14 +460,8 @@ body {
     #landing #hektek {
         max-height: 35%;
     }
-    #landing h1 {
-        font-size: 2.5em;
-    }
     #landing h3 {
         font-size: 1em;
-    }
-    #landing #form button {
-        font-size: 14px;
     }
     #landing input {
         font-size: 14px;

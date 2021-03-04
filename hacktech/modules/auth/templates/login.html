@@ -8,7 +8,7 @@
         <div class="col-md-12">
           <div class="form-group">
             <label for="username">Email</label>
-            <input type="text" class="form-control" id="username" name="username" placeholder="Enter email" autofocus />
+            <input type="text" class="form-control" id="username" name="username" placeholder="beaver@caltech.edu" autofocus />
           </div>
         </div>
       </div>
@@ -16,7 +16,7 @@
         <div class="col-md-12">
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" />
+            <input type="password" class="form-control" id="password" name="password" />
           </div>
         </div>
       </div>
@@ -27,7 +27,7 @@
       </div>
     </form>
     <br>
-    <a href="{{ url_for('account.create_account') }}">Create an account</a><br>
+    <a href="{{ url_for('account.create_account') }}">Don't have an account? Create an account here.</a><br>
     <a href="{{ url_for('auth.forgot_password') }}">Forgot your password?</a>
   </div>
 </div>
