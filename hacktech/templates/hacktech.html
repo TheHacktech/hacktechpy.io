@@ -28,13 +28,9 @@
     <section id="landing">
         <div class="contents">
             <div id="center_info">
-                <img id="hektek" src="{{  url_for('static', filename='images/logo_2021.png')  }}" alt="Hacktech 2021 Logo" title="Hacktech">
-                <h1>Hacktech 2021</h1>
-                <div>
-                    <h3>April 16-18 | All-Virtual </h3>
-                    <br>
-                    <h3>Applications are open! Decisions are made on a rolling basis. </h3>
-                </div>
+                <div id="hektek" style="background-image: url('{{  url_for('static', filename='images/hacktech_text.png')  }}');"></div>
+                <h1 id="mobile_header">Hacktech 2021</h1>
+                <h3>April 16-18 | All-Virtual </h3>
                 <!-- PRE-APPLICATION INTEREST FORM -->
                 <div id="form">
                     <!-- <input type="email" id="hackerEmail" placeholder="Email"> -->
@@ -111,6 +107,10 @@
                     <div class="answer">The application process is no different for Caltech students.</div>
                 </div>
                 <div class="faqelem">
+                    <div class="question">When will applications open/when will I hear back?</div>
+                    <div class="answer">Applications are open now, so register as soon as possible! The decisions will be made on a rolling basis.</div>
+                </div>
+                <div class="faqelem">
                     <div class="question">Help!</div>
                     <div class="answer">Shoot us an email at team@hacktech.app and we'll get back to you before you can say "Hacktech is awes-!"</div>
                 </div>
@@ -124,7 +124,7 @@
             <h3 class="section-header">Past Sponsors</h3>
             <h5>Interested in sponsoring for 2021? Let us know at <a href="mailto:sponsors@hacktech.app">sponsors@hacktech.app</a>!</h5>
             <a href="https://www.esri.com/"><img class="sponsor" src="{{  url_for('static', filename='images/logo/esri.jpg')  }}" alt="Esri Logo"></a>
-            <a href="https://www.google.com/"><img class="sponsor" src="{{  url_for('static', filename='images/logo/google.png')  }}" alt="Google Logo"></a>
+            <a href="https://www.google.com/cloud"><img class="sponsor" src="{{  url_for('static', filename='images/logo/google.png')  }}" alt="Google Logo"></a>
             <a href="https://www.oracle.com/index.html"><img class="sponsor" src="{{  url_for('static', filename='images/logo/oracle.png')  }}" alt="Oracle Logo"></a>
             <a href="https://www.citadel.com/"><img class="sponsor" src="{{  url_for('static', filename='images/logo/citadel.png')  }}" alt="Citadel Logo"></a>
             <a href="https://cms.officeally.com/"><img class="sponsor" src="{{  url_for('static', filename='images/logo/officeally.jpg')  }}" alt="Office Ally Logo"></a>
@@ -137,10 +137,10 @@
                     src="{{  url_for('static',filename='images/logo/sticker_mule.png')  }}""></a>
             <br><br><br>
             <h3 class=" section-header">Hacktech 2020 Partners</h3>
-            <img class="sponsor" src="{{  url_for('static', filename='images/logo/mlh_logo.png')  }}" alt="MLH Logo">
+            <a href="https://mlh.io/"><img class="sponsor" src="{{  url_for('static', filename='images/logo/mlh_logo.png')  }}" alt="MLH Logo"></a>
             <!-- <br><img class="sponsor" src="assets/img/logo/cmslogo.png"/> -->
-            <img class="sponsor" src="{{  url_for('static', filename='images/logo/Pinnacle.png')  }}" alt="pinnacle Logo">
-            <img class="sponsor" src="{{  url_for('static', filename='images/logo/caltech.png')  }}" alt="Caltech Logo">
+            <a href="https://pinnacle.us.org/"><img class="sponsor" src="{{  url_for('static', filename='images/logo/Pinnacle.png')  }}" alt="Pinnacle Logo"></a>
+            <a href="https://www.caltech.edu/"><img class="sponsor" src="{{  url_for('static', filename='images/logo/caltech.png')  }}" alt="Caltech Logo"></a>
         </div>
     </section>
     <!-- MLH BADGE -->
