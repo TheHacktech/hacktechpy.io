@@ -14,7 +14,7 @@ def send_email(to, msg, subject, gmail=False, use_prefix=True):
         subject = '[Hacktech] ' + subject
 
     msg['Subject'] = subject
-    msg['From'] = 'auto@hacktech.io'
+    msg['From'] = 'auto@hacktech.app'
     msg['To'] = to
 
     server = smtplib.SMTP('localhost')
@@ -28,5 +28,5 @@ def send_email(to, msg, subject, gmail=False, use_prefix=True):
     else:
         server = smtplib.SMTP('localhost')
         server.ehlo()
-    server.sendmail('auto@hacktech.io', [to], msg.as_string())
+    server.sendmail('auto@hacktech.app', [to], msg.as_string())
     server.quit()
