@@ -1,7 +1,7 @@
 PasswordChangedEmail = \
 """Hi {0},<br>
 Your password has been successfully changed. If you did not request a password
-change, please let us know immediately at team@hacktech.io.<br>
+change, please let us know immediately at team@hacktech.app.<br>
 Thanks!<br>
 hacktech Devteam<br>
 """
@@ -9,7 +9,7 @@ hacktech Devteam<br>
 ResetPasswordEmail = \
 """Hi {0},<br>
 We have received a request to reset this account's password. If you didn't
-request this change, let us know immediately at team@hacktech.io. Otherwise,
+request this change, let us know immediately at team@hacktech.app. Otherwise,
 you can use this link to change your password:
 {1}<br>
 Your link will expire in {2}.<br>
@@ -21,7 +21,7 @@ ResetPasswordSuccessfulEmail = \
 """Hi {0},<br>
 <br>
 Your password has been successfully reset. If you did not request a password
-reset, please let us know immediately at team@hacktech.io.<br>
+reset, please let us know immediately at team@hacktech.app.<br>
 <br>
 Thanks!<br>
 hacktech Devteam<br>
@@ -32,7 +32,7 @@ AddedToWebsiteEmail = \
 You have been added to the hacktech website. In order to access private
 areas of our site, please complete registration by creating an account here:
 {1}<br>
-If you have any questions or concerns, please find us or email us at team@hacktech.io.<br>
+If you have any questions or concerns, please find us or email us at team@hacktech.app.<br>
 Thanks!<br>
 hacktech Devteam<br>
 """
@@ -42,7 +42,7 @@ CreateAccountSuccessfulEmail = \
 """Hi {0},<br>
 <br>
 Your hacktech account has been created. If this
-was not you, please let us know immediately at team@hacktech.io. <br>
+was not you, please let us know immediately at team@hacktech.app. <br>
 <br>
 Thanks!<br>
 Hacktech team<br>
@@ -82,7 +82,7 @@ Please RSVP <a href="https://hacktech.app/applications/rsvp">here</a> by Feb. 20
 <br>
 We will release travel reimbursement decisions in a separate email. More information about buses, logistics, and other important announcement will also be sent out soon. Stay tuned! <br>
 <br>
-In the meantime, if you have any questions, please don’t hesitate to send them to team@hacktech.io.<br>
+In the meantime, if you have any questions, please don’t hesitate to send them to team@hacktech.app.<br>
 <br>
 Love,<br>
 The Hacktech Team
@@ -97,7 +97,7 @@ We have decided to offer you a reimbursement of ${1} to help cover some of your 
 <br>
 If you do not RSVP within 1 week, we will consider your reimbursement forfeited and award it to the next person on the waitlist. <br>
 <br>
-Let us know at team@hacktech.io if you have any question, comment, or concern. <br>
+Let us know at team@hacktech.app if you have any question, comment, or concern. <br>
 <br>
 Love,<br>
 The Hacktech Team
