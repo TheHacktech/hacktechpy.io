@@ -43,6 +43,10 @@ body {
     height: 100%;
 }
 
+.light-text {
+    font-weight: 100 !important;
+}
+
 .lights {
     width: 100%;
     height: 100%;
@@ -110,7 +114,6 @@ body {
     font-weight: 900 !important;
     margin-top: 20px;
     font-size: 2.5em !important;
-    transform: scaleY(0.8);
     letter-spacing: -.02em;
     color: #d3a034;
 }
@@ -394,8 +397,8 @@ body {
 }
 
 .alert {
-    position: absolute;
-    top: 50px;
+    position: fixed;
+    top: 60px;
     width: 100%;
 }
 
@@ -440,7 +443,7 @@ body {
         background-image: url('/static/images/logo_2021.png') !important;
         width: 40vw !important;
         height: 30vw;
-        margin-left: 20vw;
+        margin: 0 auto;
     }
     #landing #mobile_header {
         display: block;
