@@ -32,11 +32,7 @@
 		    <li><a class = "sliding" href=" {{ url_for('waivers.waivers') }} ">Waivers</a></li>
 		    {%endif%}
 		    {% endif %}
-                    <li>
-                        <form action="{{ url_for('auth.logout') }}">
-                            <button id="logInButton" class="btn no-border pull-right navbar-btn sliding">Logout</button>
-                        </form>
-                    </li>
+                    <li><a class="btn no-border sliding navbar-btn" href="/logout">Logout</a></li>
                     {% endif %}
                     </li>
                 </ul>

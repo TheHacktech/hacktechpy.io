@@ -424,7 +424,7 @@ body {
     background: #ffbf00;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 800px) {
     #center_info {
         width: 80vw !important;
         max-height: 80vh !important;
