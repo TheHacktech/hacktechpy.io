@@ -76,9 +76,9 @@ body {
 }
 
 #landing .contents {
-    height: 90%;
+    height: auto;
     width: 100%;
-    padding-top: 90px;
+    padding-top: calc(60px + 15vh);
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -101,7 +101,7 @@ body {
 #landing #hektek {
     max-height: 32%;
     width: 50vw;
-    height: 15vw;
+    height: 6.58vw;
     margin-left: 10vw;
     background-size: contain;
     background-position: center center;
@@ -115,7 +115,7 @@ body {
     margin-top: 20px;
     font-size: 2.5em !important;
     letter-spacing: -.02em;
-    color: #d3a034;
+    color: #ffbf00;
 }
 
 #landing h3 {
@@ -128,15 +128,15 @@ body {
 }
 
 #landing #center_info {
-    padding-top: 5vh;
-    padding-bottom: 5vh;
+    padding-top: 6vh;
+    padding-bottom: 6vh;
     width: 70%;
     text-align: center;
-    max-height: 50vh;
+    height: fit-content;
 }
 
 #landing #form {
-    margin: 20px 0px;
+    margin: 0 20px;
     font-size: 0px;
     text-align: center;
     display: inline-block;
@@ -442,7 +442,7 @@ body {
     #landing #hektek {
         background-image: url('/static/images/logo_2021.png') !important;
         width: 40vw !important;
-        height: 30vw;
+        height: 30vh;
         margin: 0 auto;
     }
     #landing #mobile_header {
