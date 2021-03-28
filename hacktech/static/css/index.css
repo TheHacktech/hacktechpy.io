@@ -439,6 +439,9 @@ body {
     #landing #form input {
         width: 100%;
     }
+    #landing .contents {
+        padding-top: calc(60px + 8vh);
+    }
     #landing #hektek {
         background-image: url('/static/images/logo_2021.png') !important;
         width: 40vw !important;
