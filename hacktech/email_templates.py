@@ -90,22 +90,24 @@ Love,<br>
 The Hacktech Team <br>
 <br>
 <br>
+<br>
+--- Message from the Google Cloud education team ---
+<br>
 Hello students!<br>
 <br>
 The Google Cloud team invites you and your friends to a virtual hands-on workshop on <b>Thursday, April 15th @ 19:00 EST</b>.<br>
 <br>
-<b>Join</b> Google Cloud's Engineer Paul Ruiz for hands-on practice with <a href="https://goo.gle/CloudHackthonSeries"><b>Intro to ML: Language Processing</b></a> and other key application services like extrace entities from text, perform sentiment and syntatic analysis, and use Speech to Text API. <br>
+<b>Join</b> Google Cloud's Engineer Paul Ruiz for hands-on practice with <a href="https://goo.gle/CloudHackthonSeries"><b>Intro to ML: Language Processing</b></a> and other key application services like extract entities from text, perform sentiment and syntatic analysis, and use Speech to Text API. <br>
 <br>
-<i>As a special event opportunity - receive up to $100 in Google cloud credits live at the event and enter the raffle for Google Cloud swag.</i><br>
+<i>As a special event opportunity - receive up to $100 in Google Cloud credits live at the event and enter the raffle for Google Cloud swag.</i><br>
 <br>
-Prepare for this Thursday's event:<br>
+Prepare for this Thursday's event:
 <ul>
 <li><b>RSVP</b> using <a href="http://goo.gle/CloudHackathonRSVP">this</a> form to receive a direct event invite via Google Calendar.</li>
 <li><b>Share</b> the event page <a href="https://goo.gle/CloudHackthonSeries">here</a> with your friends.</li>
 <li><b>Join</b> us <i>live</i> at the event using <a href="http://goo.gle/CloudHackathonLive">this</a> Google Meet link.</li>
 <li><b>Attend</b> and <b>enter</b> the raffle to win Google Cloud swag.</li>
 </ul>
-<br>
 Cheers and we look forward to seeing you Thursday.<br>
 The Google Cloud education team
 """
