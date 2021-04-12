@@ -78,7 +78,7 @@ Congratulations!<br>
 <br>
 You have been accepted to Hacktech 2021. We had lots of fun reading your applications and really enjoyed all the interesting responses!. We hope to see you (virtually!) at Caltech with us from April 16 to April 18.<br>
 <br>
-Please RSVP <a href="https://hacktech.app/applications/rsvp">here</a> by Thursday, April 15th to reserve your spot. You will lose your spot if you don’t RSVP by then. <br>
+Please RSVP <a href="https://hacktech.app/applications/rsvp">here</a> by 3 PM PDT (UTC-7) on Thursday, April 15th to reserve your spot. You will lose your spot if you don’t RSVP by then. <br>
 <br>
 More important announcement will also be sent out soon. Stay tuned! <br>
 <br>
