@@ -82,7 +82,7 @@ You have been accepted to Hacktech 2021. We had lots of fun reading your applica
 <br>
 Please RSVP <a href="https://hacktech.app/applications/rsvp">here</a> by 3 PM PDT (UTC-7) on Thursday, April 15th to reserve your spot. You will lose your spot if you don’t RSVP by then. Please RSVP again even if you've already done so via the previous email link. We apologize for the inconvenience. <br>
 <br>
-Below is an invitation from the Google Cloud team for a virtual hands-on workshop! More important announcement will also be sent out soon. Stay tuned! <br>
+Below is an invitation from the Google Cloud team for a virtual hands-on workshop! More important announcements will also be sent out soon. Stay tuned! <br>
 <br>
 In the meantime, if you have any questions, please don’t hesitate to send them to team@hacktech.app.<br>
 <br>
