@@ -74,13 +74,11 @@ The Hacktech Team<br>
 AcceptedEmail = \
 """Hi {0},<br>
 <br>
-Please disregard the previous RSVP email, which was sent in error. The correct email is below.<br>
-<br>
 Congratulations!<br>
 <br>
 You have been accepted to Hacktech 2021. We had lots of fun reading your applications and really enjoyed all the interesting responses! We hope to see you (virtually!) at Caltech with us from April 16 to April 18.<br>
 <br>
-Please RSVP <a href="https://hacktech.app/applications/rsvp">here</a> by 3 PM PDT (UTC-7) on Thursday, April 15th to reserve your spot. You will lose your spot if you don’t RSVP by then. Please RSVP again even if you've already done so via the previous email link. We apologize for the inconvenience. <br>
+Please RSVP <a href="https://hacktech.app/applications/rsvp">here</a> by 3 PM PDT (UTC-7) on Thursday, April 15th to reserve your spot. You will lose your spot if you don’t RSVP by then. <br>
 <br>
 Below is an invitation from the Google Cloud team for a virtual hands-on workshop! More important announcements will also be sent out soon. Stay tuned! <br>
 <br>
