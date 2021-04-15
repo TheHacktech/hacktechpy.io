@@ -92,6 +92,20 @@ var schedule = [
     location: "zoom",
     event_type: "events"
   },
+  {
+    title: "Finalist Judging",
+    caption: "Judges will hold calls with finalists to choose winners",
+    time: {day: "sun", start: "12:00PM", duration: "2:00"},
+    location: "Online",
+    event_type: "events",
+  },
+  {
+    title: "Closing Ceremony",
+    caption: "Winners are announced! Tune in to see winning team's demos!",
+    time: {day: "sun", start: "2:30PM", duration: "1:30"},
+    location: "zoom",
+    event_type: "events",
+  },
 ]
   /*
   {
