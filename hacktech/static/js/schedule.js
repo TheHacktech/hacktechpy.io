@@ -92,7 +92,7 @@ var schedule = [
     location: "zoom",
     event_type: "events"
   },
-  ]
+]
   /*
   {
     title: "[eBay] Innovation & Hacktech-Help Workshop",
@@ -439,5 +439,4 @@ var schedule = [
     event_type: "events",
   },
   */
-  ]
   
