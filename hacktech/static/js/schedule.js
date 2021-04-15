@@ -51,12 +51,47 @@ var schedule = [
   
   // events
   {
-    title: "",
+    title: "Opening Ceremony + Keynote",
     caption: "",
-    time: {day: "sat", start: "3:00 PM", duration: "1:00"},
-    location: "http://meet.google.com/bvz-svsd-pbo",
-    event_type: "Workshops"
-  }
+    time: {day: "fri", start: "7:30 PM", duration: "1:00"},
+    location: "zoom",
+    event_type: "events"
+  },
+  {
+    title: "Team Matching",
+    caption: "",
+    time: {day: "fri", start: "8:30 PM", duration: "0:30"},
+    location: "zoom",
+    event_type: "events"
+  },
+  {
+    title: "Speedfriending!",
+    caption: "",
+    time: {day: "fri", start: "10:00 PM", duration: "0:30"},
+    location: "zoom",
+    event_type: "events"
+  },
+  {
+    title: "Chess Tournament",
+    caption: "",
+    time: {day: "sat", start: "11:30 AM", duration: "1:30"},
+    location: "zoom",
+    event_type: "events"
+  },
+  {
+    title: "Drop-in Game Night!",
+    caption: "",
+    time: {day: "sat", start: "5:00 PM", duration: "1:00"},
+    location: "zoom",
+    event_type: "events"
+  },
+  {
+    title: "Poker Tournament",
+    caption: "",
+    time: {day: "sat", start: "8:00 PM", duration: "1:00"},
+    location: "zoom",
+    event_type: "events"
+  },
   ]
   /*
   {
