@@ -122,6 +122,10 @@ i {
   width: 50px;
 }
 
+#sidebar .links li.discord a:hover:after {
+  width: 80px;
+}
+
 #sidebar .links li.contact a:hover:after {
   width: 100px;
 }
