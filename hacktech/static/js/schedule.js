@@ -45,7 +45,7 @@ var schedule = [
     title: "Google Cloud Talk: Intro to Firebase",
     caption: "",
     time: {day: "sat", start: "3:00 PM", duration: "1:00"},
-    location: "http://meet.google.com/bvz-svsd-pbo",
+    location: "<a href='http://meet.google.com/bvz-svsd-pbo'>http://meet.google.com/bvz-svsd-pbo</a>",
     event_type: "Workshops"
   },
   
