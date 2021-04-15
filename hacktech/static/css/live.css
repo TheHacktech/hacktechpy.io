@@ -387,7 +387,7 @@ i {
     z-index: 0;
     background: #5c99b8;
     color: white;
-    top: 348px;
+    top: 228px;
     position: absolute;
     width: calc(100% - 24px);
     padding: 12px;
@@ -417,7 +417,7 @@ i {
 #schedule-submit {
     background: #5c99b8;
     color: white;
-    top: 4848px;
+    top: 4728px;
     position: absolute;
     width: calc(100% - 24px);
     padding: 12px;
@@ -460,7 +460,7 @@ i {
 #schedule-hacking-ends {
     background: #5c99b8;
     color: white;
-    top: 4848px;
+    top: 4908px;
     position: absolute;
     width: calc(100% - 24px);
     padding: 12px;
@@ -475,7 +475,7 @@ i {
 #schedule-finalists {
     background: #5c99b8;
     color: white;
-    top: 5088px;
+    top: 5208px;
     position: absolute;
     width: calc(100% - 24px);
     padding: 12px;
