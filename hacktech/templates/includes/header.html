@@ -29,7 +29,7 @@
 		    <li><a class = "sliding" href=" {{ url_for('applications.applications') }} ">Application</a></li>
                     <li><a class = "sliding" href=" {{ url_for('applications.status') }} ">Status</a></li>
 		    {% if 'status' in session and session['status'] == "RSVPed" %}
-		    <li><a class = "sliding" href=" {{ url_for('waivers.waivers') }} ">Waivers</a></li>
+		    <!-- <li><a class = "sliding" href=" {{ url_for('waivers.waivers') }} ">Waivers</a></li> -->
 		    {%endif%}
 		    {% endif %}
                     <li><a class="btn no-border sliding navbar-btn" href="/logout">Logout</a></li>
