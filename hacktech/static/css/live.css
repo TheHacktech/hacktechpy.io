@@ -387,6 +387,21 @@ i {
     z-index: 1;
 }
 
+#schedule-timezone {
+  z-index: 0;
+  background: #5c99b8;
+  color: white;
+  top: 48px;
+  position: absolute;
+  width: calc(100% - 24px);
+  padding: 12px;
+  font-size: 16px;
+  line-height: 24px;
+  border-radius: 2px;
+  font-weight: 700;
+  text-align: left;
+  opacity: 0.6;
+}
 #schedule-checkin {
     z-index: 0;
     background: #5c99b8;
