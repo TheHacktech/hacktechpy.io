@@ -16,7 +16,7 @@ var schedule = [
   {
     title: "How to host your web app publically on the cloud for free",
     caption: "Learn how to easily build with one the most popular, modern web stacks, using Nginx, Node.js Express, and Let's Encrypt, to make your web app public and legit!",
-    time: {day: "sat", start: "1:00 AM", duration: "1:00"},
+    time: {day: "fri", start: "11:00 PM", duration: "1:00"},
     location: "zoom",
     event_type: "Workshops"
   },
@@ -89,6 +89,13 @@ var schedule = [
     title: "Poker Tournament",
     caption: "",
     time: {day: "sat", start: "8:00 PM", duration: "1:00"},
+    location: "zoom",
+    event_type: "events"
+  },
+  {
+    title: "International's Mixer",
+    caption: "Come talk with fellow international students!",
+    time: {day: "sat", start: "9:00 PM", duration: "0:30"},
     location: "zoom",
     event_type: "events"
   },
