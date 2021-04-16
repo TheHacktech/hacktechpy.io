@@ -14,15 +14,15 @@ var schedule = [
     event_type: "Workshops"
   },
   {
-    title: "Alex Cui's Tech Talk",
-    caption: "",
+    title: "How to host your web app publically on the cloud for free",
+    caption: "Learn how to easily build with one the most popular, modern web stacks, using Nginx, Node.js Express, and Let's Encrypt, to make your web app public and legit!",
     time: {day: "sat", start: "1:00 AM", duration: "1:00"},
     location: "zoom",
     event_type: "Workshops"
   },
   {
-    title: "Michael Amori",
-    caption: "Virtualitics Talk",
+    title: "Leading Virtualitics",
+    caption: "The story of the journey of a AI-driven data analytics startup (who just raised their Series B!)",
     time: {day: "sat", start: "11:00 AM", duration: "0:30"},
     location: "zoom",
     event_type: "Workshops"
@@ -36,7 +36,7 @@ var schedule = [
   },
   {
     title: "JPL Workshop: Delay Tolerant Networking",
-    caption: "Learn the protocols for Space Internet and use the Delay Tolerant Networking’s Interplanetary Overlay Network tools in your Hacktech Project!!",
+    caption: "Learn the protocols for Space Internet and use the Delay Tolerant Networking’s Interplanetary Overlay Network tools in your Hacktech Project!! <a href='https://github.com/carlynlee/dtndocker'>GitHub repo</a>",
     time: {day: "sat", start: "2:00 PM", duration: "1:00"},
     location: "zoom",
     event_type: "Workshops"
@@ -96,7 +96,7 @@ var schedule = [
     title: "Finalist Judging",
     caption: "Judges will hold calls with finalists to choose winners",
     time: {day: "sun", start: "12:00PM", duration: "2:00"},
-    location: "Online",
+    location: "discord",
     event_type: "events",
   },
   {
