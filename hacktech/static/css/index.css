@@ -181,7 +181,7 @@ body {
     color: #ffbf00;
 }
 
-#landing #apply {
+#landing #apply, #landing #schedule {
     border: 0;
     outline: 0;
     font-family: "Inter", sans-serif;
