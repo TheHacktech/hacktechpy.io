@@ -237,7 +237,7 @@ body {
 }
 
 #faq {
-    background-color: #fff;
+    background-color: #ffcf40;
     color: black;
 }
 
@@ -318,8 +318,8 @@ body {
 }
 
 #sponsors {
-    background-color: #ffcf40;
-    color: #000;
+    background-color: #000;
+    color: #ffcf40;
 }
 
 #sponsors .contents {
