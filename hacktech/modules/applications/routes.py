@@ -28,7 +28,8 @@ def applications():
         majors=majors,
         form_info=form_info,
         submitted=(helpers.check_submitted(email, email)),
-        validations=validations.info)
+        validations=validations.info,
+        app_end=True)
 
 
 @blueprint.route("/applications/rsvp")
@@ -64,9 +65,9 @@ def update_status():
 
 @blueprint.route("/applications/update", methods=["POST"])
 def update_applications():
-    # if True:
-    #     flask.flash("The application period has ended!")
-    #     return flask.redirect(flask.url_for("home"))
+    if True:
+        flask.flash("The application period has ended!")
+        return flask.redirect(flask.url_for("home"))
     """Handles an application update request."""
     if not auth_utils.check_login():
         return auth_utils.login_redirect()
