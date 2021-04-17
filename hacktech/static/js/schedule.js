@@ -55,6 +55,7 @@ var schedule = [
     location: "zoom",
     event_type: "Workshops"
   },
+  /*
   {
     title: "Techreach",
     caption: "Learn about diversity and inclusion in tech and how techreach is involved.",
@@ -62,6 +63,7 @@ var schedule = [
     location: "zoom",
     event_type: "Workshops"
   },
+  */
   
   // events
   {
