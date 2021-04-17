@@ -58,7 +58,7 @@ var schedule = [
   {
     title: "Techreach",
     caption: "Learn about diversity and inclusion in tech and how techreach is involved.",
-    time: {day: "sat", start: "4:00 PM", duration: "1:00"},
+    time: {day: "sat", start: "6:00 PM", duration: "1:00"},
     location: "zoom",
     event_type: "Workshops"
   },
