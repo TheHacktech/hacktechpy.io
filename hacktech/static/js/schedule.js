@@ -48,6 +48,20 @@ var schedule = [
     location: "<a href='http://meet.google.com/bvz-svsd-pbo'>http://meet.google.com/bvz-svsd-pbo</a>",
     event_type: "Workshops"
   },
+  {
+    title: "Miso Robotics",
+    caption: "CTO Ryan Sinnet will be giving a talk!",
+    time: {day: "sat", start: "4:00 PM", duration: "1:00"},
+    location: "zoom",
+    event_type: "Workshops"
+  },
+  {
+    title: "Techreach",
+    caption: "Learn about diversity and inclusion in tech and how techreach is involved.",
+    time: {day: "sat", start: "4:00 PM", duration: "1:00"},
+    location: "zoom",
+    event_type: "Workshops"
+  },
   
   // events
   {
