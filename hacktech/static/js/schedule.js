@@ -50,7 +50,7 @@ var schedule = [
   },
   {
     title: "Miso Robotics",
-    caption: "CTO Ryan Sinnet will be giving a talk!",
+    caption: "Ryan Sinnet is the CTO of Miso Robotics, an AI Robotics startup that developed Flippy, the world's first AI-power robotic kitchen assistant that can flip burgers and fry foods! We'll hear about his journey as a CTO, what he's learned, and what's the future looks like for autonomous chefs.",
     time: {day: "sat", start: "4:00 PM", duration: "1:00"},
     location: "zoom",
     event_type: "Workshops"
