@@ -10,7 +10,7 @@ var schedule = [
     title: "echoAR: How to Build a Cloud-Connected AR/VR App in 15 Minutes or Less",
     caption: "The workshop will show how to quickly create augmented and virtual reality (AR/VR) apps with no technical skills or coding required and scale existing apps by connecting them to the cloud. Workshop participants will learn how to create real-time cloud-connected AR/VR apps using the echoAR platform. Participants will also discover how AR/VR are changing the world through the demonstration of different use cases of 3D applications and live demos of AR/VR experiences. Participants are encouraged to bring a laptop and a smartphone. Platforms for experimentation include: Google ARCore, WebXR, Vuforia, Unity-based apps, and more.",
     time: {day: "fri", start: "10:00 PM", duration: "1:00"},
-    location: "zoom",
+    location: "echoAR channel in discord",
     event_type: "Workshops"
   },
   {
