@@ -116,16 +116,23 @@ var schedule = [
     event_type: "events"
   },
   {
+    title: "Judging",
+    caption: "Judges will hold calls with all hackers to choose finalists",
+    time: {day: "sun", start: "12:00PM", duration: "1:30"},
+    location: "discord",
+    event_type: "events",
+  },
+  {
     title: "Finalist Judging",
     caption: "Judges will hold calls with finalists to choose winners",
-    time: {day: "sun", start: "12:00PM", duration: "2:00"},
+    time: {day: "sun", start: "2:00PM", duration: "0:30"},
     location: "discord",
     event_type: "events",
   },
   {
     title: "Closing Ceremony",
     caption: "Winners are announced! Tune in to see winning team's demos!",
-    time: {day: "sun", start: "2:30PM", duration: "1:30"},
+    time: {day: "sun", start: "3:00PM", duration: "1:30"},
     location: "zoom",
     event_type: "events",
   },
