@@ -154,7 +154,7 @@ def generate_waiver_url(waiver_name, waiver_type):
     """
     Given a waiver_name, generates the waiver url
     """
-    if waiver_name is not "":
+    if waiver_name is not None:
         return flask.url_for(
             "judging.uploaded_waiver_file",
             filename=waiver_name,
