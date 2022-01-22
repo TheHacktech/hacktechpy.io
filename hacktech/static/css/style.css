@@ -257,6 +257,12 @@ input[type="radio"] {
 #statusPage {
   text-align: center;
 }
+
+/* temp stuff to make login page look not bad. */
+.login-page {
+  margin-top: 10vh;
+}
+
 /* Main wrapper class for all elements in the body. */
 .jumbotron {
   background-color: #fff;
