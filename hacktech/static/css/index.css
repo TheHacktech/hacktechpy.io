@@ -55,7 +55,7 @@ body {
 
 #center_info {
   text-align: center;
-  background-color: black;
+  background-color: white;
   border: 8px solid;
   border-image-source: linear-gradient(to top, #ffdc73, #fda812);
   border-image-slice: 1;
