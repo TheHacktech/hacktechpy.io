@@ -429,7 +429,7 @@ h2 {
 }
 .sliding:hover:after {
   width: 100%;
-  background: #d3a034;
+  background: white;
 }
 
 label.checkbox-inline {
