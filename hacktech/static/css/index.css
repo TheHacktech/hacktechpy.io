@@ -55,9 +55,9 @@ body {
 
 #center_info {
   text-align: center;
-  border: 8px solid;
+  /* border: 8px solid;
   border-image-source: linear-gradient(to top, #ffdc73, #fda812);
-  border-image-slice: 1;
+  border-image-slice: 1; */
 }
 
 #landing {
@@ -77,7 +77,7 @@ body {
 #landing .contents {
   height: auto;
   width: 100%;
-  padding-top: calc(60px + 15vh);
+  padding-top: 30vh;
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
