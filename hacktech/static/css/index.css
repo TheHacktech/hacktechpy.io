@@ -99,7 +99,7 @@ body {
 
 #landing #hektek {
   max-height: 32%;
-  height: 6.58vw;
+  height: 12vw;
   background-size: contain;
   background-position: center center;
   background-repeat: no-repeat;
@@ -139,11 +139,11 @@ body {
 }
 
 #landing #form {
-  margin: 0 20px;
   font-size: 0px;
   text-align: center;
   display: inline-block;
   width: 45%;
+  margin-top: -10px;
 }
 
 #landing #form button {
@@ -167,7 +167,7 @@ body {
 
 #landing #form button:hover {
   background-color: white;
-  color: #000;
+  color: rgb(157, 192, 161);
 }
 
 #landing #mobile_header {
