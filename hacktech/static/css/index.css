@@ -72,7 +72,7 @@ body {
   background-repeat: repeat;
   background-size: cover;
   background-position: center center;
-  margin-top: -40px;
+  /* margin-top: -40px; */
 }
 
 #landing .contents {
@@ -406,8 +406,8 @@ body {
 
 .navbar-inverse {
   background-color: rgb(255, 255, 255, 0.3);
-  border-color: white;
-  border-width: 0 0 4px;
+  /* border-color: white;
+  border-width: 0 0 4px; */
   /* background-image: linear-gradient(#000000, rgba(0, 0, 0, 0.1)); */
 }
 
@@ -456,7 +456,7 @@ body {
     padding-top: calc(60px + 8vh);
   }
   #landing #hektek {
-    background-image: url("/static/images/logo_2021.png") !important;
+    background-image: url("/static/images/logo_2022.svg") !important;
     width: 40vw !important;
     height: 30vh;
     margin: 0 auto;

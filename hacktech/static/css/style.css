@@ -36,7 +36,7 @@ html {
  * height.
  */
 body {
-  font-family: "Inter", sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   min-height: 100%;
@@ -404,7 +404,7 @@ h2 {
 }
 
 #navbar a {
-  color: #d3a034;
+  color: white;
   font-size: 1.5em;
   font-weight: 700;
   text-transform: uppercase;
@@ -528,10 +528,12 @@ div.radio-inline {
   width: 100%;
 }
 
-/* Give the header some spacing to avoid overlap with other elements. */
+/* Give the header some spacing to avoid overlap with other elements.
+2022: Not this year because we have transparent stuff.
 #header {
   margin-bottom: 50px;
 }
+*/
 
 /* The footer should always be at the bottom with right-aligned text for the
  * copyright notice.
