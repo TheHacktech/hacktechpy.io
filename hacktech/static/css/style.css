@@ -531,7 +531,7 @@ div.radio-inline {
 /* Give the header some spacing to avoid overlap with other elements.
 2022: Not this year because we have transparent stuff.
 #header {
-  margin-bottom: 50px;
+  margin-bottom: 500px;
 }
 */
 
