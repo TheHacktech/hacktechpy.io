@@ -202,8 +202,8 @@ class ValidationForm:
         self.info["q2"] = "" if application['q2'] != "" else "has-error"
         self.info["q3"] = "" if application['q3'] != "" else "has-error"
         self.info["q4"] = "" if application['q4'] != "" else "has-error"
-        self.info["code_of_conduct"] = "" # if application[
-            # 'code_of_conduct'] == 1 else "has-error"
+        self.info["code_of_conduct"] = ""  # if application[
+        # 'code_of_conduct'] == 1 else "has-error"
 
 
 def get_form_info(email):

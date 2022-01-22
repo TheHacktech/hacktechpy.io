@@ -7,7 +7,6 @@ For module specific permissions, create an Enum within the module
 
 import enum
 
-
 class Permissions(enum.IntEnum):
     #Site admins -- always have permission to everything -- Use with caution
     ADMIN = 1

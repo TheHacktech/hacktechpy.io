@@ -1,5 +1,5 @@
 /* Include Open Sans, courtesy of Google. */
- @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap");
 /* Make sure that widths and heights are all done the same way.  */
 *,
 *:before,
@@ -62,7 +62,7 @@ a {
   -o-transition: all 0.5s;
   transition: all 0.5s;
   transition: opacity 0.5s;
-  color: #fda812;
+  color: rgba(170, 194, 160, 1);
 }
 
 /* Fade buttons slightly when not hovered. */
@@ -110,8 +110,8 @@ select:focus {
  * indicate that.
  */
 label.required:after {
-  content:"*";
-  color:red;
+  content: "*";
+  color: red;
 }
 
 /* Tables should have separated borders. */
@@ -132,23 +132,25 @@ table {
 /* This is the primary button class. Gives the button a white background
  * with an orange border and a slight bottom margin for spacing
  */
-.btn-default, .btn-primary {
+.btn-default,
+.btn-primary {
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s;
-  background-color: #FFF;
+  background-color: #fff;
   color: #333;
   border-color: #000;
   outline: 0;
-  border: 2px  #000 solid;
+  border: 2px #000 solid;
   margin-bottom: 5%;
   font-size: 20px;
   border-radius: 4px;
 }
 
 /* When the primary button class is hovered, give it an orange background. */
-.btn-default:hover, .btn-primary:hover {
+.btn-default:hover,
+.btn-primary:hover {
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   -o-transition: all 0.5s;
@@ -168,7 +170,8 @@ table {
   width: 50%;
 }
 
-input[type=checkbox], input[type=radio] {
+input[type="checkbox"],
+input[type="radio"] {
   position: relative;
   top: -1px;
   margin-right: 2px;
@@ -202,7 +205,7 @@ input[type=checkbox], input[type=radio] {
 
 /* A class for giving an element a thin white border. */
 .white-border {
-  border: 1px solid #FFF;
+  border: 1px solid #fff;
 }
 
 /* BEGIN FORM ELEMENTS */
@@ -217,7 +220,8 @@ input[type=checkbox], input[type=radio] {
   border-top: 2px dashed #000;
 }
 
-.element:before, .element:after {
+.element:before,
+.element:after {
   content: " ";
   display: table;
 }
@@ -226,7 +230,8 @@ input[type=checkbox], input[type=radio] {
   clear: both;
 }
 
-.element .col-md-1, .col-md-11 {
+.element .col-md-1,
+.col-md-11 {
   padding-left: 0;
   padding-right: 0;
 }
@@ -244,17 +249,17 @@ input[type=checkbox], input[type=radio] {
 .blue_border {
   border: solid;
   width: 50%;
-  border-color: #ffbf00;
+  border-color: rgb(78, 165, 157);
   display: inline-block;
   padding: 25px;
 }
 
-#statusPage{
+#statusPage {
   text-align: center;
 }
 /* Main wrapper class for all elements in the body. */
 .jumbotron {
-  background-color: #FFF;
+  background-color: #fff;
   text-align: justify;
   padding-top: 30px;
 }
@@ -411,52 +416,55 @@ h2 {
 }
 
 .sliding {
-    display: inline-block;
-    position: relative;
+  display: inline-block;
+  position: relative;
 }
 .sliding:after {
-    content: '';
-    display: block;
-    margin: auto;
-    height: 2px;
-    width: 0px;
-    background: transparent;
-    transition: width .4s ease, background-color .5s ease;
+  content: "";
+  display: block;
+  margin: auto;
+  height: 2px;
+  width: 0px;
+  background: transparent;
+  transition: width 0.4s ease, background-color 0.5s ease;
 }
 .sliding:hover:after {
-    width: 100%;
-    background: #d3a034;
+  width: 100%;
+  background: #d3a034;
 }
 
-label.checkbox-inline{
-    padding-left:4px;
-    padding-right:14px;
+label.checkbox-inline {
+  padding-left: 4px;
+  padding-right: 14px;
 }
 
-div.checkbox-inline{
-    padding-left:14px;
+div.checkbox-inline {
+  padding-left: 14px;
 }
-.checkbox label{
-    padding-left:5px;
+.checkbox label {
+  padding-left: 5px;
 }
-label.radio-inline{
-    padding-left:4px;
-    padding-right:14px;
+label.radio-inline {
+  padding-left: 4px;
+  padding-right: 14px;
 }
 
-div.radio-inline{
-    padding-left:14px;
+div.radio-inline {
+  padding-left: 14px;
 }
-.radio label{
-    padding-left:5px;
+.radio label {
+  padding-left: 5px;
 }
- .mobile_show {
-    visibility:hidden;
- }
+.mobile_show {
+  visibility: hidden;
+}
 
- .checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio]{
-    margin-top:5px;
- }
+.checkbox input[type="checkbox"],
+.checkbox-inline input[type="checkbox"],
+.radio input[type="radio"],
+.radio-inline input[type="radio"] {
+  margin-top: 5px;
+}
 /*****************************************************************************/
 /* Below are specific IDs for elements that needed individual styling. These *
  * should not be used for general styling or anything of the like. Odds are, *
@@ -467,7 +475,7 @@ div.radio-inline{
 }
 
 #judgingTable tr:hover {
-background-color: rgba(0,190,255,.3);
+  background-color: rgba(0, 190, 255, 0.3);
 }
 
 #nextPage {
@@ -475,28 +483,28 @@ background-color: rgba(0,190,255,.3);
 }
 
 #pageJumpDiv {
-    left: 0;
-    display: inline-block;
-    text-align: center;
-    position: absolute;
-    width: 100%;
-    pointer-events: none;
+  left: 0;
+  display: inline-block;
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  pointer-events: none;
 }
 
-#pageJumpDiv div{
-    pointer-events: auto;
-    width: 50%;
-    display: inline-block;
+#pageJumpDiv div {
+  pointer-events: auto;
+  width: 50%;
+  display: inline-block;
 }
 
-#pageJumpCurPage{
+#pageJumpCurPage {
   font-size: 18px;
 }
 #mlh-notice {
   color: #ffbf00;
 }
 #application_form {
-  background:white;
+  background: white;
   color: #000000;
   padding-bottom: 50px;
 }
@@ -539,20 +547,23 @@ background-color: rgba(0,190,255,.3);
   padding-top: 35px;
 }
 #footer .contents {
-    padding: 50px 13%; }
+  padding: 50px 13%;
+}
 #footer #social {
-    margin-top: 15px;
-    margin-bottom: 15px; }
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
 #footer .socialicon {
-    max-height: 30px;
-    margin: 0px 10px; }
+  max-height: 30px;
+  margin: 0px 10px;
+}
 
 /* The copyright should be small and pretty much invisible. We don't want it
  * to distract the user.
  */
 #copyright {
   padding: 15px;
-  color: #EEE;
+  color: #eee;
   font-size: 10px;
 }
 
@@ -561,39 +572,38 @@ background-color: rgba(0,190,255,.3);
 }
 
 #mlh-trust-badge {
-    display: block;
-    max-width: 100px;
-    min-width: 60px;
-    left: 49px;
-    top: 60px;
-    position: fixed;
-    width: 10%;
-    z-index: 999;
+  display: block;
+  max-width: 100px;
+  min-width: 60px;
+  left: 49px;
+  top: 60px;
+  position: fixed;
+  width: 10%;
+  z-index: 999;
 }
 
 #mobile_show {
-    visibility:hidden;
-    position:absolute;
+  visibility: hidden;
+  position: absolute;
 }
 #mobile_hide {
-    visibility:visible;
-    position:relative;
+  visibility: visible;
+  position: relative;
 }
 
 .labelSpace {
-    padding-right: 10px;
+  padding-right: 10px;
 }
 
 #pageSize {
 }
 
 #pageSize input {
-    display: inline-block;
-    width: 45px;
-    padding: 5px;
-    margin-left: 8px;
+  display: inline-block;
+  width: 45px;
+  padding: 5px;
+  margin-left: 8px;
 }
-
 
 /*****************************************************************************/
 /* Below is all the formatting for mobile devices. Basically, it just takes  *
@@ -605,7 +615,6 @@ background-color: rgba(0,190,255,.3);
 /* BEGIN MOBILE CSS */
 
 @media only screen and (min-device-width: 200px) and (max-device-width: 600px) and (orientation: portrait) {
-
   /* Any split column pages need to be treated as though they are blocked such
    * that they are on top of one another.
    */
@@ -681,7 +690,7 @@ background-color: rgba(0,190,255,.3);
     height: 100%;
   }
 
-    /* Any split column pages need to be treated as though they are blocked such
+  /* Any split column pages need to be treated as though they are blocked such
    * that they are on top of one another.
    */
   .triple-split-right {
@@ -744,34 +753,33 @@ background-color: rgba(0,190,255,.3);
   #copyright {
     font-size: 1vh;
     text-align: left;
- }
- #mlh-trust-badge {
+  }
+  #mlh-trust-badge {
     right: 2px;
     left: auto;
     -webkit-box-sizing: unset;
     box-sizing: unset;
     top: 52px;
     width: 20vw;
-}
- #mobile_show {
-    visibility:visible;
-    position:relative;
- }
- #mobile_hide {
-    visibility:hidden;
-    position:absolute;
- }
+  }
+  #mobile_show {
+    visibility: visible;
+    position: relative;
+  }
+  #mobile_hide {
+    visibility: hidden;
+    position: absolute;
+  }
 
- .navbar-nav {
-  float: left;
-}
-#observe {
-  padding-left: 20px;
-  padding-right: 20px;
-  display: inline-block;
-  width: 100%;
-}
+  .navbar-nav {
+    float: left;
+  }
+  #observe {
+    padding-left: 20px;
+    padding-right: 20px;
+    display: inline-block;
+    width: 100%;
+  }
 }
 
 /* END MOBILE CSS */
-

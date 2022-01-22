@@ -29,6 +29,7 @@ def caltech_waiver():
         "CONSENT, RELEASE AND ASSUMPTION OF RISK FOR PARTICIPATION IN HACKTECH AT CALTECH MARCH 6-8, 2020"
     )
 
+
 @blueprint.route("/waivers/medical_information")
 def medical_information():
     return general_waiver(

@@ -1,81 +1,116 @@
-{% extends "no_footer_layout.html" %}
+{% extends "no_footer_layout.html" %} {% block styles %} {{ super() }}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/live.css') }}"
+/>
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/schedule.css') }}"
+/>
 
-
-{% block styles %}
-    {{ super() }}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/live.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/schedule.css') }}" />
-
-{% endblock %}
-{% block scripts %}
-        <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-        <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-        <script src='{{ url_for("static", filename="js/jquery.iosslider.js") }}'></script>
-        <script src='{{ url_for("static", filename="js/schedule.js") }}'></script>
-        <script src='{{ url_for("static", filename="js/script.js") }}'></script>
-{% endblock %}
-{% block page %}
-   <head>
-        <link rel="shortcut icon" type="image/x-icon" href="./assets/img/favicon.ico" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="google-site-verification" content="wUBONmJcOp2V_kVCSRtcYuTz_DGBBneBtFtRkY5a-pE" />
-        <title>Hacktech 2021: Schedule</title>
-    </head>
-    <body>
-        <div id="wrapper">
-            <div id="sidebar">
-                <div class="wrapper">
-                    <img class="icon" src="{{  url_for('static', filename='images/logo_inverted_2021.png')  }}"/>
-                    <p class="name">Hacktech</p>
-                    <p class="info">April 16-18, 2021</p>
-                    <p class="slogan">#gitpumped</p>
-                    <ul class="links">
-                        <li class="guide"><a href="https://docs.google.com/document/d/1ZGXaeEabEz-6PXdu1az5hWicEOgnmlVKZdHlr2IKnb8/edit?usp=sharing">Hacker Guide</a></li>
-                        <!-- <li class="workshops"><a href="https://docs.google.com/document/d/1UMA9VsRIbx5qTNFT_2kel_1mzhZlbiLnzM-N1DFrEcw/edit?usp=sharing">Workshops and Events</a></li> -->
-                        <!-- <li class="prizes"><a href="https://docs.google.com/document/d/12isaHNW751msCltjaUkuC2h-wqHFkWrXLfiwbWZRya0/edit?usp=sharing">Prizes</a></li> -->
-                        <li class="discord"><a href="https://discord.gg/9Nfd9BGQ">Join Discord</a></li>
-                        <li class="contact"><a href="mailto:team@hacktech.app">Contact us</a></li>
-                    </ul>
-                </div>
+{% endblock %} {% block scripts %}
+<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src='{{ url_for("static", filename="js/jquery.iosslider.js") }}'></script>
+<script src='{{ url_for("static", filename="js/schedule.js") }}'></script>
+<script src='{{ url_for("static", filename="js/script.js") }}'></script>
+{% endblock %} {% block page %}
+<head>
+  <link
+    rel="shortcut icon"
+    type="image/x-icon"
+    href="./assets/img/favicon.ico"
+  />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="google-site-verification"
+    content="wUBONmJcOp2V_kVCSRtcYuTz_DGBBneBtFtRkY5a-pE"
+  />
+  <title>Hacktech 2021: Schedule</title>
+</head>
+<body>
+  <div id="wrapper">
+    <div id="sidebar">
+      <div class="wrapper">
+        <img
+          class="icon"
+          src="{{  url_for('static', filename='images/logo_inverted_2021.png')  }}"
+        />
+        <p class="name">Hacktech</p>
+        <p class="info">April 16-18, 2021</p>
+        <p class="slogan">#gitpumped</p>
+        <ul class="links">
+          <li class="guide">
+            <a
+              href="https://docs.google.com/document/d/1ZGXaeEabEz-6PXdu1az5hWicEOgnmlVKZdHlr2IKnb8/edit?usp=sharing"
+              >Hacker Guide</a
+            >
+          </li>
+          <!-- <li class="workshops"><a href="https://docs.google.com/document/d/1UMA9VsRIbx5qTNFT_2kel_1mzhZlbiLnzM-N1DFrEcw/edit?usp=sharing">Workshops and Events</a></li> -->
+          <!-- <li class="prizes"><a href="https://docs.google.com/document/d/12isaHNW751msCltjaUkuC2h-wqHFkWrXLfiwbWZRya0/edit?usp=sharing">Prizes</a></li> -->
+          <li class="discord">
+            <a href="https://discord.gg/9Nfd9BGQ">Join Discord</a>
+          </li>
+          <li class="contact">
+            <a href="mailto:team@hacktech.app">Contact us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="schedule_container">
+      <div class="content">
+        <div id="schedule">
+          <div id="schedule-calendar"></div>
+          <div id="schedule-guide-left"><img class="img-scaled" /></div>
+          <div id="schedule-guide-right"><img class="img-scaled" /></div>
+          <div class="schedule-content">
+            <div class="schedule-column-container">
+              <!-- 30 minute blocks get schedule-item-1 class, 60 minute blocks get schedule-item-2, etc. -->
+              <!-- For empty blocks, make sure the height value is 60 * # of 30 minute blocks. For example, if the empty block is 2.5 hours, make height 300px. -->
+              <div class="schedule-column" id="main-timeline">
+                <div class="schedule-venue">Announcements</div>
+              </div>
+              <div class="schedule-column" id="workshops">
+                <div class="schedule-venue">Workshops</div>
+              </div>
+              <div class="schedule-column" id="events">
+                <div class="schedule-venue">Events</div>
+              </div>
             </div>
-            <div class="schedule_container">
-                <div class="content">
-                    <div id="schedule">
-                        <div id="schedule-calendar"></div>
-                        <div id="schedule-guide-left"><img class="img-scaled" /></div>
-                        <div id="schedule-guide-right"><img class="img-scaled"/></div>
-                        <div class="schedule-content">
-                            <div class="schedule-column-container">
-
-                                <!-- 30 minute blocks get schedule-item-1 class, 60 minute blocks get schedule-item-2, etc. -->
-                                <!-- For empty blocks, make sure the height value is 60 * # of 30 minute blocks. For example, if the empty block is 2.5 hours, make height 300px. -->
-
-                                <div class="schedule-column" id="main-timeline">
-                                    <div class="schedule-venue">Announcements</div>
-                                </div>
-                                <div class="schedule-column" id="workshops">
-                                    <div class="schedule-venue">Workshops</div>
-                                </div>
-                                <div class="schedule-column" id="events">
-                                    <div class="schedule-venue">Events</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="schedule-banner" id="schedule-timezone">All times are in Pacific Daylight Time (PDT/UTC-7)</div>
-                        <div class="schedule-banner" id="schedule-checkin">Deadline for virtual check-in! [7:30 PM on Friday, April 16]</div>
-                        <div class="schedule-banner" id="schedule-hacking-begin">Hacking begins! [Friday 9:00 PM]</div>
-                        <div class="schedule-banner" id="schedule-rise">Rise and shine! Are you ready for all the exciting events today? [Saturday]</div>
-                        <div class="schedule-banner" id="schedule-submit">Submissions are due on Devpost! [Sunday 9:00 AM]</div>
-                        <div class="schedule-banner" id="schedule-hacking-ends">Hacking ends! [Sunday 10:30 AM]</div>
-                        <div class="schedule-banner" id="schedule-finalists">Finalists are notified! [Sunday 1:45 PM]</div>
-                        <div id="schedule-indicator"></div>
-                    </div>
-                </div>
-                <div id="footer">A big thanks to <a href="https://www.linkedin.com/in/zhi-pan-a3903095">Zhi Pan</a> and <a href="http://www.designbyroka.com/">Shawn Park</a> for the schedule.js code!</div>
-            </div>
+          </div>
+          <div class="schedule-banner" id="schedule-timezone">
+            All times are in Pacific Daylight Time (PDT/UTC-7)
+          </div>
+          <div class="schedule-banner" id="schedule-checkin">
+            Deadline for virtual check-in! [7:30 PM on Friday, April 16]
+          </div>
+          <div class="schedule-banner" id="schedule-hacking-begin">
+            Hacking begins! [Friday 9:00 PM]
+          </div>
+          <div class="schedule-banner" id="schedule-rise">
+            Rise and shine! Are you ready for all the exciting events today?
+            [Saturday]
+          </div>
+          <div class="schedule-banner" id="schedule-submit">
+            Submissions are due on Devpost! [Sunday 9:00 AM]
+          </div>
+          <div class="schedule-banner" id="schedule-hacking-ends">
+            Hacking ends! [Sunday 10:30 AM]
+          </div>
+          <div class="schedule-banner" id="schedule-finalists">
+            Finalists are notified! [Sunday 1:15 PM]
+          </div>
+          <div id="schedule-indicator"></div>
         </div>
-
-    </body>
-
+      </div>
+      <div id="footer">
+        A big thanks to
+        <a href="https://www.linkedin.com/in/zhi-pan-a3903095">Zhi Pan</a> and
+        <a href="http://www.designbyroka.com/">Shawn Park</a> for the
+        schedule.js code!
+      </div>
+    </div>
+  </div>
+</body>
 
 {% endblock %}
