@@ -541,7 +541,7 @@ div.radio-inline {
   background-color: #000;
   color: #d3a034;
   padding: 20px;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   position: absolute;
   bottom: 0px;
   width: 100%;

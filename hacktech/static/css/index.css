@@ -102,7 +102,6 @@ body {
   max-height: 32%;
   width: 50vw;
   height: 6.58vw;
-  margin-left: 10vw;
   background-size: contain;
   background-position: center center;
   background-repeat: no-repeat;
@@ -334,7 +333,7 @@ body {
 
 #sponsors {
   background-color: rgb(150, 185, 175);
-  color: #000;
+  color: white;
 }
 
 #sponsors .contents {
