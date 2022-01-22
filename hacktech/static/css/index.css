@@ -127,9 +127,15 @@ body {
 #landing #center_info {
   padding-top: 6vh;
   padding-bottom: 6vh;
-  width: 70%;
+  width: 60%;
   text-align: center;
   height: fit-content;
+}
+
+#landing #center_info_2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 #landing #form {
@@ -202,12 +208,7 @@ body {
 }
 
 #landing #time {
-  position: absolute;
   width: 507px;
-  height: 67px;
-  left: 311px;
-  top: 539px;
-
   background: #ffffff;
   border: 4px solid #000000;
   border-radius: 20px;
