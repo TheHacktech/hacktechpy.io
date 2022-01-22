@@ -1,11 +1,11 @@
- @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap");
 
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
-  letter-spacing:0.03em;
+  letter-spacing: 0.03em;
 }
 
 body {
@@ -15,8 +15,9 @@ body {
   overflow-x: hidden;
 }
 
-p, div {
-  font-family: 'Inter', sans-serif;
+p,
+div {
+  font-family: "Inter", sans-serif;
 }
 
 i {
@@ -24,7 +25,8 @@ i {
 }
 
 .clear {
-  clear: both; }
+  clear: both;
+}
 
 #wrapper {
   display: flex;
@@ -46,7 +48,7 @@ i {
   width: 30vw;
   max-width: 400px;
   height: 100%;
-  background-color: #ffbf00;
+  background-color: rgb(87, 172, 158);
   color: #fff;
   overflow-y: scroll;
 }
@@ -81,7 +83,7 @@ i {
   margin-top: 10px;
 }
 
-#sidebar .links{
+#sidebar .links {
   font-family: "Inter", sans-serif;
   margin-top: 30px;
   text-transform: uppercase;
@@ -96,17 +98,17 @@ i {
 #sidebar .links a {
   color: #fff;
   text-decoration: none;
-  transition: width .5s ease, background-color .5s ease;
+  transition: width 0.5s ease, background-color 0.5s ease;
 }
 
 #sidebar .links a:after {
-  content: '';
+  content: "";
   display: block;
   height: 1px;
   width: 0;
   margin: 0px auto;
   background: white;
-  transition: width .5s ease, background-color .5s ease;
+  transition: width 0.5s ease, background-color 0.5s ease;
 }
 
 #sidebar .links a:hover:after {
@@ -155,7 +157,7 @@ i {
 /*Container stuff*/
 
 .schedule_container {
-  color: #ffbf00;
+  color: rgb(87, 172, 158);
   width: 100%;
   height: 100%;
   overflow: auto;
@@ -171,7 +173,7 @@ i {
 /*Scrollbar stuff*/
 
 ::-webkit-scrollbar {
-    width: 6px !important;
+  width: 6px !important;
 }
 
 /* Track */
@@ -180,211 +182,211 @@ i {
 }
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #ffbf00;
+  background: #ffbf00;
 }
 ::-webkit-scrollbar-thumb:window-inactive {
   background: #ffbf00;
 }
 
 #schedule {
-    margin-top: 24px;
-    position: relative;
-    height: 4920px;
+  margin-top: 24px;
+  position: relative;
+  height: 4920px;
 }
 #schedule-calendar {
-    position: absolute;
-    top: 48px;
-    width: 100%;
+  position: absolute;
+  top: 48px;
+  width: 100%;
 }
 .schedule-venue {
   font-family: "Inter", sans-serif;
-    color: #ffbf00;
-    font-size: 24px;
-    line-height: 36px;
-    font-weight: 700;
-    text-transform: uppercase;
-/*    opacity: 0.36;*/
-    margin-bottom: 12px;
-    text-align: center;
-    z-index: 3;
-    position: relative;
-    background-color: white;
-    border-bottom: solid 1px grey;
-    padding-top: 50px;
-    margin-top: -50px;
-    margin-right: -10px;
-    margin-left: -10px;
+  color: rgb(87, 172, 158);
+  font-size: 24px;
+  line-height: 36px;
+  font-weight: 700;
+  text-transform: uppercase;
+  /*    opacity: 0.36;*/
+  margin-bottom: 12px;
+  text-align: center;
+  z-index: 3;
+  position: relative;
+  background-color: white;
+  border-bottom: solid 1px grey;
+  padding-top: 50px;
+  margin-top: -50px;
+  margin-right: -10px;
+  margin-left: -10px;
 }
 .schedule-column:first-child .schedule-venue {
-    padding-left: 70px;
-    margin-left: -70px;
+  padding-left: 70px;
+  margin-left: -70px;
 }
 
 .schedule-column:last-child .schedule-venue {
-    padding-right: 10px;
-    margin-right: -10px;
+  padding-right: 10px;
+  margin-right: -10px;
 }
 
 .schedule-calendar-hour {
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    height: 120px;
-    position: relative;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  height: 120px;
+  position: relative;
 }
 .schedule-calendar-hour .hour {
-    position: absolute;
-    font-size: 12px;
-    line-height: 18px;
-    opacity: 0.5;
-    top: -9px;
-    left: -72px;
-    width: 60px;
-    text-align: right;
-    font-weight: 700;
+  position: absolute;
+  font-size: 12px;
+  line-height: 18px;
+  opacity: 0.5;
+  top: -9px;
+  left: -72px;
+  width: 60px;
+  text-align: right;
+  font-weight: 700;
 }
 
-
 .schedule-calendar-hour::after {
-    content: '';
-    border-top: 1px dotted rgba(0, 0, 0, 0.1);
-    position: absolute;
-    top: 59px;
-    width: 100%;
+  content: "";
+  border-top: 1px dotted rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 59px;
+  width: 100%;
 }
 
 .schedule-column-container {
-    display:flex;
+  display: flex;
 }
 .schedule-column {
-    width: calc(33% - 6px);
-    height: 100%;
-    float: left;
-    margin-left: 12px;
-    position: relative;
+  width: calc(33% - 6px);
+  height: 100%;
+  float: left;
+  margin-left: 12px;
+  position: relative;
 }
 .schedule-column:nth-child(1) {
-    margin-left: 0px;
+  margin-left: 0px;
 }
 .schedule-item {
-    background: #fff;
-    color: #4a4a4a;
-    border-radius: 2px;
-    padding: 12px;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 24px;
-    margin-bottom: 12px;
-    width: calc(100% - 24px);
-    position: absolute;
-    border-left: 6px solid #ffbf00;
-    border-top: 1px solid #ffbf00;
-    border-bottom: 1px solid #ffbf00;
-    border-right: 1px solid #ffbf00;
-    transition: 0.3s ease;
-    overflow-y: scroll;
+  background: #fff;
+  color: #4a4a4a;
+  border-radius: 2px;
+  padding: 12px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 12px;
+  width: calc(100% - 24px);
+  position: absolute;
+  border-left: 6px solid #ffbf00;
+  border-top: 1px solid #ffbf00;
+  border-bottom: 1px solid #ffbf00;
+  border-right: 1px solid #ffbf00;
+  transition: 0.3s ease;
+  overflow-y: scroll;
 }
 
 .schedule-item.offset-1 {
-    margin-left: 6px;
-    width: calc(100% - 30px)
+  margin-left: 6px;
+  width: calc(100% - 30px);
 }
 
 .schedule-item.offset-2 {
-    margin-left: 12px;
-    width: calc(100% - 36px)
+  margin-left: 12px;
+  width: calc(100% - 36px);
 }
 
 .schedule-item.offset-3 {
-    margin-left: 18px;
-    width: calc(100% - 42px)
+  margin-left: 18px;
+  width: calc(100% - 42px);
 }
 
 .schedule-item-subtitle {
-    opacity: 0.6;
+  opacity: 0.6;
 }
 
-
-.schedule-item-subtitle a, .schedule-item-caption a {
-    text-decoration: underline;
+.schedule-item-subtitle a,
+.schedule-item-caption a {
+  text-decoration: underline;
 }
 
-.schedule-item.shortened .schedule-item-subtitle, .schedule-item.shortened .schedule-item-caption {
-    opacity: 0;
-    transition: 0.3s ease;
+.schedule-item.shortened .schedule-item-subtitle,
+.schedule-item.shortened .schedule-item-caption {
+  opacity: 0;
+  transition: 0.3s ease;
 }
 
 .schedule-item.shortened:hover .schedule-item-subtitle {
-    opacity: 0.6;
+  opacity: 0.6;
 }
 
 .schedule-item.shortened:hover .schedule-item-caption {
-    opacity: 1;
+  opacity: 1;
 }
 
 .schedule-item.shortened:hover {
-    height: initial !important;
+  height: initial !important;
 }
 
 .schedule-item:hover {
-    transform: scale(1.1,1.1);
-    z-index: 2;
-    -webkit-box-shadow: 4px 4px 5px -1px rgba(0,0,0,0.51);
-    -moz-box-shadow: 4px 4px 5px -1px rgba(0,0,0,0.51);
-    box-shadow: 4px 4px 5px -1px rgba(0,0,0,0.51);
+  transform: scale(1.1, 1.1);
+  z-index: 2;
+  -webkit-box-shadow: 4px 4px 5px -1px rgba(0, 0, 0, 0.51);
+  -moz-box-shadow: 4px 4px 5px -1px rgba(0, 0, 0, 0.51);
+  box-shadow: 4px 4px 5px -1px rgba(0, 0, 0, 0.51);
 }
 
 .schedule-item-1 {
-    height: 24px;
+  height: 24px;
 }
 .schedule-item-2 {
-    height: 84px;
+  height: 84px;
 }
 .schedule-item-3 {
-    height: 144px;
+  height: 144px;
 }
 .schedule-item-4 {
-    height: 204px;
+  height: 204px;
 }
 .schedule-item-5 {
-    height: 264px;
+  height: 264px;
 }
 .schedule-item-caption {
-    font-weight: normal;
-    margin-top: 10px;
+  font-weight: normal;
+  margin-top: 10px;
 }
 .schedule-item-1 .schedule-item-caption {
-    display: inline-block;
+  display: inline-block;
 }
 .schedule-item-1 .schedule-item-title {
-    display: inline-block;
-    margin-right: 6px;
+  display: inline-block;
+  margin-right: 6px;
 }
 
 #schedule-indicator {
-    width: calc(100% + 24px);
-    height: 4px;
-    position: absolute;
-    background: #ffbf00;
-    top: 48px;
-    opacity: 0;
+  width: calc(100% + 24px);
+  height: 4px;
+  position: absolute;
+  background: #ffbf00;
+  top: 48px;
+  opacity: 0;
 }
 #schedule-indicator::after {
-    content: '';
-    border-top: 6px solid transparent;
-    border-bottom: 6px solid transparent;
-    border-right: 12px solid #ffbf00;
-    position: absolute;
-    top: -4px;
-    right: 0px;
-    width: 0px;
-    height: 0px;
+  content: "";
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-right: 12px solid #ffbf00;
+  position: absolute;
+  top: -4px;
+  right: 0px;
+  width: 0px;
+  height: 0px;
 }
 .schedule-content {
-    position: relative;
+  position: relative;
 }
 
 .schedule-banner {
-    width: 100% !important;
-    z-index: 1;
+  width: 100% !important;
+  z-index: 1;
 }
 
 #schedule-timezone {
@@ -403,170 +405,171 @@ i {
   opacity: 0.6;
 }
 #schedule-checkin {
-    z-index: 0;
-    background: #5c99b8;
-    color: white;
-    top: 228px;
-    position: absolute;
-    width: calc(100% - 24px);
-    padding: 12px;
-    font-size: 16px;
-    line-height: 24px;
-    border-radius: 2px;
-    font-weight: 700;
-    text-align: left;
-    opacity: 0.6;
+  z-index: 0;
+  background: #5c99b8;
+  color: white;
+  top: 228px;
+  position: absolute;
+  width: calc(100% - 24px);
+  padding: 12px;
+  font-size: 16px;
+  line-height: 24px;
+  border-radius: 2px;
+  font-weight: 700;
+  text-align: left;
+  opacity: 0.6;
 }
 #schedule-hacking-begin {
-    z-index: 0;
-    background: #5c99b8;
-    color: white;
-    top: 648px;
-    position: absolute;
-    width: calc(100% - 24px);
-    padding: 12px;
-    font-size: 16px;
-    line-height: 24px;
-    border-radius: 2px;
-    font-weight: 700;
-    text-align: left;
-    opacity: 0.6;
+  z-index: 0;
+  background: #5c99b8;
+  color: white;
+  top: 648px;
+  position: absolute;
+  width: calc(100% - 24px);
+  padding: 12px;
+  font-size: 16px;
+  line-height: 24px;
+  border-radius: 2px;
+  font-weight: 700;
+  text-align: left;
+  opacity: 0.6;
 }
 
 #schedule-submit {
-    background: #5c99b8;
-    color: white;
-    top: 4728px;
-    position: absolute;
-    width: calc(100% - 24px);
-    padding: 12px;
-    font-size: 16px;
-    line-height: 24px;
-    border-radius: 2px;
-    font-weight: 700;
-    text-align: left;
-    opacity: 0.6;
+  background: #5c99b8;
+  color: white;
+  top: 4728px;
+  position: absolute;
+  width: calc(100% - 24px);
+  padding: 12px;
+  font-size: 16px;
+  line-height: 24px;
+  border-radius: 2px;
+  font-weight: 700;
+  text-align: left;
+  opacity: 0.6;
 }
 
 #schedule-rise {
-    background: #5c99b8;
-    color: white;
-    top: 1788px;
-    position: absolute;
-    width: calc(100% - 24px);
-    padding: 12px;
-    font-size: 16px;
-    line-height: 24px;
-    border-radius: 2px;
-    font-weight: 700;
-    text-align: left;
-    opacity: 0.6;
+  background: #5c99b8;
+  color: white;
+  top: 1788px;
+  position: absolute;
+  width: calc(100% - 24px);
+  padding: 12px;
+  font-size: 16px;
+  line-height: 24px;
+  border-radius: 2px;
+  font-weight: 700;
+  text-align: left;
+  opacity: 0.6;
 }
 #schedule-daylight {
-    background: #5c99b8;
-    color: white;
-    top: 3888px;
-    position: absolute;
-    width: calc(100% - 24px);
-    padding: 12px;
-    font-size: 16px;
-    line-height: 24px;
-    border-radius: 2px;
-    font-weight: 700;
-    text-align: left;
-    opacity: 0.6;
+  background: #5c99b8;
+  color: white;
+  top: 3888px;
+  position: absolute;
+  width: calc(100% - 24px);
+  padding: 12px;
+  font-size: 16px;
+  line-height: 24px;
+  border-radius: 2px;
+  font-weight: 700;
+  text-align: left;
+  opacity: 0.6;
 }
 #schedule-hacking-ends {
-    background: #5c99b8;
-    color: white;
-    top: 4908px;
-    position: absolute;
-    width: calc(100% - 24px);
-    padding: 12px;
-    font-size: 16px;
-    line-height: 24px;
-    border-radius: 2px;
-    font-weight: 700;
-    text-align: left;
-    opacity: 0.6;
+  background: #5c99b8;
+  color: white;
+  top: 4908px;
+  position: absolute;
+  width: calc(100% - 24px);
+  padding: 12px;
+  font-size: 16px;
+  line-height: 24px;
+  border-radius: 2px;
+  font-weight: 700;
+  text-align: left;
+  opacity: 0.6;
 }
 
 #schedule-finalists {
-    background: #5c99b8;
-    color: white;
-    top: 5238px;
-    position: absolute;
-    width: calc(100% - 24px);
-    padding: 12px;
-    font-size: 16px;
-    line-height: 24px;
-    border-radius: 2px;
-    font-weight: 700;
-    text-align: left;
-    opacity: 0.6;
+  background: #5c99b8;
+  color: white;
+  top: 5238px;
+  position: absolute;
+  width: calc(100% - 24px);
+  padding: 12px;
+  font-size: 16px;
+  line-height: 24px;
+  border-radius: 2px;
+  font-weight: 700;
+  text-align: left;
+  opacity: 0.6;
 }
 #schedule-guide-left {
-    position: absolute;
-    top: -5px;
-    left: 0px;
-    width: 20px;
-    opacity: 0.6;
-    display: none;
-    z-index: 2;
-    cursor: pointer;
+  position: absolute;
+  top: -5px;
+  left: 0px;
+  width: 20px;
+  opacity: 0.6;
+  display: none;
+  z-index: 2;
+  cursor: pointer;
 }
 #schedule-guide-right {
-    position: absolute;
-    top: -5px;
-    right: 0px;
-    width: 20px;
-    opacity: 0.72;
-    display: none;
-    z-index: 2;
-    cursor: pointer;
+  position: absolute;
+  top: -5px;
+  right: 0px;
+  width: 20px;
+  opacity: 0.72;
+  display: none;
+  z-index: 2;
+  cursor: pointer;
 }
 
 #header-submit {
-    float: right;
-    background: #1abc9c;
-    border-radius: 2px;
-    padding: 12px;
-    margin-top: 2px;
-    cursor: pointer;
+  float: right;
+  background: #1abc9c;
+  border-radius: 2px;
+  padding: 12px;
+  margin-top: 2px;
+  cursor: pointer;
 }
 #header-submit-icon {
-    width: 24px;
-    height: 24px;
-    float: left;
-    margin-right: 12px;
+  width: 24px;
+  height: 24px;
+  float: left;
+  margin-right: 12px;
 }
 #header-submit-caption {
-    float: left;
-    font-size: 18px;
-    line-height: 24px;
-    text-transform: uppercase;
-    font-weight: 700;
+  float: left;
+  font-size: 18px;
+  line-height: 24px;
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
 #footer {
-    position: relative;
-    bottom: 0px;
-    width: 100%;
-    text-align: center;
-    padding: 12px 0px;
-    font-size: 12px;
-    line-height: 18px;
-    color: #3D3A3A;
-    left: 0px;
+  position: relative;
+  bottom: 0px;
+  width: 100%;
+  text-align: center;
+  padding: 12px 0px;
+  font-size: 12px;
+  line-height: 18px;
+  color: #3d3a3a;
+  left: 0px;
 }
 #footer a {
-    font-weight: 700;
-    color: #546db2;
+  font-weight: 700;
+  color: #546db2;
 }
 
 @media screen and (max-width: 960px) {
   #wrapper {
-    flex-direction: column; }
+    flex-direction: column;
+  }
 
   #sidebar {
     position: relative;
@@ -581,10 +584,9 @@ i {
     width: auto;
   }
 
-
   .schedule_container {
-      width: auto;
-      margin: 0px;
+    width: auto;
+    margin: 0px;
   }
 
   .schedule_container .content {
@@ -606,61 +608,60 @@ i {
     height: 100%;
   }
   .schedule-column {
-      width: 100%;
-      height: 100%;
-      float: left;
-      margin: 0px;
+    width: 100%;
+    height: 100%;
+    float: left;
+    margin: 0px;
   }
   .schedule-venue {
-      text-align: center;
-      font-size: 16px;
+    text-align: center;
+    font-size: 16px;
 
-      position: relative;
-      top: -6px;
+    position: relative;
+    top: -6px;
   }
   .schedule-item {
-      width: calc(100% - 80px); 
-      margin-left: 60px;
+    width: calc(100% - 80px);
+    margin-left: 60px;
   }
 
-    .schedule-item.offset-1 {
-        margin-left: 66px;
-        width: calc(100% - 30px)
-    }
+  .schedule-item.offset-1 {
+    margin-left: 66px;
+    width: calc(100% - 30px);
+  }
 
-    .schedule-item.offset-2 {
-        margin-left: 72px;
-        width: calc(100% - 36px)
-    }
+  .schedule-item.offset-2 {
+    margin-left: 72px;
+    width: calc(100% - 36px);
+  }
 
-    .schedule-item.offset-3 {
-        margin-left: 78px;
-        width: calc(100% - 42px)
-    }
+  .schedule-item.offset-3 {
+    margin-left: 78px;
+    width: calc(100% - 42px);
+  }
 
-    .schedule-item:hover {
-        transform: none;
-        z-index: initial;
-        box-shadow: none;
-    }
+  .schedule-item:hover {
+    transform: none;
+    z-index: initial;
+    box-shadow: none;
+  }
 
   .schedule-calendar-hour {
-      margin-left: 60px;
+    margin-left: 60px;
   }
 
   #schedule-guide-right {
     display: block;
   }
   #header-submit {
-      float: none;
+    float: none;
   }
-    #live-stream {
-        display: none;
-    }
-    #sticker-challenge {
-        width: calc(100% - 39px);
-        margin: 0px;
-        height: initial;
-    }
-
+  #live-stream {
+    display: none;
+  }
+  #sticker-challenge {
+    width: calc(100% - 39px);
+    margin: 0px;
+    height: initial;
+  }
 }

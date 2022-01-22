@@ -25,7 +25,6 @@ app.register_blueprint(applications.blueprint)
 app.register_blueprint(judging.blueprint)
 app.register_blueprint(waivers.blueprint)
 
-
 def init(environment_name):
     """Initializes the application with configuration variables and routes.
 
@@ -37,6 +36,7 @@ def init(environment_name):
   Returns:
     None
   """
+    print("IS THIS TRUE", hasattr(config, "PROD"), hasattr(config, "DEV"), hasattr(config, "TEST"), hasattr(config, "PERMISSIONS"))
     if environment_name == "prod" and hasattr(config, "PROD"):
         environment = config.PROD
     elif environment_name == "dev" and hasattr(config, "DEV"):

@@ -18,6 +18,7 @@ parser.add_argument(
 
 if __name__ == "__main__":
     args = parser.parse_args()
+    print("args: ", args)
     hacktech.init(args.env)
     app.jinja_env.auto_reload = True
     app.config['TEMPLATES_AUTO_RELOAD'] = True

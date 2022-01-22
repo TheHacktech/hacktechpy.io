@@ -8,20 +8,20 @@ INSERT INTO users(user_id, email, password_hash, admin) VALUES
     (5, "4", 111, False), 
     (6, "5", 111, False);
 
-INSERT INTO members(user_id, last_name, first_name, preferred_name) VALUES
-    (1, "Mo", "Ziyan", "Momo"), 
-    (2, "Hu", "Juliette", "Julietto-sama"),
-    (3, "Mo", "Ziyan", ""),
-    (4, "Wu", "Helena", "Head of Heads"),
-    (5, "Shao", "Eugene", "Ugne"),
-    (6, "V", "Jagath", "JV");
+INSERT INTO members(user_id, last_name, first_name, preferred_name, date_of_birth) VALUES
+    (1, "Mo", "Ziyan", "Momo", NOW()), 
+    (2, "Hu", "Juliette", "Julietto-sama", NOW()),
+    (3, "Mo", "Ziyan", "", NOW()),
+    (4, "Wu", "Helena", "Head of Heads", NOW()),
+    (5, "Shao", "Eugene", "Ugne", NOW()),
+    (6, "V", "Jagath", "JV", NOW());
 
 INSERT INTO applications(user_id, application_year, school, major, gender) VALUES
-    (2, 2019, "Caltech", "CS", "W"),
-    (3, 2019, "MIT", "CS", "O"),
-    (4, 2019, "Stanford", "CS", "W"), 
-    (5, 2019, "Caltech", "CS", "M"),
-    (6, 2019, "Caltech", "CS", "M");
+    (2, NOW(), "Caltech", "CS", "W"),
+    (3, NOW(), "MIT", "CS", "O"),
+    (4, NOW(), "Stanford", "CS", "W"), 
+    (5, NOW(), "Caltech", "CS", "M"),
+    (6, NOW(), "Caltech", "CS", "M");
 
 INSERT INTO status(user_id, application_id, status) VALUES
     (2, 1, "Submitted"), 
