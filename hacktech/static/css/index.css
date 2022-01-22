@@ -135,7 +135,7 @@ body {
 #landing #center_info_2 {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 #landing #form {
@@ -208,7 +208,7 @@ body {
 }
 
 #landing #time {
-  width: 507px;
+  padding: 8px;
   background: #ffffff;
   border: 4px solid #000000;
   border-radius: 20px;
