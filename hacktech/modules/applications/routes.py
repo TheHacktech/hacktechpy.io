@@ -29,7 +29,7 @@ def applications():
         form_info=form_info,
         submitted=(helpers.check_submitted(email, email)),
         validations=validations.info,
-        app_end=True)
+        app_end=False)
 
 
 @blueprint.route("/applications/rsvp")
@@ -65,7 +65,8 @@ def update_status():
 
 @blueprint.route("/applications/update", methods=["POST"])
 def update_applications():
-    if True:
+    # this is actually such a troll check for whether application period is live
+    if False:
         flask.flash("The application period has ended!")
         return flask.redirect(flask.url_for("home"))
     """Handles an application update request."""
