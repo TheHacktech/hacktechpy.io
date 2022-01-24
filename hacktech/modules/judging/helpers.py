@@ -91,7 +91,7 @@ def get_application(user_id):
     github, linkedin, resume, latino, gender, shirt_size, 
     transportation, in_state, bus_from, airport, 
     diet_rest, diet_rest_detail, 
-    q1, q2, q3, q4, code_of_conduct 
+    q1, q2, q3, q4, q5, q6, code_of_conduct 
     FROM users NATURAL JOIN members NATURAL JOIN 
     applications NATURAL JOIN status WHERE user_id = %s
     """

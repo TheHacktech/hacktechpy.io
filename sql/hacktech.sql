@@ -59,6 +59,8 @@ CREATE TABLE applications(
     q2                TEXT         DEFAULT NULL,
     q3                TEXT         DEFAULT NULL,
     q4                TEXT         DEFAULT NULL,
+    q5                TEXT         DEFAULT NULL,
+    q6                TEXT         DEFAULT NULL,
     code_of_conduct     BOOLEAN    DEFAULT NULL,
     PRIMARY KEY (application_id),
     UNIQUE (user_id, application_year) -- One application per year.

@@ -144,6 +144,8 @@ class FormInfo:
         self.q2 = application['q2'] or ''
         self.q3 = application['q3'] or ''
         self.q4 = application['q4'] or ''
+        self.q5 = application['q5'] or ''
+        self.q6 = application['q6'] or ''
         self.code_of_conduct = application['code_of_conduct']
         self.diet_types = [entry['diet_restrictions'] for entry in diet]
         self.race_types = [entry['race_type'] for entry in race]
@@ -174,6 +176,8 @@ class ValidationForm:
         self.info["q2"] = ""
         self.info["q3"] = ""
         self.info["q4"] = ""
+        self.info["q5"] = ""
+        self.info["q6"] = ""
         self.info["code_of_conduct"] = ""
 
     def fill(self, application, member):
@@ -202,6 +206,8 @@ class ValidationForm:
         self.info["q2"] = "" if application['q2'] != "" else "has-error"
         self.info["q3"] = "" if application['q3'] != "" else "has-error"
         self.info["q4"] = "" if application['q4'] != "" else "has-error"
+        self.info["q5"] = "" if application['q5'] != "" else "has-error"
+        self.info["q6"] = "" if application['q6'] != "" else "has-error"
         self.info["code_of_conduct"] = ""  # if application[
         # 'code_of_conduct'] == 1 else "has-error"
 
@@ -244,7 +250,7 @@ def handle_update_applications(
         action, email, phone_number, school, major, degree_type,
         graduation_year, github, linkedin, resume_file, latino, race, gender,
         shirt_size, need_transportation, bus_from, airport,
-        dietary_restrictions, diet_choices, diet_details, q1, q2, q3, q4,
+        dietary_restrictions, diet_choices, diet_details, q1, q2, q3, q4, q5, q6,
         code_of_conduct, first_name, middle_name, last_name, preferred_name):
     """Handles application updates by updating the applications table in 
     the database with application form info, updating status table if 
@@ -264,7 +270,7 @@ def handle_update_applications(
         INSERT INTO applications (user_id, application_year, phone, school, 
         major, degree_type, graduation_year, github, linkedin, resume, latino,
         gender, shirt_size, transportation, in_state, bus_from, airport, 
-        diet_rest, diet_rest_detail, q1, q2, q3, q4, code_of_conduct)
+        diet_rest, diet_rest_detail, q1, q2, q3, q4, q5, q6, code_of_conduct)
         VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 
         %s, %s, %s, %s, %s, %s, %s, %s, %s )
         ON DUPLICATE KEY UPDATE
@@ -289,6 +295,8 @@ def handle_update_applications(
         q2 = VALUES(q2),
         q3 = VALUES(q3),
         q4 = VALUES(q4),
+        q5 = VALUES(q5),
+        q6 = VALUES(q6),
         code_of_conduct = VALUES(code_of_conduct)
         """
 
@@ -335,7 +343,7 @@ def handle_update_applications(
                 user_id, app_year.year + "0000", phone_number, school, major,
                 degree_type, graduation_year, github, linkedin, resume_name,
                 latino_bool, gender, shirt_size, transportation, in_state,
-                bus_from, airport, diet_rest, diet_details, q1, q2, q3, q4,
+                bus_from, airport, diet_rest, diet_details, q1, q2, q3, q4, q5, q6,
                 code_of_conduct
             ])
         # Update members table with name info from application.
@@ -388,7 +396,7 @@ def handle_update_applications(
     if action == 'Submit':
         fields = [
             first_name, last_name, phone_number, school, degree_type,
-            graduation_year, shirt_size, q1, q2, q3, q4
+            graduation_year, shirt_size, q1, q2, q3, q4, q5, q6,
         ]
         # removed need_transportation, dietary_restrictions, code_of_conduct
         for field in fields:

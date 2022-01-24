@@ -110,13 +110,15 @@ def update_applications():
     q2 = flask.request.form.get("Q2", None)
     q3 = flask.request.form.get("Q3", None)
     q4 = flask.request.form.get("Q4", None)
+    q5 = flask.request.form.get("Q5", None)
+    q6 = flask.request.form.get("Q6", None)
     code_of_conduct = (flask.request.form.get("codeOfConduct1", None) == "True") \
             and (flask.request.form.get("codeOfConduct2", None) == "True")
     success, msg = helpers.handle_update_applications(
         action, email, phone_number, school, major, degree_type,
         graduation_year, github, linkedin, resume_file, latino, race, gender,
         shirt_size, need_transportation, bus_from, airport,
-        dietary_restrictions, diet_choices, diet_details, q1, q2, q3, q4,
+        dietary_restrictions, diet_choices, diet_details, q1, q2, q3, q4, q5, q6,
         code_of_conduct, first_name, middle_name, last_name, preferred_name)
     # Display message from application update
     flask.flash(msg)
