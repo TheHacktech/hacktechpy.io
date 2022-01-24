@@ -272,7 +272,7 @@ def handle_update_applications(
         gender, shirt_size, transportation, in_state, bus_from, airport, 
         diet_rest, diet_rest_detail, q1, q2, q3, q4, q5, q6, code_of_conduct)
         VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 
-        %s, %s, %s, %s, %s, %s, %s, %s, %s )
+        %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
         ON DUPLICATE KEY UPDATE
         phone = VALUES(phone),
         school = VALUES(school),

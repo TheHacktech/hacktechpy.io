@@ -36,7 +36,6 @@ def init(environment_name):
   Returns:
     None
   """
-    print("IS THIS TRUE", hasattr(config, "PROD"), hasattr(config, "DEV"), hasattr(config, "TEST"), hasattr(config, "PERMISSIONS"))
     if environment_name == "prod" and hasattr(config, "PROD"):
         environment = config.PROD
     elif environment_name == "dev" and hasattr(config, "DEV"):

@@ -39,7 +39,7 @@
 {% block page %}
 <div class = "jumbotron">
     <div id="application_form" class="col-md-8 col-md-offset-2">
-    <h2 class="text-center">Hacktech 2021 Application</h2>
+    <h2 class="text-center">Hacktech 2022 Application</h2>
     <form action="{{url_for('applications.update_applications')}}" method="post"} enctype="multipart/form-data">
       <!-- Opening applications
         <p><small> The application period has ended! Check your email and our <a href="https://www.facebook.com/thehacktech/">facebook page</a> for status updates!</p>
@@ -47,7 +47,7 @@
       {%if submitted%}
         <p><small> Thanks for applying! Please check the status page for any updates, and contact team@hacktech.app if you have any questions!  </small></p>  
       {%else%}
-        <p><small> We're so pumped to see you at Hacktech 2021, so don't forget to apply! Please note that all fields with asterisks (*) are required. </small></p>
+        <p><small> We're so pumped to see you at Hacktech 2022, so don't forget to apply! Please note that all fields with asterisks (*) are required. </small></p>
       {%endif%}
       <hr>
       <div class="row">
@@ -148,7 +148,7 @@
         </div>
       </div>
 
-      <!-- Hacktech 2021 is virtual this year, so we do not need transportation or dietary information
+      <!-- Hacktech 2022 is virtual this year, so we do not need transportation or dietary information
       <hr>
       <div class="form-inline">
 	      <div class="form-group {{validations.transportation}}">
