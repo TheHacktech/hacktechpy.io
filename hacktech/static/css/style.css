@@ -243,6 +243,7 @@ input[type="radio"] {
 .alert {
   position: fixed;
   top: 60px;
+  width: 100%;
   z-index: 9001;
 }
 /* END FORM ELEMENTS */
