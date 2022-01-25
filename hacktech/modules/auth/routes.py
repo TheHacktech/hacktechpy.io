@@ -26,7 +26,6 @@ def login_submit():
 
             # Update last login time
             auth_utils.update_last_login(username)
-            print("DEBUGGING: ", flask.session, judging_helpers.get_status(user_id))
             flask.session['status'] = judging_helpers.get_status(user_id)[
                 'status']
             # Return to previous page if in session

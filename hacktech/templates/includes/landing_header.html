@@ -1,0 +1,42 @@
+<div id="header">
+  <!-- Fixed navbar -->
+  <nav class="navbar-landing navbar-inverse navbar-fixed-top">
+      <div class="container">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+             <a class="navbar-brand" href=" {{ url_for('home') }} "><img src="{{  url_for('static', filename='images/logo_2022.svg')  }}" height="40"/></a>
+    </div>
+          <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                  <li><a class="btn no-border sliding navbar-btn" href=" {{ url_for('home') }} ">Home</a></li>
+            {% if 'username' not in session %}
+                  <li><a class="btn no-border sliding navbar-btn" href="/#faq">FAQ</a></li>
+                  <li><a class="btn no-border sliding navbar-btn" href="/#sponsors">Sponsors</a></li>
+                   <li><a class="btn no-border sliding navbar-btn" href="/login">Login</a></li>
+                  {% else %}
+
+      {% if 'admin' in session%}
+    <li><a class = "sliding" href=" {{ url_for('judging.judge') }} ">Judge Applications</a></li>
+                      <li><a class = "sliding" href=" {{ url_for('judging.judge_waivers') }} ">Waivers</a></li>
+    <li><a class = "sliding" href=" {{ url_for('judging.show_stats') }} ">Current Stats</a></li>
+
+      {% else %}
+      <li><a class = "sliding" href=" {{ url_for('applications.applications') }} ">Application</a></li>
+                  <li><a class = "sliding" href=" {{ url_for('applications.status') }} ">Status</a></li>
+      {% if 'status' in session and session['status'] == "RSVPed" %}
+      <!-- <li><a class = "sliding" href=" {{ url_for('waivers.waivers') }} ">Waivers</a></li> -->
+      {%endif%}
+      {% endif %}
+                  <li><a class="btn no-border sliding navbar-btn" href="/logout">Logout</a></li>
+                  {% endif %}
+                  </li>
+              </ul>
+          </div><!--/.nav-collapse -->
+      </div>
+  </nav>
+</div>

@@ -4,8 +4,24 @@
 {% block styles %}
     {{ super() }}
    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
-    <meta property="og:image"              content="https://hacktech.app/static/images/preview.jpg" />
-    <meta name="description" content="Caltech's annual Hackathon!">
+   <!-- Primary Meta Tags -->
+   <title>Hacktech 2022</title>
+   <meta name="title" content="Hacktech 2022">
+   <meta name="description" content="Hacktech 2022 is a virtual collegiate hackathon from March 4-6, 2022 hosted by undergraduate students at Caltech.">
+   
+   <!-- Open Graph / Facebook -->
+   <meta property="og:type" content="website">
+   <meta property="og:url" content="https://hacktech.app/">
+   <meta property="og:title" content="Hacktech 2022">
+   <meta property="og:description" content="Hacktech 2022 is a virtual collegiate hackathon from March 4-6, 2022 hosted by undergraduate students at Caltech.">
+   <meta property="og:image" content="https://hacktech.app/static/images/ogbanner.png">
+   
+   <!-- Twitter -->
+   <meta property="twitter:card" content="summary_large_image">
+   <meta property="twitter:url" content="https://twitter.com/thehacktech">
+   <meta property="twitter:title" content="Hacktech 2022">
+   <meta property="twitter:description" content="Hacktech 2022 is a virtual collegiate hackathon from March 4-6, 2022 hosted by undergraduate students at Caltech.">
+   <meta property="twitter:image" content="https://hacktech.app/static/images/ogbanner.png">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
 {% endblock %}
 {% block title %}Hacktech 2022{% endblock %}

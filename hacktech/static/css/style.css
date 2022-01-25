@@ -255,6 +255,7 @@ input[type="radio"] {
 }
 
 #statusPage {
+  padding-top: 15vh;
   text-align: center;
 }
 
@@ -383,8 +384,16 @@ h2 {
   color: black;
 }
 
-.navbar {
+.navbar-landing {
   background: rgb(255, 255, 255, 0.4) !important;
+}
+
+.navbar {
+  background: linear-gradient(
+    to top right,
+    rgba(78, 164, 157, 1),
+    rgba(170, 194, 160, 1)
+  );
 }
 
 .navbar-inverse {
@@ -512,6 +521,7 @@ div.radio-inline {
   background: white;
   color: #000000;
   padding-bottom: 50px;
+  padding-top: 5vh;
 }
 #logInButton {
   color: #d3a034;

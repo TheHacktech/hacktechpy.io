@@ -209,8 +209,10 @@ body {
 
 #landing #time {
   font-size: 2vw;
-  color: black;
+  color: white;
   font-weight: 900;
+  letter-spacing: 1px;
+  text-align: left;
 }
 
 .section-header {
