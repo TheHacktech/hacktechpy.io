@@ -16,7 +16,7 @@
 
 <p class="text-center"> Please go to <a href = {{url_for('applications.rsvp')}} >this page to rsvp</a></p>
 {% elif status.status == "In-Progress" %}
-<p class="text-center"> Looks like you still need to finish filling in your application!</p>
+<p class="text-center"> Looks like you still need to finish <a href = {{url_for('applications.applications')}}>filling in your application!</a></p>
 {% elif status.status == "Declined" %}
 <p class="text-center"> We are sad that we will be missing you! If you change your mind, you can always  <a href = {{url_for('applications.rsvp')}} > go here </a> to update your response </p>
 
