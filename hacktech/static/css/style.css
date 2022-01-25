@@ -397,6 +397,11 @@ h2 {
   );
 }
 
+.navbar-img {
+  position: relative;
+  top: -4px;
+}
+
 .navbar-inverse {
   border-color: transparent !important;
 }
@@ -409,7 +414,7 @@ h2 {
   float: right;
 }
 
-#navbar li a {
+# #navbar li a {
   margin: 8px;
   padding: 12px 6px;
   margin-bottom: 5% !important;
