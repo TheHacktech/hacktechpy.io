@@ -241,9 +241,9 @@ input[type="radio"] {
 }
 
 .alert {
-  position: relative;
-  top: -49px;
-  z-index: 1000;
+  position: fixed;
+  top: 60px;
+  z-index: 9001;
 }
 /* END FORM ELEMENTS */
 .blue_border {
