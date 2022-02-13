@@ -61,10 +61,9 @@ RejectedEmail = \
 <br>
 Thank you for your interest in Hacktech 2022! We loved reading all the amazing applications we received this year and truly wished that we could’ve accepted every single one of you. Unfortunately, we are unable to offer you a spot at this time. <br>
 <br>
-Don’t be discouraged though. :) There are lots of opportunities for learning and hacking out there. We encourage you to stay in touch with us, and hopefully we will be able to see you next year at Hacktech 2023. <br>
+Don’t be discouraged though :'). There are lots of opportunities for learning and hacking out there. We encourage you to stay in touch with us, and hopefully we will be able to see you next year at Hacktech 2023. <br>
 <br>
 In the meantime, hack on! We wish you all the best for your future endeavors. <br>
-<br>
 <br>
 Love,<br>
 The Hacktech Team<br>
