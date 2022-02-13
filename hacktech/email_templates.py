@@ -61,7 +61,7 @@ RejectedEmail = \
 <br>
 Thank you for your interest in Hacktech 2022! We loved reading all the amazing applications we received this year and truly wished that we could’ve accepted every single one of you. Unfortunately, we are unable to offer you a spot at this time. <br>
 <br>
-Don’t be discouraged though. :) There are lots of opportunities for learning and hacking out there. We encourage you to stay in touch with us, and hopefully we will be able to see you next year at Hacktech 2022. <br>
+Don’t be discouraged though. :) There are lots of opportunities for learning and hacking out there. We encourage you to stay in touch with us, and hopefully we will be able to see you next year at Hacktech 2023. <br>
 <br>
 In the meantime, hack on! We wish you all the best for your future endeavors. <br>
 <br>
@@ -76,38 +76,16 @@ AcceptedEmail = \
 <br>
 Congratulations!<br>
 <br>
-You have been accepted to Hacktech 2022. We had lots of fun reading your applications and really enjoyed all the interesting responses! We hope to see you (virtually!) at Caltech with us from April 16 to April 18.<br>
+You have been accepted to Hacktech 2022. We had lots of fun reading your applications and really enjoyed all the interesting responses! We hope to see you (virtually!) at Caltech with us from March 4th-March 6th.<br>
 <br>
-Please RSVP <a href="https://hacktech.app/applications/rsvp">here</a> by 3 PM PDT (UTC-7) on Thursday, April 15th to reserve your spot. You will lose your spot if you don’t RSVP by then. <br>
+Please RSVP <a href="https://hacktech.app/applications/rsvp">here</a> by 3 PM PDT (UTC-7) on Thursday, March 3rd to reserve your spot. You will lose your spot if you don’t RSVP by then. <br>
 <br>
-Below is an invitation from the Google Cloud team for a virtual hands-on workshop! More important announcements will also be sent out soon. Stay tuned! <br>
+More important announcements will be sent out soon. Stay tuned! <br>
 <br>
 In the meantime, if you have any questions, please don’t hesitate to send them to team@hacktech.app.<br>
 <br>
 Love,<br>
 The Hacktech Team <br>
-<br>
-<br>
-<br>
---- Message from the Google Cloud education team ---
-<br>
-Hello students!<br>
-<br>
-The Google Cloud team invites you and your friends to a virtual hands-on workshop on <b>Thursday, April 15th @ 19:00 EST</b>.<br>
-<br>
-<b>Join</b> Google Cloud's Engineer Paul Ruiz for hands-on practice with <a href="https://goo.gle/CloudHackthonSeries"><b>Intro to ML: Language Processing</b></a> and other key application services like extract entities from text, perform sentiment and syntatic analysis, and use Speech to Text API. <br>
-<br>
-<i>As a special event opportunity - receive up to $100 in Google Cloud credits live at the event and enter the raffle for Google Cloud swag.</i><br>
-<br>
-Prepare for this Thursday's event:
-<ul>
-<li><b>RSVP</b> using <a href="http://goo.gle/CloudHackathonRSVP">this</a> form to receive a direct event invite via Google Calendar.</li>
-<li><b>Share</b> the event page <a href="https://goo.gle/CloudHackthonSeries">here</a> with your friends.</li>
-<li><b>Join</b> us <i>live</i> at the event using <a href="http://goo.gle/CloudHackathonLive">this</a> Google Meet link.</li>
-<li><b>Attend</b> and <b>enter</b> the raffle to win Google Cloud swag.</li>
-</ul>
-Cheers and we look forward to seeing you Thursday.<br>
-The Google Cloud education team
 """
 
 ReimbursementEmail = \
@@ -115,7 +93,7 @@ ReimbursementEmail = \
 <br>
 Congratulations again on being accepted to Hacktech 2022! <br>
 <br>
-We have decided to offer you a reimbursement of ${1} to help cover some of your travel costs. In order to receive your travel reimbursement, you must be present at Hacktech and submit a project, and we will be distributing reimbursement on March 8 after the closing ceremony. <br>
+We have decided to offer you a reimbursement of ${1} to help cover some of your travel costs. In order to receive your travel reimbursement, you must be present at Hacktech and submit a project, and we will be distributing reimbursement on March 6 after the closing ceremony. <br>
 <br>
 If you do not RSVP within 1 week, we will consider your reimbursement forfeited and award it to the next person on the waitlist. <br>
 <br>
