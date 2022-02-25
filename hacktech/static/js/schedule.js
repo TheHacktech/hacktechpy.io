@@ -4,8 +4,177 @@
 //duration is duration in hours. ie 1 hour would be “1:00”
 
 var schedule = [
-
   // workshops
+  {
+    title: "Blocktech Workshop: Blockchain and Solidity Fundamentals",
+    caption: "Learn how to develop on the Ethereum blockchain using Solidity!",
+    time: { day: "fri", start: "10:00 PM", duration: "1:00" },
+    location: "twitch",
+    event_type: "Workshops",
+  },
+  {
+    title: "What they don't tell you about tech interviews",
+    caption:
+      "Are you terrified of the tech interview process? Do you wish someone could just give you an end-to-end overview of what the whole process is like? Or are you someone who’s very frustrated with how you just don’t seem to understand what the interviewer wants? You get interviews and you seem to do everything right on paper, but something’s still amiss? If you find yourself saying yes to any of these questions, then this workshop is for you. In this workshop, we’ll walkthrough the tech interview process, including the art of networking during COVID, the standard tech interview process, tips and tricks for behavioural and technical rounds which go beyond just getting the question right and that’ll really help you stand out as a candidate, post-interview etiquette, compensation packages and negotiation etc. The best part? I recently went through this process myself so you’ll also get to hear the silly mistakes that I made along the way and what I learnt as I went along!",
+    time: { day: "sat", start: "10:00 AM", duration: "1:00" },
+    location: "twitch",
+    event_type: "Workshops",
+  },
+  {
+    title: "AeroVect Tech Talk",
+    caption: "TBD!",
+    time: { day: "sat", start: "11:00 AM", duration: "1:00" },
+    location: "twitch",
+    event_type: "Workshops",
+  },
+  {
+    title: "Boarding the Intern Ship",
+    caption:
+      "All aboard the intern ship!!! In this talk, Robert will discuss how to find an internship, what to look for in a job, and what adulting is like. Come with existential crises about what to do with your life and career and we'll sort through the mess.",
+    time: { day: "sat", start: "1:00 PM", duration: "1:00" },
+    location: "twitch",
+    event_type: "Workshops",
+  },
+  {
+    title: "JPL Speaker Talk",
+    caption: "TBD!",
+    time: { day: "sat", start: "2:00 PM", duration: "1:00" },
+    location: "twitch",
+    event_type: "Workshops",
+  },
+  {
+    title: "1517 Fund Office Hours",
+    caption: "TBD!",
+    time: { day: "sat", start: "5:00 PM", duration: "2:00" },
+    location: "discord + zoom",
+    event_type: "Workshops",
+  },
+
+  // events
+  {
+    title: "Opening Ceremony + Keynote",
+    caption: "TBD!",
+    time: { day: "fri", start: "7:30 PM", duration: "1:00" },
+    location: "twitch",
+    event_type: "events",
+  },
+  {
+    title: "Team Matching",
+    caption: "TBD!",
+    time: { day: "fri", start: "8:30 PM", duration: "1:00" },
+    location: "zoom + Glimpse",
+    event_type: "events",
+  },
+  {
+    title: "Kahoot Tournament",
+    caption: "TBD!",
+    time: { day: "sat", start: "12:00 AM", duration: "1:00" },
+    location: "twitch",
+    event_type: "events",
+  },
+  {
+    title: "Chess Tournament",
+    caption: "TBD!",
+    time: { day: "sat", start: "3:30 PM", duration: "1:30" },
+    location: "discord",
+    event_type: "events",
+  },
+  {
+    title: "Poker Tournament",
+    caption: "TBD!",
+    time: { day: "sat", start: "8:00 PM", duration: "1:00" },
+    location: "discord",
+    event_type: "events",
+  },
+  {
+    title: "skribbl.io Tournament",
+    caption: "TBD!",
+    time: { day: "sun", start: "12:00 AM", duration: "1:00" },
+    location: "discord",
+    event_type: "events",
+  },
+  {
+    title: "Judging",
+    caption: "Judges will hold calls with all hackers to choose finalists",
+    time: { day: "sun", start: "12:00 PM", duration: "1:30" },
+    location: "discord",
+    event_type: "events",
+  },
+  {
+    title: "Finalist Judging",
+    caption: "Judges will hold calls with finalists to choose winners",
+    time: { day: "sun", start: "2:00 PM", duration: "0:30" },
+    location: "discord",
+    event_type: "events",
+  },
+  {
+    title: "Closing Ceremony",
+    caption: "Winners are announced! Tune in to see winning team's demos!",
+    time: { day: "sun", start: "3:00 PM", duration: "1:30" },
+    location: "twitch",
+    event_type: "events",
+  },
+  /*
+  {
+    title: "Speedfriending!",
+    caption: "",
+    time: { day: "fri", start: "10:00 PM", duration: "0:30" },
+    location: "zoom",
+    event_type: "events",
+  },
+  {
+    title: "Chess Tournament",
+    caption: "",
+    time: { day: "sat", start: "11:30 AM", duration: "1:30" },
+    location: "zoom",
+    event_type: "events",
+  },
+  {
+    title: "Drop-in Game Night!",
+    caption: "",
+    time: { day: "sat", start: "5:00 PM", duration: "1:00" },
+    location: "zoom",
+    event_type: "events",
+  },
+  {
+    title: "Poker Tournament",
+    caption: "",
+    time: { day: "sat", start: "8:00 PM", duration: "1:00" },
+    location: "zoom",
+    event_type: "events",
+  },
+  {
+    title: "International's Mixer",
+    caption: "Come talk with fellow international students!",
+    time: { day: "sat", start: "9:00 PM", duration: "0:30" },
+    location: "zoom",
+    event_type: "events",
+  },
+  {
+    title: "Judging",
+    caption: "Judges will hold calls with all hackers to choose finalists",
+    time: { day: "sun", start: "12:00PM", duration: "1:30" },
+    location: "discord",
+    event_type: "events",
+  },
+  {
+    title: "Finalist Judging",
+    caption: "Judges will hold calls with finalists to choose winners",
+    time: { day: "sun", start: "2:00PM", duration: "0:30" },
+    location: "discord",
+    event_type: "events",
+  },
+  {
+    title: "Closing Ceremony",
+    caption: "Winners are announced! Tune in to see winning team's demos!",
+    time: { day: "sun", start: "3:00PM", duration: "1:30" },
+    location: "zoom",
+    event_type: "events",
+  },
+  */
+];
+/*
+  // old workshops 2021
   {
     title: "echoAR: How to Build a Cloud-Connected AR/VR App in 15 Minutes or Less",
     caption: "The workshop will show how to quickly create augmented and virtual reality (AR/VR) apps with no technical skills or coding required and scale existing apps by connecting them to the cloud. Workshop participants will learn how to create real-time cloud-connected AR/VR apps using the echoAR platform. Participants will also discover how AR/VR are changing the world through the demonstration of different use cases of 3D applications and live demos of AR/VR experiences. Participants are encouraged to bring a laptop and a smartphone. Platforms for experimentation include: Google ARCore, WebXR, Vuforia, Unity-based apps, and more.",
@@ -55,7 +224,6 @@ var schedule = [
     location: "zoom",
     event_type: "Workshops"
   },
-  /*
   {
     title: "Techreach",
     caption: "Learn about diversity and inclusion in tech and how techreach is involved.",
@@ -64,80 +232,7 @@ var schedule = [
     event_type: "Workshops"
   },
   */
-  
-  // events
-  {
-    title: "Opening Ceremony + Keynote",
-    caption: "",
-    time: {day: "fri", start: "7:30 PM", duration: "1:00"},
-    location: "zoom",
-    event_type: "events"
-  },
-  {
-    title: "Team Matching",
-    caption: "",
-    time: {day: "fri", start: "8:30 PM", duration: "0:30"},
-    location: "zoom",
-    event_type: "events"
-  },
-  {
-    title: "Speedfriending!",
-    caption: "",
-    time: {day: "fri", start: "10:00 PM", duration: "0:30"},
-    location: "zoom",
-    event_type: "events"
-  },
-  {
-    title: "Chess Tournament",
-    caption: "",
-    time: {day: "sat", start: "11:30 AM", duration: "1:30"},
-    location: "zoom",
-    event_type: "events"
-  },
-  {
-    title: "Drop-in Game Night!",
-    caption: "",
-    time: {day: "sat", start: "5:00 PM", duration: "1:00"},
-    location: "zoom",
-    event_type: "events"
-  },
-  {
-    title: "Poker Tournament",
-    caption: "",
-    time: {day: "sat", start: "8:00 PM", duration: "1:00"},
-    location: "zoom",
-    event_type: "events"
-  },
-  {
-    title: "International's Mixer",
-    caption: "Come talk with fellow international students!",
-    time: {day: "sat", start: "9:00 PM", duration: "0:30"},
-    location: "zoom",
-    event_type: "events"
-  },
-  {
-    title: "Judging",
-    caption: "Judges will hold calls with all hackers to choose finalists",
-    time: {day: "sun", start: "12:00PM", duration: "1:30"},
-    location: "discord",
-    event_type: "events",
-  },
-  {
-    title: "Finalist Judging",
-    caption: "Judges will hold calls with finalists to choose winners",
-    time: {day: "sun", start: "2:00PM", duration: "0:30"},
-    location: "discord",
-    event_type: "events",
-  },
-  {
-    title: "Closing Ceremony",
-    caption: "Winners are announced! Tune in to see winning team's demos!",
-    time: {day: "sun", start: "3:00PM", duration: "1:30"},
-    location: "zoom",
-    event_type: "events",
-  },
-]
-  /*
+/*
   {
     title: "[eBay] Innovation & Hacktech-Help Workshop",
     caption: "Come learn about innovation at eBay and how to get started working with eBay’s APIs. This session will kick-off with a short innovation docuseries which follows teams as they go through the Innovation Program at eBay. Afterwards, we’ll dive into a working session where you will learn about eBay’s public APIs and how to get started. We look forward to seeing you there!",
@@ -216,7 +311,7 @@ var schedule = [
     event_type: "Workshops"
   },
   */
-  /*
+/*
   {
     title: "Using Cognitive Services to Uncover Your GoT House Pt. 1",
     caption: "Microsoft",
@@ -281,9 +376,9 @@ var schedule = [
     event_type: "Workshops"
   },
   */
-  
-  // Events
-  /*
+
+// Events
+/*
   {
     title: "Registration",
     caption: "Welcome to Hacktech! Come check-in and grab some swag!",
@@ -292,7 +387,7 @@ var schedule = [
     event_type: "events"
   },
   */
-  /*
+/*
   {
     title: "Snack Mix & Mingle",
     caption: "Come grab some snacks and mingle with other hackers!",
@@ -301,7 +396,7 @@ var schedule = [
     event_type: "events"
   },
   */
-  /*
+/*
   {
     title: "Ice Breakers!",
     caption: "Get to know your fellow Hacktech hackers and sponsors through fun icebreakers!! Introductions + Two Truths and A Lie on Slack.",
@@ -345,7 +440,7 @@ var schedule = [
     event_type: "events"
   },
   */
-  /*
+/*
   {
     title: "Team Building",
     caption: "Find a team to work with!",
@@ -354,7 +449,7 @@ var schedule = [
     event_type: "events"
   },
   */
-  /*
+/*
   {
     title: "Puppy Party!",
     caption: "Take a break and come play with these adorable bundles of joy!",
@@ -386,71 +481,71 @@ var schedule = [
     event_type: "events"
   },
   */
-  
-  // {
-  //   title: "5-Hour Energy",
-  //   caption: "",
-  //   time: {day:"sat", start:"7:00PM", duration:"3:00"},
-  //   location: "Winnett",
-  //   event_type: "events",
-  // },
-  
-  // {
-  //   title: "Cup Stacking with Swift",
-  //   caption: "",
-  //   time: {day:"sat", start:"10:00PM", duration:"1:00"},
-  //   location: "Winnett",
-  //   event_type: "events",
-  // },
-  //
-  // {
-  //   title: "Watermelon Eating Contest",
-  //   caption: "",
-  //   time: {day: "sat", start: "12:30PM", duration: "1:00"},
-  //   location: "Avery Courtyard",
-  //   event_type: "events"
-  // },
-  //
-  // {
-  //   title: "Life-size Jenga",
-  //   caption: "",
-  //   time: {day: "sat", start: "2:00PM", duration: "1:00"},
-  //   location: "Winnett",
-  //   event_type: "events"
-  // },
-  //
-  // {
-  //   title: "Minesweeper Tournament",
-  //   caption: "",
-  //   time: {day: "sat", start: "5:30PM", duration: "1:30"},
-  //   location: "Winnett",
-  //   event_type: "events"
-  // },
-  //
-  // {
-  //   title: "Anime Watching Party",
-  //   caption: "",
-  //   time: {day: "sat", start: "8:00PM", duration: "2:00"},
-  //   location: "Winnett",
-  //   event_type: "events"
-  // },
-  //
-  // {
-  //   title: "Powerade Contest?",
-  //   caption: "",
-  //   time: {day: "sat", start: "11:15PM", duration: "0:45"},
-  //   location: "Chandler",
-  //   event_type: "events"
-  // },
-  //
-  // {
-  //   title: "Bubble Wraaap *pop*",
-  //   caption: "",
-  //   time: {day: "sun", start: "1:00AM", duration: "1:00"},
-  //   location: "Winnett",
-  //   event_type: "events"
-  // },
-  /*
+
+// {
+//   title: "5-Hour Energy",
+//   caption: "",
+//   time: {day:"sat", start:"7:00PM", duration:"3:00"},
+//   location: "Winnett",
+//   event_type: "events",
+// },
+
+// {
+//   title: "Cup Stacking with Swift",
+//   caption: "",
+//   time: {day:"sat", start:"10:00PM", duration:"1:00"},
+//   location: "Winnett",
+//   event_type: "events",
+// },
+//
+// {
+//   title: "Watermelon Eating Contest",
+//   caption: "",
+//   time: {day: "sat", start: "12:30PM", duration: "1:00"},
+//   location: "Avery Courtyard",
+//   event_type: "events"
+// },
+//
+// {
+//   title: "Life-size Jenga",
+//   caption: "",
+//   time: {day: "sat", start: "2:00PM", duration: "1:00"},
+//   location: "Winnett",
+//   event_type: "events"
+// },
+//
+// {
+//   title: "Minesweeper Tournament",
+//   caption: "",
+//   time: {day: "sat", start: "5:30PM", duration: "1:30"},
+//   location: "Winnett",
+//   event_type: "events"
+// },
+//
+// {
+//   title: "Anime Watching Party",
+//   caption: "",
+//   time: {day: "sat", start: "8:00PM", duration: "2:00"},
+//   location: "Winnett",
+//   event_type: "events"
+// },
+//
+// {
+//   title: "Powerade Contest?",
+//   caption: "",
+//   time: {day: "sat", start: "11:15PM", duration: "0:45"},
+//   location: "Chandler",
+//   event_type: "events"
+// },
+//
+// {
+//   title: "Bubble Wraaap *pop*",
+//   caption: "",
+//   time: {day: "sun", start: "1:00AM", duration: "1:00"},
+//   location: "Winnett",
+//   event_type: "events"
+// },
+/*
   {
     title: "Project Expo",
     caption: "Judges will view the video demos of your fantastic hacks through your Devpost submission!",
@@ -474,7 +569,7 @@ var schedule = [
     event_type: "events",
   },
   */
-  /*
+/*
   {
     title: "Buses Depart",
     caption: "Thanks for coming!",
@@ -483,4 +578,3 @@ var schedule = [
     event_type: "events",
   },
   */
-  
