@@ -93,6 +93,7 @@ i {
 #sidebar .links li {
   display: block;
   margin: 10px 0px;
+  font-size: 18px;
 }
 
 #sidebar .links a {
@@ -125,7 +126,7 @@ i {
 }
 
 #sidebar .links li.discord a:hover:after {
-  width: 80px;
+  width: 120px;
 }
 
 #sidebar .links li.contact a:hover:after {
