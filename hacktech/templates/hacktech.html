@@ -55,6 +55,15 @@
               Receive Updates
             </button>
             -->
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="schedule"
+              onclick="location.href='https://hacktech.app/schedule';"
+              style="cursor: pointer"
+            >
+              Live Schedule
+            </button>
             {% if 'username' in session %}
             <button
               type="button"
@@ -65,16 +74,6 @@
               My Status
             </button>
             {% else %}
-            <button
-              type="button"
-              class="btn btn-primary"
-              id="schedule"
-              onclick="location.href='https://hacktech.app/schedule';"
-              style="cursor: pointer"
-            >
-              Live Schedule
-            </button>
-
             <button
               type="button"
               class="btn btn-primary"
