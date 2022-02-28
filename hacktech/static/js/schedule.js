@@ -98,7 +98,7 @@ var schedule = [
   },
   {
     title: "Judging",
-    caption: "Judges will hold calls with all hackers to choose finalists",
+    caption: "Judges will watch video submissions and select finalists",
     time: { day: "sun", start: "12:00 PM", duration: "1:30" },
     location: "discord",
     event_type: "events",
