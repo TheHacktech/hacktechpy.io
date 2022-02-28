@@ -21,13 +21,6 @@ var schedule = [
     event_type: "Workshops",
   },
   {
-    title: "AeroVect Tech Talk",
-    caption: "TBD!",
-    time: { day: "sat", start: "11:00 AM", duration: "1:00" },
-    location: "twitch",
-    event_type: "Workshops",
-  },
-  {
     title: "Boarding the Intern Ship",
     caption:
       "All aboard the intern ship!!! In this talk, Robert will discuss how to find an internship, what to look for in a job, and what adulting is like. Come with existential crises about what to do with your life and career and we'll sort through the mess.",
@@ -36,9 +29,19 @@ var schedule = [
     event_type: "Workshops",
   },
   {
-    title: "JPL Speaker Talk",
-    caption: "TBD!",
+    title:
+      "Fireside Q&A with Fresco VC founder Stephen Forte, moderated by Jonathan Little (Caltech EE alum)",
+    caption:
+      "Have you ever wanted to create a startup? In this fireside chat, Jonathan Little will be talking with Stephen Forte (https://fresco.vc/bio/stephen-forte/) about his experience starting companies, what he looks for in seed stage investments, and mistakes to avoid. Stephen is currently the managing partner of Fresco VC, an early stage venture fund investing at the intersection of people and technology. Stephen previously founded several startups and had 7 exits along the way. Come with questions about entrepreneurship, venture capital, and anything in between!",
     time: { day: "sat", start: "2:00 PM", duration: "1:00" },
+    location: "twitch",
+    event_type: "Workshops",
+  },
+  {
+    title: "AeroVect Tech Talk",
+    caption:
+      "Aerovect is a company that develops autonomous vehicles to help airport logistics. Raymond will be talking about how they grew Aerovect from starting in a garage to serving some of the largest airlines in the world.",
+    time: { day: "sat", start: "3:00 PM", duration: "1:00" },
     location: "twitch",
     event_type: "Workshops",
   },
@@ -75,7 +78,7 @@ var schedule = [
   {
     title: "Chess Tournament",
     caption: "TBD!",
-    time: { day: "sat", start: "3:30 PM", duration: "1:30" },
+    time: { day: "sat", start: "4:00 PM", duration: "1:00" },
     location: "discord",
     event_type: "events",
   },
@@ -103,7 +106,7 @@ var schedule = [
   {
     title: "Finalist Judging",
     caption: "Judges will hold calls with finalists to choose winners",
-    time: { day: "sun", start: "2:00 PM", duration: "0:30" },
+    time: { day: "sun", start: "1:30 PM", duration: "1:00" },
     location: "discord",
     event_type: "events",
   },
