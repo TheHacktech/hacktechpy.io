@@ -46,7 +46,7 @@ var schedule = [
     event_type: "Workshops",
   },
   {
-    title: "1517 Fund Office Hours",
+    title: "General Sponsors Office Hours",
     caption: "TBD!",
     time: { day: "sat", start: "5:00 PM", duration: "2:00" },
     location: "discord + zoom",
