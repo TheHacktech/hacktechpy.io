@@ -9,7 +9,7 @@ var schedule = [
     title: "Blocktech Workshop: Blockchain and Solidity Fundamentals",
     caption: "Learn how to develop on the Ethereum blockchain using Solidity!",
     time: { day: "fri", start: "10:00 PM", duration: "1:00" },
-    location: "twitch",
+    location: "<a href='https://twitch.tv/teamhacktech'>twitch</a>",
     event_type: "Workshops",
   },
   {
@@ -17,7 +17,7 @@ var schedule = [
     caption:
       "Are you terrified of the tech interview process? Do you wish someone could just give you an end-to-end overview of what the whole process is like? Or are you someone who’s very frustrated with how you just don’t seem to understand what the interviewer wants? You get interviews and you seem to do everything right on paper, but something’s still amiss? If you find yourself saying yes to any of these questions, then this workshop is for you. In this workshop, we’ll walkthrough the tech interview process, including the art of networking during COVID, the standard tech interview process, tips and tricks for behavioural and technical rounds which go beyond just getting the question right and that’ll really help you stand out as a candidate, post-interview etiquette, compensation packages and negotiation etc. The best part? I recently went through this process myself so you’ll also get to hear the silly mistakes that I made along the way and what I learnt as I went along!",
     time: { day: "sat", start: "10:00 AM", duration: "1:00" },
-    location: "twitch",
+    location: "<a href='https://twitch.tv/teamhacktech'>twitch</a>",
     event_type: "Workshops",
   },
   {
@@ -25,7 +25,7 @@ var schedule = [
     caption:
       "All aboard the intern ship!!! In this talk, Robert will discuss how to find an internship, what to look for in a job, and what adulting is like. Come with existential crises about what to do with your life and career and we'll sort through the mess.",
     time: { day: "sat", start: "1:00 PM", duration: "1:00" },
-    location: "twitch",
+    location: "<a href='https://twitch.tv/teamhacktech'>twitch</a>",
     event_type: "Workshops",
   },
   {
@@ -34,7 +34,7 @@ var schedule = [
     caption:
       "Have you ever wanted to create a startup? In this fireside chat, Jonathan Little will be talking with Stephen Forte (https://fresco.vc/bio/stephen-forte/) about his experience starting companies, what he looks for in seed stage investments, and mistakes to avoid. Stephen is currently the managing partner of Fresco VC, an early stage venture fund investing at the intersection of people and technology. Stephen previously founded several startups and had 7 exits along the way. Come with questions about entrepreneurship, venture capital, and anything in between!",
     time: { day: "sat", start: "2:00 PM", duration: "1:00" },
-    location: "twitch",
+    location: "<a href='https://twitch.tv/teamhacktech'>twitch</a>",
     event_type: "Workshops",
   },
   {
@@ -42,13 +42,13 @@ var schedule = [
     caption:
       "Aerovect is a company that develops autonomous vehicles to help airport logistics. Raymond will be talking about how they grew Aerovect from starting in a garage to serving some of the largest airlines in the world.",
     time: { day: "sat", start: "3:00 PM", duration: "1:00" },
-    location: "twitch",
+    location: "<a href='https://twitch.tv/teamhacktech'>twitch</a>",
     event_type: "Workshops",
   },
   {
     title: "General Sponsors Office Hours",
     caption:
-      "Join us on Discord and chat with our amazing sponsors this year!!",
+      "Join us on Discord and chat with our amazing sponsors (1517, echo3D, Mage AI) this year!!",
     time: { day: "sat", start: "5:00 PM", duration: "2:00" },
     location: "discord",
     event_type: "Workshops",
@@ -59,7 +59,7 @@ var schedule = [
     title: "Opening Ceremony + Keynote",
     caption: "Get hyped for Hacktech 2022!",
     time: { day: "fri", start: "7:30 PM", duration: "1:00" },
-    location: "twitch",
+    location: "<a href='https://twitch.tv/teamhacktech'>twitch</a>",
     event_type: "events",
   },
   {
@@ -124,7 +124,7 @@ var schedule = [
     title: "Closing Ceremony",
     caption: "Winners are announced! Tune in to see winning team's demos!",
     time: { day: "sun", start: "3:00 PM", duration: "1:30" },
-    location: "twitch",
+    location: "<a href='https://twitch.tv/teamhacktech'>twitch</a>",
     event_type: "events",
   },
   /*
