@@ -87,7 +87,7 @@ var schedule = [
       "Compete against other Hacktech participants in an online chess tournament (Blitz Time Control). The tournament access code will be sent out on the #announcements channel! There will be awesome prizes!!",
     time: { day: "sat", start: "4:00 PM", duration: "1:00" },
     location:
-      "<a href='https://bit.ly/hacktech2022room1'>https://bit.ly/hacktech2022room1</a>, <a href='https://lichess.org/tournament/qiNv6jtA'>https://lichess.org/tournament/qiNv6jtA</a>",
+      "<a href='https://bit.ly/hacktech2022room1'>https://bit.ly/hacktech2022room1</a>", // <a href='https://lichess.org/tournament/qiNv6jtA'>https://lichess.org/tournament/qiNv6jtA</a>",
     event_type: "events",
   },
   {
