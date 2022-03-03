@@ -74,11 +74,8 @@ var schedule = [
     caption:
       "Come join us for some fun rounds of trivia through Kahoot. The mystery themes will be announced in the zoom call. The winners of each round will be awarded handsomely ;)!",
     time: { day: "sat", start: "12:00 AM", duration: "1:00" },
-    location: (
-      <a href="https://bit.ly/hacktech2022room1">
-        https://bit.ly/hacktech2022room1
-      </a>
-    ),
+    location:
+      "<a href='https://bit.ly/hacktech2022room1'>https://bit.ly/hacktech2022room1</a>",
     event_type: "events",
   },
   {
@@ -87,7 +84,7 @@ var schedule = [
       "Compete against other Hacktech participants in an online chess tournament (Blitz Time Control). The tournament access code will be sent out on the #announcements channel! There will be awesome prizes!!",
     time: { day: "sat", start: "4:00 PM", duration: "1:00" },
     location:
-      "<a href='https://bit.ly/hacktech2022room1'>https://bit.ly/hacktech2022room1</a>", // <a href='https://lichess.org/tournament/qiNv6jtA'>https://lichess.org/tournament/qiNv6jtA</a>",
+      "<a href='https://bit.ly/hacktech2022room1'>https://bit.ly/hacktech2022room1</a>, <a href='https://lichess.org/tournament/qiNv6jtA'>https://lichess.org/tournament/qiNv6jtA</a>",
     event_type: "events",
   },
   {
@@ -95,11 +92,8 @@ var schedule = [
     caption:
       "Compete against other Hacktech participants in an online poker tournament on LiPoker! There will be awesome prizes!!",
     time: { day: "sat", start: "8:00 PM", duration: "1:00" },
-    location: (
-      <a href="https://bit.ly/hacktech2022room1">
-        https://bit.ly/hacktech2022room1
-      </a>
-    ),
+    location:
+      "<a href='https://bit.ly/hacktech2022room1'>https://bit.ly/hacktech2022room1</a>",
     event_type: "events",
   },
   {
@@ -107,11 +101,8 @@ var schedule = [
     caption:
       "Take a break from the grind and flex your artistic skills! Prizes will be awarded to the winners!!",
     time: { day: "sun", start: "12:00 AM", duration: "1:00" },
-    location: (
-      <a href="https://bit.ly/hacktech2022room1">
-        https://bit.ly/hacktech2022room1
-      </a>
-    ),
+    location:
+      "<a href='https://bit.ly/hacktech2022room1'>https://bit.ly/hacktech2022room1</a>",
     event_type: "events",
   },
   {
