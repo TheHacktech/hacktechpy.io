@@ -47,9 +47,10 @@ var schedule = [
   },
   {
     title: "General Sponsors Office Hours",
-    caption: "TBD!",
+    caption:
+      "Join us on Discord and chat with our amazing sponsors this year!!",
     time: { day: "sat", start: "5:00 PM", duration: "2:00" },
-    location: "discord + zoom",
+    location: "discord",
     event_type: "Workshops",
   },
 
