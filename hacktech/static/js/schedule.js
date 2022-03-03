@@ -9,7 +9,8 @@ var schedule = [
     title: "Blocktech Workshop: Blockchain and Solidity Fundamentals",
     caption: "Learn how to develop on the Ethereum blockchain using Solidity!",
     time: { day: "fri", start: "10:00 PM", duration: "1:00" },
-    location: "<a href='https://twitch.tv/teamhacktech'>twitch</a>",
+    location:
+      "<a href='https://bit.ly/hacktech2022room1'>zoom</a> + <a href='https://twitch.tv/teamhacktech'>twitch</a>",
     event_type: "Workshops",
   },
   {
@@ -17,7 +18,8 @@ var schedule = [
     caption:
       "Are you terrified of the tech interview process? Do you wish someone could just give you an end-to-end overview of what the whole process is like? Or are you someone who’s very frustrated with how you just don’t seem to understand what the interviewer wants? You get interviews and you seem to do everything right on paper, but something’s still amiss? If you find yourself saying yes to any of these questions, then this workshop is for you. In this workshop, we’ll walkthrough the tech interview process, including the art of networking during COVID, the standard tech interview process, tips and tricks for behavioural and technical rounds which go beyond just getting the question right and that’ll really help you stand out as a candidate, post-interview etiquette, compensation packages and negotiation etc. The best part? I recently went through this process myself so you’ll also get to hear the silly mistakes that I made along the way and what I learnt as I went along!",
     time: { day: "sat", start: "10:00 AM", duration: "1:00" },
-    location: "<a href='https://twitch.tv/teamhacktech'>twitch</a>",
+    location:
+      "<a href='https://bit.ly/hacktech2022room1'>zoom</a> + <a href='https://twitch.tv/teamhacktech'>twitch</a>",
     event_type: "Workshops",
   },
   {
@@ -25,7 +27,8 @@ var schedule = [
     caption:
       "All aboard the intern ship!!! In this talk, Robert will discuss how to find an internship, what to look for in a job, and what adulting is like. Come with existential crises about what to do with your life and career and we'll sort through the mess.",
     time: { day: "sat", start: "1:00 PM", duration: "1:00" },
-    location: "<a href='https://twitch.tv/teamhacktech'>twitch</a>",
+    location:
+      "<a href='https://bit.ly/hacktech2022room1'>zoom</a> + <a href='https://twitch.tv/teamhacktech'>twitch</a>",
     event_type: "Workshops",
   },
   {
@@ -34,7 +37,8 @@ var schedule = [
     caption:
       "Have you ever wanted to create a startup? In this fireside chat, Jonathan Little will be talking with Stephen Forte (https://fresco.vc/bio/stephen-forte/) about his experience starting companies, what he looks for in seed stage investments, and mistakes to avoid. Stephen is currently the managing partner of Fresco VC, an early stage venture fund investing at the intersection of people and technology. Stephen previously founded several startups and had 7 exits along the way. Come with questions about entrepreneurship, venture capital, and anything in between!",
     time: { day: "sat", start: "2:00 PM", duration: "1:00" },
-    location: "<a href='https://twitch.tv/teamhacktech'>twitch</a>",
+    location:
+      "<a href='https://bit.ly/hacktech2022room2'>zoom</a> + <a href='https://twitch.tv/teamhacktech'>twitch</a>",
     event_type: "Workshops",
   },
   {
@@ -42,7 +46,8 @@ var schedule = [
     caption:
       "Aerovect is a company that develops autonomous vehicles to help airport logistics. Raymond will be talking about how they grew Aerovect from starting in a garage to serving some of the largest airlines in the world.",
     time: { day: "sat", start: "3:00 PM", duration: "1:00" },
-    location: "<a href='https://twitch.tv/teamhacktech'>twitch</a>",
+    location:
+      "<a href='https://bit.ly/hacktech2022room1'>zoom</a> + <a href='https://twitch.tv/teamhacktech'>twitch</a>",
     event_type: "Workshops",
   },
   {
@@ -50,7 +55,7 @@ var schedule = [
     caption:
       "Join us on Discord and chat with our amazing sponsors (1517, echo3D, Mage AI) this year!!",
     time: { day: "sat", start: "5:00 PM", duration: "2:00" },
-    location: "discord",
+    location: "<a href='https://discord.gg/xcWRCsh3'>discord</a>",
     event_type: "Workshops",
   },
 
@@ -67,7 +72,7 @@ var schedule = [
     caption:
       "Need a team? Join us on the #find-a-team channel on Discord, and we'll help you find your partners in crime!",
     time: { day: "fri", start: "8:30 PM", duration: "1:00" },
-    location: "discord",
+    location: "<a href='https://discord.gg/xcWRCsh3'>discord</a>",
     event_type: "events",
   },
   {
@@ -75,8 +80,7 @@ var schedule = [
     caption:
       "Come join us for some fun rounds of trivia through Kahoot. The mystery themes will be announced in the zoom call. The winners of each round will be awarded handsomely ;)!",
     time: { day: "sat", start: "12:00 AM", duration: "1:00" },
-    location:
-      "<a href='https://bit.ly/hacktech2022room1'>https://bit.ly/hacktech2022room1</a>",
+    location: "<a href='https://bit.ly/hacktech2022room1'>zoom</a>",
     event_type: "events",
   },
   {
@@ -85,7 +89,7 @@ var schedule = [
       "Compete against other Hacktech participants in an online chess tournament (Blitz Time Control). The tournament access code will be sent out on the #announcements channel! There will be awesome prizes!!",
     time: { day: "sat", start: "4:00 PM", duration: "1:00" },
     location:
-      "<a href='https://bit.ly/hacktech2022room1'>https://bit.ly/hacktech2022room1</a>, <a href='https://lichess.org/tournament/qiNv6jtA'>https://lichess.org/tournament/qiNv6jtA</a>",
+      "<a href='https://bit.ly/hacktech2022room1'>zoom</a> + <a href='https://lichess.org/tournament/qiNv6jtA'>https://lichess.org/tournament/qiNv6jtA</a>",
     event_type: "events",
   },
   {
@@ -93,8 +97,7 @@ var schedule = [
     caption:
       "Compete against other Hacktech participants in an online poker tournament on LiPoker! There will be awesome prizes!!",
     time: { day: "sat", start: "8:00 PM", duration: "1:00" },
-    location:
-      "<a href='https://bit.ly/hacktech2022room1'>https://bit.ly/hacktech2022room1</a>",
+    location: "<a href='https://bit.ly/hacktech2022room1'>zoom</a>",
     event_type: "events",
   },
   {
@@ -102,22 +105,21 @@ var schedule = [
     caption:
       "Take a break from the grind and flex your artistic skills! Prizes will be awarded to the winners!!",
     time: { day: "sun", start: "12:00 AM", duration: "1:00" },
-    location:
-      "<a href='https://bit.ly/hacktech2022room1'>https://bit.ly/hacktech2022room1</a>",
+    location: "<a href='https://bit.ly/hacktech2022room1'>zoom</a>",
     event_type: "events",
   },
   {
     title: "Judging",
     caption: "Judges will watch video submissions and select finalists",
     time: { day: "sun", start: "12:00 PM", duration: "1:30" },
-    location: "discord",
+    location: "<a href='https://discord.gg/xcWRCsh3'>discord</a>",
     event_type: "events",
   },
   {
     title: "Finalist Judging",
     caption: "Judges will hold calls with finalists to choose winners",
     time: { day: "sun", start: "1:30 PM", duration: "1:00" },
-    location: "discord",
+    location: "<a href='https://discord.gg/xcWRCsh3'>discord</a>",
     event_type: "events",
   },
   {
