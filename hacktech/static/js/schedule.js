@@ -56,44 +56,62 @@ var schedule = [
   // events
   {
     title: "Opening Ceremony + Keynote",
-    caption: "TBD!",
+    caption: "Get hyped for Hacktech 2022!",
     time: { day: "fri", start: "7:30 PM", duration: "1:00" },
     location: "twitch",
     event_type: "events",
   },
   {
     title: "Team Matching",
-    caption: "TBD!",
+    caption:
+      "Need a team? Join us on the #find-a-team channel on Discord, and we'll help you find your partners in crime!",
     time: { day: "fri", start: "8:30 PM", duration: "1:00" },
-    location: "zoom + Glimpse",
+    location: "discord",
     event_type: "events",
   },
   {
     title: "Kahoot Tournament",
-    caption: "TBD!",
+    caption:
+      "Come join us for some fun rounds of trivia through Kahoot. The mystery themes will be announced in the zoom call. The winners of each round will be awarded handsomely ;)!",
     time: { day: "sat", start: "12:00 AM", duration: "1:00" },
-    location: "twitch",
+    location: (
+      <a href="https://bit.ly/hacktech2022room1">
+        https://bit.ly/hacktech2022room1
+      </a>
+    ),
     event_type: "events",
   },
   {
     title: "Chess Tournament",
-    caption: "TBD!",
+    caption:
+      "Compete against other Hacktech participants in an online chess tournament (Blitz Time Control). The tournament access code will be sent out on the #announcements channel! There will be awesome prizes!!",
     time: { day: "sat", start: "4:00 PM", duration: "1:00" },
-    location: "discord",
+    location:
+      "<a href='https://bit.ly/hacktech2022room1'>https://bit.ly/hacktech2022room1</a>, <a href='https://lichess.org/tournament/qiNv6jtA'>https://lichess.org/tournament/qiNv6jtA</a>",
     event_type: "events",
   },
   {
     title: "Poker Tournament",
-    caption: "TBD!",
+    caption:
+      "Compete against other Hacktech participants in an online poker tournament on LiPoker! There will be awesome prizes!!",
     time: { day: "sat", start: "8:00 PM", duration: "1:00" },
-    location: "discord",
+    location: (
+      <a href="https://bit.ly/hacktech2022room1">
+        https://bit.ly/hacktech2022room1
+      </a>
+    ),
     event_type: "events",
   },
   {
     title: "skribbl.io Tournament",
-    caption: "TBD!",
+    caption:
+      "Take a break from the grind and flex your artistic skills! Prizes will be awarded to the winners!!",
     time: { day: "sun", start: "12:00 AM", duration: "1:00" },
-    location: "discord",
+    location: (
+      <a href="https://bit.ly/hacktech2022room1">
+        https://bit.ly/hacktech2022room1
+      </a>
+    ),
     event_type: "events",
   },
   {
