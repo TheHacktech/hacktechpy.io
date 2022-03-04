@@ -77,7 +77,7 @@ Congratulations!<br>
 <br>
 You have been accepted to Hacktech 2022. We had lots of fun reading your applications and really enjoyed all the interesting responses! We hope to see you (virtually!) at Caltech with us from March 4th-March 6th.<br>
 <br>
-Please RSVP <a href="https://hacktech.app/applications/rsvp">here</a> by 3 PM PDT (UTC-7) on Thursday, March 3rd to reserve your spot. You will lose your spot if you don’t RSVP by then. <br>
+Please RSVP <a href="https://hacktech.app/applications/rsvp">here</a> by 3 PM PST (UTC-8) on Thursday, March 3rd to reserve your spot. You will lose your spot if you don’t RSVP by then. <br>
 <br>
 More important announcements will be sent out soon. Stay tuned! <br>
 <br>
