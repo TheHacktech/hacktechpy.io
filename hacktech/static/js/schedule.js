@@ -51,10 +51,10 @@ var schedule = [
     event_type: "Workshops",
   },
   {
-    title: "General Sponsors Office Hours",
+    title: "Mage AI Office Hours",
     caption:
-      "Join us on Discord and chat with our amazing sponsors (1517, echo3D, Mage AI) this year!!",
-    time: { day: "sat", start: "5:00 PM", duration: "2:00" },
+      "Join us on Discord and chat with our amazing sponsor, Mage AI, this year!!",
+    time: { day: "sat", start: "5:00 PM", duration: "1:00" },
     location: "<a href='https://discord.gg/xcWRCsh3'>discord</a>",
     event_type: "Workshops",
   },
