@@ -51,9 +51,9 @@ var schedule = [
     event_type: "Workshops",
   },
   {
-    title: "Mage AI Office Hours",
+    title: "Mage AI + 1517 Office Hours",
     caption:
-      "Join us on Discord and chat with our amazing sponsor, Mage AI, this year!!",
+      "Join us on Discord and chat with our amazing sponsors, Mage AI + 1517 this year!!",
     time: { day: "sat", start: "5:00 PM", duration: "1:00" },
     location: "<a href='https://discord.gg/xcWRCsh3'>discord</a>",
     event_type: "Workshops",
