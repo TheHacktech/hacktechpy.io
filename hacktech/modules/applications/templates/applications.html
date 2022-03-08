@@ -378,8 +378,8 @@
         </div>
       -->
       <p><small>  Are you ready to submit? Once you submit you will not be able to make any changes to your applications. </small></p>
-      <button type="submit" class="btn btn-success" value="Save" name="Save" {%if submitted %} disabled {%endif%} >Save</button> 
-      <button type="submit" class="btn btn-success" value="Submit" name="Submit" {%if submitted or app_end %} disabled {%endif%} onclick="return confirm('Are you sure you want to submit your application form now? All submissions are final.');">Submit Application!</button>
+      <button type="submit" class="btn btn-success" value="Save" name="Save" {%if submitted %} disabled {%endif%} disabled >Save</button> 
+      <button type="submit" class="btn btn-success" value="Submit" name="Submit" {%if submitted or app_end %} disabled {%endif%} onclick="return confirm('Are you sure you want to submit your application form now? All submissions are final.');" disabled >Submit Application!</button>
     </form>
     </div>
 </div>
